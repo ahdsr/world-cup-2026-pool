@@ -1,8 +1,10 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-11T20:39:00.000Z",
-    "status": "Mock scenario: Mexico beats South Africa 2-0.",
-    "sourceNote": "Temporary mock update requested by Lucas. Replace with official FIFA standings/results when final."
+    "lastUpdated": "2026-06-11T21:56:01.235Z",
+    "status": "Auto-updated from ESPN: 1 live/final match counted.",
+    "source": "espn",
+    "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
+    "sourceNote": "Group standings are computed from ESPN match scores. Manual overrides should be used for official tiebreaker corrections and non-score bonus categories."
   },
   "groups": {
     "A": {
@@ -12,54 +14,464 @@
         "South Korea",
         "South Africa"
       ],
-      "status": "mock"
+      "status": "active",
+      "stats": [
+        {
+          "team": "Mexico",
+          "played": 1,
+          "points": 3,
+          "goalsFor": 2,
+          "goalsAgainst": 0,
+          "goalDifference": 2
+        },
+        {
+          "team": "Czechia",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "South Korea",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "South Africa",
+          "played": 1,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 2,
+          "goalDifference": -2
+        }
+      ]
     },
     "B": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "Bosnia & Herzegovina",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Canada",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Qatar",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Switzerland",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     },
     "C": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "Brazil",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Haiti",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Morocco",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Scotland",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     },
     "D": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "Australia",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Paraguay",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Turkey",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "United States",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     },
     "E": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "Curaçao",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Ecuador",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Germany",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Ivory Coast",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     },
     "F": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "Japan",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Netherlands",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Sweden",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Tunisia",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     },
     "G": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "Belgium",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Egypt",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Iran",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "New Zealand",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     },
     "H": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "Cape Verde",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Saudi Arabia",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Spain",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Uruguay",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     },
     "I": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "France",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Iraq",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Norway",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Senegal",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     },
     "J": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "Algeria",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Argentina",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Austria",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Jordan",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     },
     "K": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "Colombia",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "DR Congo",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Portugal",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Uzbekistan",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     },
     "L": {
       "currentOrder": [],
-      "status": "not-started"
+      "status": "not-started",
+      "stats": [
+        {
+          "team": "Croatia",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "England",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Ghana",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        },
+        {
+          "team": "Panama",
+          "played": 0,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 0,
+          "goalDifference": 0
+        }
+      ]
     }
   },
-  "topThirdGroups": [],
+  "topThirdGroups": [
+    "A"
+  ],
   "roundOf16": [],
   "quarterFinalists": [],
   "semifinalists": [],
@@ -71,8 +483,12 @@
     "thirdPlace": ""
   },
   "bonus": {
-    "mostGoalsScored": [],
-    "mostGoalsConceded": [],
+    "mostGoalsScored": [
+      "Mexico"
+    ],
+    "mostGoalsConceded": [
+      "South Africa"
+    ],
     "farthestGoal": [],
     "bestPassCompletion": [],
     "mostCards": []

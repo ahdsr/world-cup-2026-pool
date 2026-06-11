@@ -1,6 +1,10 @@
+import { buildLeaderboardRows } from "./leaderboard.js";
 import { actualAdvancersForGroup, scorePool } from "./scoring.js";
 
 const app = document.querySelector("#app");
+const DEFAULT_ENTRY_ID = "lucas";
+
+let appState = null;
 
 async function loadJson(path) {
   const response = await fetch(path, { cache: "no-store" });
@@ -30,6 +34,21 @@ function formatDate(value) {
   }).format(date);
 }
 
+function parseRoute() {
+  const hash = window.location.hash.replace(/^#\/?/, "");
+  const parts = hash.split("/").filter(Boolean);
+  if (parts[0] === "leaderboard") return { view: "leaderboard" };
+  if (parts[0] === "entry" && parts[1]) return { view: "entry", entryId: parts[1] };
+  return {
+    view: "entry",
+    entryId: appState?.entriesConfig?.defaultEntryId ?? DEFAULT_ENTRY_ID,
+  };
+}
+
+function entryHref(entryId) {
+  return `#/entry/${encodeURIComponent(entryId)}`;
+}
+
 function teamFlag(picks, team) {
   const found = Object.values(picks.groups)
     .flatMap((group) => group.teams)
@@ -45,6 +64,25 @@ function teamPill(picks, team, className = "") {
 
 function statusPill(text, tone = "") {
   return `<span class="pill ${tone}">${escapeHtml(text)}</span>`;
+}
+
+function renderNav(entriesConfig, route) {
+  const defaultEntryId = entriesConfig.defaultEntryId ?? DEFAULT_ENTRY_ID;
+  const leaderboardActive = route.view === "leaderboard" ? "active" : "";
+  const entryActive = route.view === "entry" ? "active" : "";
+
+  return `
+    <nav class="top-nav" aria-label="Primary">
+      <a class="brand-link ${entryActive}" href="${entryHref(defaultEntryId)}">
+        ${escapeHtml(entriesConfig.poolName)}
+      </a>
+      <div class="nav-actions">
+        <a class="nav-link ${leaderboardActive}" href="#/leaderboard" ${leaderboardActive ? 'aria-current="page"' : ""}>
+          Leaderboard
+        </a>
+      </div>
+    </nav>
+  `;
 }
 
 function renderScoreCards(score) {
@@ -256,38 +294,190 @@ function renderPodiumAndBonus(picks, results, score) {
   `;
 }
 
-function renderApp(picks, results) {
-  const score = scorePool(picks, results);
-  app.innerHTML = `
+function renderEntryHeader(entry, picks, results, score, sample = false) {
+  return `
     <header class="site-header">
       <div>
-        <p class="eyebrow">${escapeHtml(picks.meta.owner)}</p>
-        <h1>${escapeHtml(picks.meta.title)}</h1>
+        <p class="eyebrow">${sample ? "Sample entry" : escapeHtml(picks.meta.owner)}</p>
+        <h1>${escapeHtml(entry.name)}</h1>
       </div>
       <div class="meta">
+        <span>${escapeHtml(picks.meta.title ?? "2026 World Cup Pool Picks")}</span>
         <span>Updated ${formatDate(results.meta?.lastUpdated)}</span>
         <span>${escapeHtml(results.meta?.status ?? "")}</span>
+        <strong>${score.total} pts</strong>
       </div>
     </header>
+  `;
+}
+
+function renderRealEntry(entry, picks, results) {
+  const score = scorePool(picks, results);
+  return `
+    ${renderEntryHeader(entry, picks, results, score)}
     ${renderScoreCards(score)}
     ${renderGroups(picks, results, score)}
     ${renderThirdPlace(picks, results)}
     ${renderKnockout(picks, score)}
     ${renderPodiumAndBonus(picks, results, score)}
     <footer>
-      <span>Manual score file: <code>data/results.json</code></span>
+      <span>Score file: <code>data/results.json</code></span>
       <span>Source: ${escapeHtml(picks.meta.sourceWorkbook)}</span>
     </footer>
   `;
 }
 
+function renderSampleEntry(entry, entriesConfig, results) {
+  const score = {
+    total: entry.score?.total ?? 0,
+    subtotals: {
+      group: entry.score?.subtotals?.group ?? 0,
+      knockout: entry.score?.subtotals?.knockout ?? 0,
+      finals: entry.score?.subtotals?.finals ?? 0,
+      bonus: entry.score?.subtotals?.bonus ?? 0,
+    },
+  };
+  const samplePicks = {
+    meta: {
+      title: entriesConfig.poolName,
+      owner: entry.name,
+    },
+  };
+
+  return `
+    ${renderEntryHeader(entry, samplePicks, results, score, true)}
+    ${renderScoreCards(score)}
+    <section class="panel sample-panel">
+      <div class="empty-state">
+        <h2>${escapeHtml(entry.name)} is sample data</h2>
+        <p>This placeholder keeps the leaderboard layout realistic until this entrant's real picks are added.</p>
+      </div>
+    </section>
+  `;
+}
+
+function renderLeaderboard(entriesConfig, rows, results) {
+  return `
+    <header class="site-header leaderboard-header">
+      <div>
+        <p class="eyebrow">Leaderboard</p>
+        <h1>${escapeHtml(entriesConfig.poolName)}</h1>
+      </div>
+      <div class="meta">
+        <span>Prize pool</span>
+        <strong>${escapeHtml(entriesConfig.prizePoolLabel ?? "TBD")}</strong>
+        <span>Updated ${formatDate(results.meta?.lastUpdated)}</span>
+      </div>
+    </header>
+    <section class="panel leaderboard-panel">
+      <div class="leaderboard-title">
+        <div>
+          <h2>Current Standings</h2>
+          <p>${escapeHtml(results.meta?.status ?? "Scores update from results data.")}</p>
+        </div>
+        ${statusPill(`${rows.length} entries`, "good")}
+      </div>
+      <div class="table-wrap">
+        <table class="leaderboard-table">
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Name</th>
+              <th>Total</th>
+              <th>Group</th>
+              <th>Knockout</th>
+              <th>Finals</th>
+              <th>Bonus</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rows
+              .map(
+                (row) => `
+                  <tr>
+                    <td><strong>${row.rank}</strong></td>
+                    <th>
+                      <a class="entry-link" href="${entryHref(row.id)}">${escapeHtml(row.name)}</a>
+                      ${row.sample ? statusPill("Sample") : ""}
+                    </th>
+                    <td><strong>${row.score.total}</strong></td>
+                    <td>${row.score.subtotals.group}</td>
+                    <td>${row.score.subtotals.knockout}</td>
+                    <td>${row.score.subtotals.finals}</td>
+                    <td>${row.score.subtotals.bonus}</td>
+                  </tr>
+                `,
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  `;
+}
+
+function renderNotFound(entriesConfig, entryId) {
+  return `
+    <section class="error">
+      <h1>Entry not found</h1>
+      <p>No pool entry exists for <code>${escapeHtml(entryId)}</code>.</p>
+      <p><a class="entry-link" href="#/leaderboard">Back to leaderboard</a></p>
+    </section>
+  `;
+}
+
+function renderRoute() {
+  if (!appState) return;
+
+  const route = parseRoute();
+  const { entriesConfig, picksByPath, results } = appState;
+  const rows = buildLeaderboardRows(entriesConfig, picksByPath, results);
+  let content = "";
+
+  if (route.view === "leaderboard") {
+    content = renderLeaderboard(entriesConfig, rows, results);
+  } else {
+    const entry = entriesConfig.entries.find((item) => item.id === route.entryId);
+    if (!entry) {
+      content = renderNotFound(entriesConfig, route.entryId);
+    } else if (entry.sample) {
+      content = renderSampleEntry(entry, entriesConfig, results);
+    } else {
+      content = renderRealEntry(entry, picksByPath.get(entry.picksPath), results);
+    }
+  }
+
+  app.innerHTML = `
+    ${renderNav(entriesConfig, route)}
+    ${content}
+  `;
+}
+
 async function start() {
   try {
-    const [picks, results] = await Promise.all([
-      loadJson("data/picks.json"),
+    const [entriesConfig, results] = await Promise.all([
+      loadJson("data/entries.json"),
       loadJson("data/results.json"),
     ]);
-    renderApp(picks, results);
+    const paths = [
+      ...new Set(
+        (entriesConfig.entries ?? [])
+          .map((entry) => entry.picksPath)
+          .filter(Boolean),
+      ),
+    ];
+    const picksEntries = await Promise.all(
+      paths.map(async (path) => [path, await loadJson(path)]),
+    );
+
+    appState = {
+      entriesConfig,
+      results,
+      picksByPath: new Map(picksEntries),
+    };
+
+    window.addEventListener("hashchange", renderRoute);
+    renderRoute();
   } catch (error) {
     app.innerHTML = `
       <section class="error">

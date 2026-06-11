@@ -1,0 +1,54 @@
+{
+  "poolName": "2026 World Cup Pool Picks",
+  "prizePoolLabel": "TBD",
+  "defaultEntryId": "lucas",
+  "entries": [
+    {
+      "id": "lucas",
+      "name": "Lucas",
+      "picksPath": "data/picks.json"
+    },
+    {
+      "id": "alex",
+      "name": "Alex",
+      "sample": true,
+      "score": {
+        "total": 14,
+        "subtotals": {
+          "group": 11,
+          "knockout": 3,
+          "finals": 0,
+          "bonus": 0
+        }
+      }
+    },
+    {
+      "id": "morgan",
+      "name": "Morgan",
+      "sample": true,
+      "score": {
+        "total": 8,
+        "subtotals": {
+          "group": 8,
+          "knockout": 0,
+          "finals": 0,
+          "bonus": 0
+        }
+      }
+    },
+    {
+      "id": "sam",
+      "name": "Sam",
+      "sample": true,
+      "score": {
+        "total": 5,
+        "subtotals": {
+          "group": 5,
+          "knockout": 0,
+          "finals": 0,
+          "bonus": 0
+        }
+      }
+    }
+  ]
+}

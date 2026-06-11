@@ -34,6 +34,64 @@ body {
   padding: 22px 0 42px;
 }
 
+.top-nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 10px 12px;
+  border: 1px solid rgba(15, 91, 70, 0.18);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 8px 24px rgba(31, 41, 51, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.brand-link,
+.nav-link,
+.entry-link {
+  color: var(--brand);
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.brand-link {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.nav-actions {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  padding: 7px 11px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  color: var(--brand-2);
+}
+
+.nav-link.active,
+.brand-link.active:hover,
+.entry-link:hover {
+  color: var(--brand);
+}
+
+.nav-link.active {
+  border-color: rgba(15, 91, 70, 0.2);
+  background: var(--surface-2);
+}
+
 .site-header {
   display: grid;
   gap: 16px;
@@ -80,6 +138,12 @@ h1 {
   align-content: end;
   color: rgba(255, 255, 255, 0.86);
   font-size: 0.9rem;
+}
+
+.meta strong {
+  color: white;
+  font-size: 2rem;
+  line-height: 1;
 }
 
 .score-grid {
@@ -305,6 +369,66 @@ tbody th {
   width: 150px;
 }
 
+.leaderboard-header h1 {
+  font-size: clamp(2rem, 5vw, 3.6rem);
+}
+
+.leaderboard-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--line);
+}
+
+.leaderboard-title h2 {
+  margin-bottom: 4px;
+  color: var(--brand-2);
+  font-size: 1.1rem;
+}
+
+.leaderboard-title p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.leaderboard-table {
+  min-width: 760px;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+  white-space: nowrap;
+}
+
+.leaderboard-table tbody th {
+  width: auto;
+}
+
+.leaderboard-table .pill {
+  margin-left: 8px;
+}
+
+.sample-panel {
+  padding: 0;
+}
+
+.empty-state {
+  padding: 24px;
+}
+
+.empty-state h2 {
+  margin-bottom: 8px;
+  color: var(--brand-2);
+}
+
+.empty-state p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
 .stage-score-list {
   padding: 4px 0;
   border-bottom: 1px solid var(--line);
@@ -433,6 +557,20 @@ code {
   .shell {
     width: 100%;
     padding: 14px 14px 34px;
+  }
+
+  .top-nav {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .nav-actions,
+  .nav-link {
+    width: 100%;
+  }
+
+  .nav-link {
+    justify-content: center;
   }
 
   .site-header {

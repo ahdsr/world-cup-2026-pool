@@ -1,73 +1,57 @@
 # 2026 World Cup Pool Picks
 
-Static GitHub Pages site for Lucas' 2026 World Cup pool picks and current score.
+Static GitHub Pages site for Lucas' 2026 World Cup pool picks, leaderboard, and current score.
 
 ## Public Site
-
-After GitHub Pages is enabled, the site will be available at:
 
 ```text
 https://ahdsr.github.io/world-cup-2026-pool/
 ```
 
-## Update The Score
+Useful routes:
 
-1. Open `data/results.json`.
-2. Update `meta.lastUpdated` to the current timestamp.
-3. Copy the current official group order into each active group:
-
-```json
-"A": {
-  "currentOrder": ["Mexico", "Czechia", "South Korea", "South Africa"],
-  "status": "live"
-}
+```text
+/#/entry/lucas
+/#/leaderboard
 ```
 
-4. Update `topThirdGroups` with the current top-eight third-place groups, such as:
+## Leaderboard
 
-```json
-["A", "B", "C", "D", "E", "F", "I", "J"]
-```
+Entries live in `data/entries.json`.
 
-5. As knockout rounds finish, update these arrays:
+- `poolName` controls the navbar label.
+- `prizePoolLabel` is currently `TBD`.
+- Lucas is the real entry and points at `data/picks.json`.
+- Sample entries are marked with `"sample": true` and can be replaced later with real pick files.
 
-```json
-"roundOf16": [],
-"quarterFinalists": [],
-"semifinalists": [],
-"thirdPlaceMatch": [],
-"finalists": []
-```
+## Live Results
 
-6. At the end, update:
-
-```json
-"finals": {
-  "champion": "",
-  "runnerUp": "",
-  "thirdPlace": ""
-}
-```
-
-7. Run the test before publishing:
+Run the ESPN updater locally:
 
 ```bash
+node scripts/update-results.mjs
 npm test
 ```
 
-8. Commit and push:
+The updater writes `data/results.json` from ESPN's public scoreboard feed and computes:
 
-```bash
-git add data/results.json
-git commit -m "Update pool score"
-git push
-```
+- group orders
+- top third-place groups
+- knockout advancement arrays
+- final podium
+- score-derived bonuses for most goals scored and most goals conceded
 
-The page calculates the score in the browser from `data/picks.json` and `data/results.json`.
+Manual-only data and official corrections belong in `data/manual-overrides.json`.
+Use that file for deeper FIFA tiebreakers, score corrections, and bonus categories not available from match scores.
+
+## GitHub Actions
+
+`.github/workflows/update-results.yml` runs every five minutes and can also be triggered manually.
+It updates `data/results.json`, runs tests, and commits only when results changed.
 
 ## Local Preview
 
-Run any small static server from this folder, for example:
+Run any small static server from this folder:
 
 ```bash
 python -m http.server 4173
@@ -76,5 +60,6 @@ python -m http.server 4173
 Then open:
 
 ```text
-http://localhost:4173/
+http://127.0.0.1:4173/#/leaderboard
+http://127.0.0.1:4173/#/entry/lucas
 ```

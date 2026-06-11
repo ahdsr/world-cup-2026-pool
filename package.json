@@ -4,6 +4,6 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/scoring.test.mjs"
+    "test": "node tests/scoring.test.mjs && node tests/leaderboard.test.mjs && node tests/updater.test.mjs"
   }
 }
