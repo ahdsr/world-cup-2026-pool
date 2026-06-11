@@ -12,6 +12,21 @@
       "id": "mike-b",
       "name": "Mike B",
       "picksPath": "data/picks-mike-b.json"
+    },
+    {
+      "id": "marcin",
+      "name": "Marcin",
+      "picksPath": "data/picks-marcin.json"
+    },
+    {
+      "id": "tata",
+      "name": "Tata",
+      "picksPath": "data/picks-tata.json"
+    },
+    {
+      "id": "rana",
+      "name": "Rana",
+      "picksPath": "data/picks-rana.json"
     }
   ]
 }

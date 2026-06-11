@@ -13,6 +13,9 @@ The root URL opens the leaderboard. Individual player pages use hash routes:
 ```text
 /#/entry/lucas
 /#/entry/mike-b
+/#/entry/marcin
+/#/entry/tata
+/#/entry/rana
 /#/leaderboard
 ```
 
@@ -24,6 +27,9 @@ Entries live in `data/entries.json`.
 - `prizePoolLabel` is currently `TBD`.
 - Lucas points at `data/picks.json`.
 - Mike B points at `data/picks-mike-b.json`.
+- Marcin points at `data/picks-marcin.json`.
+- Tata points at `data/picks-tata.json`.
+- Rana points at `data/picks-rana.json`.
 
 ## Live Results
 
@@ -64,4 +70,7 @@ Then open:
 http://127.0.0.1:4173/#/leaderboard
 http://127.0.0.1:4173/#/entry/lucas
 http://127.0.0.1:4173/#/entry/mike-b
+http://127.0.0.1:4173/#/entry/marcin
+http://127.0.0.1:4173/#/entry/tata
+http://127.0.0.1:4173/#/entry/rana
 ```
