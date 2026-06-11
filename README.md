@@ -8,7 +8,7 @@ Static GitHub Pages site for Lucas' 2026 World Cup pool picks, leaderboard, and 
 https://ahdsr.github.io/world-cup-2026-pool/
 ```
 
-Useful routes:
+The root URL opens the leaderboard. Individual player pages use hash routes:
 
 ```text
 /#/entry/lucas

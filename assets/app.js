@@ -2,7 +2,6 @@ import { buildLeaderboardRows } from "./leaderboard.js";
 import { actualAdvancersForGroup, scorePool } from "./scoring.js";
 
 const app = document.querySelector("#app");
-const DEFAULT_ENTRY_ID = "lucas";
 
 let appState = null;
 
@@ -39,10 +38,7 @@ function parseRoute() {
   const parts = hash.split("/").filter(Boolean);
   if (parts[0] === "leaderboard") return { view: "leaderboard" };
   if (parts[0] === "entry" && parts[1]) return { view: "entry", entryId: parts[1] };
-  return {
-    view: "entry",
-    entryId: appState?.entriesConfig?.defaultEntryId ?? DEFAULT_ENTRY_ID,
-  };
+  return { view: "leaderboard" };
 }
 
 function entryHref(entryId) {
@@ -67,13 +63,12 @@ function statusPill(text, tone = "") {
 }
 
 function renderNav(entriesConfig, route) {
-  const defaultEntryId = entriesConfig.defaultEntryId ?? DEFAULT_ENTRY_ID;
   const leaderboardActive = route.view === "leaderboard" ? "active" : "";
   const entryActive = route.view === "entry" ? "active" : "";
 
   return `
     <nav class="top-nav" aria-label="Primary">
-      <a class="brand-link ${entryActive}" href="${entryHref(defaultEntryId)}">
+      <a class="brand-link ${leaderboardActive}" href="#/leaderboard">
         ${escapeHtml(entriesConfig.poolName)}
       </a>
       <div class="nav-actions">
@@ -304,7 +299,6 @@ function renderEntryHeader(entry, picks, results, score, sample = false) {
       <div class="meta">
         <span>${escapeHtml(picks.meta.title ?? "2026 World Cup Pool Picks")}</span>
         <span>Updated ${formatDate(results.meta?.lastUpdated)}</span>
-        <span>${escapeHtml(results.meta?.status ?? "")}</span>
         <strong>${score.total} pts</strong>
       </div>
     </header>
@@ -373,7 +367,7 @@ function renderLeaderboard(entriesConfig, rows, results) {
       <div class="leaderboard-title">
         <div>
           <h2>Current Standings</h2>
-          <p>${escapeHtml(results.meta?.status ?? "Scores update from results data.")}</p>
+          <p>Totals update from the live results feed.</p>
         </div>
         ${statusPill(`${rows.length} entries`, "good")}
       </div>
