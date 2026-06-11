@@ -106,9 +106,39 @@ function eventFixture({
     "South Korea",
     "South Africa",
   ]);
-  assert.deepEqual(results.topThirdGroups, ["A"]);
+  assert.deepEqual(
+    results.topThirdGroups,
+    [],
+    "third-place groups should be withheld until the full group stage is final",
+  );
   assert.deepEqual(results.bonus.mostGoalsScored, ["Mexico"]);
   assert.deepEqual(results.bonus.mostGoalsConceded, ["South Africa"]);
+}
+
+{
+  const events = Object.entries(picks.groups).map(([groupId, group], index) =>
+    eventFixture({
+      id: `group-${groupId}-complete`,
+      name: `${group.teams[2].name} at ${group.teams[0].name}`,
+      date: `2026-06-${String(11 + index).padStart(2, "0")}T17:00Z`,
+      home: group.teams[0].name,
+      away: group.teams[2].name,
+      homeScore: 1,
+      awayScore: 0,
+      winner: group.teams[0].name,
+    }),
+  );
+  const results = buildResultsFromEvents(events, {
+    picks,
+    aliases,
+    now: "2026-06-27T23:00:00.000Z",
+  });
+
+  assert.equal(
+    results.topThirdGroups.length,
+    8,
+    "third-place groups should populate when every group in the feed is final",
+  );
 }
 
 {

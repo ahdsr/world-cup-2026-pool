@@ -36,7 +36,7 @@ npm test
 The updater writes `data/results.json` from ESPN's public scoreboard feed and computes:
 
 - group orders
-- top third-place groups
+- top third-place groups, withheld until the group stage is final
 - knockout advancement arrays
 - final podium
 - score-derived bonuses for most goals scored and most goals conceded

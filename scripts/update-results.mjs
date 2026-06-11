@@ -331,6 +331,10 @@ export function selectTopThirdGroups(groups) {
     .map((item) => item.groupId);
 }
 
+export function isGroupStageFinal(groups) {
+  return GROUP_IDS.every((groupId) => groups[groupId]?.status === "final");
+}
+
 function matchIsGroupStage(match, teamToGroup) {
   const homeGroup = teamToGroup.get(normalizeKey(match.homeTeam));
   const awayGroup = teamToGroup.get(normalizeKey(match.awayTeam));
@@ -457,6 +461,7 @@ export function buildResultsFromEvents(events, options) {
   const matches = applyMatchOverrides(parsedMatches, manualOverrides, resolveTeam);
   const groups = buildGroupResults(matches, picks);
   const knockout = buildKnockoutResults(matches, picks);
+  const topThirdGroups = isGroupStageFinal(groups) ? selectTopThirdGroups(groups) : [];
   const countedMatches = matches.filter(isCountedMatch).length;
   const liveMatches = matches.filter((match) => match.state === "in").length;
   const statusParts = [
@@ -472,10 +477,10 @@ export function buildResultsFromEvents(events, options) {
       source: "espn",
       sourceUrl,
       sourceNote:
-        "Group standings are computed from ESPN match scores. Manual overrides should be used for official tiebreaker corrections and non-score bonus categories.",
+        "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden.",
     },
     groups,
-    topThirdGroups: selectTopThirdGroups(groups),
+    topThirdGroups,
     roundOf16: knockout.roundOf16,
     quarterFinalists: knockout.quarterFinalists,
     semifinalists: knockout.semifinalists,

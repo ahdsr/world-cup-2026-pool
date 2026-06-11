@@ -1,10 +1,10 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-11T21:56:01.235Z",
+    "lastUpdated": "2026-06-11T22:08:11.117Z",
     "status": "Auto-updated from ESPN: 1 live/final match counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
-    "sourceNote": "Group standings are computed from ESPN match scores. Manual overrides should be used for official tiebreaker corrections and non-score bonus categories."
+    "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "groups": {
     "A": {
@@ -469,9 +469,7 @@
       ]
     }
   },
-  "topThirdGroups": [
-    "A"
-  ],
+  "topThirdGroups": [],
   "roundOf16": [],
   "quarterFinalists": [],
   "semifinalists": [],
