@@ -1,13 +1,18 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-11T20:22:59.720Z",
-    "status": "No official standings/results entered yet.",
-    "sourceNote": "Manual update file. Copy current official group order and knockout results from FIFA or another trusted source."
+    "lastUpdated": "2026-06-11T20:39:00.000Z",
+    "status": "Mock scenario: Mexico beats South Africa 2-0.",
+    "sourceNote": "Temporary mock update requested by Lucas. Replace with official FIFA standings/results when final."
   },
   "groups": {
     "A": {
-      "currentOrder": [],
-      "status": "not-started"
+      "currentOrder": [
+        "Mexico",
+        "Czechia",
+        "South Korea",
+        "South Africa"
+      ],
+      "status": "mock"
     },
     "B": {
       "currentOrder": [],

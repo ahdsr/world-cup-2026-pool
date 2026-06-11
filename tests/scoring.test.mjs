@@ -1,14 +1,36 @@
 import assert from "node:assert/strict";
 import { scorePool } from "../assets/scoring.js";
 import picks from "../data/picks.json" with { type: "json" };
-import baseResults from "../data/results.json" with { type: "json" };
-
-function clone(value) {
-  return JSON.parse(JSON.stringify(value));
-}
 
 function emptyResults() {
-  return clone(baseResults);
+  return {
+    meta: {
+      lastUpdated: "",
+      status: "test fixture",
+      sourceNote: "",
+    },
+    groups: Object.fromEntries(
+      Object.keys(picks.groups).map((groupId) => [
+        groupId,
+        {
+          currentOrder: [],
+          status: "not-started",
+        },
+      ]),
+    ),
+    topThirdGroups: [],
+    roundOf16: [],
+    quarterFinalists: [],
+    semifinalists: [],
+    thirdPlaceMatch: [],
+    finalists: [],
+    finals: {
+      champion: "",
+      runnerUp: "",
+      thirdPlace: "",
+    },
+    bonus: Object.fromEntries(picks.bonus.map((item) => [item.id, []])),
+  };
 }
 
 function groupOnly(groupId, order, topThirdGroups = []) {
