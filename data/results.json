@@ -1,0 +1,75 @@
+{
+  "meta": {
+    "lastUpdated": "2026-06-11T20:22:59.720Z",
+    "status": "No official standings/results entered yet.",
+    "sourceNote": "Manual update file. Copy current official group order and knockout results from FIFA or another trusted source."
+  },
+  "groups": {
+    "A": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "B": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "C": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "D": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "E": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "F": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "G": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "H": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "I": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "J": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "K": {
+      "currentOrder": [],
+      "status": "not-started"
+    },
+    "L": {
+      "currentOrder": [],
+      "status": "not-started"
+    }
+  },
+  "topThirdGroups": [],
+  "roundOf16": [],
+  "quarterFinalists": [],
+  "semifinalists": [],
+  "thirdPlaceMatch": [],
+  "finalists": [],
+  "finals": {
+    "champion": "",
+    "runnerUp": "",
+    "thirdPlace": ""
+  },
+  "bonus": {
+    "mostGoalsScored": [],
+    "mostGoalsConceded": [],
+    "farthestGoal": [],
+    "bestPassCompletion": [],
+    "mostCards": []
+  }
+}
