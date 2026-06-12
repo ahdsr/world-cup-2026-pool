@@ -2,20 +2,20 @@
   color-scheme: light;
   --bg: #f5f6ff;
   --surface: #ffffff;
-  --surface-2: #eff3ff;
-  --ink: #171329;
-  --muted: #69647a;
-  --line: #dedbf0;
-  --brand: #2548ff;
-  --brand-2: #5b00e8;
-  --accent: #e80000;
-  --gold: #dfff00;
-  --lime: #b7f500;
-  --mint: #63f1d4;
-  --peach: #ff9a82;
-  --maroon: #7d1414;
+  --surface-2: #f3f5fb;
+  --ink: #171b2c;
+  --muted: #687084;
+  --line: #dfe4ef;
+  --brand: #2446d8;
+  --brand-2: #31266f;
+  --accent: #c24135;
+  --gold: #d8e45c;
+  --lime: #cce95a;
+  --mint: #8fe7d8;
+  --peach: #ffb49f;
+  --maroon: #842525;
   --good: #008f49;
-  --shadow: 0 16px 40px rgba(23, 19, 41, 0.12);
+  --shadow: 0 14px 34px rgba(18, 22, 39, 0.1);
 }
 
 * {
@@ -44,7 +44,7 @@ body::before {
   height: 520px;
   content: "";
   background:
-    linear-gradient(135deg, rgba(37, 72, 255, 0.92), rgba(91, 0, 232, 0.9)),
+    linear-gradient(135deg, rgba(37, 72, 255, 0.84), rgba(91, 0, 232, 0.72)),
     var(--brand);
   border-bottom-right-radius: 62% 44%;
   transform: rotate(-3deg);
@@ -59,7 +59,7 @@ body::after {
   height: 560px;
   content: "";
   background:
-    linear-gradient(145deg, rgba(232, 0, 0, 0.9), rgba(125, 20, 20, 0.72) 58%, rgba(183, 245, 0, 0.84));
+    linear-gradient(145deg, rgba(194, 65, 53, 0.58), rgba(132, 37, 37, 0.46) 58%, rgba(204, 233, 90, 0.48));
   border-top-left-radius: 74% 68%;
 }
 
@@ -124,7 +124,7 @@ body::after {
   align-items: center;
   min-height: 36px;
   padding: 7px 12px;
-  border: 1px solid rgba(232, 0, 0, 0.28);
+  border: 1px solid rgba(194, 65, 53, 0.28);
   border-radius: 8px;
   color: white;
   background: var(--accent);
@@ -134,7 +134,7 @@ body::after {
 }
 
 .share-button:hover {
-  background: #c90000;
+  background: #a9362e;
 }
 
 .share-status {
@@ -159,9 +159,9 @@ body::after {
   border-radius: 8px;
   color: white;
   background:
-    radial-gradient(240px 120px at 100% 0%, rgba(223, 255, 0, 0.92), transparent 68%),
-    radial-gradient(260px 130px at 0% 100%, rgba(99, 241, 212, 0.7), transparent 70%),
-    linear-gradient(135deg, var(--accent), var(--brand-2) 58%, var(--brand));
+    radial-gradient(240px 120px at 100% 0%, rgba(216, 228, 92, 0.48), transparent 68%),
+    radial-gradient(260px 130px at 0% 100%, rgba(143, 231, 216, 0.34), transparent 70%),
+    linear-gradient(135deg, #8f342f, #3b2e78 58%, #253d9d);
   box-shadow: 0 24px 70px rgba(23, 19, 41, 0.28);
   transform: translateX(-50%);
   animation: celebration-in 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -246,7 +246,7 @@ body::after {
 
 .nav-link.active {
   border-color: rgba(37, 72, 255, 0.22);
-  background: linear-gradient(135deg, rgba(223, 255, 0, 0.38), rgba(99, 241, 212, 0.22));
+  background: linear-gradient(135deg, rgba(216, 228, 92, 0.2), rgba(143, 231, 216, 0.16));
 }
 
 .site-header {
@@ -259,10 +259,10 @@ body::after {
   border: 1px solid rgba(255, 255, 255, 0.36);
   border-radius: 8px;
   background:
-    radial-gradient(380px 180px at 92% 12%, rgba(223, 255, 0, 0.86), transparent 64%),
-    radial-gradient(620px 270px at 78% 120%, rgba(0, 198, 89, 0.92), transparent 66%),
-    radial-gradient(420px 220px at -4% 18%, rgba(232, 0, 0, 0.92), transparent 64%),
-    linear-gradient(120deg, rgba(37, 72, 255, 0.98) 0%, rgba(91, 0, 232, 0.98) 58%, rgba(89, 0, 222, 0.94) 100%),
+    radial-gradient(380px 180px at 92% 12%, rgba(216, 228, 92, 0.22), transparent 64%),
+    radial-gradient(620px 270px at 78% 120%, rgba(143, 231, 216, 0.22), transparent 66%),
+    radial-gradient(420px 220px at -4% 18%, rgba(194, 65, 53, 0.2), transparent 64%),
+    linear-gradient(120deg, rgba(26, 38, 94, 0.98) 0%, rgba(48, 36, 111, 0.97) 58%, rgba(37, 64, 150, 0.94) 100%),
     var(--brand);
   color: white;
   box-shadow: var(--shadow);
@@ -276,7 +276,7 @@ body::after {
   width: 420px;
   height: 250px;
   content: "";
-  background: rgba(255, 154, 130, 0.86);
+  background: rgba(255, 180, 159, 0.28);
   border-bottom-left-radius: 86% 74%;
   transform: rotate(4deg);
 }
@@ -288,7 +288,7 @@ body::after {
   width: 540px;
   height: 210px;
   content: "";
-  background: rgba(99, 241, 212, 0.82);
+  background: rgba(143, 231, 216, 0.34);
   border-top-left-radius: 88% 92%;
 }
 
@@ -302,84 +302,16 @@ body::after {
   right: clamp(16px, 6vw, 68px);
   bottom: -0.18em;
   z-index: 0;
-  color: rgba(255, 255, 255, 0.14);
+  color: rgba(255, 255, 255, 0.08);
   font-size: clamp(6rem, 24vw, 18rem);
   font-weight: 900;
   line-height: 0.82;
   pointer-events: none;
 }
 
-.hero-flag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  grid-column: 1 / -1;
-  gap: 8px;
-  max-width: 760px;
-  padding-top: 4px;
-}
-
-.flag-chip {
-  position: relative;
-  display: inline-grid;
-  width: 34px;
-  height: 34px;
-  place-items: center;
-  border: 1px solid rgba(255, 255, 255, 0.44);
-  border-radius: 999px;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.76), rgba(255, 255, 255, 0.2)),
-    rgba(255, 255, 255, 0.26);
-  box-shadow: 0 8px 20px rgba(23, 19, 41, 0.16);
-  overflow: hidden;
-}
-
-.flag-chip:nth-child(6n + 1) {
-  background: linear-gradient(135deg, #e80000, #7d1414);
-}
-
-.flag-chip:nth-child(6n + 2) {
-  background: linear-gradient(135deg, #2548ff, #5b00e8);
-}
-
-.flag-chip:nth-child(6n + 3) {
-  background: linear-gradient(135deg, #008f49, #63f1d4);
-}
-
-.flag-chip:nth-child(6n + 4) {
-  background: linear-gradient(135deg, #dfff00, #2548ff);
-}
-
-.flag-chip:nth-child(6n + 5) {
-  background: linear-gradient(135deg, #ff9a82, #e80000);
-}
-
-.flag-chip:nth-child(6n + 6) {
-  background: linear-gradient(135deg, #5b00e8, #dfff00);
-}
-
-.flag-chip .flag {
-  position: relative;
-  z-index: 1;
-  width: 28px;
-  height: 28px;
-  border-radius: 999px;
-}
-
-.flag-fallback {
-  color: white;
-  font-size: 0.62rem;
-  font-weight: 900;
-  line-height: 1;
-  text-transform: uppercase;
-}
-
-.flag-chip .flag[data-loaded="true"] + .flag-fallback {
-  display: none;
-}
-
 .eyebrow {
   margin: 0 0 8px;
-  color: rgba(223, 255, 0, 0.92);
+  color: rgba(255, 255, 255, 0.74);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.12em;
@@ -401,6 +333,7 @@ h1 {
   line-height: 0.98;
   letter-spacing: 0;
   overflow-wrap: anywhere;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.22);
 }
 
 .meta {
@@ -413,13 +346,13 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.34);
   border-radius: 8px;
   color: rgba(255, 255, 255, 0.9);
-  background: rgba(23, 19, 41, 0.26);
+  background: rgba(12, 18, 45, 0.56);
   backdrop-filter: blur(10px);
   font-size: 0.9rem;
 }
 
 .meta strong {
-  color: var(--gold);
+  color: #edf47a;
   font-size: 2.15rem;
   line-height: 1;
 }
@@ -456,20 +389,19 @@ h1 {
 
 .score-card.total {
   grid-column: 1 / -1;
-  color: white;
-  background:
-    radial-gradient(240px 120px at 100% 0%, rgba(223, 255, 0, 0.9), transparent 68%),
-    linear-gradient(135deg, var(--brand), var(--brand-2));
-  border-color: rgba(37, 72, 255, 0.3);
+  color: var(--ink);
+  border-color: rgba(36, 70, 216, 0.18);
+  border-left: 6px solid var(--brand);
+  background: linear-gradient(135deg, #ffffff, #f6f8ff);
 }
 
 .score-card.total strong {
-  color: white;
+  color: var(--brand-2);
   font-size: 4.4rem;
 }
 
 .score-card.total span {
-  color: rgba(223, 255, 0, 0.9);
+  color: var(--muted);
 }
 
 .payout-grid {
@@ -485,10 +417,9 @@ h1 {
   position: relative;
   border: 1px solid rgba(23, 19, 41, 0.08);
   border-radius: 8px;
-  color: white;
-  background:
-    radial-gradient(220px 120px at 108% -20%, rgba(223, 255, 0, 0.9), transparent 64%),
-    linear-gradient(135deg, var(--brand), var(--brand-2));
+  color: var(--ink);
+  border-top: 4px solid var(--brand);
+  background: linear-gradient(180deg, #ffffff, #f8faff);
   box-shadow: var(--shadow);
   overflow: hidden;
 }
@@ -500,26 +431,23 @@ h1 {
   width: 150px;
   height: 112px;
   content: "";
-  background: rgba(99, 241, 212, 0.72);
+  background: rgba(143, 231, 216, 0.22);
   border-top-left-radius: 90% 82%;
 }
 
 .payout-card:nth-child(2) {
-  background:
-    radial-gradient(180px 110px at 105% -10%, rgba(255, 154, 130, 0.88), transparent 66%),
-    linear-gradient(135deg, #d70000, var(--maroon));
+  border-top-color: var(--accent);
+  background: linear-gradient(180deg, #ffffff, #fff7f5);
 }
 
 .payout-card:nth-child(3) {
-  background:
-    radial-gradient(180px 110px at 105% -10%, rgba(223, 255, 0, 0.92), transparent 66%),
-    linear-gradient(135deg, #008f49, #03c85c);
+  border-top-color: var(--good);
+  background: linear-gradient(180deg, #ffffff, #f5fff9);
 }
 
 .payout-card:nth-child(4) {
-  background:
-    radial-gradient(180px 110px at 105% -10%, rgba(99, 241, 212, 0.9), transparent 66%),
-    linear-gradient(135deg, #6b00e8, #2548ff);
+  border-top-color: var(--brand-2);
+  background: linear-gradient(180deg, #ffffff, #f7f6ff);
 }
 
 .payout-card span {
@@ -527,7 +455,7 @@ h1 {
   z-index: 1;
   display: block;
   margin-bottom: 8px;
-  color: rgba(255, 255, 255, 0.78);
+  color: var(--muted);
   font-size: 0.76rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -536,7 +464,7 @@ h1 {
 .payout-card strong {
   position: relative;
   z-index: 1;
-  color: white;
+  color: var(--ink);
   font-size: 1.66rem;
   line-height: 1;
   overflow-wrap: normal;
@@ -556,12 +484,11 @@ h1 {
   cursor: pointer;
   padding: 16px 18px;
   border-bottom: 1px solid var(--line);
-  color: white;
+  color: var(--brand-2);
   font-size: 1.02rem;
   font-weight: 900;
-  background:
-    radial-gradient(210px 70px at 100% 0%, rgba(223, 255, 0, 0.62), transparent 66%),
-    linear-gradient(90deg, var(--brand-2), var(--brand));
+  background: #fbfcff;
+  box-shadow: inset 4px 0 0 rgba(36, 70, 216, 0.72);
   list-style-position: inside;
 }
 
@@ -586,9 +513,7 @@ h1 {
   align-items: center;
   padding: 12px 14px;
   border-bottom: 1px solid var(--line);
-  background:
-    radial-gradient(120px 60px at 100% 0%, rgba(183, 245, 0, 0.42), transparent 62%),
-    #f8f7ff;
+  background: #fbfcff;
 }
 
 .group-card h3,
@@ -721,8 +646,8 @@ td {
 }
 
 thead th {
-  color: white;
-  background: var(--brand-2);
+  color: var(--brand-2);
+  background: #f2f5ff;
   font-size: 0.76rem;
   text-transform: uppercase;
 }
@@ -746,7 +671,7 @@ tbody th {
 
 .leaderboard-title h2 {
   margin-bottom: 4px;
-  color: var(--brand);
+  color: var(--brand-2);
   font-size: 1.1rem;
 }
 
@@ -811,9 +736,7 @@ tbody th {
 
 .round h3 {
   padding: 12px 14px;
-  background:
-    radial-gradient(160px 74px at 100% 0%, rgba(223, 255, 0, 0.48), transparent 64%),
-    #f7f6ff;
+  background: #fbfcff;
   border-bottom: 1px solid var(--line);
 }
 
@@ -845,9 +768,7 @@ tbody th {
   padding: 14px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background:
-    radial-gradient(160px 76px at 100% 0%, rgba(99, 241, 212, 0.36), transparent 64%),
-    #fbfbff;
+  background: #fbfcff;
 }
 
 .podium span:first-child {
@@ -977,20 +898,6 @@ code {
     right: 10px;
     bottom: 28px;
     font-size: 8rem;
-  }
-
-  .hero-flag-cloud {
-    gap: 6px;
-  }
-
-  .flag-chip {
-    width: 29px;
-    height: 29px;
-  }
-
-  .flag-chip .flag {
-    width: 24px;
-    height: 24px;
   }
 
   .payout-card strong {
