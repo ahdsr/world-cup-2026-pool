@@ -64,7 +64,6 @@ function statusPill(text, tone = "") {
 
 function renderNav(entriesConfig, route) {
   const leaderboardActive = route.view === "leaderboard" ? "active" : "";
-  const entryActive = route.view === "entry" ? "active" : "";
 
   return `
     <nav class="top-nav" aria-label="Primary">
@@ -75,6 +74,8 @@ function renderNav(entriesConfig, route) {
         <a class="nav-link ${leaderboardActive}" href="#/leaderboard" ${leaderboardActive ? 'aria-current="page"' : ""}>
           Leaderboard
         </a>
+        <button class="share-button" type="button" data-share-button>Share</button>
+        <span class="share-status" role="status" aria-live="polite"></span>
       </div>
     </nav>
   `;
@@ -297,7 +298,7 @@ function renderEntryHeader(entry, picks, results, score, sample = false) {
         <h1>${escapeHtml(entry.name)}</h1>
       </div>
       <div class="meta">
-        <span>${escapeHtml(picks.meta.title ?? "2026 World Cup Pool Picks")}</span>
+        <span>${escapeHtml(appState?.entriesConfig?.poolName ?? picks.meta.title ?? "2026 World Cup Pool Picks")}</span>
         <span>Updated ${formatDate(results.meta?.lastUpdated)}</span>
         <strong>${score.total} pts</strong>
       </div>
@@ -350,6 +351,26 @@ function renderSampleEntry(entry, entriesConfig, results) {
   `;
 }
 
+function renderPayouts(entriesConfig) {
+  const payouts = entriesConfig.payouts ?? [];
+  if (!payouts.length) return "";
+
+  return `
+    <section class="payout-grid" aria-label="Prize payouts">
+      ${payouts
+        .map(
+          (payout) => `
+            <article class="payout-card">
+              <span>${escapeHtml(payout.place)}</span>
+              <strong>${escapeHtml(payout.amount)}</strong>
+            </article>
+          `,
+        )
+        .join("")}
+    </section>
+  `;
+}
+
 function renderLeaderboard(entriesConfig, rows, results) {
   return `
     <header class="site-header leaderboard-header">
@@ -358,11 +379,12 @@ function renderLeaderboard(entriesConfig, rows, results) {
         <h1>${escapeHtml(entriesConfig.poolName)}</h1>
       </div>
       <div class="meta">
-        <span>Prize pool</span>
+        <span>Pool pot</span>
         <strong>${escapeHtml(entriesConfig.prizePoolLabel ?? "TBD")}</strong>
         <span>Updated ${formatDate(results.meta?.lastUpdated)}</span>
       </div>
     </header>
+    ${renderPayouts(entriesConfig)}
     <section class="panel leaderboard-panel">
       <div class="leaderboard-title">
         <div>
@@ -420,6 +442,39 @@ function renderNotFound(entriesConfig, entryId) {
   `;
 }
 
+function setShareStatus(message) {
+  const status = app.querySelector(".share-status");
+  if (!status) return;
+
+  status.textContent = message;
+  window.setTimeout(() => {
+    if (status.textContent === message) status.textContent = "";
+  }, 2400);
+}
+
+async function shareCurrentPage() {
+  const title = appState?.entriesConfig?.poolName ?? "Marcin's 2026 World Cup Pool";
+  const url = window.location.href;
+  const text = "View the latest standings and picks.";
+
+  try {
+    if (navigator.share) {
+      await navigator.share({ title, text, url });
+      return;
+    }
+
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(url);
+      setShareStatus("Link copied");
+      return;
+    }
+  } catch (error) {
+    if (error?.name === "AbortError") return;
+  }
+
+  window.prompt("Copy this link", url);
+}
+
 function renderRoute() {
   if (!appState) return;
 
@@ -445,6 +500,8 @@ function renderRoute() {
     ${renderNav(entriesConfig, route)}
     ${content}
   `;
+
+  app.querySelector("[data-share-button]")?.addEventListener("click", shareCurrentPage);
 }
 
 async function start() {
@@ -470,6 +527,7 @@ async function start() {
       picksByPath: new Map(picksEntries),
     };
 
+    document.title = entriesConfig.poolName;
     window.addEventListener("hashchange", renderRoute);
     renderRoute();
   } catch (error) {

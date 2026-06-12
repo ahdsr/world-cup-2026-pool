@@ -1,6 +1,24 @@
 {
-  "poolName": "2026 World Cup Pool Picks",
-  "prizePoolLabel": "TBD",
+  "poolName": "Marcin's 2026 World Cup Pool",
+  "prizePoolLabel": "$15,000,000",
+  "payouts": [
+    {
+      "place": "1st Place",
+      "amount": "$8,000,000"
+    },
+    {
+      "place": "2nd Place",
+      "amount": "$4,000,000"
+    },
+    {
+      "place": "3rd Place",
+      "amount": "$2,000,000"
+    },
+    {
+      "place": "4th Place",
+      "amount": "$1,000,000"
+    }
+  ],
   "defaultEntryId": "lucas",
   "entries": [
     {

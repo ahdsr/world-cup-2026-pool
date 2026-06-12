@@ -1,6 +1,6 @@
-# 2026 World Cup Pool Picks
+# Marcin's 2026 World Cup Pool
 
-Static GitHub Pages site for Lucas' 2026 World Cup pool picks, leaderboard, and current score.
+Static GitHub Pages site for Marcin's 2026 World Cup pool picks, leaderboard, and current score.
 
 ## Public Site
 
@@ -23,8 +23,9 @@ The root URL opens the leaderboard. Individual player pages use hash routes:
 
 Entries live in `data/entries.json`.
 
-- `poolName` controls the navbar label.
-- `prizePoolLabel` is currently `TBD`.
+- `poolName` controls the navbar label and main heading.
+- `prizePoolLabel` is currently `$15,000,000`.
+- `payouts` controls the visible payout cards: `$8,000,000`, `$4,000,000`, `$2,000,000`, `$1,000,000`.
 - Lucas points at `data/picks.json`.
 - Mike B points at `data/picks-mike-b.json`.
 - Marcin points at `data/picks-marcin.json`.
