@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-12T02:03:08.903Z",
-    "status": "Auto-updated from ESPN: 2 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-12T04:44:00.197Z",
+    "status": "Auto-updated from ESPN: 2 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,11 +10,11 @@
     "A": {
       "currentOrder": [
         "Mexico",
-        "Czechia",
         "South Korea",
+        "Czechia",
         "South Africa"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
         {
           "team": "Mexico",
@@ -25,20 +25,20 @@
           "goalDifference": 2
         },
         {
-          "team": "Czechia",
-          "played": 1,
-          "points": 1,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
           "team": "South Korea",
           "played": 1,
-          "points": 1,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
+          "points": 3,
+          "goalsFor": 2,
+          "goalsAgainst": 1,
+          "goalDifference": 1
+        },
+        {
+          "team": "Czechia",
+          "played": 1,
+          "points": 0,
+          "goalsFor": 1,
+          "goalsAgainst": 2,
+          "goalDifference": -1
         },
         {
           "team": "South Africa",
@@ -482,9 +482,11 @@
   },
   "bonus": {
     "mostGoalsScored": [
-      "Mexico"
+      "Mexico",
+      "South Korea"
     ],
     "mostGoalsConceded": [
+      "Czechia",
       "South Africa"
     ],
     "farthestGoal": [],
