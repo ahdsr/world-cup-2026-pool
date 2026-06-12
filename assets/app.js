@@ -301,7 +301,6 @@ function renderEntryHeader(entry, picks, results, score, sample = false) {
       <div class="meta">
         <span>${escapeHtml(appState?.entriesConfig?.poolName ?? picks.meta.title ?? "2026 World Cup Pool Picks")}</span>
         <span>Updated ${formatDate(results.meta?.lastUpdated)}</span>
-        <strong>${score.total} pts</strong>
       </div>
     </header>
   `;
