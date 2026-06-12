@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-11T23:48:44.750Z",
-    "status": "Auto-updated from ESPN: 1 live/final match counted.",
+    "lastUpdated": "2026-06-12T02:03:08.903Z",
+    "status": "Auto-updated from ESPN: 2 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -14,7 +14,7 @@
         "South Korea",
         "South Africa"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "Mexico",
@@ -26,16 +26,16 @@
         },
         {
           "team": "Czechia",
-          "played": 0,
-          "points": 0,
+          "played": 1,
+          "points": 1,
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
         },
         {
           "team": "South Korea",
-          "played": 0,
-          "points": 0,
+          "played": 1,
+          "points": 1,
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
