@@ -65,17 +65,15 @@ function statusPill(text, tone = "") {
 }
 
 function renderNav(entriesConfig, route) {
-  const leaderboardActive = route.view === "leaderboard" ? "active" : "";
+  const backLink =
+    route.view === "entry" ?
+      '<a class="nav-link" href="#/leaderboard">Back to Leaderboard</a>' :
+      "";
 
   return `
     <nav class="top-nav" aria-label="Primary">
-      <a class="brand-link ${leaderboardActive}" href="#/leaderboard">
-        ${escapeHtml(entriesConfig.poolName)}
-      </a>
       <div class="nav-actions">
-        <a class="nav-link ${leaderboardActive}" href="#/leaderboard" ${leaderboardActive ? 'aria-current="page"' : ""}>
-          Leaderboard
-        </a>
+        ${backLink}
         <button class="share-button" type="button" data-share-button>Share</button>
         <span class="share-status" role="status" aria-live="polite"></span>
       </div>
