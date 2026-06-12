@@ -9,17 +9,28 @@ The worker is intentionally small: it does not fetch ESPN or edit files directly
 1. Create a GitHub token that can dispatch workflows for `ahdsr/world-cup-2026-pool`.
    - Fine-grained token: grant Actions read/write access for this repo.
    - Classic token: use `repo` scope.
-2. Install and authenticate Wrangler.
-3. From this folder, add the token as a Cloudflare secret:
+2. Install dependencies from the repository root:
 
 ```bash
-wrangler secret put GITHUB_TOKEN
+npm install
 ```
 
-4. Deploy the worker:
+3. Authenticate Wrangler:
 
 ```bash
-wrangler deploy
+npx wrangler login
+```
+
+4. From the repository root, add the token as a Cloudflare secret:
+
+```bash
+npm run worker:secret:github
+```
+
+5. Deploy the worker:
+
+```bash
+npm run worker:deploy
 ```
 
 ## Schedule
@@ -38,7 +49,7 @@ The GitHub workflow also keeps a 15-minute schedule as a fallback. A workflow co
 The worker exposes `/run` for a manual dispatch only after a `RUN_TOKEN` secret is set:
 
 ```bash
-wrangler secret put RUN_TOKEN
+npm run worker:secret:run
 ```
 
 Then call:

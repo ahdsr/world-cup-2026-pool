@@ -59,6 +59,17 @@ Use that file for deeper FIFA tiebreakers, score corrections, and bonus categori
 
 The preferred live updater is the external Cloudflare cron worker in `workers/update-results-cron`, which dispatches the workflow every 15 minutes. The GitHub workflow also keeps a 15-minute schedule as a fallback. A concurrency guard prevents overlapping updater runs.
 
+Cloudflare Worker commands:
+
+```bash
+npm install
+npm run worker:deploy:dry-run
+npm run worker:secret:github
+npm run worker:deploy
+```
+
+See `workers/update-results-cron/README.md` for token setup and the optional manual trigger.
+
 ## Local Preview
 
 Run any small static server from this folder:
