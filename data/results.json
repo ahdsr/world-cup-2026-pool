@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-12T19:45:59.279Z",
+    "lastUpdated": "2026-06-12T19:59:01.657Z",
     "status": "Auto-updated from ESPN: 3 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-12T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "43'",
+      "detail": "HT",
       "homeTeam": "Canada",
       "awayTeam": "Bosnia & Herzegovina",
       "homeScore": 0,
