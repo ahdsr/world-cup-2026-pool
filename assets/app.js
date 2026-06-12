@@ -46,6 +46,7 @@ function entryHref(entryId) {
 }
 
 function teamFlag(picks, team) {
+  if (!picks?.groups) return "";
   const found = Object.values(picks.groups)
     .flatMap((group) => group.teams)
     .find((item) => item.name === team);
@@ -60,6 +61,43 @@ function teamPill(picks, team, className = "") {
 
 function statusPill(text, tone = "") {
   return `<span class="pill ${tone}">${escapeHtml(text)}</span>`;
+}
+
+function collectHeroTeams(picks, limit = 36) {
+  if (!picks?.groups) return [];
+  const seen = new Set();
+  const teams = [];
+
+  for (const group of Object.values(picks.groups)) {
+    for (const team of group.teams) {
+      if (seen.has(team.name)) continue;
+      seen.add(team.name);
+      teams.push(team.name);
+      if (teams.length >= limit) return teams;
+    }
+  }
+
+  return teams;
+}
+
+function renderHeroFlags(picks) {
+  const teams = collectHeroTeams(picks);
+  if (!teams.length) return "";
+
+  return `
+    <div class="hero-flag-cloud" aria-hidden="true">
+      ${teams
+        .map(
+          (team) => `
+            <span class="flag-chip">
+              ${teamFlag(picks, team)}
+              <span class="flag-fallback">${escapeHtml(team.slice(0, 2).toUpperCase())}</span>
+            </span>
+          `,
+        )
+        .join("")}
+    </div>
+  `;
 }
 
 function renderNav(entriesConfig, route) {
@@ -293,6 +331,7 @@ function renderPodiumAndBonus(picks, results, score) {
 function renderEntryHeader(entry, picks, results, score, sample = false) {
   return `
     <header class="site-header">
+      <span class="hero-year" aria-hidden="true">26</span>
       <div>
         <p class="eyebrow">${sample ? "Sample entry" : escapeHtml(picks.meta.owner)}</p>
         <h1>${escapeHtml(entry.name)}</h1>
@@ -302,6 +341,7 @@ function renderEntryHeader(entry, picks, results, score, sample = false) {
         <span>Updated ${formatDate(results.meta?.lastUpdated)}</span>
         <strong>${score.total} pts</strong>
       </div>
+      ${renderHeroFlags(picks)}
     </header>
   `;
 }
@@ -372,8 +412,11 @@ function renderPayouts(entriesConfig) {
 }
 
 function renderLeaderboard(entriesConfig, rows, results) {
+  const heroPicks = appState?.picksByPath?.values().next().value;
+
   return `
     <header class="site-header leaderboard-header">
+      <span class="hero-year" aria-hidden="true">26</span>
       <div>
         <p class="eyebrow">Leaderboard</p>
         <h1>${escapeHtml(entriesConfig.poolName)}</h1>
@@ -383,6 +426,7 @@ function renderLeaderboard(entriesConfig, rows, results) {
         <strong>${escapeHtml(entriesConfig.prizePoolLabel ?? "TBD")}</strong>
         <span>Updated ${formatDate(results.meta?.lastUpdated)}</span>
       </div>
+      ${renderHeroFlags(heroPicks)}
     </header>
     ${renderPayouts(entriesConfig)}
     <section class="panel leaderboard-panel">
