@@ -1,0 +1,12 @@
+name = "world-cup-pool-results-cron"
+main = "src/index.js"
+compatibility_date = "2026-06-12"
+
+[triggers]
+crons = ["*/15 * * * *"]
+
+[vars]
+GITHUB_OWNER = "ahdsr"
+GITHUB_REPO = "world-cup-2026-pool"
+GITHUB_WORKFLOW_ID = "update-results.yml"
+GITHUB_REF = "main"
