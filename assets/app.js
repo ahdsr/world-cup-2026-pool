@@ -67,18 +67,24 @@ function statusPill(text, tone = "") {
 function renderNav(entriesConfig, route) {
   const backLink =
     route.view === "entry" ?
-      '<a class="nav-link" href="#/leaderboard">Back to Leaderboard</a>' :
+      '<a class="nav-link" href="#/leaderboard">Back to Leaders</a>' :
       "";
 
   return `
     <nav class="top-nav" aria-label="Primary">
-      <div class="nav-actions">
+      <div class="nav-left">
         ${backLink}
+      </div>
+      <div class="nav-actions">
         <button class="share-button" type="button" data-share-button>Share</button>
         <span class="share-status" role="status" aria-live="polite"></span>
       </div>
     </nav>
   `;
+}
+
+function syncTopNavScrollState() {
+  app.querySelector(".top-nav")?.classList.toggle("is-scrolled", window.scrollY > 8);
 }
 
 function renderScoreCards(score) {
@@ -118,6 +124,22 @@ function renderGroups(picks, results, score) {
             const scored = score.groups.find((item) => item.groupId === groupId);
             const currentOrder = results.groups?.[groupId]?.currentOrder ?? [];
             const advancers = actualAdvancersForGroup(results, groupId);
+            const currentBlock = currentOrder.length
+              ? `
+                  <div>
+                    <h4>Current</h4>
+                    <ol>${currentOrder.map((team) => `<li>${teamPill(picks, team)}</li>`).join("")}</ol>
+                  </div>
+                `
+              : "";
+            const currentAdvancersRow = advancers.length
+              ? `
+                <div class="mini-row">
+                  <span>Current advancers</span>
+                  <span>${advancers.map((team) => teamPill(picks, team)).join('<span class="team-separator">&amp;</span>')}</span>
+                </div>
+              `
+              : "";
             return `
               <article class="group-card">
                 <header>
@@ -133,23 +155,13 @@ function renderGroups(picks, results, score) {
                         .join("")}
                     </ol>
                   </div>
-                  <div>
-                    <h4>Current</h4>
-                    ${
-                      currentOrder.length
-                        ? `<ol>${currentOrder.map((team) => `<li>${teamPill(picks, team)}</li>`).join("")}</ol>`
-                        : `<p class="muted">Not entered</p>`
-                    }
-                  </div>
+                  ${currentBlock}
                 </div>
                 <div class="mini-row">
                   <span>Advancer hits</span>
                   <strong>${scored?.advancementHits?.length ?? 0}/${group.predictedAdvancers.length}</strong>
                 </div>
-                <div class="mini-row">
-                  <span>Current advancers</span>
-                  <span>${advancers.length ? advancers.map((team) => teamPill(picks, team)).join("") : '<span class="empty">Not entered</span>'}</span>
-                </div>
+                ${currentAdvancersRow}
               </article>
             `;
           })
@@ -291,11 +303,13 @@ function renderPodiumAndBonus(picks, results, score) {
 }
 
 function renderEntryHeader(entry, picks, results, score, sample = false) {
+  const quote = entry.quote ?? entry.celebrationQuote ?? (sample ? "Sample entry" : picks.meta.owner);
+
   return `
-    <header class="site-header">
+    <header class="site-header entry-header">
       <span class="hero-year" aria-hidden="true">26</span>
       <div>
-        <p class="eyebrow">${sample ? "Sample entry" : escapeHtml(picks.meta.owner)}</p>
+        <p class="eyebrow player-quote">${escapeHtml(quote)}</p>
         <h1>${escapeHtml(entry.name)}</h1>
       </div>
       <div class="meta">
@@ -311,10 +325,12 @@ function renderRealEntry(entry, picks, results) {
   return `
     ${renderEntryHeader(entry, picks, results, score)}
     ${renderScoreCards(score)}
-    ${renderGroups(picks, results, score)}
-    ${renderThirdPlace(picks, results)}
-    ${renderKnockout(picks, score)}
-    ${renderPodiumAndBonus(picks, results, score)}
+    <section class="entry-details-surface" aria-label="Pick details">
+      ${renderGroups(picks, results, score)}
+      ${renderThirdPlace(picks, results)}
+      ${renderKnockout(picks, score)}
+      ${renderPodiumAndBonus(picks, results, score)}
+    </section>
     <footer>
       <span>Score file: <code>data/results.json</code></span>
       <span>Source: ${escapeHtml(picks.meta.sourceWorkbook)}</span>
@@ -371,6 +387,78 @@ function renderPayouts(entriesConfig) {
   `;
 }
 
+function formatList(items) {
+  const values = items.filter(Boolean);
+  if (values.length <= 1) return values[0] ?? "";
+  if (values.length === 2) return `${values[0]} and ${values[1]}`;
+  return `${values.slice(0, -1).join(", ")}, and ${values.at(-1)}`;
+}
+
+function renderMatchChange(match) {
+  const home = escapeHtml(match.homeTeam);
+  const away = escapeHtml(match.awayTeam);
+  const homeScore = Number.isFinite(match.homeScore) ? match.homeScore : "-";
+  const awayScore = Number.isFinite(match.awayScore) ? match.awayScore : "-";
+  const score = `${homeScore}-${awayScore}`;
+  const isLive = match.state === "in" && !match.completed;
+
+  if (isLive) {
+    return `Live: ${home} ${score} ${away}`;
+  }
+
+  if (match.winner) {
+    return `${escapeHtml(match.winner)} beat ${escapeHtml(match.loser)} ${score}`;
+  }
+
+  return `${home} drew ${away} ${score}`;
+}
+
+function renderLatestUpdates(rows, results) {
+  const leaders = rows.filter((row) => row.rank === 1);
+  const activeGroups = Object.entries(results.groups ?? {}).filter(([, group]) => group.status !== "not-started");
+  const matches = (results.matches ?? []).slice(0, 3);
+  const items = [];
+
+  if (matches.length) {
+    items.push(...matches.map((match) => renderMatchChange(match)));
+  } else {
+    items.push(results.meta?.status ?? "No matches have been counted yet.");
+  }
+
+  if (leaders.length) {
+    items.push(
+      `${escapeHtml(formatList(leaders.map((leader) => leader.name)))} ${leaders.length === 1 ? "leads" : "share first"} with ${leaders[0].score.total} points`,
+    );
+  }
+
+  for (const [groupId, group] of activeGroups.slice(0, 2)) {
+    const topTwo = (group.currentOrder ?? []).slice(0, 2);
+    if (topTwo.length) {
+      items.push(`Group ${escapeHtml(groupId)} top two: ${escapeHtml(formatList(topTwo))}`);
+    }
+  }
+
+  const topScorers = results.bonus?.mostGoalsScored ?? [];
+  if (topScorers.length) {
+    items.push(`Most goals so far: ${escapeHtml(formatList(topScorers))}`);
+  }
+
+  return `
+    <aside class="latest-updates-panel" aria-label="Latest updates">
+      <div>
+        <h2>Latest Updates</h2>
+        <p>${escapeHtml(results.meta?.status ?? "Latest standings update")}</p>
+      </div>
+      <ul>
+        ${items
+          .slice(0, 5)
+          .map((item) => `<li>${item}</li>`)
+          .join("")}
+      </ul>
+    </aside>
+  `;
+}
+
 function renderLeaderboard(entriesConfig, rows, results) {
   return `
     <header class="site-header leaderboard-header">
@@ -385,49 +473,57 @@ function renderLeaderboard(entriesConfig, rows, results) {
         <span>Updated ${formatDate(results.meta?.lastUpdated)}</span>
       </div>
     </header>
-    ${renderPayouts(entriesConfig)}
-    <section class="panel leaderboard-panel">
-      <div class="leaderboard-title">
-        <div>
-          <h2>Current Standings</h2>
-          <p>Totals update from the live results feed.</p>
+    <section class="leaderboard-layout">
+      <div class="leaderboard-main">
+        <div class="leaderboard-prizes">
+          ${renderPayouts(entriesConfig)}
         </div>
-        ${statusPill(`${rows.length} entries`, "good")}
+        <section class="panel leaderboard-panel">
+          <div class="leaderboard-title">
+            <div>
+              <h2>Current Standings</h2>
+              <p>Totals update from the live results feed.</p>
+            </div>
+            ${statusPill(`${rows.length} entries`, "good")}
+          </div>
+          <div class="table-wrap">
+            <table class="leaderboard-table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Total</th>
+                  <th>Group</th>
+                  <th>Knockout</th>
+                  <th>Finals</th>
+                  <th>Bonus</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${rows
+                  .map(
+                    (row) => `
+                      <tr>
+                        <th>
+                          <span class="rank-badge">${row.rank}</span>
+                          <a class="entry-link" href="${entryHref(row.id)}">${escapeHtml(row.name)}</a>
+                          ${row.sample ? statusPill("Sample") : ""}
+                        </th>
+                        <td><strong>${row.score.total}</strong></td>
+                        <td>${row.score.subtotals.group}</td>
+                        <td>${row.score.subtotals.knockout}</td>
+                        <td>${row.score.subtotals.finals}</td>
+                        <td>${row.score.subtotals.bonus}</td>
+                      </tr>
+                    `,
+                  )
+                  .join("")}
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
-      <div class="table-wrap">
-        <table class="leaderboard-table">
-          <thead>
-            <tr>
-              <th>Rank</th>
-              <th>Name</th>
-              <th>Total</th>
-              <th>Group</th>
-              <th>Knockout</th>
-              <th>Finals</th>
-              <th>Bonus</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${rows
-              .map(
-                (row) => `
-                  <tr>
-                    <td><strong>${row.rank}</strong></td>
-                    <th>
-                      <a class="entry-link" href="${entryHref(row.id)}">${escapeHtml(row.name)}</a>
-                      ${row.sample ? statusPill("Sample") : ""}
-                    </th>
-                    <td><strong>${row.score.total}</strong></td>
-                    <td>${row.score.subtotals.group}</td>
-                    <td>${row.score.subtotals.knockout}</td>
-                    <td>${row.score.subtotals.finals}</td>
-                    <td>${row.score.subtotals.bonus}</td>
-                  </tr>
-                `,
-              )
-              .join("")}
-          </tbody>
-        </table>
+      <div class="leaderboard-updates">
+        ${renderLatestUpdates(rows, results)}
       </div>
     </section>
   `;
@@ -546,6 +642,7 @@ function renderRoute() {
   `;
 
   app.querySelector("[data-share-button]")?.addEventListener("click", shareCurrentPage);
+  syncTopNavScrollState();
   showLeaderCelebration(rows);
 }
 
@@ -574,6 +671,7 @@ async function start() {
 
     document.title = entriesConfig.poolName;
     window.addEventListener("hashchange", renderRoute);
+    window.addEventListener("scroll", syncTopNavScrollState, { passive: true });
     renderRoute();
   } catch (error) {
     app.innerHTML = `

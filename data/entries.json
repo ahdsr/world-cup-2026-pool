@@ -1,22 +1,22 @@
 {
   "poolName": "Marcin's 2026 World Cup Pool",
-  "prizePoolLabel": "$15,000,000",
+  "prizePoolLabel": "$1,500",
   "payouts": [
     {
       "place": "1st Place",
-      "amount": "$8,000,000"
+      "amount": "$800"
     },
     {
       "place": "2nd Place",
-      "amount": "$4,000,000"
+      "amount": "$400"
     },
     {
       "place": "3rd Place",
-      "amount": "$2,000,000"
+      "amount": "$200"
     },
     {
       "place": "4th Place",
-      "amount": "$1,000,000"
+      "amount": "$100"
     }
   ],
   "defaultEntryId": "lucas",
@@ -24,27 +24,32 @@
     {
       "id": "lucas",
       "name": "Lucas",
+      "quote": "Fuck yeah!",
       "celebrationQuote": "Fuck yeah!",
       "picksPath": "data/picks.json"
     },
     {
       "id": "mike-b",
       "name": "Mike B",
+      "quote": "Believe the bracket.",
       "picksPath": "data/picks-mike-b.json"
     },
     {
       "id": "marcin",
       "name": "Marcin",
+      "quote": "Trust the picks.",
       "picksPath": "data/picks-marcin.json"
     },
     {
       "id": "tata",
       "name": "Tata",
+      "quote": "Experience wins tournaments.",
       "picksPath": "data/picks-tata.json"
     },
     {
       "id": "rana",
       "name": "Rana",
+      "quote": "Defense first, points follow.",
       "picksPath": "data/picks-rana.json"
     }
   ]

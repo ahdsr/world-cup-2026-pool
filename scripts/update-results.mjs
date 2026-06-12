@@ -479,6 +479,22 @@ export function buildResultsFromEvents(events, options) {
       sourceNote:
         "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden.",
     },
+    matches: matches
+      .filter(isCountedMatch)
+      .map((match) => ({
+        id: match.id,
+        date: match.date,
+        state: match.state,
+        completed: match.completed,
+        detail: match.detail,
+        homeTeam: match.homeTeam,
+        awayTeam: match.awayTeam,
+        homeScore: match.homeScore,
+        awayScore: match.awayScore,
+        winner: match.winner,
+        loser: match.loser,
+      }))
+      .sort((a, b) => String(b.date).localeCompare(String(a.date))),
     groups,
     topThirdGroups,
     roundOf16: knockout.roundOf16,

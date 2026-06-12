@@ -6,6 +6,34 @@
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
+  "matches": [
+    {
+      "id": "760414",
+      "date": "2026-06-12T02:00Z",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
+      "homeTeam": "South Korea",
+      "awayTeam": "Czechia",
+      "homeScore": 2,
+      "awayScore": 1,
+      "winner": "South Korea",
+      "loser": "Czechia"
+    },
+    {
+      "id": "760415",
+      "date": "2026-06-11T19:00Z",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
+      "homeTeam": "Mexico",
+      "awayTeam": "South Africa",
+      "homeScore": 2,
+      "awayScore": 0,
+      "winner": "Mexico",
+      "loser": "South Africa"
+    }
+  ],
   "groups": {
     "A": {
       "currentOrder": [
