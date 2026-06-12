@@ -26,6 +26,7 @@ Entries live in `data/entries.json`.
 - `poolName` controls the navbar label and main heading.
 - `prizePoolLabel` is currently `$15,000,000`.
 - `payouts` controls the visible payout cards: `$8,000,000`, `$4,000,000`, `$2,000,000`, `$1,000,000`.
+- `celebrationQuote` on an entry shows a one-time animated quote only when that entry is ranked first.
 - Lucas points at `data/picks.json`.
 - Mike B points at `data/picks-mike-b.json`.
 - Marcin points at `data/picks-marcin.json`.

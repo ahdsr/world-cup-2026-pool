@@ -4,6 +4,7 @@ import { actualAdvancersForGroup, scorePool } from "./scoring.js";
 const app = document.querySelector("#app");
 
 let appState = null;
+let celebrationShown = false;
 
 async function loadJson(path) {
   const response = await fetch(path, { cache: "no-store" });
@@ -496,6 +497,49 @@ function setShareStatus(message) {
   }, 2400);
 }
 
+function removeCelebrationToast(toast) {
+  toast.classList.add("leaving");
+  window.setTimeout(() => toast.remove(), 340);
+}
+
+function showLeaderCelebration(rows) {
+  if (celebrationShown) return;
+
+  const leadersWithQuotes = rows.filter((row) => row.rank === 1 && row.celebrationQuote);
+  if (!leadersWithQuotes.length) return;
+
+  celebrationShown = true;
+  document.querySelector(".celebration-toast")?.remove();
+
+  const toast = document.createElement("aside");
+  toast.className = "celebration-toast";
+  toast.setAttribute("role", "status");
+  toast.setAttribute("aria-live", "polite");
+  toast.innerHTML = `
+    <div>
+      <span>Top of the table</span>
+      ${leadersWithQuotes
+        .map(
+          (leader) => `
+            <p>
+              <strong>${escapeHtml(leader.name)}</strong>
+              <q>${escapeHtml(leader.celebrationQuote)}</q>
+            </p>
+          `,
+        )
+        .join("")}
+    </div>
+    <button type="button" aria-label="Dismiss celebration quote">X</button>
+  `;
+
+  document.body.append(toast);
+  const dismiss = toast.querySelector("button");
+  dismiss?.addEventListener("click", () => removeCelebrationToast(toast));
+  window.setTimeout(() => {
+    if (document.body.contains(toast)) removeCelebrationToast(toast);
+  }, 7800);
+}
+
 async function shareCurrentPage() {
   const title = appState?.entriesConfig?.poolName ?? "Marcin's 2026 World Cup Pool";
   const url = window.location.href;
@@ -546,6 +590,7 @@ function renderRoute() {
   `;
 
   app.querySelector("[data-share-button]")?.addEventListener("click", shareCurrentPage);
+  showLeaderCelebration(rows);
 }
 
 async function start() {

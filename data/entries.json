@@ -24,6 +24,7 @@
     {
       "id": "lucas",
       "name": "Lucas",
+      "celebrationQuote": "Fuck yeah!",
       "picksPath": "data/picks.json"
     },
     {
