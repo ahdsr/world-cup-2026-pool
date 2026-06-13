@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-13T01:46:00.676Z",
+    "lastUpdated": "2026-06-13T02:01:00.299Z",
     "status": "Auto-updated from ESPN: 4 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-13T01:00Z",
       "state": "in",
       "completed": false,
-      "detail": "44'",
+      "detail": "HT",
       "homeTeam": "United States",
       "awayTeam": "Paraguay",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -198,9 +198,9 @@
           "team": "United States",
           "played": 1,
           "points": 3,
-          "goalsFor": 2,
+          "goalsFor": 3,
           "goalsAgainst": 0,
-          "goalDifference": 2
+          "goalDifference": 3
         },
         {
           "team": "Australia",
@@ -223,8 +223,8 @@
           "played": 1,
           "points": 0,
           "goalsFor": 0,
-          "goalsAgainst": 2,
-          "goalDifference": -2
+          "goalsAgainst": 3,
+          "goalDifference": -3
         }
       ]
     },
@@ -546,14 +546,10 @@
   },
   "bonus": {
     "mostGoalsScored": [
-      "Mexico",
-      "South Korea",
       "United States"
     ],
     "mostGoalsConceded": [
-      "Czechia",
-      "Paraguay",
-      "South Africa"
+      "Paraguay"
     ],
     "farthestGoal": [],
     "bestPassCompletion": [],
