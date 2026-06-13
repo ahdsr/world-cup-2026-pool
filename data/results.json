@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-13T22:31:04.478Z",
+    "lastUpdated": "2026-06-13T22:46:01.681Z",
     "status": "Auto-updated from ESPN: 6 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-13T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "26'",
+      "detail": "41'",
       "homeTeam": "Brazil",
       "awayTeam": "Morocco",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "winner": "",
       "loser": ""
@@ -175,20 +175,28 @@
     },
     "C": {
       "currentOrder": [
+        "Brazil",
         "Morocco",
         "Haiti",
-        "Scotland",
-        "Brazil"
+        "Scotland"
       ],
       "status": "live",
       "stats": [
         {
+          "team": "Brazil",
+          "played": 1,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDifference": 0
+        },
+        {
           "team": "Morocco",
           "played": 1,
-          "points": 3,
+          "points": 1,
           "goalsFor": 1,
-          "goalsAgainst": 0,
-          "goalDifference": 1
+          "goalsAgainst": 1,
+          "goalDifference": 0
         },
         {
           "team": "Haiti",
@@ -205,14 +213,6 @@
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
-        },
-        {
-          "team": "Brazil",
-          "played": 1,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 1,
-          "goalDifference": -1
         }
       ]
     },
