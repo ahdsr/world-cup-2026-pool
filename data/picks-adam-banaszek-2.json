@@ -1,8 +1,8 @@
 {
   "meta": {
     "title": "2026 World Cup Pool Picks",
-    "owner": "Marcin",
-    "sourceWorkbook": "2026 World Cup Pool - Marcin.xlsx",
+    "owner": "Adam Banaszek (2)",
+    "sourceWorkbook": "2026 World Cup Pool - Adam Banaszek (2).xlsx",
     "generatedAt": "2026-06-13T15:46:38.921311Z"
   },
   "scoringRules": {
@@ -33,12 +33,12 @@
     {
       "id": "farthestGoal",
       "label": "Goal from farthest distance",
-      "pick": "Brazil"
+      "pick": "Switzerland"
     },
     {
       "id": "bestPassCompletion",
       "label": "Best pass completion %",
-      "pick": "Spain"
+      "pick": "France"
     },
     {
       "id": "mostCards",
@@ -68,14 +68,14 @@
       ],
       "predictedOrder": [
         "Mexico",
-        "South Korea",
         "Czechia",
+        "South Korea",
         "South Africa"
       ],
       "predictedAdvancers": [
         "Mexico",
-        "South Korea",
-        "Czechia"
+        "Czechia",
+        "South Korea"
       ]
     },
     "B": {
@@ -160,15 +160,14 @@
         }
       ],
       "predictedOrder": [
-        "Paraguay",
-        "United States",
         "Turkey",
+        "United States",
+        "Paraguay",
         "Australia"
       ],
       "predictedAdvancers": [
-        "Paraguay",
-        "United States",
-        "Turkey"
+        "Turkey",
+        "United States"
       ]
     },
     "E": {
@@ -192,14 +191,14 @@
       ],
       "predictedOrder": [
         "Germany",
-        "Ecuador",
         "Ivory Coast",
+        "Ecuador",
         "Curaçao"
       ],
       "predictedAdvancers": [
         "Germany",
-        "Ecuador",
-        "Ivory Coast"
+        "Ivory Coast",
+        "Ecuador"
       ]
     },
     "F": {
@@ -223,12 +222,13 @@
       ],
       "predictedOrder": [
         "Netherlands",
+        "Sweden",
         "Japan",
-        "Tunisia",
-        "Sweden"
+        "Tunisia"
       ],
       "predictedAdvancers": [
         "Netherlands",
+        "Sweden",
         "Japan"
       ]
     },
@@ -254,8 +254,8 @@
       "predictedOrder": [
         "Belgium",
         "Egypt",
-        "Iran",
-        "New Zealand"
+        "New Zealand",
+        "Iran"
       ],
       "predictedAdvancers": [
         "Belgium",
@@ -284,8 +284,8 @@
       "predictedOrder": [
         "Spain",
         "Uruguay",
-        "Saudi Arabia",
-        "Cape Verde"
+        "Cape Verde",
+        "Saudi Arabia"
       ],
       "predictedAdvancers": [
         "Spain",
@@ -313,14 +313,14 @@
       ],
       "predictedOrder": [
         "France",
-        "Norway",
         "Senegal",
+        "Norway",
         "Iraq"
       ],
       "predictedAdvancers": [
         "France",
-        "Norway",
-        "Senegal"
+        "Senegal",
+        "Norway"
       ]
     },
     "J": {
@@ -376,12 +376,13 @@
       "predictedOrder": [
         "Portugal",
         "Colombia",
-        "Uzbekistan",
-        "DR Congo"
+        "DR Congo",
+        "Uzbekistan"
       ],
       "predictedAdvancers": [
         "Portugal",
-        "Colombia"
+        "Colombia",
+        "DR Congo"
       ]
     },
     "L": {
@@ -406,19 +407,18 @@
       "predictedOrder": [
         "England",
         "Croatia",
-        "Ghana",
-        "Panama"
+        "Panama",
+        "Ghana"
       ],
       "predictedAdvancers": [
         "England",
-        "Croatia",
-        "Ghana"
+        "Croatia"
       ]
     }
   },
   "thirdPlace": {
     "A": {
-      "team": "Czechia",
+      "team": "South Korea",
       "selected": true
     },
     "B": {
@@ -430,27 +430,27 @@
       "selected": true
     },
     "D": {
-      "team": "Turkey",
-      "selected": true
+      "team": "Paraguay",
+      "selected": false
     },
     "E": {
-      "team": "Ivory Coast",
+      "team": "Ecuador",
       "selected": true
     },
     "F": {
-      "team": "Tunisia",
-      "selected": false
+      "team": "Japan",
+      "selected": true
     },
     "G": {
-      "team": "Iran",
+      "team": "New Zealand",
       "selected": false
     },
     "H": {
-      "team": "Saudi Arabia",
+      "team": "Cape Verde",
       "selected": false
     },
     "I": {
-      "team": "Senegal",
+      "team": "Norway",
       "selected": true
     },
     "J": {
@@ -458,12 +458,12 @@
       "selected": true
     },
     "K": {
-      "team": "Uzbekistan",
-      "selected": false
+      "team": "DR Congo",
+      "selected": true
     },
     "L": {
-      "team": "Ghana",
-      "selected": true
+      "team": "Panama",
+      "selected": false
     }
   },
   "knockout": {
@@ -488,7 +488,7 @@
         ],
         "teams": [
           "France",
-          "Turkey"
+          "Japan"
         ],
         "winner": "France"
       },
@@ -499,10 +499,10 @@
           "2B"
         ],
         "teams": [
-          "South Korea",
+          "Czechia",
           "Bosnia & Herzegovina"
         ],
-        "winner": "South Korea"
+        "winner": "Czechia"
       },
       {
         "id": "round-of-32-4",
@@ -526,7 +526,7 @@
           "Colombia",
           "Croatia"
         ],
-        "winner": "Colombia"
+        "winner": "Croatia"
       },
       {
         "id": "round-of-32-6",
@@ -547,10 +547,10 @@
           "3 B/E/F/I/J"
         ],
         "teams": [
-          "Paraguay",
+          "Turkey",
           "Canada"
         ],
-        "winner": "Paraguay"
+        "winner": "Turkey"
       },
       {
         "id": "round-of-32-8",
@@ -560,9 +560,9 @@
         ],
         "teams": [
           "Belgium",
-          "Czechia"
+          "South Korea"
         ],
-        "winner": "Czechia"
+        "winner": "Belgium"
       },
       {
         "id": "round-of-32-9",
@@ -572,7 +572,7 @@
         ],
         "teams": [
           "Brazil",
-          "Japan"
+          "Sweden"
         ],
         "winner": "Brazil"
       },
@@ -583,10 +583,10 @@
           "2I"
         ],
         "teams": [
-          "Ecuador",
-          "Norway"
+          "Ivory Coast",
+          "Senegal"
         ],
-        "winner": "Ecuador"
+        "winner": "Senegal"
       },
       {
         "id": "round-of-32-11",
@@ -596,7 +596,7 @@
         ],
         "teams": [
           "Mexico",
-          "Ivory Coast"
+          "Ecuador"
         ],
         "winner": "Mexico"
       },
@@ -608,7 +608,7 @@
         ],
         "teams": [
           "England",
-          "Senegal"
+          "DR Congo"
         ],
         "winner": "England"
       },
@@ -634,7 +634,7 @@
           "United States",
           "Egypt"
         ],
-        "winner": "United States"
+        "winner": "Egypt"
       },
       {
         "id": "round-of-32-15",
@@ -656,7 +656,7 @@
         ],
         "teams": [
           "Portugal",
-          "Ghana"
+          "Norway"
         ],
         "winner": "Portugal"
       }
@@ -675,7 +675,7 @@
         "id": "round-of-16-2",
         "seeds": [],
         "teams": [
-          "South Korea",
+          "Czechia",
           "Netherlands"
         ],
         "winner": "Netherlands"
@@ -684,7 +684,7 @@
         "id": "round-of-16-3",
         "seeds": [],
         "teams": [
-          "Colombia",
+          "Croatia",
           "Spain"
         ],
         "winner": "Spain"
@@ -693,19 +693,19 @@
         "id": "round-of-16-4",
         "seeds": [],
         "teams": [
-          "Paraguay",
-          "Czechia"
+          "Turkey",
+          "Belgium"
         ],
-        "winner": "Paraguay"
+        "winner": "Belgium"
       },
       {
         "id": "round-of-16-5",
         "seeds": [],
         "teams": [
           "Brazil",
-          "Ecuador"
+          "Senegal"
         ],
-        "winner": "Ecuador"
+        "winner": "Senegal"
       },
       {
         "id": "round-of-16-6",
@@ -721,7 +721,7 @@
         "seeds": [],
         "teams": [
           "Argentina",
-          "United States"
+          "Egypt"
         ],
         "winner": "Argentina"
       },
@@ -750,7 +750,7 @@
         "seeds": [],
         "teams": [
           "Spain",
-          "Paraguay"
+          "Belgium"
         ],
         "winner": "Spain"
       },
@@ -758,7 +758,7 @@
         "id": "quarter-final-3",
         "seeds": [],
         "teams": [
-          "Ecuador",
+          "Senegal",
           "England"
         ],
         "winner": "England"
@@ -781,7 +781,7 @@
           "France",
           "Spain"
         ],
-        "winner": "Spain"
+        "winner": "France"
       },
       {
         "id": "semi-final-2",
@@ -795,35 +795,35 @@
     ],
     "final": {
       "teams": [
-        "Spain",
+        "France",
         "England"
       ],
-      "winner": "England"
+      "winner": "France"
     },
     "thirdPlace": {
       "teams": [
-        "France",
+        "Spain",
         "Argentina"
       ],
-      "winner": "Argentina"
+      "winner": "Spain"
     }
   },
   "advancement": {
     "roundOf16": [
       "Germany",
       "France",
-      "South Korea",
-      "Netherlands",
-      "Colombia",
-      "Spain",
-      "Paraguay",
       "Czechia",
+      "Netherlands",
+      "Croatia",
+      "Spain",
+      "Turkey",
+      "Belgium",
       "Brazil",
-      "Ecuador",
+      "Senegal",
       "Mexico",
       "England",
       "Argentina",
-      "United States",
+      "Egypt",
       "Switzerland",
       "Portugal"
     ],
@@ -831,8 +831,8 @@
       "France",
       "Netherlands",
       "Spain",
-      "Paraguay",
-      "Ecuador",
+      "Belgium",
+      "Senegal",
       "England",
       "Argentina",
       "Portugal"
@@ -844,17 +844,17 @@
       "Argentina"
     ],
     "finalists": [
-      "Spain",
+      "France",
       "England"
     ],
     "thirdPlaceMatch": [
-      "France",
+      "Spain",
       "Argentina"
     ]
   },
   "podium": {
-    "champion": "England",
-    "runnerUp": "Spain",
-    "thirdPlace": "Argentina"
+    "champion": "France",
+    "runnerUp": "England",
+    "thirdPlace": "Spain"
   }
 }

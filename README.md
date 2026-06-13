@@ -11,11 +11,9 @@ https://ahdsr.github.io/world-cup-2026-pool/
 The root URL opens the leaderboard. Individual player pages use hash routes:
 
 ```text
-/#/entry/lucas
-/#/entry/mike-b
-/#/entry/marcin
-/#/entry/tata
-/#/entry/rana
+/#/entry/lucas-sokolowski
+/#/entry/adam-banaszek-1
+/#/entry/andrew-d-2
 /#/leaderboard
 ```
 
@@ -27,11 +25,18 @@ Entries live in `data/entries.json`.
 - `prizePoolLabel` is currently `$15,000,000`.
 - `payouts` controls the visible payout cards: `$8,000,000`, `$4,000,000`, `$2,000,000`, `$1,000,000`.
 - `celebrationQuote` on an entry shows a one-time animated quote only when that entry is ranked first.
-- Lucas points at `data/picks.json`.
-- Mike B points at `data/picks-mike-b.json`.
-- Marcin points at `data/picks-marcin.json`.
-- Tata points at `data/picks-tata.json`.
-- Rana points at `data/picks-rana.json`.
+- Each real entry points at a generated `data/picks*.json` file.
+- Duplicate submissions use separate entry ids and labels, such as `adam-banaszek-1` / `Adam Banaszek (1)`.
+
+## Importing Picks
+
+Spreadsheet submissions can be re-imported from the configured files in `scripts/import-xlsx-picks.py`:
+
+```bash
+python scripts/import-xlsx-picks.py
+```
+
+The importer rebuilds `data/entries.json` and the generated `data/picks*.json` files from the Excel submissions.
 
 ## Live Results
 
@@ -82,9 +87,7 @@ Then open:
 
 ```text
 http://127.0.0.1:4173/#/leaderboard
-http://127.0.0.1:4173/#/entry/lucas
-http://127.0.0.1:4173/#/entry/mike-b
-http://127.0.0.1:4173/#/entry/marcin
-http://127.0.0.1:4173/#/entry/tata
-http://127.0.0.1:4173/#/entry/rana
+http://127.0.0.1:4173/#/entry/lucas-sokolowski
+http://127.0.0.1:4173/#/entry/adam-banaszek-1
+http://127.0.0.1:4173/#/entry/andrew-d-2
 ```

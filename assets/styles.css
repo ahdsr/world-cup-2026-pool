@@ -829,6 +829,12 @@ tbody th {
   margin-bottom: 0;
 }
 
+.leaderboard-updates {
+  display: grid;
+  gap: 14px;
+  align-content: start;
+}
+
 .leaderboard-panel {
   margin: 0;
 }
@@ -857,25 +863,55 @@ tbody th {
   line-height: 1.45;
 }
 
+.latest-update-list {
+  display: grid;
+  gap: 8px;
+}
+
+.latest-update-day {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcff;
+  overflow: hidden;
+}
+
+.latest-update-day > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  color: var(--brand-2);
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  list-style-position: inside;
+}
+
 .latest-updates-panel ul {
   display: grid;
-  gap: 10px;
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .latest-updates-panel li {
-  padding: 10px 0 0;
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr);
+  gap: 10px;
+  padding: 10px 12px;
   border-top: 1px solid var(--line);
   color: var(--ink);
   font-size: 0.94rem;
   line-height: 1.4;
 }
 
-.latest-updates-panel li:first-child {
-  padding-top: 0;
-  border-top: 0;
+.latest-updates-panel time {
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 .leaderboard-table {
@@ -1050,19 +1086,15 @@ code {
 @media (min-width: 1040px) {
   .leaderboard-layout {
     grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
-    align-items: stretch;
+    align-items: start;
   }
 
   .leaderboard-updates {
-    align-self: stretch;
+    align-self: start;
   }
 
   .leaderboard-prizes .payout-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .latest-updates-panel {
-    height: 100%;
   }
 
   .groups-grid {

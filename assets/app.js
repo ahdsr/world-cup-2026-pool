@@ -413,35 +413,73 @@ function renderMatchChange(match) {
   return `${home} drew ${away} ${score}`;
 }
 
-function renderLatestUpdates(rows, results) {
-  const leaders = rows.filter((row) => row.rank === 1);
-  const activeGroups = Object.entries(results.groups ?? {}).filter(([, group]) => group.status !== "not-started");
-  const matches = (results.matches ?? []).slice(0, 3);
-  const items = [];
+function formatUpdateDate(value) {
+  if (!value) return "Undated";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "Undated";
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(date);
+}
 
-  if (matches.length) {
-    items.push(...matches.map((match) => renderMatchChange(match)));
-  } else {
-    items.push(results.meta?.status ?? "No matches have been counted yet.");
+function formatUpdateTime(value) {
+  if (!value) return "";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "";
+  return new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
+}
+
+function groupLatestUpdates(rows, results) {
+  const groups = new Map();
+  const addUpdate = (dateValue, html) => {
+    const date = dateValue || results.meta?.lastUpdated || "";
+    const key = formatUpdateDate(date);
+    const time = formatUpdateTime(date);
+    const item = { html, time };
+    const group = groups.get(key) ?? { date, items: [] };
+    group.items.push(item);
+    groups.set(key, group);
+  };
+
+  for (const match of results.matches ?? []) {
+    addUpdate(match.date, renderMatchChange(match));
   }
 
+  const leaders = rows.filter((row) => row.rank === 1);
   if (leaders.length) {
-    items.push(
+    addUpdate(
+      results.meta?.lastUpdated,
       `${escapeHtml(formatList(leaders.map((leader) => leader.name)))} ${leaders.length === 1 ? "leads" : "share first"} with ${leaders[0].score.total} points`,
     );
   }
 
+  const activeGroups = Object.entries(results.groups ?? {}).filter(([, group]) => group.status !== "not-started");
   for (const [groupId, group] of activeGroups.slice(0, 2)) {
     const topTwo = (group.currentOrder ?? []).slice(0, 2);
     if (topTwo.length) {
-      items.push(`Group ${escapeHtml(groupId)} top two: ${escapeHtml(formatList(topTwo))}`);
+      addUpdate(results.meta?.lastUpdated, `Group ${escapeHtml(groupId)} top two: ${escapeHtml(formatList(topTwo))}`);
     }
   }
 
   const topScorers = results.bonus?.mostGoalsScored ?? [];
   if (topScorers.length) {
-    items.push(`Most goals so far: ${escapeHtml(formatList(topScorers))}`);
+    addUpdate(results.meta?.lastUpdated, `Most goals so far: ${escapeHtml(formatList(topScorers))}`);
   }
+
+  if (groups.size === 0) {
+    addUpdate(results.meta?.lastUpdated, escapeHtml(results.meta?.status ?? "No matches have been counted yet."));
+  }
+
+  return [...groups.values()].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
+function renderLatestUpdates(rows, results) {
+  const updateGroups = groupLatestUpdates(rows, results);
 
   return `
     <aside class="latest-updates-panel" aria-label="Latest updates">
@@ -449,12 +487,32 @@ function renderLatestUpdates(rows, results) {
         <h2>Latest Updates</h2>
         <p>${escapeHtml(results.meta?.status ?? "Latest standings update")}</p>
       </div>
-      <ul>
-        ${items
-          .slice(0, 5)
-          .map((item) => `<li>${item}</li>`)
+      <div class="latest-update-list">
+        ${updateGroups
+          .map(
+            (group, index) => `
+              <details class="latest-update-day" ${index === 0 ? "open" : ""}>
+                <summary>
+                  <span>${escapeHtml(formatUpdateDate(group.date))}</span>
+                  ${statusPill(`${group.items.length} update${group.items.length === 1 ? "" : "s"}`)}
+                </summary>
+                <ul>
+                  ${group.items
+                    .map(
+                      (item) => `
+                        <li>
+                          <time>${escapeHtml(item.time || "Update")}</time>
+                          <span>${item.html}</span>
+                        </li>
+                      `,
+                    )
+                    .join("")}
+                </ul>
+              </details>
+            `,
+          )
           .join("")}
-      </ul>
+      </div>
     </aside>
   `;
 }
@@ -475,9 +533,6 @@ function renderLeaderboard(entriesConfig, rows, results) {
     </header>
     <section class="leaderboard-layout">
       <div class="leaderboard-main">
-        <div class="leaderboard-prizes">
-          ${renderPayouts(entriesConfig)}
-        </div>
         <section class="panel leaderboard-panel">
           <div class="leaderboard-title">
             <div>
@@ -523,6 +578,9 @@ function renderLeaderboard(entriesConfig, rows, results) {
         </section>
       </div>
       <div class="leaderboard-updates">
+        <div class="leaderboard-prizes">
+          ${renderPayouts(entriesConfig)}
+        </div>
         ${renderLatestUpdates(rows, results)}
       </div>
     </section>

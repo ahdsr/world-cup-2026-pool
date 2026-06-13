@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "2026 World Cup Pool Picks",
-    "owner": "Lucas",
-    "sourceWorkbook": "2026 World Cup Pool - Lucas Picks.xlsx",
-    "generatedAt": "2026-06-11T20:22:59.718Z"
+    "owner": "Lucas Sokolowski",
+    "sourceWorkbook": "2026 World Cup Pool - Lucas Sokolowski.xlsx",
+    "generatedAt": "2026-06-13T15:46:38.921311Z"
   },
   "scoringRules": {
     "groupAdvancement": 2,
@@ -23,17 +23,17 @@
     {
       "id": "mostGoalsScored",
       "label": "Most goals scored",
-      "pick": "Spain"
+      "pick": "France"
     },
     {
       "id": "mostGoalsConceded",
       "label": "Most goals conceded",
-      "pick": "Haiti"
+      "pick": "New Zealand"
     },
     {
       "id": "farthestGoal",
       "label": "Goal from farthest distance",
-      "pick": "England"
+      "pick": "Brazil"
     },
     {
       "id": "bestPassCompletion",
@@ -43,7 +43,7 @@
     {
       "id": "mostCards",
       "label": "Most red & yellow cards",
-      "pick": "Uruguay"
+      "pick": "Argentina"
     }
   ],
   "groups": {
@@ -68,13 +68,12 @@
       ],
       "predictedOrder": [
         "Mexico",
-        "Czechia",
         "South Korea",
+        "Czechia",
         "South Africa"
       ],
       "predictedAdvancers": [
         "Mexico",
-        "Czechia",
         "South Korea"
       ]
     },
@@ -105,8 +104,7 @@
       ],
       "predictedAdvancers": [
         "Switzerland",
-        "Canada",
-        "Bosnia & Herzegovina"
+        "Canada"
       ]
     },
     "C": {
@@ -192,14 +190,14 @@
       ],
       "predictedOrder": [
         "Germany",
-        "Ecuador",
         "Ivory Coast",
+        "Ecuador",
         "Curaçao"
       ],
       "predictedAdvancers": [
         "Germany",
-        "Ecuador",
-        "Ivory Coast"
+        "Ivory Coast",
+        "Ecuador"
       ]
     },
     "F": {
@@ -260,7 +258,8 @@
       ],
       "predictedAdvancers": [
         "Belgium",
-        "Egypt"
+        "Egypt",
+        "Iran"
       ]
     },
     "H": {
@@ -290,7 +289,8 @@
       ],
       "predictedAdvancers": [
         "Spain",
-        "Uruguay"
+        "Uruguay",
+        "Saudi Arabia"
       ]
     },
     "I": {
@@ -418,12 +418,12 @@
   },
   "thirdPlace": {
     "A": {
-      "team": "South Korea",
-      "selected": true
+      "team": "Czechia",
+      "selected": false
     },
     "B": {
       "team": "Bosnia & Herzegovina",
-      "selected": true
+      "selected": false
     },
     "C": {
       "team": "Scotland",
@@ -434,7 +434,7 @@
       "selected": true
     },
     "E": {
-      "team": "Ivory Coast",
+      "team": "Ecuador",
       "selected": true
     },
     "F": {
@@ -443,11 +443,11 @@
     },
     "G": {
       "team": "Iran",
-      "selected": false
+      "selected": true
     },
     "H": {
       "team": "Saudi Arabia",
-      "selected": false
+      "selected": true
     },
     "I": {
       "team": "Senegal",
@@ -499,7 +499,7 @@
           "2B"
         ],
         "teams": [
-          "Czechia",
+          "South Korea",
           "Canada"
         ],
         "winner": "Canada"
@@ -526,7 +526,7 @@
           "Colombia",
           "Croatia"
         ],
-        "winner": "Colombia"
+        "winner": "Croatia"
       },
       {
         "id": "round-of-32-6",
@@ -548,7 +548,7 @@
         ],
         "teams": [
           "United States",
-          "Bosnia & Herzegovina"
+          "Algeria"
         ],
         "winner": "United States"
       },
@@ -560,7 +560,7 @@
         ],
         "teams": [
           "Belgium",
-          "South Korea"
+          "Saudi Arabia"
         ],
         "winner": "Belgium"
       },
@@ -583,10 +583,10 @@
           "2I"
         ],
         "teams": [
-          "Ecuador",
+          "Ivory Coast",
           "Norway"
         ],
-        "winner": "Ecuador"
+        "winner": "Norway"
       },
       {
         "id": "round-of-32-11",
@@ -644,7 +644,7 @@
         ],
         "teams": [
           "Switzerland",
-          "Algeria"
+          "Iran"
         ],
         "winner": "Switzerland"
       },
@@ -656,7 +656,7 @@
         ],
         "teams": [
           "Portugal",
-          "Ivory Coast"
+          "Ecuador"
         ],
         "winner": "Portugal"
       }
@@ -684,7 +684,7 @@
         "id": "round-of-16-3",
         "seeds": [],
         "teams": [
-          "Colombia",
+          "Croatia",
           "Spain"
         ],
         "winner": "Spain"
@@ -703,7 +703,7 @@
         "seeds": [],
         "teams": [
           "Brazil",
-          "Ecuador"
+          "Norway"
         ],
         "winner": "Brazil"
       },
@@ -761,7 +761,7 @@
           "Brazil",
           "England"
         ],
-        "winner": "England"
+        "winner": "Brazil"
       },
       {
         "id": "quarter-final-4",
@@ -787,25 +787,25 @@
         "id": "semi-final-2",
         "seeds": [],
         "teams": [
-          "England",
+          "Brazil",
           "Argentina"
         ],
-        "winner": "England"
+        "winner": "Argentina"
       }
     ],
     "final": {
       "teams": [
         "Spain",
-        "England"
+        "Argentina"
       ],
       "winner": "Spain"
     },
     "thirdPlace": {
       "teams": [
         "France",
-        "Argentina"
+        "Brazil"
       ],
-      "winner": "France"
+      "winner": "Brazil"
     }
   },
   "advancement": {
@@ -814,12 +814,12 @@
       "France",
       "Canada",
       "Netherlands",
-      "Colombia",
+      "Croatia",
       "Spain",
       "United States",
       "Belgium",
       "Brazil",
-      "Ecuador",
+      "Norway",
       "Mexico",
       "England",
       "Argentina",
@@ -840,21 +840,21 @@
     "semifinalists": [
       "France",
       "Spain",
-      "England",
+      "Brazil",
       "Argentina"
     ],
     "finalists": [
       "Spain",
-      "England"
+      "Argentina"
     ],
     "thirdPlaceMatch": [
       "France",
-      "Argentina"
+      "Brazil"
     ]
   },
   "podium": {
     "champion": "Spain",
-    "runnerUp": "England",
-    "thirdPlace": "France"
+    "runnerUp": "Argentina",
+    "thirdPlace": "Brazil"
   }
 }

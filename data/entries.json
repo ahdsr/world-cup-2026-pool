@@ -19,38 +19,157 @@
       "amount": "$100"
     }
   ],
-  "defaultEntryId": "lucas",
+  "defaultEntryId": "lucas-sokolowski",
   "entries": [
     {
-      "id": "lucas",
-      "name": "Lucas",
-      "quote": "Fuck yeah!",
-      "celebrationQuote": "Fuck yeah!",
-      "picksPath": "data/picks.json"
+      "id": "adam-banaszek-1",
+      "name": "Adam Banaszek (1)",
+      "picksPath": "data/picks-adam-banaszek-1.json"
     },
     {
-      "id": "mike-b",
-      "name": "Mike B",
-      "quote": "Believe the bracket.",
-      "picksPath": "data/picks-mike-b.json"
+      "id": "adam-banaszek-2",
+      "name": "Adam Banaszek (2)",
+      "picksPath": "data/picks-adam-banaszek-2.json"
+    },
+    {
+      "id": "adam-kolodziej",
+      "name": "Adam Kolodziej",
+      "picksPath": "data/picks-adam-kolodziej.json"
+    },
+    {
+      "id": "andrew-d-1",
+      "name": "Andrew D (1)",
+      "picksPath": "data/picks-andrew-d-1.json"
+    },
+    {
+      "id": "andrew-d-2",
+      "name": "Andrew D (2)",
+      "picksPath": "data/picks-andrew-d-2.json"
+    },
+    {
+      "id": "bianca-c",
+      "name": "Bianca C",
+      "picksPath": "data/picks-bianca-c.json"
+    },
+    {
+      "id": "bogdan",
+      "name": "Bogdan",
+      "picksPath": "data/picks-bogdan.json"
+    },
+    {
+      "id": "damon-lim",
+      "name": "Damon Lim",
+      "picksPath": "data/picks-damon-lim.json"
+    },
+    {
+      "id": "danijel-p",
+      "name": "Danijel P",
+      "picksPath": "data/picks-danijel-p.json"
+    },
+    {
+      "id": "joseph-karam",
+      "name": "Joseph Karam",
+      "picksPath": "data/picks-joseph-karam.json"
+    },
+    {
+      "id": "lucas-czuchraj",
+      "name": "Lucas Czuchraj",
+      "picksPath": "data/picks-lucas-czuchraj.json"
+    },
+    {
+      "id": "lucas-sokolowski",
+      "name": "Lucas Sokolowski",
+      "picksPath": "data/picks.json"
     },
     {
       "id": "marcin",
       "name": "Marcin",
-      "quote": "Trust the picks.",
       "picksPath": "data/picks-marcin.json"
     },
     {
-      "id": "tata",
-      "name": "Tata",
-      "quote": "Experience wins tournaments.",
-      "picksPath": "data/picks-tata.json"
+      "id": "mat-rapacz-1",
+      "name": "Mat Rapacz (1)",
+      "picksPath": "data/picks-mat-rapacz-1.json"
+    },
+    {
+      "id": "mat-rapacz-2",
+      "name": "Mat Rapacz (2)",
+      "picksPath": "data/picks-mat-rapacz-2.json"
+    },
+    {
+      "id": "matt-c",
+      "name": "Matt C",
+      "picksPath": "data/picks-matt-c.json"
+    },
+    {
+      "id": "matthew-woronko",
+      "name": "Matthew Woronko",
+      "picksPath": "data/picks-matthew-woronko.json"
+    },
+    {
+      "id": "matthew-wozniczka-1",
+      "name": "Matthew Wozniczka (1)",
+      "picksPath": "data/picks-matthew-wozniczka-1.json"
+    },
+    {
+      "id": "matthew-wozniczka-2",
+      "name": "Matthew Wozniczka (2)",
+      "picksPath": "data/picks-matthew-wozniczka-2.json"
+    },
+    {
+      "id": "michal-1",
+      "name": "Michal (1)",
+      "picksPath": "data/picks-michal-1.json"
+    },
+    {
+      "id": "michal-2",
+      "name": "Michal (2)",
+      "picksPath": "data/picks-michal-2.json"
+    },
+    {
+      "id": "patryk-koscielak",
+      "name": "Patryk Koscielak",
+      "picksPath": "data/picks-patryk-koscielak.json"
+    },
+    {
+      "id": "pawel-jaremko-1",
+      "name": "Pawel Jaremko (1)",
+      "picksPath": "data/picks-pawel-jaremko-1.json"
+    },
+    {
+      "id": "pawel-jaremko-2",
+      "name": "Pawel Jaremko (2)",
+      "picksPath": "data/picks-pawel-jaremko-2.json"
     },
     {
       "id": "rana",
       "name": "Rana",
-      "quote": "Defense first, points follow.",
       "picksPath": "data/picks-rana.json"
+    },
+    {
+      "id": "robert",
+      "name": "Robert",
+      "picksPath": "data/picks-robert.json"
+    },
+    {
+      "id": "tadeusz",
+      "name": "Tadeusz",
+      "picksPath": "data/picks-tadeusz.json"
+    },
+    {
+      "id": "tomasz-k-1",
+      "name": "Tomasz K (1)",
+      "picksPath": "data/picks-tomasz-k-1.json"
+    },
+    {
+      "id": "tomasz-k-2",
+      "name": "Tomasz K (2)",
+      "picksPath": "data/picks-tomasz-k-2.json"
+    },
+    {
+      "id": "varun",
+      "name": "Varun",
+      "picksPath": "data/picks-varun.json"
     }
   ]
 }

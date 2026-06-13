@@ -47,27 +47,48 @@ function groupOnly(groupId, order, topThirdGroups = []) {
 }
 
 {
+  const groupId = "A";
+  const groupPick = picks.groups[groupId];
   const score = scorePool(
     picks,
-    groupOnly("A", ["Mexico", "Czechia", "South Korea", "South Africa"], ["A"]),
+    groupOnly(groupId, groupPick.predictedOrder, [groupId]),
   );
-  assert.equal(score.subtotals.group, 11, "exact top four with third-place advancer");
+  assert.equal(
+    score.subtotals.group,
+    groupPick.predictedAdvancers.length * picks.scoringRules.groupAdvancement +
+      picks.scoringRules.exactTopFourBonus,
+    "exact top four with third-place advancer",
+  );
 }
 
 {
+  const groupId = "A";
+  const groupPick = picks.groups[groupId];
+  const [first, second, third, fourth] = groupPick.predictedOrder;
   const score = scorePool(
     picks,
-    groupOnly("A", ["Mexico", "Czechia", "South Africa", "South Korea"], []),
+    groupOnly(groupId, [first, second, fourth, third], []),
   );
-  assert.equal(score.subtotals.group, 7, "exact top two should add three-point rank bonus");
+  assert.equal(
+    score.subtotals.group,
+    2 * picks.scoringRules.groupAdvancement + picks.scoringRules.exactTopTwoBonus,
+    "exact top two should add three-point rank bonus",
+  );
 }
 
 {
+  const groupId = "A";
+  const groupPick = picks.groups[groupId];
+  const [first, second, third, fourth] = groupPick.predictedOrder;
   const score = scorePool(
     picks,
-    groupOnly("A", ["Czechia", "Mexico", "South Korea", "South Africa"], ["A"]),
+    groupOnly(groupId, [second, first, third, fourth], [groupId]),
   );
-  assert.equal(score.subtotals.group, 6, "advancement hits should score even without rank bonus");
+  assert.equal(
+    score.subtotals.group,
+    groupPick.predictedAdvancers.length * picks.scoringRules.groupAdvancement,
+    "advancement hits should score even without rank bonus",
+  );
 }
 
 {
