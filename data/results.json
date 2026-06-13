@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-13T21:01:01.582Z",
-    "status": "Auto-updated from ESPN: 5 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-13T21:15:58.606Z",
+    "status": "Auto-updated from ESPN: 5 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,12 +10,12 @@
     {
       "id": "760420",
       "date": "2026-06-13T19:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+4'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Qatar",
       "awayTeam": "Switzerland",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "winner": "",
       "loser": ""
@@ -119,21 +119,13 @@
     },
     "B": {
       "currentOrder": [
-        "Switzerland",
         "Bosnia & Herzegovina",
         "Canada",
-        "Qatar"
+        "Qatar",
+        "Switzerland"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
-        {
-          "team": "Switzerland",
-          "played": 1,
-          "points": 3,
-          "goalsFor": 1,
-          "goalsAgainst": 0,
-          "goalDifference": 1
-        },
         {
           "team": "Bosnia & Herzegovina",
           "played": 1,
@@ -153,10 +145,18 @@
         {
           "team": "Qatar",
           "played": 1,
-          "points": 0,
-          "goalsFor": 0,
+          "points": 1,
+          "goalsFor": 1,
           "goalsAgainst": 1,
-          "goalDifference": -1
+          "goalDifference": 0
+        },
+        {
+          "team": "Switzerland",
+          "played": 1,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDifference": 0
         }
       ]
     },
