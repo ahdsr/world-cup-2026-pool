@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-13T22:46:01.681Z",
+    "lastUpdated": "2026-06-13T23:01:04.839Z",
     "status": "Auto-updated from ESPN: 6 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-13T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "41'",
+      "detail": "HT",
       "homeTeam": "Brazil",
       "awayTeam": "Morocco",
       "homeScore": 1,
