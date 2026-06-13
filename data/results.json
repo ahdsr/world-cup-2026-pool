@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-13T02:30:58.266Z",
+    "lastUpdated": "2026-06-13T02:46:01.947Z",
     "status": "Auto-updated from ESPN: 4 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-13T01:00Z",
       "state": "in",
       "completed": false,
-      "detail": "67'",
+      "detail": "82'",
       "homeTeam": "United States",
       "awayTeam": "Paraguay",
       "homeScore": 3,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -199,8 +199,8 @@
           "played": 1,
           "points": 3,
           "goalsFor": 3,
-          "goalsAgainst": 0,
-          "goalDifference": 3
+          "goalsAgainst": 1,
+          "goalDifference": 2
         },
         {
           "team": "Australia",
@@ -222,9 +222,9 @@
           "team": "Paraguay",
           "played": 1,
           "points": 0,
-          "goalsFor": 0,
+          "goalsFor": 1,
           "goalsAgainst": 3,
-          "goalDifference": -3
+          "goalDifference": -2
         }
       ]
     },
