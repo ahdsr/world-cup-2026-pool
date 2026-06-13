@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-13T19:45:58.438Z",
+    "lastUpdated": "2026-06-13T20:01:05.139Z",
     "status": "Auto-updated from ESPN: 5 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-13T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "41'",
+      "detail": "HT",
       "homeTeam": "Qatar",
       "awayTeam": "Switzerland",
       "homeScore": 0,
