@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-14T17:31:00.203Z",
+    "lastUpdated": "2026-06-14T17:46:05.094Z",
     "status": "Auto-updated from ESPN: 9 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-14T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "29'",
+      "detail": "44'",
       "homeTeam": "Germany",
       "awayTeam": "Curaçao",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "winner": "",
       "loser": ""
@@ -300,28 +300,20 @@
     },
     "E": {
       "currentOrder": [
-        "Curaçao",
         "Germany",
         "Ecuador",
-        "Ivory Coast"
+        "Ivory Coast",
+        "Curaçao"
       ],
       "status": "live",
       "stats": [
         {
-          "team": "Curaçao",
-          "played": 1,
-          "points": 1,
-          "goalsFor": 1,
-          "goalsAgainst": 1,
-          "goalDifference": 0
-        },
-        {
           "team": "Germany",
           "played": 1,
-          "points": 1,
-          "goalsFor": 1,
+          "points": 3,
+          "goalsFor": 2,
           "goalsAgainst": 1,
-          "goalDifference": 0
+          "goalDifference": 1
         },
         {
           "team": "Ecuador",
@@ -338,6 +330,14 @@
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
+        },
+        {
+          "team": "Curaçao",
+          "played": 1,
+          "points": 0,
+          "goalsFor": 1,
+          "goalsAgainst": 2,
+          "goalDifference": -1
         }
       ]
     },
