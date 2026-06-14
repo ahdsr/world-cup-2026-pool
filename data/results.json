@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-14T17:00:59.877Z",
-    "status": "Auto-updated from ESPN: 8 live/final matches counted.",
+    "lastUpdated": "2026-06-14T17:15:59.411Z",
+    "status": "Auto-updated from ESPN: 9 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760422",
+      "date": "2026-06-14T17:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Germany",
+      "awayTeam": "Curaçao",
+      "homeScore": 1,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760421",
       "date": "2026-06-14T04:00Z",
@@ -286,27 +299,24 @@
       ]
     },
     "E": {
-      "currentOrder": [],
-      "status": "not-started",
+      "currentOrder": [
+        "Germany",
+        "Ecuador",
+        "Ivory Coast",
+        "Curaçao"
+      ],
+      "status": "live",
       "stats": [
         {
-          "team": "Curaçao",
-          "played": 0,
-          "points": 0,
-          "goalsFor": 0,
+          "team": "Germany",
+          "played": 1,
+          "points": 3,
+          "goalsFor": 1,
           "goalsAgainst": 0,
-          "goalDifference": 0
+          "goalDifference": 1
         },
         {
           "team": "Ecuador",
-          "played": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "team": "Germany",
           "played": 0,
           "points": 0,
           "goalsFor": 0,
@@ -320,6 +330,14 @@
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
+        },
+        {
+          "team": "Curaçao",
+          "played": 1,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 1,
+          "goalDifference": -1
         }
       ]
     },
