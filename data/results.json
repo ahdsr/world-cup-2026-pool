@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-14T21:46:04.811Z",
-    "status": "Auto-updated from ESPN: 10 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-14T22:01:03.618Z",
+    "status": "Auto-updated from ESPN: 10 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,13 +10,13 @@
     {
       "id": "760425",
       "date": "2026-06-14T20:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "87'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Netherlands",
       "awayTeam": "Japan",
       "homeScore": 2,
-      "awayScore": 1,
+      "awayScore": 2,
       "winner": "",
       "loser": ""
     },
@@ -356,20 +356,28 @@
     },
     "F": {
       "currentOrder": [
+        "Japan",
         "Netherlands",
         "Sweden",
-        "Tunisia",
-        "Japan"
+        "Tunisia"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
+        {
+          "team": "Japan",
+          "played": 1,
+          "points": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 2,
+          "goalDifference": 0
+        },
         {
           "team": "Netherlands",
           "played": 1,
-          "points": 3,
+          "points": 1,
           "goalsFor": 2,
-          "goalsAgainst": 1,
-          "goalDifference": 1
+          "goalsAgainst": 2,
+          "goalDifference": 0
         },
         {
           "team": "Sweden",
@@ -386,14 +394,6 @@
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
-        },
-        {
-          "team": "Japan",
-          "played": 1,
-          "points": 0,
-          "goalsFor": 1,
-          "goalsAgainst": 2,
-          "goalDifference": -1
         }
       ]
     },
