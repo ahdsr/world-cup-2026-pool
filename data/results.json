@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-14T05:16:05.721Z",
+    "lastUpdated": "2026-06-14T05:31:01.957Z",
     "status": "Auto-updated from ESPN: 8 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-14T04:00Z",
       "state": "in",
       "completed": false,
-      "detail": "56'",
+      "detail": "71'",
       "homeTeam": "Australia",
       "awayTeam": "Turkey",
       "homeScore": 1,
