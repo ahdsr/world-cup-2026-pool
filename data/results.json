@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-14T05:46:04.665Z",
-    "status": "Auto-updated from ESPN: 8 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-14T06:01:02.161Z",
+    "status": "Auto-updated from ESPN: 8 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,15 +10,15 @@
     {
       "id": "760421",
       "date": "2026-06-14T04:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "85'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Australia",
       "awayTeam": "Turkey",
       "homeScore": 2,
       "awayScore": 0,
-      "winner": "",
-      "loser": ""
+      "winner": "Australia",
+      "loser": "Turkey"
     },
     {
       "id": "760418",
@@ -249,7 +249,7 @@
         "Turkey",
         "Paraguay"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
         {
           "team": "United States",
