@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-14T18:30:59.764Z",
+    "lastUpdated": "2026-06-14T18:46:01.196Z",
     "status": "Auto-updated from ESPN: 9 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-14T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "67'",
+      "detail": "83'",
       "homeTeam": "Germany",
       "awayTeam": "Curaçao",
-      "homeScore": 4,
+      "homeScore": 6,
       "awayScore": 1,
       "winner": "",
       "loser": ""
@@ -311,9 +311,9 @@
           "team": "Germany",
           "played": 1,
           "points": 3,
-          "goalsFor": 4,
+          "goalsFor": 6,
           "goalsAgainst": 1,
-          "goalDifference": 3
+          "goalDifference": 5
         },
         {
           "team": "Ecuador",
@@ -336,8 +336,8 @@
           "played": 1,
           "points": 0,
           "goalsFor": 1,
-          "goalsAgainst": 4,
-          "goalDifference": -3
+          "goalsAgainst": 6,
+          "goalDifference": -5
         }
       ]
     },
@@ -621,12 +621,10 @@
   },
   "bonus": {
     "mostGoalsScored": [
-      "Germany",
-      "United States"
+      "Germany"
     ],
     "mostGoalsConceded": [
-      "Curaçao",
-      "Paraguay"
+      "Curaçao"
     ],
     "farthestGoal": [],
     "bestPassCompletion": [],
