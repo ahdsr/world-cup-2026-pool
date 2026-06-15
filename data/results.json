@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-15T22:16:11.274Z",
+    "lastUpdated": "2026-06-15T22:31:01.458Z",
     "status": "Auto-updated from ESPN: 15 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-15T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "12'",
+      "detail": "27'",
       "homeTeam": "Saudi Arabia",
       "awayTeam": "Uruguay",
       "homeScore": 0,
