@@ -1,5 +1,5 @@
-import { buildLeaderboardRows, buildPoolAnalytics } from "./leaderboard.js";
-import { actualAdvancersForGroup, scorePool } from "./scoring.js";
+import { buildLeaderboardRows, buildPoolAnalytics } from "./leaderboard.js?v=20260615-module-cache";
+import { actualAdvancersForGroup, scorePool } from "./scoring.js?v=20260615-module-cache";
 
 const app = document.querySelector("#app");
 
