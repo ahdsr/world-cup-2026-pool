@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-15T19:16:13.600Z",
+    "lastUpdated": "2026-06-15T19:31:05.761Z",
     "status": "Auto-updated from ESPN: 14 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-15T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "15'",
+      "detail": "31'",
       "homeTeam": "Belgium",
       "awayTeam": "Egypt",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -451,28 +451,20 @@
     },
     "G": {
       "currentOrder": [
-        "Belgium",
         "Egypt",
         "Iran",
-        "New Zealand"
+        "New Zealand",
+        "Belgium"
       ],
       "status": "live",
       "stats": [
         {
-          "team": "Belgium",
-          "played": 1,
-          "points": 1,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
           "team": "Egypt",
           "played": 1,
-          "points": 1,
-          "goalsFor": 0,
+          "points": 3,
+          "goalsFor": 1,
           "goalsAgainst": 0,
-          "goalDifference": 0
+          "goalDifference": 1
         },
         {
           "team": "Iran",
@@ -489,6 +481,14 @@
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
+        },
+        {
+          "team": "Belgium",
+          "played": 1,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 1,
+          "goalDifference": -1
         }
       ]
     },
