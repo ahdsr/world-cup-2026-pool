@@ -2,6 +2,10 @@
 
 Static GitHub Pages site for Marcin's 2026 World Cup pool picks, leaderboard, and current score.
 
+## Product Backlog
+
+See `BACKLOG.md` for MVP planning notes, commissioner dashboard ideas, pool type templates, and future "How to Play" pages.
+
 ## Public Site
 
 ```text

@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { buildLeaderboardRows } from "../assets/leaderboard.js";
+import { buildLeaderboardRows, buildPoolAnalytics } from "../assets/leaderboard.js";
 import { scorePool } from "../assets/scoring.js";
 import entries from "../data/entries.json" with { type: "json" };
 import results from "../data/results.json" with { type: "json" };
@@ -41,5 +41,28 @@ for (let index = 1; index < rows.length; index += 1) {
 }
 
 assert.equal(rows.some((row) => row.sample), false, "leaderboard should only show real entries");
+
+{
+  const analytics = buildPoolAnalytics(entries, picksByPath, results, rows);
+  assert.equal(analytics.payoutPlaces, 4, "analytics should use configured payout places");
+  assert.equal(analytics.rows.length, rows.length, "analytics should include every leaderboard row");
+  assert.ok(analytics.aliveCount > 0, "at least one entry should still be alive");
+
+  for (const row of analytics.rows) {
+    assert.ok(
+      row.maxPossible >= row.currentTotal,
+      `${row.name} max possible should not be below current score`,
+    );
+    assert.equal(
+      row.maxPossible,
+      row.currentTotal + row.remaining.total,
+      `${row.name} max possible should include remaining ceiling`,
+    );
+    assert.ok(
+      row.ceilingRank >= 1 && row.ceilingRank <= rows.length,
+      `${row.name} should have a valid ceiling rank`,
+    );
+  }
+}
 
 console.log("Leaderboard tests passed.");

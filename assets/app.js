@@ -1,4 +1,4 @@
-import { buildLeaderboardRows } from "./leaderboard.js";
+import { buildLeaderboardRows, buildPoolAnalytics } from "./leaderboard.js";
 import { actualAdvancersForGroup, scorePool } from "./scoring.js";
 
 const app = document.querySelector("#app");
@@ -38,6 +38,7 @@ function parseRoute() {
   const hash = window.location.hash.replace(/^#\/?/, "");
   const parts = hash.split("/").filter(Boolean);
   if (parts[0] === "leaderboard") return { view: "leaderboard" };
+  if (parts[0] === "projections") return { view: "projections" };
   if (parts[0] === "entry" && parts[1]) return { view: "entry", entryId: parts[1] };
   return { view: "leaderboard" };
 }
@@ -65,15 +66,14 @@ function statusPill(text, tone = "") {
 }
 
 function renderNav(entriesConfig, route) {
-  const backLink =
-    route.view === "entry" ?
-      '<a class="nav-link" href="#/leaderboard">Back to Leaders</a>' :
-      "";
+  const leaderboardActive = route.view === "leaderboard" ? " active" : "";
+  const projectionsActive = route.view === "projections" ? " active" : "";
 
   return `
     <nav class="top-nav" aria-label="Primary">
       <div class="nav-left">
-        ${backLink}
+        <a class="nav-link${leaderboardActive}" href="#/leaderboard">Leaderboard</a>
+        <a class="nav-link${projectionsActive}" href="#/projections">Projections</a>
       </div>
       <div class="nav-actions">
         <button class="share-button" type="button" data-share-button>Share</button>
@@ -517,6 +517,96 @@ function renderLatestUpdates(rows, results) {
   `;
 }
 
+function renderAnalyticsSummary(analytics) {
+  const leaderLabel = formatList(analytics.leaderNames);
+  const leaderText = analytics.leaderClinched
+    ? `${leaderLabel} cannot be caught based on everyone's remaining picks.`
+    : `${leaderLabel} leads with ${analytics.leaderTotal} points.`;
+
+  return `
+    <div class="analytics-summary">
+      <article>
+        <span>Current Advantage</span>
+        <strong>${escapeHtml(leaderText)}</strong>
+      </article>
+      <article>
+        <span>Most Points Left</span>
+        <strong>${escapeHtml(analytics.topCeiling?.name ?? "TBD")}</strong>
+        <em>Can still reach ${analytics.topCeiling?.maxPossible ?? 0} pts</em>
+      </article>
+      <article>
+        <span>Still Alive</span>
+        <strong>${analytics.aliveCount}/${analytics.rows.length}</strong>
+        <em>Can still catch first</em>
+      </article>
+      <article>
+        <span>Top ${analytics.payoutPlaces} Race</span>
+        <strong>${analytics.payoutAliveCount}/${analytics.rows.length}</strong>
+        <em>Can still reach payout range</em>
+      </article>
+    </div>
+  `;
+}
+
+function renderAnalytics(entriesConfig, picksByPath, results, rows) {
+  const analytics = buildPoolAnalytics(entriesConfig, picksByPath, results, rows);
+
+  return `
+    <section class="panel analytics-panel" aria-label="Pool analytics">
+      <div class="leaderboard-title">
+        <div>
+          <h2>Pool Analytics</h2>
+          <p>Best possible finishes based on the picks that can still earn points.</p>
+        </div>
+        ${statusPill("Live projection", "good")}
+      </div>
+      ${renderAnalyticsSummary(analytics)}
+      <div class="table-wrap">
+        <table class="analytics-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Status</th>
+              <th>Best Possible Score</th>
+              <th>Points Still Available</th>
+              <th>Best Possible Rank</th>
+              <th>Top ${analytics.payoutPlaces}</th>
+              <th>Leader Gap</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${analytics.rows
+              .map(
+                (row) => `
+                  <tr>
+                    <th>
+                      <a class="entry-link" href="${entryHref(row.id)}">${escapeHtml(row.name)}</a>
+                    </th>
+                    <td>${statusPill(row.canWin ? "Alive" : "Eliminated", row.canWin ? "good" : "")}</td>
+                    <td><strong>${row.maxPossible}</strong></td>
+                    <td>
+                      <strong>${row.remaining.total}</strong>
+                      <span class="analytics-breakdown">
+                        G ${row.remaining.group ?? 0} / K ${row.remaining.knockout ?? 0} / F ${row.remaining.finals ?? 0} / B ${row.remaining.bonus ?? 0}
+                      </span>
+                    </td>
+                    <td>${row.ceilingRank}</td>
+                    <td>${statusPill(row.canReachPayout ? "In reach" : "Out", row.canReachPayout ? "good" : "")}</td>
+                    <td>${row.currentGapToLeader === 0 ? "Leader" : `${row.currentGapToLeader} pts`}</td>
+                  </tr>
+                `,
+              )
+              .join("")}
+          </tbody>
+        </table>
+      </div>
+      <p class="analytics-note">
+        This is not a probability model. It shows how high each entry can still finish from picks that have not been fully decided yet.
+      </p>
+    </section>
+  `;
+}
+
 function renderLeaderboard(entriesConfig, rows, results) {
   return `
     <header class="site-header leaderboard-header">
@@ -583,6 +673,26 @@ function renderLeaderboard(entriesConfig, rows, results) {
         </div>
         ${renderLatestUpdates(rows, results)}
       </div>
+    </section>
+  `;
+}
+
+function renderProjections(entriesConfig, rows, results, picksByPath) {
+  return `
+    <header class="site-header projections-header">
+      <span class="hero-year" aria-hidden="true">26</span>
+      <div>
+        <p class="eyebrow">Projections</p>
+        <h1>Who Can Still Win?</h1>
+      </div>
+      <div class="meta">
+        <span>Pool pot</span>
+        <strong>${escapeHtml(entriesConfig.prizePoolLabel ?? "TBD")}</strong>
+        <span>Updated ${formatDate(results.meta?.lastUpdated)}</span>
+      </div>
+    </header>
+    <section class="projections-layout">
+      ${renderAnalytics(entriesConfig, picksByPath, results, rows)}
     </section>
   `;
 }
@@ -683,6 +793,8 @@ function renderRoute() {
 
   if (route.view === "leaderboard") {
     content = renderLeaderboard(entriesConfig, rows, results);
+  } else if (route.view === "projections") {
+    content = renderProjections(entriesConfig, rows, results, picksByPath);
   } else {
     const entry = entriesConfig.entries.find((item) => item.id === route.entryId);
     if (!entry) {
