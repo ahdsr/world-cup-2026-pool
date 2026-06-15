@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-14T23:46:07.059Z",
+    "lastUpdated": "2026-06-15T00:01:03.752Z",
     "status": "Auto-updated from ESPN: 11 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-14T23:00Z",
       "state": "in",
       "completed": false,
-      "detail": "42'",
+      "detail": "HT",
       "homeTeam": "Ivory Coast",
       "awayTeam": "Ecuador",
       "homeScore": 0,
