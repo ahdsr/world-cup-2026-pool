@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-15T02:31:01.831Z",
+    "lastUpdated": "2026-06-15T02:46:02.437Z",
     "status": "Auto-updated from ESPN: 12 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-15T02:00Z",
       "state": "in",
       "completed": false,
-      "detail": "30'",
+      "detail": "45'",
       "homeTeam": "Sweden",
       "awayTeam": "Tunisia",
-      "homeScore": 1,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -393,8 +393,8 @@
           "team": "Sweden",
           "played": 1,
           "points": 3,
-          "goalsFor": 1,
-          "goalsAgainst": 0,
+          "goalsFor": 2,
+          "goalsAgainst": 1,
           "goalDifference": 1
         },
         {
@@ -417,8 +417,8 @@
           "team": "Tunisia",
           "played": 1,
           "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 2,
           "goalDifference": -1
         }
       ]
