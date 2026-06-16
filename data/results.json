@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-16T01:01:07.817Z",
-    "status": "Auto-updated from ESPN: 15 live/final matches counted.",
+    "lastUpdated": "2026-06-16T01:16:03.656Z",
+    "status": "Auto-updated from ESPN: 16 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760427",
+      "date": "2026-06-16T01:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "11'",
+      "homeTeam": "Iran",
+      "awayTeam": "New Zealand",
+      "homeScore": 0,
+      "awayScore": 1,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760429",
       "date": "2026-06-15T22:00Z",
@@ -464,13 +477,21 @@
     },
     "G": {
       "currentOrder": [
+        "New Zealand",
         "Belgium",
         "Egypt",
-        "Iran",
-        "New Zealand"
+        "Iran"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
+        {
+          "team": "New Zealand",
+          "played": 1,
+          "points": 3,
+          "goalsFor": 1,
+          "goalsAgainst": 0,
+          "goalDifference": 1
+        },
         {
           "team": "Belgium",
           "played": 1,
@@ -489,19 +510,11 @@
         },
         {
           "team": "Iran",
-          "played": 0,
+          "played": 1,
           "points": 0,
           "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "team": "New Zealand",
-          "played": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
+          "goalsAgainst": 1,
+          "goalDifference": -1
         }
       ]
     },
