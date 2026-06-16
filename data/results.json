@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-16T21:01:10.494Z",
-    "status": "Auto-updated from ESPN: 17 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-16T21:16:09.162Z",
+    "status": "Auto-updated from ESPN: 17 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,15 +10,15 @@
     {
       "id": "760432",
       "date": "2026-06-16T19:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+7'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "France",
       "awayTeam": "Senegal",
       "homeScore": 3,
       "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "winner": "France",
+      "loser": "Senegal"
     },
     {
       "id": "760427",
@@ -581,7 +581,7 @@
         "Norway",
         "Senegal"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
         {
           "team": "France",
