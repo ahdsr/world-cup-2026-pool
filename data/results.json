@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-15T23:46:02.139Z",
+    "lastUpdated": "2026-06-16T00:01:03.397Z",
     "status": "Auto-updated from ESPN: 15 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-15T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "80'",
+      "detail": "90'+5'",
       "homeTeam": "Saudi Arabia",
       "awayTeam": "Uruguay",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -508,19 +508,27 @@
     "H": {
       "currentOrder": [
         "Saudi Arabia",
+        "Uruguay",
         "Cape Verde",
-        "Spain",
-        "Uruguay"
+        "Spain"
       ],
       "status": "live",
       "stats": [
         {
           "team": "Saudi Arabia",
           "played": 1,
-          "points": 3,
+          "points": 1,
           "goalsFor": 1,
-          "goalsAgainst": 0,
-          "goalDifference": 1
+          "goalsAgainst": 1,
+          "goalDifference": 0
+        },
+        {
+          "team": "Uruguay",
+          "played": 1,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDifference": 0
         },
         {
           "team": "Cape Verde",
@@ -537,14 +545,6 @@
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
-        },
-        {
-          "team": "Uruguay",
-          "played": 1,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 1,
-          "goalDifference": -1
         }
       ]
     },
