@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-17T20:31:11.371Z",
+    "lastUpdated": "2026-06-17T20:46:14.020Z",
     "status": "Auto-updated from ESPN: 22 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-17T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "31'",
+      "detail": "45'+1'",
       "homeTeam": "England",
       "awayTeam": "Croatia",
-      "homeScore": 1,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -781,8 +781,8 @@
           "team": "England",
           "played": 1,
           "points": 3,
-          "goalsFor": 1,
-          "goalsAgainst": 0,
+          "goalsFor": 2,
+          "goalsAgainst": 1,
           "goalDifference": 1
         },
         {
@@ -805,8 +805,8 @@
           "team": "Croatia",
           "played": 1,
           "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 2,
           "goalDifference": -1
         }
       ]
