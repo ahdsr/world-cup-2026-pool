@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-17T18:46:16.724Z",
-    "status": "Auto-updated from ESPN: 21 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-17T19:01:03.908Z",
+    "status": "Auto-updated from ESPN: 21 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,9 +10,9 @@
     {
       "id": "760435",
       "date": "2026-06-17T17:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "82'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Portugal",
       "awayTeam": "DR Congo",
       "homeScore": 1,
@@ -719,7 +719,7 @@
         "Colombia",
         "Uzbekistan"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
         {
           "team": "DR Congo",
