@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-17T17:01:05.334Z",
-    "status": "Auto-updated from ESPN: 20 live/final matches counted.",
+    "lastUpdated": "2026-06-17T17:16:02.642Z",
+    "status": "Auto-updated from ESPN: 21 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760435",
+      "date": "2026-06-17T17:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Portugal",
+      "awayTeam": "DR Congo",
+      "homeScore": 1,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760431",
       "date": "2026-06-17T04:00Z",
@@ -700,27 +713,24 @@
       ]
     },
     "K": {
-      "currentOrder": [],
-      "status": "not-started",
+      "currentOrder": [
+        "Portugal",
+        "Colombia",
+        "Uzbekistan",
+        "DR Congo"
+      ],
+      "status": "live",
       "stats": [
         {
-          "team": "Colombia",
-          "played": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
-          "team": "DR Congo",
-          "played": 0,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
-        },
-        {
           "team": "Portugal",
+          "played": 1,
+          "points": 3,
+          "goalsFor": 1,
+          "goalsAgainst": 0,
+          "goalDifference": 1
+        },
+        {
+          "team": "Colombia",
           "played": 0,
           "points": 0,
           "goalsFor": 0,
@@ -734,6 +744,14 @@
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
+        },
+        {
+          "team": "DR Congo",
+          "played": 1,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 1,
+          "goalDifference": -1
         }
       ]
     },
