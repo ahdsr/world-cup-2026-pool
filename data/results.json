@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-17T05:16:01.397Z",
+    "lastUpdated": "2026-06-17T05:31:10.921Z",
     "status": "Auto-updated from ESPN: 20 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-17T04:00Z",
       "state": "in",
       "completed": false,
-      "detail": "51'",
+      "detail": "66'",
       "homeTeam": "Austria",
       "awayTeam": "Jordan",
       "homeScore": 1,
