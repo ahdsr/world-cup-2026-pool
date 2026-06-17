@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-17T17:46:09.667Z",
+    "lastUpdated": "2026-06-17T18:01:10.812Z",
     "status": "Auto-updated from ESPN: 21 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-17T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "45'",
+      "detail": "HT",
       "homeTeam": "Portugal",
       "awayTeam": "DR Congo",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -714,20 +714,28 @@
     },
     "K": {
       "currentOrder": [
+        "DR Congo",
         "Portugal",
         "Colombia",
-        "Uzbekistan",
-        "DR Congo"
+        "Uzbekistan"
       ],
       "status": "live",
       "stats": [
         {
+          "team": "DR Congo",
+          "played": 1,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDifference": 0
+        },
+        {
           "team": "Portugal",
           "played": 1,
-          "points": 3,
+          "points": 1,
           "goalsFor": 1,
-          "goalsAgainst": 0,
-          "goalDifference": 1
+          "goalsAgainst": 1,
+          "goalDifference": 0
         },
         {
           "team": "Colombia",
@@ -744,14 +752,6 @@
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
-        },
-        {
-          "team": "DR Congo",
-          "played": 1,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 1,
-          "goalDifference": -1
         }
       ]
     },
