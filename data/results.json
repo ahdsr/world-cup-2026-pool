@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-17T19:46:17.079Z",
-    "status": "Auto-updated from ESPN: 21 live/final matches counted.",
+    "lastUpdated": "2026-06-17T20:01:03.471Z",
+    "status": "Auto-updated from ESPN: 22 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760437",
+      "date": "2026-06-17T20:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "1'",
+      "homeTeam": "England",
+      "awayTeam": "Croatia",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760435",
       "date": "2026-06-17T17:00Z",
@@ -756,21 +769,26 @@
       ]
     },
     "L": {
-      "currentOrder": [],
-      "status": "not-started",
+      "currentOrder": [
+        "Croatia",
+        "England",
+        "Ghana",
+        "Panama"
+      ],
+      "status": "live",
       "stats": [
         {
           "team": "Croatia",
-          "played": 0,
-          "points": 0,
+          "played": 1,
+          "points": 1,
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
         },
         {
           "team": "England",
-          "played": 0,
-          "points": 0,
+          "played": 1,
+          "points": 1,
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
