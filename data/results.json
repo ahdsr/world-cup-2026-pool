@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-17T02:01:02.282Z",
+    "lastUpdated": "2026-06-17T02:16:08.103Z",
     "status": "Auto-updated from ESPN: 19 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-17T01:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "53'",
       "homeTeam": "Argentina",
       "awayTeam": "Algeria",
       "homeScore": 1,
