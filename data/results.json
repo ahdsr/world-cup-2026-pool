@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-18T15:46:07.641Z",
-    "status": "Auto-updated from ESPN: 24 live/final matches counted.",
+    "lastUpdated": "2026-06-18T16:01:47.712Z",
+    "status": "Auto-updated from ESPN: 25 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760438",
+      "date": "2026-06-18T16:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "1'",
+      "homeTeam": "Czechia",
+      "awayTeam": "South Africa",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760436",
       "date": "2026-06-18T02:00Z",
@@ -328,7 +341,7 @@
         "Czechia",
         "South Africa"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "Mexico",
@@ -348,16 +361,16 @@
         },
         {
           "team": "Czechia",
-          "played": 1,
-          "points": 0,
+          "played": 2,
+          "points": 1,
           "goalsFor": 1,
           "goalsAgainst": 2,
           "goalDifference": -1
         },
         {
           "team": "South Africa",
-          "played": 1,
-          "points": 0,
+          "played": 2,
+          "points": 1,
           "goalsFor": 0,
           "goalsAgainst": 2,
           "goalDifference": -2
