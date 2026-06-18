@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-18T23:16:03.807Z",
+    "lastUpdated": "2026-06-18T23:31:04.224Z",
     "status": "Auto-updated from ESPN: 27 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-18T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "54'",
+      "detail": "69'",
       "homeTeam": "Canada",
       "awayTeam": "Qatar",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -405,27 +405,27 @@
     },
     "B": {
       "currentOrder": [
-        "Switzerland",
         "Canada",
+        "Switzerland",
         "Bosnia & Herzegovina",
         "Qatar"
       ],
       "status": "live",
       "stats": [
         {
+          "team": "Canada",
+          "played": 2,
+          "points": 4,
+          "goalsFor": 5,
+          "goalsAgainst": 1,
+          "goalDifference": 4
+        },
+        {
           "team": "Switzerland",
           "played": 2,
           "points": 4,
           "goalsFor": 5,
           "goalsAgainst": 2,
-          "goalDifference": 3
-        },
-        {
-          "team": "Canada",
-          "played": 2,
-          "points": 4,
-          "goalsFor": 4,
-          "goalsAgainst": 1,
           "goalDifference": 3
         },
         {
@@ -441,8 +441,8 @@
           "played": 2,
           "points": 1,
           "goalsFor": 1,
-          "goalsAgainst": 4,
-          "goalDifference": -3
+          "goalsAgainst": 5,
+          "goalDifference": -4
         }
       ]
     },
