@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-18T16:06:28.938Z",
+    "lastUpdated": "2026-06-18T16:16:08.705Z",
     "status": "Auto-updated from ESPN: 25 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-18T16:00Z",
       "state": "in",
       "completed": false,
-      "detail": "6'",
+      "detail": "15'",
       "homeTeam": "Czechia",
       "awayTeam": "South Africa",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -362,18 +362,18 @@
         {
           "team": "Czechia",
           "played": 2,
-          "points": 1,
-          "goalsFor": 1,
+          "points": 3,
+          "goalsFor": 2,
           "goalsAgainst": 2,
-          "goalDifference": -1
+          "goalDifference": 0
         },
         {
           "team": "South Africa",
           "played": 2,
-          "points": 1,
+          "points": 0,
           "goalsFor": 0,
-          "goalsAgainst": 2,
-          "goalDifference": -2
+          "goalsAgainst": 3,
+          "goalDifference": -3
         }
       ]
     },
