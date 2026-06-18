@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-18T03:01:02.414Z",
+    "lastUpdated": "2026-06-18T03:16:09.966Z",
     "status": "Auto-updated from ESPN: 24 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-18T02:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "55'",
       "homeTeam": "Uzbekistan",
       "awayTeam": "Colombia",
       "homeScore": 0,
