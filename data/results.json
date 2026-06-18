@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-18T01:46:01.670Z",
-    "status": "Auto-updated from ESPN: 23 live/final matches counted.",
+    "lastUpdated": "2026-06-18T02:01:07.333Z",
+    "status": "Auto-updated from ESPN: 24 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760436",
+      "date": "2026-06-18T02:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "1'",
+      "homeTeam": "Uzbekistan",
+      "awayTeam": "Colombia",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760434",
       "date": "2026-06-17T23:00Z",
@@ -745,7 +758,7 @@
         "Colombia",
         "Uzbekistan"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "DR Congo",
@@ -765,16 +778,16 @@
         },
         {
           "team": "Colombia",
-          "played": 0,
-          "points": 0,
+          "played": 1,
+          "points": 1,
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
         },
         {
           "team": "Uzbekistan",
-          "played": 0,
-          "points": 0,
+          "played": 1,
+          "points": 1,
           "goalsFor": 0,
           "goalsAgainst": 0,
           "goalDifference": 0
