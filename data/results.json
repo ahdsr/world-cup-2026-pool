@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-18T00:46:02.752Z",
+    "lastUpdated": "2026-06-18T01:01:01.178Z",
     "status": "Auto-updated from ESPN: 23 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-17T23:00Z",
       "state": "in",
       "completed": false,
-      "detail": "85'",
+      "detail": "90'+8'",
       "homeTeam": "Ghana",
       "awayTeam": "Panama",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -801,18 +801,18 @@
         {
           "team": "Ghana",
           "played": 1,
-          "points": 1,
-          "goalsFor": 0,
+          "points": 3,
+          "goalsFor": 1,
           "goalsAgainst": 0,
-          "goalDifference": 0
+          "goalDifference": 1
         },
         {
           "team": "Panama",
           "played": 1,
-          "points": 1,
+          "points": 0,
           "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
+          "goalsAgainst": 1,
+          "goalDifference": -1
         },
         {
           "team": "Croatia",
