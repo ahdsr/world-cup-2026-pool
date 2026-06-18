@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-18T18:46:03.194Z",
-    "status": "Auto-updated from ESPN: 25 live/final matches counted.",
+    "lastUpdated": "2026-06-18T19:01:08.347Z",
+    "status": "Auto-updated from ESPN: 26 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760439",
+      "date": "2026-06-18T19:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "1'",
+      "homeTeam": "Switzerland",
+      "awayTeam": "Bosnia & Herzegovina",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760438",
       "date": "2026-06-18T16:00Z",
@@ -380,16 +393,24 @@
     "B": {
       "currentOrder": [
         "Bosnia & Herzegovina",
+        "Switzerland",
         "Canada",
-        "Qatar",
-        "Switzerland"
+        "Qatar"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "Bosnia & Herzegovina",
-          "played": 1,
-          "points": 1,
+          "played": 2,
+          "points": 2,
+          "goalsFor": 1,
+          "goalsAgainst": 1,
+          "goalDifference": 0
+        },
+        {
+          "team": "Switzerland",
+          "played": 2,
+          "points": 2,
           "goalsFor": 1,
           "goalsAgainst": 1,
           "goalDifference": 0
@@ -404,14 +425,6 @@
         },
         {
           "team": "Qatar",
-          "played": 1,
-          "points": 1,
-          "goalsFor": 1,
-          "goalsAgainst": 1,
-          "goalDifference": 0
-        },
-        {
-          "team": "Switzerland",
           "played": 1,
           "points": 1,
           "goalsFor": 1,
