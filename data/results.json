@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-18T03:16:09.966Z",
+    "lastUpdated": "2026-06-18T03:31:01.023Z",
     "status": "Auto-updated from ESPN: 24 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-18T02:00Z",
       "state": "in",
       "completed": false,
-      "detail": "55'",
+      "detail": "70'",
       "homeTeam": "Uzbekistan",
       "awayTeam": "Colombia",
-      "homeScore": 0,
-      "awayScore": 1,
+      "homeScore": 1,
+      "awayScore": 2,
       "winner": "",
       "loser": ""
     },
@@ -764,8 +764,8 @@
           "team": "Colombia",
           "played": 1,
           "points": 3,
-          "goalsFor": 1,
-          "goalsAgainst": 0,
+          "goalsFor": 2,
+          "goalsAgainst": 1,
           "goalDifference": 1
         },
         {
@@ -788,8 +788,8 @@
           "team": "Uzbekistan",
           "played": 1,
           "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 2,
           "goalDifference": -1
         }
       ]
