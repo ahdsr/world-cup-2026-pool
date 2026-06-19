@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-19T23:46:03.083Z",
+    "lastUpdated": "2026-06-19T23:46:22.353Z",
     "status": "Auto-updated from ESPN: 30 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-19T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "83'",
+      "detail": "84'",
       "homeTeam": "Scotland",
       "awayTeam": "Morocco",
       "homeScore": 0,
