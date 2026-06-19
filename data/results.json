@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-19T20:31:01.175Z",
+    "lastUpdated": "2026-06-19T20:46:04.034Z",
     "status": "Auto-updated from ESPN: 29 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-19T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "66'",
+      "detail": "80'",
       "homeTeam": "United States",
       "awayTeam": "Australia",
       "homeScore": 2,
