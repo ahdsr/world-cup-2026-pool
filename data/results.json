@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-19T19:46:01.097Z",
+    "lastUpdated": "2026-06-19T20:01:01.808Z",
     "status": "Auto-updated from ESPN: 29 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-19T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "45'+1'",
+      "detail": "HT",
       "homeTeam": "United States",
       "awayTeam": "Australia",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -528,17 +528,17 @@
           "team": "United States",
           "played": 2,
           "points": 6,
-          "goalsFor": 5,
+          "goalsFor": 6,
           "goalsAgainst": 1,
-          "goalDifference": 4
+          "goalDifference": 5
         },
         {
           "team": "Australia",
           "played": 2,
           "points": 3,
           "goalsFor": 2,
-          "goalsAgainst": 1,
-          "goalDifference": 1
+          "goalsAgainst": 2,
+          "goalDifference": 0
         },
         {
           "team": "Turkey",
