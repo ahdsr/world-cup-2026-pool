@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-19T01:31:01.535Z",
+    "lastUpdated": "2026-06-19T01:46:03.179Z",
     "status": "Auto-updated from ESPN: 28 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-19T01:00Z",
       "state": "in",
       "completed": false,
-      "detail": "30'",
+      "detail": "45'",
       "homeTeam": "Mexico",
       "awayTeam": "South Korea",
       "homeScore": 0,
