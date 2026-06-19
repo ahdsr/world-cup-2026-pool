@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-18T23:46:01.511Z",
+    "lastUpdated": "2026-06-19T00:01:02.093Z",
     "status": "Auto-updated from ESPN: 27 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-18T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "84'",
+      "detail": "90'+9'",
       "homeTeam": "Canada",
       "awayTeam": "Qatar",
-      "homeScore": 5,
+      "homeScore": 6,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -416,9 +416,9 @@
           "team": "Canada",
           "played": 2,
           "points": 4,
-          "goalsFor": 6,
+          "goalsFor": 7,
           "goalsAgainst": 1,
-          "goalDifference": 5
+          "goalDifference": 6
         },
         {
           "team": "Switzerland",
@@ -441,8 +441,8 @@
           "played": 2,
           "points": 1,
           "goalsFor": 1,
-          "goalsAgainst": 6,
-          "goalDifference": -5
+          "goalsAgainst": 7,
+          "goalDifference": -6
         }
       ]
     },
@@ -890,10 +890,12 @@
   },
   "bonus": {
     "mostGoalsScored": [
+      "Canada",
       "Germany"
     ],
     "mostGoalsConceded": [
-      "Curaçao"
+      "Curaçao",
+      "Qatar"
     ],
     "farthestGoal": [],
     "bestPassCompletion": [],
