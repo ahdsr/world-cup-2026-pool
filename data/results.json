@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-20T18:45:17.256Z",
+    "lastUpdated": "2026-06-20T18:53:06.440Z",
     "status": "Auto-updated from ESPN: 33 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-20T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "84'",
+      "detail": "90'+2'",
       "homeTeam": "Netherlands",
       "awayTeam": "Sweden",
-      "homeScore": 4,
+      "homeScore": 5,
       "awayScore": 1,
       "winner": "",
       "loser": ""
@@ -666,17 +666,17 @@
           "team": "Netherlands",
           "played": 2,
           "points": 4,
-          "goalsFor": 6,
+          "goalsFor": 7,
           "goalsAgainst": 3,
-          "goalDifference": 3
+          "goalDifference": 4
         },
         {
           "team": "Sweden",
           "played": 2,
           "points": 3,
           "goalsFor": 6,
-          "goalsAgainst": 5,
-          "goalDifference": 1
+          "goalsAgainst": 6,
+          "goalDifference": 0
         },
         {
           "team": "Japan",
@@ -969,7 +969,8 @@
   "bonus": {
     "mostGoalsScored": [
       "Canada",
-      "Germany"
+      "Germany",
+      "Netherlands"
     ],
     "mostGoalsConceded": [
       "Curaçao",
