@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-20T18:53:06.440Z",
-    "status": "Auto-updated from ESPN: 33 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-20T19:00:18.163Z",
+    "status": "Auto-updated from ESPN: 33 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,15 +10,15 @@
     {
       "id": "760447",
       "date": "2026-06-20T17:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+2'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Netherlands",
       "awayTeam": "Sweden",
       "homeScore": 5,
       "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "winner": "Netherlands",
+      "loser": "Sweden"
     },
     {
       "id": "760443",
@@ -660,7 +660,7 @@
         "Japan",
         "Tunisia"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
         {
           "team": "Netherlands",
