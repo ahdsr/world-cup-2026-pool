@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-20T00:31:02.891Z",
-    "status": "Auto-updated from ESPN: 30 live/final matches counted.",
+    "lastUpdated": "2026-06-20T00:46:02.912Z",
+    "status": "Auto-updated from ESPN: 31 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760444",
+      "date": "2026-06-20T00:30Z",
+      "state": "in",
+      "completed": false,
+      "detail": "13'",
+      "homeTeam": "Brazil",
+      "awayTeam": "Haiti",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760445",
       "date": "2026-06-19T22:00Z",
@@ -492,7 +505,7 @@
         "Brazil",
         "Haiti"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "Morocco",
@@ -512,16 +525,16 @@
         },
         {
           "team": "Brazil",
-          "played": 1,
-          "points": 1,
+          "played": 2,
+          "points": 2,
           "goalsFor": 1,
           "goalsAgainst": 1,
           "goalDifference": 0
         },
         {
           "team": "Haiti",
-          "played": 1,
-          "points": 0,
+          "played": 2,
+          "points": 1,
           "goalsFor": 0,
           "goalsAgainst": 1,
           "goalDifference": -1
