@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-20T17:45:17.565Z",
+    "lastUpdated": "2026-06-20T18:00:20.003Z",
     "status": "Auto-updated from ESPN: 33 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-20T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "45'",
+      "detail": "HT",
       "homeTeam": "Netherlands",
       "awayTeam": "Sweden",
       "homeScore": 2,
