@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-20T03:01:04.357Z",
+    "lastUpdated": "2026-06-20T03:16:03.833Z",
     "status": "Auto-updated from ESPN: 32 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-20T03:00Z",
       "state": "in",
       "completed": false,
-      "detail": "1'",
+      "detail": "15'",
       "homeTeam": "Turkey",
       "awayTeam": "Paraguay",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -558,8 +558,8 @@
       "currentOrder": [
         "United States",
         "Australia",
-        "Turkey",
-        "Paraguay"
+        "Paraguay",
+        "Turkey"
       ],
       "status": "live",
       "stats": [
@@ -580,19 +580,19 @@
           "goalDifference": 0
         },
         {
-          "team": "Turkey",
+          "team": "Paraguay",
           "played": 2,
-          "points": 1,
-          "goalsFor": 0,
-          "goalsAgainst": 2,
+          "points": 3,
+          "goalsFor": 2,
+          "goalsAgainst": 4,
           "goalDifference": -2
         },
         {
-          "team": "Paraguay",
+          "team": "Turkey",
           "played": 2,
-          "points": 1,
-          "goalsFor": 1,
-          "goalsAgainst": 4,
+          "points": 0,
+          "goalsFor": 0,
+          "goalsAgainst": 3,
           "goalDifference": -3
         }
       ]
