@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-20T21:00:18.412Z",
+    "lastUpdated": "2026-06-20T21:15:18.759Z",
     "status": "Auto-updated from ESPN: 34 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-20T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "52'",
       "homeTeam": "Germany",
       "awayTeam": "Ivory Coast",
       "homeScore": 0,
