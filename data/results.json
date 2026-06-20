@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-20T22:00:17.037Z",
-    "status": "Auto-updated from ESPN: 34 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-20T22:15:19.102Z",
+    "status": "Auto-updated from ESPN: 34 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,15 +10,15 @@
     {
       "id": "760448",
       "date": "2026-06-20T20:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+7'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Germany",
       "awayTeam": "Ivory Coast",
       "homeScore": 2,
       "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "winner": "Germany",
+      "loser": "Ivory Coast"
     },
     {
       "id": "760447",
@@ -630,7 +630,7 @@
         "Ecuador",
         "Curaçao"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
         {
           "team": "Germany",
