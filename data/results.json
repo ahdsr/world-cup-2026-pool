@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-20T02:16:01.390Z",
+    "lastUpdated": "2026-06-20T02:31:04.931Z",
     "status": "Auto-updated from ESPN: 31 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-20T00:30Z",
       "state": "in",
       "completed": false,
-      "detail": "81'",
+      "detail": "90'+5'",
       "homeTeam": "Brazil",
       "awayTeam": "Haiti",
       "homeScore": 3,
