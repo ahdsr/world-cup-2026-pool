@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-21T23:30:17.635Z",
+    "lastUpdated": "2026-06-21T23:45:18.908Z",
     "status": "Auto-updated from ESPN: 39 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-21T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "64'",
+      "detail": "80'",
       "homeTeam": "Uruguay",
       "awayTeam": "Cape Verde",
       "homeScore": 2,
