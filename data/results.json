@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-21T17:00:17.553Z",
+    "lastUpdated": "2026-06-21T17:15:18.428Z",
     "status": "Auto-updated from ESPN: 37 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-21T16:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "52'",
       "homeTeam": "Spain",
       "awayTeam": "Saudi Arabia",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -804,9 +804,9 @@
           "team": "Spain",
           "played": 2,
           "points": 4,
-          "goalsFor": 3,
+          "goalsFor": 4,
           "goalsAgainst": 0,
-          "goalDifference": 3
+          "goalDifference": 4
         },
         {
           "team": "Uruguay",
@@ -829,8 +829,8 @@
           "played": 2,
           "points": 1,
           "goalsFor": 1,
-          "goalsAgainst": 4,
-          "goalDifference": -3
+          "goalsAgainst": 5,
+          "goalDifference": -4
         }
       ]
     },
