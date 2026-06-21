@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-21T16:00:19.639Z",
-    "status": "Auto-updated from ESPN: 36 live/final matches counted.",
+    "lastUpdated": "2026-06-21T16:15:17.995Z",
+    "status": "Auto-updated from ESPN: 37 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760453",
+      "date": "2026-06-21T16:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Spain",
+      "awayTeam": "Saudi Arabia",
+      "homeScore": 1,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760449",
       "date": "2026-06-21T04:00Z",
@@ -780,20 +793,20 @@
     },
     "H": {
       "currentOrder": [
-        "Saudi Arabia",
+        "Spain",
         "Uruguay",
         "Cape Verde",
-        "Spain"
+        "Saudi Arabia"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
-          "team": "Saudi Arabia",
-          "played": 1,
-          "points": 1,
+          "team": "Spain",
+          "played": 2,
+          "points": 4,
           "goalsFor": 1,
-          "goalsAgainst": 1,
-          "goalDifference": 0
+          "goalsAgainst": 0,
+          "goalDifference": 1
         },
         {
           "team": "Uruguay",
@@ -812,12 +825,12 @@
           "goalDifference": 0
         },
         {
-          "team": "Spain",
-          "played": 1,
+          "team": "Saudi Arabia",
+          "played": 2,
           "points": 1,
-          "goalsFor": 0,
-          "goalsAgainst": 0,
-          "goalDifference": 0
+          "goalsFor": 1,
+          "goalsAgainst": 2,
+          "goalDifference": -1
         }
       ]
     },
