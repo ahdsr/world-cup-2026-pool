@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-21T04:00:20.489Z",
-    "status": "Auto-updated from ESPN: 35 live/final matches counted.",
+    "lastUpdated": "2026-06-21T04:15:17.348Z",
+    "status": "Auto-updated from ESPN: 36 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760449",
+      "date": "2026-06-21T04:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "Tunisia",
+      "awayTeam": "Japan",
+      "homeScore": 0,
+      "awayScore": 1,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760446",
       "date": "2026-06-21T00:00Z",
@@ -682,11 +695,11 @@
     "F": {
       "currentOrder": [
         "Netherlands",
-        "Sweden",
         "Japan",
+        "Sweden",
         "Tunisia"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "Netherlands",
@@ -697,6 +710,14 @@
           "goalDifference": 4
         },
         {
+          "team": "Japan",
+          "played": 2,
+          "points": 4,
+          "goalsFor": 3,
+          "goalsAgainst": 2,
+          "goalDifference": 1
+        },
+        {
           "team": "Sweden",
           "played": 2,
           "points": 3,
@@ -705,20 +726,12 @@
           "goalDifference": 0
         },
         {
-          "team": "Japan",
-          "played": 1,
-          "points": 1,
-          "goalsFor": 2,
-          "goalsAgainst": 2,
-          "goalDifference": 0
-        },
-        {
           "team": "Tunisia",
-          "played": 1,
+          "played": 2,
           "points": 0,
           "goalsFor": 1,
-          "goalsAgainst": 5,
-          "goalDifference": -4
+          "goalsAgainst": 6,
+          "goalDifference": -5
         }
       ]
     },
