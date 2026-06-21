@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-21T22:45:19.342Z",
+    "lastUpdated": "2026-06-21T23:00:19.023Z",
     "status": "Auto-updated from ESPN: 39 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-21T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "45'",
+      "detail": "HT",
       "homeTeam": "Uruguay",
       "awayTeam": "Cape Verde",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 1,
       "winner": "",
       "loser": ""
@@ -837,18 +837,18 @@
         {
           "team": "Uruguay",
           "played": 2,
-          "points": 2,
-          "goalsFor": 2,
+          "points": 4,
+          "goalsFor": 3,
           "goalsAgainst": 2,
-          "goalDifference": 0
+          "goalDifference": 1
         },
         {
           "team": "Cape Verde",
           "played": 2,
-          "points": 2,
+          "points": 1,
           "goalsFor": 1,
-          "goalsAgainst": 1,
-          "goalDifference": 0
+          "goalsAgainst": 2,
+          "goalDifference": -1
         },
         {
           "team": "Saudi Arabia",
