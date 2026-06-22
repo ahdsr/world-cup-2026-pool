@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-22T18:00:19.895Z",
+    "lastUpdated": "2026-06-22T18:15:20.095Z",
     "status": "Auto-updated from ESPN: 41 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-22T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "51'",
       "homeTeam": "Argentina",
       "awayTeam": "Austria",
       "homeScore": 1,
