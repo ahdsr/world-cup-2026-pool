@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-22T03:00:18.396Z",
-    "status": "Auto-updated from ESPN: 40 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-22T03:15:18.671Z",
+    "status": "Auto-updated from ESPN: 40 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,15 +10,15 @@
     {
       "id": "760452",
       "date": "2026-06-22T01:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+10'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "New Zealand",
       "awayTeam": "Egypt",
       "homeScore": 1,
       "awayScore": 3,
-      "winner": "",
-      "loser": ""
+      "winner": "Egypt",
+      "loser": "New Zealand"
     },
     {
       "id": "760450",
@@ -794,7 +794,7 @@
         "Belgium",
         "New Zealand"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
         {
           "team": "Egypt",
