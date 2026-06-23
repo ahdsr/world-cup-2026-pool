@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-23T23:15:20.599Z",
+    "lastUpdated": "2026-06-23T23:30:16.923Z",
     "status": "Auto-updated from ESPN: 47 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-23T23:00Z",
       "state": "in",
       "completed": false,
-      "detail": "15'",
+      "detail": "29'",
       "homeTeam": "Panama",
       "awayTeam": "Croatia",
       "homeScore": 0,
