@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-23T18:30:21.420Z",
+    "lastUpdated": "2026-06-23T18:45:23.052Z",
     "status": "Auto-updated from ESPN: 45 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-23T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "66'",
+      "detail": "81'",
       "homeTeam": "Portugal",
       "awayTeam": "Uzbekistan",
       "homeScore": 4,
