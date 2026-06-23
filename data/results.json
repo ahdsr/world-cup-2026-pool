@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-23T05:00:19.242Z",
-    "status": "Auto-updated from ESPN: 44 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-23T05:15:18.335Z",
+    "status": "Auto-updated from ESPN: 44 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,15 +10,15 @@
     {
       "id": "760455",
       "date": "2026-06-23T03:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+8'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Jordan",
       "awayTeam": "Algeria",
       "homeScore": 1,
       "awayScore": 2,
-      "winner": "",
-      "loser": ""
+      "winner": "Algeria",
+      "loser": "Jordan"
     },
     {
       "id": "760454",
@@ -975,7 +975,7 @@
         "Algeria",
         "Jordan"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
         {
           "team": "Argentina",
