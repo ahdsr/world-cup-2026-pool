@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-23T01:45:21.955Z",
-    "status": "Auto-updated from ESPN: 43 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-23T02:00:16.992Z",
+    "status": "Auto-updated from ESPN: 43 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,15 +10,15 @@
     {
       "id": "760454",
       "date": "2026-06-23T00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "85'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Norway",
       "awayTeam": "Senegal",
       "homeScore": 3,
-      "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "awayScore": 2,
+      "winner": "Norway",
+      "loser": "Senegal"
     },
     {
       "id": "760457",
@@ -914,21 +914,13 @@
     },
     "I": {
       "currentOrder": [
-        "Norway",
         "France",
+        "Norway",
         "Senegal",
         "Iraq"
       ],
-      "status": "live",
+      "status": "active",
       "stats": [
-        {
-          "team": "Norway",
-          "played": 2,
-          "points": 6,
-          "goalsFor": 7,
-          "goalsAgainst": 2,
-          "goalDifference": 5
-        },
         {
           "team": "France",
           "played": 2,
@@ -938,12 +930,20 @@
           "goalDifference": 5
         },
         {
+          "team": "Norway",
+          "played": 2,
+          "points": 6,
+          "goalsFor": 7,
+          "goalsAgainst": 3,
+          "goalDifference": 4
+        },
+        {
           "team": "Senegal",
           "played": 2,
           "points": 0,
-          "goalsFor": 2,
+          "goalsFor": 3,
           "goalsAgainst": 6,
-          "goalDifference": -4
+          "goalDifference": -3
         },
         {
           "team": "Iraq",
