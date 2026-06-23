@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-23T01:00:21.297Z",
+    "lastUpdated": "2026-06-23T01:15:20.419Z",
     "status": "Auto-updated from ESPN: 43 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-23T00:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "56'",
       "homeTeam": "Norway",
       "awayTeam": "Senegal",
-      "homeScore": 1,
-      "awayScore": 0,
+      "homeScore": 2,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -933,16 +933,16 @@
           "team": "Norway",
           "played": 2,
           "points": 6,
-          "goalsFor": 5,
-          "goalsAgainst": 1,
+          "goalsFor": 6,
+          "goalsAgainst": 2,
           "goalDifference": 4
         },
         {
           "team": "Senegal",
           "played": 2,
           "points": 0,
-          "goalsFor": 1,
-          "goalsAgainst": 4,
+          "goalsFor": 2,
+          "goalsAgainst": 5,
           "goalDifference": -3
         },
         {
