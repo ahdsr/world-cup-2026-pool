@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-23T04:00:17.223Z",
+    "lastUpdated": "2026-06-23T04:15:17.982Z",
     "status": "Auto-updated from ESPN: 44 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-23T03:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "52'",
       "homeTeam": "Jordan",
       "awayTeam": "Algeria",
       "homeScore": 1,
