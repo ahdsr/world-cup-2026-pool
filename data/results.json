@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-22T23:45:17.231Z",
+    "lastUpdated": "2026-06-23T00:00:19.918Z",
     "status": "Auto-updated from ESPN: 42 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
