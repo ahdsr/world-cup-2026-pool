@@ -1,21 +1,34 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-23T00:00:19.918Z",
-    "status": "Auto-updated from ESPN: 42 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-23T00:15:17.136Z",
+    "status": "Auto-updated from ESPN: 43 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
     {
+      "id": "760454",
+      "date": "2026-06-23T00:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "Norway",
+      "awayTeam": "Senegal",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
+    {
       "id": "760457",
       "date": "2026-06-22T21:00Z",
       "state": "in",
       "completed": false,
-      "detail": "45'+3'",
+      "detail": "59'",
       "homeTeam": "France",
       "awayTeam": "Iraq",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -912,22 +925,22 @@
           "team": "France",
           "played": 2,
           "points": 6,
-          "goalsFor": 4,
+          "goalsFor": 5,
           "goalsAgainst": 1,
-          "goalDifference": 3
+          "goalDifference": 4
         },
         {
           "team": "Norway",
-          "played": 1,
-          "points": 3,
+          "played": 2,
+          "points": 4,
           "goalsFor": 4,
           "goalsAgainst": 1,
           "goalDifference": 3
         },
         {
           "team": "Senegal",
-          "played": 1,
-          "points": 0,
+          "played": 2,
+          "points": 1,
           "goalsFor": 1,
           "goalsAgainst": 3,
           "goalDifference": -2
@@ -937,8 +950,8 @@
           "played": 2,
           "points": 0,
           "goalsFor": 1,
-          "goalsAgainst": 5,
-          "goalDifference": -4
+          "goalsAgainst": 6,
+          "goalDifference": -5
         }
       ]
     },
