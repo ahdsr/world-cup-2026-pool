@@ -1,12 +1,38 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-24T19:00:23.111Z",
-    "status": "Auto-updated from ESPN: 48 live/final matches counted.",
+    "lastUpdated": "2026-06-24T19:15:18.956Z",
+    "status": "Auto-updated from ESPN: 50 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760462",
+      "date": "2026-06-24T19:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "Bosnia & Herzegovina",
+      "awayTeam": "Qatar",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
+    {
+      "id": "760463",
+      "date": "2026-06-24T19:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "Switzerland",
+      "awayTeam": "Canada",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760459",
       "date": "2026-06-24T02:00Z",
@@ -683,36 +709,36 @@
         "Bosnia & Herzegovina",
         "Qatar"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "Canada",
-          "played": 2,
-          "points": 4,
+          "played": 3,
+          "points": 5,
           "goalsFor": 7,
           "goalsAgainst": 1,
           "goalDifference": 6
         },
         {
           "team": "Switzerland",
-          "played": 2,
-          "points": 4,
+          "played": 3,
+          "points": 5,
           "goalsFor": 5,
           "goalsAgainst": 2,
           "goalDifference": 3
         },
         {
           "team": "Bosnia & Herzegovina",
-          "played": 2,
-          "points": 1,
+          "played": 3,
+          "points": 2,
           "goalsFor": 2,
           "goalsAgainst": 5,
           "goalDifference": -3
         },
         {
           "team": "Qatar",
-          "played": 2,
-          "points": 1,
+          "played": 3,
+          "points": 2,
           "goalsFor": 1,
           "goalsAgainst": 7,
           "goalDifference": -6
