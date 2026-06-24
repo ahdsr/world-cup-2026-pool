@@ -1,12 +1,38 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-24T22:00:17.389Z",
-    "status": "Auto-updated from ESPN: 50 live/final matches counted.",
+    "lastUpdated": "2026-06-24T22:15:19.946Z",
+    "status": "Auto-updated from ESPN: 52 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760464",
+      "date": "2026-06-24T22:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Morocco",
+      "awayTeam": "Haiti",
+      "homeScore": 0,
+      "awayScore": 1,
+      "winner": "",
+      "loser": ""
+    },
+    {
+      "id": "760465",
+      "date": "2026-06-24T22:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Scotland",
+      "awayTeam": "Brazil",
+      "homeScore": 0,
+      "awayScore": 1,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760462",
       "date": "2026-06-24T19:00Z",
@@ -752,39 +778,39 @@
         "Scotland",
         "Haiti"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "Brazil",
-          "played": 2,
-          "points": 4,
-          "goalsFor": 4,
+          "played": 3,
+          "points": 7,
+          "goalsFor": 5,
           "goalsAgainst": 1,
-          "goalDifference": 3
+          "goalDifference": 4
         },
         {
           "team": "Morocco",
-          "played": 2,
+          "played": 3,
           "points": 4,
           "goalsFor": 2,
-          "goalsAgainst": 1,
-          "goalDifference": 1
-        },
-        {
-          "team": "Scotland",
-          "played": 2,
-          "points": 3,
-          "goalsFor": 1,
-          "goalsAgainst": 1,
+          "goalsAgainst": 2,
           "goalDifference": 0
         },
         {
+          "team": "Scotland",
+          "played": 3,
+          "points": 3,
+          "goalsFor": 1,
+          "goalsAgainst": 2,
+          "goalDifference": -1
+        },
+        {
           "team": "Haiti",
-          "played": 2,
-          "points": 0,
-          "goalsFor": 0,
+          "played": 3,
+          "points": 3,
+          "goalsFor": 1,
           "goalsAgainst": 4,
-          "goalDifference": -4
+          "goalDifference": -3
         }
       ]
     },
