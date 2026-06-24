@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-24T22:45:19.957Z",
+    "lastUpdated": "2026-06-24T22:52:27.093Z",
     "status": "Auto-updated from ESPN: 52 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-24T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "44'",
+      "detail": "HT",
       "homeTeam": "Morocco",
       "awayTeam": "Haiti",
-      "homeScore": 1,
+      "homeScore": 2,
       "awayScore": 2,
       "winner": "",
       "loser": ""
@@ -25,11 +25,11 @@
       "date": "2026-06-24T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "44'",
+      "detail": "45'+6'",
       "homeTeam": "Scotland",
       "awayTeam": "Brazil",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "winner": "",
       "loser": ""
     },
@@ -784,33 +784,33 @@
           "team": "Brazil",
           "played": 3,
           "points": 7,
-          "goalsFor": 5,
+          "goalsFor": 6,
           "goalsAgainst": 1,
-          "goalDifference": 4
+          "goalDifference": 5
         },
         {
           "team": "Morocco",
           "played": 3,
-          "points": 4,
-          "goalsFor": 3,
+          "points": 5,
+          "goalsFor": 4,
           "goalsAgainst": 3,
-          "goalDifference": 0
+          "goalDifference": 1
         },
         {
           "team": "Scotland",
           "played": 3,
           "points": 3,
           "goalsFor": 1,
-          "goalsAgainst": 2,
-          "goalDifference": -1
+          "goalsAgainst": 3,
+          "goalDifference": -2
         },
         {
           "team": "Haiti",
           "played": 3,
-          "points": 3,
+          "points": 1,
           "goalsFor": 2,
-          "goalsAgainst": 5,
-          "goalDifference": -3
+          "goalsAgainst": 6,
+          "goalDifference": -4
         }
       ]
     },
