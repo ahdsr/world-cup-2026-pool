@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-24T20:30:21.678Z",
+    "lastUpdated": "2026-06-24T20:45:19.409Z",
     "status": "Auto-updated from ESPN: 50 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-24T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "67'",
+      "detail": "83'",
       "homeTeam": "Bosnia & Herzegovina",
       "awayTeam": "Qatar",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 1,
       "winner": "",
       "loser": ""
@@ -25,11 +25,11 @@
       "date": "2026-06-24T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "71'",
+      "detail": "86'",
       "homeTeam": "Switzerland",
       "awayTeam": "Canada",
       "homeScore": 2,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -716,32 +716,32 @@
           "played": 3,
           "points": 7,
           "goalsFor": 7,
-          "goalsAgainst": 2,
-          "goalDifference": 5
+          "goalsAgainst": 3,
+          "goalDifference": 4
         },
         {
           "team": "Canada",
           "played": 3,
           "points": 4,
-          "goalsFor": 7,
+          "goalsFor": 8,
           "goalsAgainst": 3,
-          "goalDifference": 4
+          "goalDifference": 5
         },
         {
           "team": "Bosnia & Herzegovina",
           "played": 3,
           "points": 4,
-          "goalsFor": 4,
+          "goalsFor": 5,
           "goalsAgainst": 6,
-          "goalDifference": -2
+          "goalDifference": -1
         },
         {
           "team": "Qatar",
           "played": 3,
           "points": 1,
           "goalsFor": 2,
-          "goalsAgainst": 9,
-          "goalDifference": -7
+          "goalsAgainst": 10,
+          "goalDifference": -8
         }
       ]
     },
@@ -1192,8 +1192,7 @@
       "Germany"
     ],
     "mostGoalsConceded": [
-      "Qatar",
-      "Tunisia"
+      "Qatar"
     ],
     "farthestGoal": [],
     "bestPassCompletion": [],
