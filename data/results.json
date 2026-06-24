@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-24T22:52:27.093Z",
+    "lastUpdated": "2026-06-24T23:00:19.803Z",
     "status": "Auto-updated from ESPN: 52 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -25,7 +25,7 @@
       "date": "2026-06-24T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "45'+6'",
+      "detail": "HT",
       "homeTeam": "Scotland",
       "awayTeam": "Brazil",
       "homeScore": 0,
