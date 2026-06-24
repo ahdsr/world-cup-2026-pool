@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-24T20:45:19.409Z",
-    "status": "Auto-updated from ESPN: 50 live/final matches counted: 2 in progress.",
+    "lastUpdated": "2026-06-24T21:00:17.926Z",
+    "status": "Auto-updated from ESPN: 50 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,28 +10,28 @@
     {
       "id": "760462",
       "date": "2026-06-24T19:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "83'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Bosnia & Herzegovina",
       "awayTeam": "Qatar",
       "homeScore": 3,
       "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "winner": "Bosnia & Herzegovina",
+      "loser": "Qatar"
     },
     {
       "id": "760463",
       "date": "2026-06-24T19:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "86'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Switzerland",
       "awayTeam": "Canada",
       "homeScore": 2,
       "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "winner": "Switzerland",
+      "loser": "Canada"
     },
     {
       "id": "760459",
@@ -709,7 +709,7 @@
         "Bosnia & Herzegovina",
         "Qatar"
       ],
-      "status": "live",
+      "status": "final",
       "stats": [
         {
           "team": "Switzerland",
