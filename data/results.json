@@ -1,12 +1,38 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-25T01:00:17.064Z",
-    "status": "Auto-updated from ESPN: 52 live/final matches counted.",
+    "lastUpdated": "2026-06-25T01:15:23.166Z",
+    "status": "Auto-updated from ESPN: 54 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760467",
+      "date": "2026-06-25T01:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "Czechia",
+      "awayTeam": "Mexico",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
+    {
+      "id": "760466",
+      "date": "2026-06-25T01:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "South Africa",
+      "awayTeam": "South Korea",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760464",
       "date": "2026-06-24T22:00Z",
@@ -692,36 +718,36 @@
         "Czechia",
         "South Africa"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "Mexico",
-          "played": 2,
-          "points": 6,
+          "played": 3,
+          "points": 7,
           "goalsFor": 3,
           "goalsAgainst": 0,
           "goalDifference": 3
         },
         {
           "team": "South Korea",
-          "played": 2,
-          "points": 3,
+          "played": 3,
+          "points": 4,
           "goalsFor": 2,
           "goalsAgainst": 2,
           "goalDifference": 0
         },
         {
           "team": "Czechia",
-          "played": 2,
-          "points": 1,
+          "played": 3,
+          "points": 2,
           "goalsFor": 2,
           "goalsAgainst": 3,
           "goalDifference": -1
         },
         {
           "team": "South Africa",
-          "played": 2,
-          "points": 1,
+          "played": 3,
+          "points": 2,
           "goalsFor": 1,
           "goalsAgainst": 3,
           "goalDifference": -2
