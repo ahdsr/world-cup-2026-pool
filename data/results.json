@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-25T00:01:48.721Z",
-    "status": "Auto-updated from ESPN: 52 live/final matches counted: 2 in progress.",
+    "lastUpdated": "2026-06-25T00:15:22.366Z",
+    "status": "Auto-updated from ESPN: 52 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,28 +10,28 @@
     {
       "id": "760464",
       "date": "2026-06-24T22:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+9'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Morocco",
       "awayTeam": "Haiti",
       "homeScore": 4,
       "awayScore": 2,
-      "winner": "",
-      "loser": ""
+      "winner": "Morocco",
+      "loser": "Haiti"
     },
     {
       "id": "760465",
       "date": "2026-06-24T22:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+6'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Scotland",
       "awayTeam": "Brazil",
       "homeScore": 0,
       "awayScore": 3,
-      "winner": "",
-      "loser": ""
+      "winner": "Brazil",
+      "loser": "Scotland"
     },
     {
       "id": "760462",
@@ -778,7 +778,7 @@
         "Scotland",
         "Haiti"
       ],
-      "status": "live",
+      "status": "final",
       "stats": [
         {
           "team": "Brazil",
