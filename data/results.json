@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-25T21:15:17.292Z",
+    "lastUpdated": "2026-06-25T21:30:18.047Z",
     "status": "Auto-updated from ESPN: 56 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-25T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "54'",
+      "detail": "69'",
       "homeTeam": "Curaçao",
       "awayTeam": "Ivory Coast",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "winner": "",
       "loser": ""
     },
@@ -25,7 +25,7 @@
       "date": "2026-06-25T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "55'",
+      "detail": "70'",
       "homeTeam": "Ecuador",
       "awayTeam": "Germany",
       "homeScore": 1,
@@ -930,9 +930,9 @@
           "team": "Ivory Coast",
           "played": 3,
           "points": 6,
-          "goalsFor": 3,
+          "goalsFor": 4,
           "goalsAgainst": 2,
-          "goalDifference": 1
+          "goalDifference": 2
         },
         {
           "team": "Ecuador",
@@ -947,8 +947,8 @@
           "played": 3,
           "points": 1,
           "goalsFor": 1,
-          "goalsAgainst": 8,
-          "goalDifference": -7
+          "goalsAgainst": 9,
+          "goalDifference": -8
         }
       ]
     },
