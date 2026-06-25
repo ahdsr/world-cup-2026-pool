@@ -1,12 +1,38 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-25T20:00:31.028Z",
-    "status": "Auto-updated from ESPN: 54 live/final matches counted.",
+    "lastUpdated": "2026-06-25T20:15:18.160Z",
+    "status": "Auto-updated from ESPN: 56 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760473",
+      "date": "2026-06-25T20:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Curaçao",
+      "awayTeam": "Ivory Coast",
+      "homeScore": 0,
+      "awayScore": 1,
+      "winner": "",
+      "loser": ""
+    },
+    {
+      "id": "760468",
+      "date": "2026-06-25T20:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Ecuador",
+      "awayTeam": "Germany",
+      "homeScore": 1,
+      "awayScore": 1,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760467",
       "date": "2026-06-25T01:00Z",
@@ -890,39 +916,39 @@
         "Ecuador",
         "Curaçao"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "Germany",
-          "played": 2,
-          "points": 6,
-          "goalsFor": 9,
-          "goalsAgainst": 2,
+          "played": 3,
+          "points": 7,
+          "goalsFor": 10,
+          "goalsAgainst": 3,
           "goalDifference": 7
         },
         {
           "team": "Ivory Coast",
-          "played": 2,
-          "points": 3,
-          "goalsFor": 2,
+          "played": 3,
+          "points": 6,
+          "goalsFor": 3,
           "goalsAgainst": 2,
-          "goalDifference": 0
+          "goalDifference": 1
         },
         {
           "team": "Ecuador",
-          "played": 2,
-          "points": 1,
-          "goalsFor": 0,
-          "goalsAgainst": 1,
+          "played": 3,
+          "points": 2,
+          "goalsFor": 1,
+          "goalsAgainst": 2,
           "goalDifference": -1
         },
         {
           "team": "Curaçao",
-          "played": 2,
+          "played": 3,
           "points": 1,
           "goalsFor": 1,
-          "goalsAgainst": 7,
-          "goalDifference": -6
+          "goalsAgainst": 8,
+          "goalDifference": -7
         }
       ]
     },
