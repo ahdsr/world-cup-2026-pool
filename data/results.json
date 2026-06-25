@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-25T20:30:17.868Z",
+    "lastUpdated": "2026-06-25T20:45:17.758Z",
     "status": "Auto-updated from ESPN: 56 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-25T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "28'",
+      "detail": "44'",
       "homeTeam": "Curaçao",
       "awayTeam": "Ivory Coast",
       "homeScore": 0,
@@ -25,7 +25,7 @@
       "date": "2026-06-25T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "30'",
+      "detail": "45'",
       "homeTeam": "Ecuador",
       "awayTeam": "Germany",
       "homeScore": 1,
