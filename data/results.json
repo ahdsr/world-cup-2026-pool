@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-25T02:15:23.912Z",
+    "lastUpdated": "2026-06-25T02:30:18.374Z",
     "status": "Auto-updated from ESPN: 54 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-25T01:00Z",
       "state": "in",
       "completed": false,
-      "detail": "55'",
+      "detail": "69'",
       "homeTeam": "Czechia",
       "awayTeam": "Mexico",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 2,
       "winner": "",
       "loser": ""
     },
@@ -25,10 +25,10 @@
       "date": "2026-06-25T01:00Z",
       "state": "in",
       "completed": false,
-      "detail": "55'",
+      "detail": "69'",
       "homeTeam": "South Africa",
       "awayTeam": "South Korea",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -714,43 +714,43 @@
     "A": {
       "currentOrder": [
         "Mexico",
+        "South Africa",
         "South Korea",
-        "Czechia",
-        "South Africa"
+        "Czechia"
       ],
       "status": "live",
       "stats": [
         {
           "team": "Mexico",
           "played": 3,
-          "points": 7,
-          "goalsFor": 3,
+          "points": 9,
+          "goalsFor": 5,
           "goalsAgainst": 0,
-          "goalDifference": 3
+          "goalDifference": 5
         },
         {
-          "team": "South Korea",
+          "team": "South Africa",
           "played": 3,
           "points": 4,
-          "goalsFor": 2,
-          "goalsAgainst": 2,
-          "goalDifference": 0
-        },
-        {
-          "team": "Czechia",
-          "played": 3,
-          "points": 2,
           "goalsFor": 2,
           "goalsAgainst": 3,
           "goalDifference": -1
         },
         {
-          "team": "South Africa",
+          "team": "South Korea",
           "played": 3,
-          "points": 2,
-          "goalsFor": 1,
+          "points": 3,
+          "goalsFor": 2,
           "goalsAgainst": 3,
-          "goalDifference": -2
+          "goalDifference": -1
+        },
+        {
+          "team": "Czechia",
+          "played": 3,
+          "points": 1,
+          "goalsFor": 2,
+          "goalsAgainst": 5,
+          "goalDifference": -3
         }
       ]
     },
