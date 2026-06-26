@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-26T20:30:22.067Z",
+    "lastUpdated": "2026-06-26T20:45:20.084Z",
     "status": "Auto-updated from ESPN: 62 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-26T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "66'",
+      "detail": "81'",
       "homeTeam": "Norway",
       "awayTeam": "France",
       "homeScore": 1,
@@ -25,10 +25,10 @@
       "date": "2026-06-26T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "62'",
+      "detail": "78'",
       "homeTeam": "Senegal",
       "awayTeam": "Iraq",
-      "homeScore": 3,
+      "homeScore": 4,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -1188,17 +1188,17 @@
           "team": "Senegal",
           "played": 3,
           "points": 3,
-          "goalsFor": 6,
+          "goalsFor": 7,
           "goalsAgainst": 6,
-          "goalDifference": 0
+          "goalDifference": 1
         },
         {
           "team": "Iraq",
           "played": 3,
           "points": 0,
           "goalsFor": 1,
-          "goalsAgainst": 10,
-          "goalDifference": -9
+          "goalsAgainst": 11,
+          "goalDifference": -10
         }
       ]
     },
