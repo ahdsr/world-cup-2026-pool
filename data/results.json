@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-26T00:00:17.180Z",
+    "lastUpdated": "2026-06-26T00:15:17.049Z",
     "status": "Auto-updated from ESPN: 58 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-25T23:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "54'",
       "homeTeam": "Japan",
       "awayTeam": "Sweden",
       "homeScore": 0,
@@ -25,10 +25,10 @@
       "date": "2026-06-25T23:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "55'",
       "homeTeam": "Tunisia",
       "awayTeam": "Netherlands",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 2,
       "winner": "",
       "loser": ""
@@ -992,8 +992,8 @@
           "played": 3,
           "points": 7,
           "goalsFor": 9,
-          "goalsAgainst": 3,
-          "goalDifference": 6
+          "goalsAgainst": 4,
+          "goalDifference": 5
         },
         {
           "team": "Japan",
@@ -1015,9 +1015,9 @@
           "team": "Tunisia",
           "played": 3,
           "points": 0,
-          "goalsFor": 1,
+          "goalsFor": 2,
           "goalsAgainst": 11,
-          "goalDifference": -10
+          "goalDifference": -9
         }
       ]
     },
