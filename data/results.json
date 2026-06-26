@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-26T19:45:19.605Z",
+    "lastUpdated": "2026-06-26T20:00:21.194Z",
     "status": "Auto-updated from ESPN: 62 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-26T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "44'",
+      "detail": "HT",
       "homeTeam": "Norway",
       "awayTeam": "France",
       "homeScore": 1,
@@ -25,7 +25,7 @@
       "date": "2026-06-26T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "43'",
+      "detail": "HT",
       "homeTeam": "Senegal",
       "awayTeam": "Iraq",
       "homeScore": 1,
