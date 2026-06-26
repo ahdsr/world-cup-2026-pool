@@ -1,12 +1,38 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-26T02:00:19.313Z",
-    "status": "Auto-updated from ESPN: 58 live/final matches counted.",
+    "lastUpdated": "2026-06-26T02:15:17.120Z",
+    "status": "Auto-updated from ESPN: 60 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760469",
+      "date": "2026-06-26T02:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "Paraguay",
+      "awayTeam": "Australia",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
+    {
+      "id": "760470",
+      "date": "2026-06-26T02:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Turkey",
+      "awayTeam": "United States",
+      "homeScore": 1,
+      "awayScore": 1,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760471",
       "date": "2026-06-25T23:00Z",
@@ -899,38 +925,38 @@
         "Paraguay",
         "Turkey"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "United States",
-          "played": 2,
-          "points": 6,
-          "goalsFor": 6,
-          "goalsAgainst": 1,
+          "played": 3,
+          "points": 7,
+          "goalsFor": 7,
+          "goalsAgainst": 2,
           "goalDifference": 5
         },
         {
           "team": "Australia",
-          "played": 2,
-          "points": 3,
+          "played": 3,
+          "points": 4,
           "goalsFor": 2,
           "goalsAgainst": 2,
           "goalDifference": 0
         },
         {
           "team": "Paraguay",
-          "played": 2,
-          "points": 3,
+          "played": 3,
+          "points": 4,
           "goalsFor": 2,
           "goalsAgainst": 4,
           "goalDifference": -2
         },
         {
           "team": "Turkey",
-          "played": 2,
-          "points": 0,
-          "goalsFor": 0,
-          "goalsAgainst": 3,
+          "played": 3,
+          "points": 1,
+          "goalsFor": 1,
+          "goalsAgainst": 4,
           "goalDifference": -3
         }
       ]
