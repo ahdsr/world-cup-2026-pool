@@ -1,12 +1,38 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-26T19:00:17.697Z",
-    "status": "Auto-updated from ESPN: 60 live/final matches counted.",
+    "lastUpdated": "2026-06-26T19:15:19.495Z",
+    "status": "Auto-updated from ESPN: 62 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760475",
+      "date": "2026-06-26T19:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Norway",
+      "awayTeam": "France",
+      "homeScore": 0,
+      "awayScore": 1,
+      "winner": "",
+      "loser": ""
+    },
+    {
+      "id": "760474",
+      "date": "2026-06-26T19:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "13'",
+      "homeTeam": "Senegal",
+      "awayTeam": "Iraq",
+      "homeScore": 1,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760469",
       "date": "2026-06-26T02:00Z",
@@ -1140,39 +1166,39 @@
         "Senegal",
         "Iraq"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "France",
-          "played": 2,
-          "points": 6,
-          "goalsFor": 6,
+          "played": 3,
+          "points": 9,
+          "goalsFor": 7,
           "goalsAgainst": 1,
-          "goalDifference": 5
+          "goalDifference": 6
         },
         {
           "team": "Norway",
-          "played": 2,
+          "played": 3,
           "points": 6,
           "goalsFor": 7,
-          "goalsAgainst": 3,
-          "goalDifference": 4
+          "goalsAgainst": 4,
+          "goalDifference": 3
         },
         {
           "team": "Senegal",
-          "played": 2,
-          "points": 0,
-          "goalsFor": 3,
+          "played": 3,
+          "points": 3,
+          "goalsFor": 4,
           "goalsAgainst": 6,
-          "goalDifference": -3
+          "goalDifference": -2
         },
         {
           "team": "Iraq",
-          "played": 2,
+          "played": 3,
           "points": 0,
           "goalsFor": 1,
-          "goalsAgainst": 7,
-          "goalDifference": -6
+          "goalsAgainst": 8,
+          "goalDifference": -7
         }
       ]
     },
