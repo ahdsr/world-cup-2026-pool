@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-26T20:45:20.084Z",
-    "status": "Auto-updated from ESPN: 62 live/final matches counted: 2 in progress.",
+    "lastUpdated": "2026-06-26T21:00:16.979Z",
+    "status": "Auto-updated from ESPN: 62 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,25 +10,25 @@
     {
       "id": "760475",
       "date": "2026-06-26T19:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "81'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Norway",
       "awayTeam": "France",
       "homeScore": 1,
-      "awayScore": 3,
-      "winner": "",
-      "loser": ""
+      "awayScore": 4,
+      "winner": "France",
+      "loser": "Norway"
     },
     {
       "id": "760474",
       "date": "2026-06-26T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "78'",
+      "detail": "90'+2'",
       "homeTeam": "Senegal",
       "awayTeam": "Iraq",
-      "homeScore": 4,
+      "homeScore": 5,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -1172,33 +1172,33 @@
           "team": "France",
           "played": 3,
           "points": 9,
-          "goalsFor": 9,
+          "goalsFor": 10,
           "goalsAgainst": 2,
-          "goalDifference": 7
+          "goalDifference": 8
         },
         {
           "team": "Norway",
           "played": 3,
           "points": 6,
           "goalsFor": 8,
-          "goalsAgainst": 6,
-          "goalDifference": 2
+          "goalsAgainst": 7,
+          "goalDifference": 1
         },
         {
           "team": "Senegal",
           "played": 3,
           "points": 3,
-          "goalsFor": 7,
+          "goalsFor": 8,
           "goalsAgainst": 6,
-          "goalDifference": 1
+          "goalDifference": 2
         },
         {
           "team": "Iraq",
           "played": 3,
           "points": 0,
           "goalsFor": 1,
-          "goalsAgainst": 11,
-          "goalDifference": -10
+          "goalsAgainst": 12,
+          "goalDifference": -11
         }
       ]
     },
@@ -1345,10 +1345,12 @@
   },
   "bonus": {
     "mostGoalsScored": [
+      "France",
       "Germany",
       "Netherlands"
     ],
     "mostGoalsConceded": [
+      "Iraq",
       "Tunisia"
     ],
     "farthestGoal": [],
