@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-27T22:30:17.557Z",
+    "lastUpdated": "2026-06-27T22:41:57.561Z",
     "status": "Auto-updated from ESPN: 68 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-27T21:00Z",
       "state": "in",
       "completed": false,
-      "detail": "69'",
+      "detail": "80'",
       "homeTeam": "Croatia",
       "awayTeam": "Ghana",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -25,7 +25,7 @@
       "date": "2026-06-27T21:00Z",
       "state": "in",
       "completed": false,
-      "detail": "71'",
+      "detail": "82'",
       "homeTeam": "Panama",
       "awayTeam": "England",
       "homeScore": 0,
@@ -1369,8 +1369,8 @@
     "L": {
       "currentOrder": [
         "England",
-        "Croatia",
         "Ghana",
+        "Croatia",
         "Panama"
       ],
       "status": "live",
@@ -1384,20 +1384,20 @@
           "goalDifference": 4
         },
         {
-          "team": "Croatia",
-          "played": 3,
-          "points": 6,
-          "goalsFor": 4,
-          "goalsAgainst": 4,
-          "goalDifference": 0
-        },
-        {
           "team": "Ghana",
           "played": 3,
-          "points": 4,
-          "goalsFor": 1,
+          "points": 5,
+          "goalsFor": 2,
           "goalsAgainst": 1,
-          "goalDifference": 0
+          "goalDifference": 1
+        },
+        {
+          "team": "Croatia",
+          "played": 3,
+          "points": 4,
+          "goalsFor": 4,
+          "goalsAgainst": 5,
+          "goalDifference": -1
         },
         {
           "team": "Panama",
