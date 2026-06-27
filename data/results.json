@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-27T01:45:17.470Z",
-    "status": "Auto-updated from ESPN: 64 live/final matches counted: 2 in progress.",
+    "lastUpdated": "2026-06-27T02:00:24.919Z",
+    "status": "Auto-updated from ESPN: 64 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,9 +10,9 @@
     {
       "id": "760478",
       "date": "2026-06-27T00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "82'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Cape Verde",
       "awayTeam": "Saudi Arabia",
       "homeScore": 0,
@@ -25,7 +25,7 @@
       "date": "2026-06-27T00:00Z",
       "state": "in",
       "completed": false,
-      "detail": "80'",
+      "detail": "90'+5'",
       "homeTeam": "Uruguay",
       "awayTeam": "Spain",
       "homeScore": 0,
