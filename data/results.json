@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-27T22:00:19.742Z",
+    "lastUpdated": "2026-06-27T22:15:17.428Z",
     "status": "Auto-updated from ESPN: 68 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-27T21:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "54'",
       "homeTeam": "Croatia",
       "awayTeam": "Ghana",
       "homeScore": 1,
@@ -25,7 +25,7 @@
       "date": "2026-06-27T21:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "56'",
       "homeTeam": "Panama",
       "awayTeam": "England",
       "homeScore": 0,
