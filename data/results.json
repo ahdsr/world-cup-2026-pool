@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-27T04:45:17.709Z",
-    "status": "Auto-updated from ESPN: 66 live/final matches counted: 2 in progress.",
+    "lastUpdated": "2026-06-27T05:00:19.266Z",
+    "status": "Auto-updated from ESPN: 66 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -12,26 +12,26 @@
       "date": "2026-06-27T03:00Z",
       "state": "in",
       "completed": false,
-      "detail": "81'",
+      "detail": "90'+6'",
       "homeTeam": "Egypt",
       "awayTeam": "Iran",
       "homeScore": 1,
-      "awayScore": 1,
+      "awayScore": 2,
       "winner": "",
       "loser": ""
     },
     {
       "id": "760477",
       "date": "2026-06-27T03:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "83'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "New Zealand",
       "awayTeam": "Belgium",
-      "homeScore": 0,
-      "awayScore": 3,
-      "winner": "",
-      "loser": ""
+      "homeScore": 1,
+      "awayScore": 5,
+      "winner": "Belgium",
+      "loser": "New Zealand"
     },
     {
       "id": "760478",
@@ -1128,8 +1128,8 @@
     "G": {
       "currentOrder": [
         "Belgium",
-        "Egypt",
         "Iran",
+        "Egypt",
         "New Zealand"
       ],
       "status": "live",
@@ -1138,33 +1138,33 @@
           "team": "Belgium",
           "played": 3,
           "points": 5,
-          "goalsFor": 4,
-          "goalsAgainst": 1,
-          "goalDifference": 3
-        },
-        {
-          "team": "Egypt",
-          "played": 3,
-          "points": 5,
-          "goalsFor": 5,
-          "goalsAgainst": 3,
-          "goalDifference": 2
+          "goalsFor": 6,
+          "goalsAgainst": 2,
+          "goalDifference": 4
         },
         {
           "team": "Iran",
           "played": 3,
-          "points": 3,
-          "goalsFor": 3,
+          "points": 5,
+          "goalsFor": 4,
           "goalsAgainst": 3,
-          "goalDifference": 0
+          "goalDifference": 1
+        },
+        {
+          "team": "Egypt",
+          "played": 3,
+          "points": 4,
+          "goalsFor": 5,
+          "goalsAgainst": 4,
+          "goalDifference": 1
         },
         {
           "team": "New Zealand",
           "played": 3,
           "points": 1,
-          "goalsFor": 3,
-          "goalsAgainst": 8,
-          "goalDifference": -5
+          "goalsFor": 4,
+          "goalsAgainst": 10,
+          "goalDifference": -6
         }
       ]
     },
