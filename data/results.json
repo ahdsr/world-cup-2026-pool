@@ -1,12 +1,38 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-27T21:00:19.178Z",
-    "status": "Auto-updated from ESPN: 66 live/final matches counted.",
+    "lastUpdated": "2026-06-27T21:15:17.234Z",
+    "status": "Auto-updated from ESPN: 68 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760480",
+      "date": "2026-06-27T21:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "13'",
+      "homeTeam": "Croatia",
+      "awayTeam": "Ghana",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
+    {
+      "id": "760485",
+      "date": "2026-06-27T21:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Panama",
+      "awayTeam": "England",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760476",
       "date": "2026-06-27T03:00Z",
@@ -1347,36 +1373,36 @@
         "Croatia",
         "Panama"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "England",
-          "played": 2,
-          "points": 4,
+          "played": 3,
+          "points": 5,
           "goalsFor": 4,
           "goalsAgainst": 2,
           "goalDifference": 2
         },
         {
           "team": "Ghana",
-          "played": 2,
-          "points": 4,
+          "played": 3,
+          "points": 5,
           "goalsFor": 1,
           "goalsAgainst": 0,
           "goalDifference": 1
         },
         {
           "team": "Croatia",
-          "played": 2,
-          "points": 3,
+          "played": 3,
+          "points": 4,
           "goalsFor": 3,
           "goalsAgainst": 4,
           "goalDifference": -1
         },
         {
           "team": "Panama",
-          "played": 2,
-          "points": 0,
+          "played": 3,
+          "points": 1,
           "goalsFor": 0,
           "goalsAgainst": 2,
           "goalDifference": -2
