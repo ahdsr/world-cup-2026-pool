@@ -1,12 +1,38 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-27T00:00:23.459Z",
-    "status": "Auto-updated from ESPN: 62 live/final matches counted.",
+    "lastUpdated": "2026-06-27T00:15:21.635Z",
+    "status": "Auto-updated from ESPN: 64 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760478",
+      "date": "2026-06-27T00:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "13'",
+      "homeTeam": "Cape Verde",
+      "awayTeam": "Saudi Arabia",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
+    {
+      "id": "760479",
+      "date": "2026-06-27T00:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "14'",
+      "homeTeam": "Uruguay",
+      "awayTeam": "Spain",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760475",
       "date": "2026-06-26T19:00Z",
@@ -1123,36 +1149,36 @@
         "Cape Verde",
         "Saudi Arabia"
       ],
-      "status": "active",
+      "status": "live",
       "stats": [
         {
           "team": "Spain",
-          "played": 2,
-          "points": 4,
+          "played": 3,
+          "points": 5,
           "goalsFor": 4,
           "goalsAgainst": 0,
           "goalDifference": 4
         },
         {
           "team": "Uruguay",
-          "played": 2,
-          "points": 2,
+          "played": 3,
+          "points": 3,
           "goalsFor": 3,
           "goalsAgainst": 3,
           "goalDifference": 0
         },
         {
           "team": "Cape Verde",
-          "played": 2,
-          "points": 2,
+          "played": 3,
+          "points": 3,
           "goalsFor": 2,
           "goalsAgainst": 2,
           "goalDifference": 0
         },
         {
           "team": "Saudi Arabia",
-          "played": 2,
-          "points": 1,
+          "played": 3,
+          "points": 2,
           "goalsFor": 1,
           "goalsAgainst": 5,
           "goalDifference": -4
