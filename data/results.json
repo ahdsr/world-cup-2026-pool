@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-28T20:30:20.177Z",
+    "lastUpdated": "2026-06-28T20:45:18.219Z",
     "status": "Auto-updated from ESPN: 73 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-28T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "69'",
+      "detail": "84'",
       "homeTeam": "South Africa",
       "awayTeam": "Canada",
       "homeScore": 0,
