@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-28T02:30:17.917Z",
+    "lastUpdated": "2026-06-28T02:45:16.723Z",
     "status": "Auto-updated from ESPN: 72 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-28T02:00Z",
       "state": "in",
       "completed": false,
-      "detail": "30'",
+      "detail": "44'",
       "homeTeam": "Algeria",
       "awayTeam": "Austria",
       "homeScore": 0,
@@ -25,11 +25,11 @@
       "date": "2026-06-28T02:00Z",
       "state": "in",
       "completed": false,
-      "detail": "29'",
+      "detail": "44'",
       "homeTeam": "Jordan",
       "awayTeam": "Argentina",
       "homeScore": 0,
-      "awayScore": 1,
+      "awayScore": 2,
       "winner": "",
       "loser": ""
     },
@@ -1345,9 +1345,9 @@
           "team": "Argentina",
           "played": 3,
           "points": 9,
-          "goalsFor": 6,
+          "goalsFor": 7,
           "goalsAgainst": 0,
-          "goalDifference": 6
+          "goalDifference": 7
         },
         {
           "team": "Austria",
@@ -1370,8 +1370,8 @@
           "played": 3,
           "points": 0,
           "goalsFor": 2,
-          "goalsAgainst": 6,
-          "goalDifference": -4
+          "goalsAgainst": 7,
+          "goalDifference": -5
         }
       ]
     },
