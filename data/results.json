@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-28T01:00:19.825Z",
+    "lastUpdated": "2026-06-28T01:15:17.092Z",
     "status": "Auto-updated from ESPN: 70 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-27T23:30Z",
       "state": "in",
       "completed": false,
-      "detail": "68'",
+      "detail": "83'",
       "homeTeam": "Colombia",
       "awayTeam": "Portugal",
       "homeScore": 0,
@@ -25,10 +25,10 @@
       "date": "2026-06-27T23:30Z",
       "state": "in",
       "completed": false,
-      "detail": "66'",
+      "detail": "81'",
       "homeTeam": "DR Congo",
       "awayTeam": "Uzbekistan",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 1,
       "winner": "",
       "loser": ""
@@ -1353,8 +1353,8 @@
       "currentOrder": [
         "Colombia",
         "Portugal",
-        "Uzbekistan",
-        "DR Congo"
+        "DR Congo",
+        "Uzbekistan"
       ],
       "status": "live",
       "stats": [
@@ -1375,20 +1375,20 @@
           "goalDifference": 5
         },
         {
-          "team": "Uzbekistan",
-          "played": 3,
-          "points": 3,
-          "goalsFor": 2,
-          "goalsAgainst": 8,
-          "goalDifference": -6
-        },
-        {
           "team": "DR Congo",
           "played": 3,
-          "points": 1,
-          "goalsFor": 1,
+          "points": 4,
+          "goalsFor": 3,
           "goalsAgainst": 3,
-          "goalDifference": -2
+          "goalDifference": 0
+        },
+        {
+          "team": "Uzbekistan",
+          "played": 3,
+          "points": 0,
+          "goalsFor": 2,
+          "goalsAgainst": 10,
+          "goalDifference": -8
         }
       ]
     },
