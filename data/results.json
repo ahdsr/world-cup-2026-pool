@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-28T02:15:19.802Z",
+    "lastUpdated": "2026-06-28T02:30:17.917Z",
     "status": "Auto-updated from ESPN: 72 live/final matches counted: 2 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,11 +12,11 @@
       "date": "2026-06-28T02:00Z",
       "state": "in",
       "completed": false,
-      "detail": "14'",
+      "detail": "30'",
       "homeTeam": "Algeria",
       "awayTeam": "Austria",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -25,11 +25,11 @@
       "date": "2026-06-28T02:00Z",
       "state": "in",
       "completed": false,
-      "detail": "14'",
+      "detail": "29'",
       "homeTeam": "Jordan",
       "awayTeam": "Argentina",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -1344,34 +1344,34 @@
         {
           "team": "Argentina",
           "played": 3,
-          "points": 7,
-          "goalsFor": 5,
+          "points": 9,
+          "goalsFor": 6,
           "goalsAgainst": 0,
-          "goalDifference": 5
+          "goalDifference": 6
         },
         {
           "team": "Austria",
           "played": 3,
-          "points": 4,
-          "goalsFor": 3,
+          "points": 6,
+          "goalsFor": 4,
           "goalsAgainst": 3,
-          "goalDifference": 0
+          "goalDifference": 1
         },
         {
           "team": "Algeria",
           "played": 3,
-          "points": 4,
+          "points": 3,
           "goalsFor": 2,
-          "goalsAgainst": 4,
-          "goalDifference": -2
+          "goalsAgainst": 5,
+          "goalDifference": -3
         },
         {
           "team": "Jordan",
           "played": 3,
-          "points": 1,
+          "points": 0,
           "goalsFor": 2,
-          "goalsAgainst": 5,
-          "goalDifference": -3
+          "goalsAgainst": 6,
+          "goalDifference": -4
         }
       ]
     },
