@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-28T01:30:19.302Z",
-    "status": "Auto-updated from ESPN: 70 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-28T01:45:18.436Z",
+    "status": "Auto-updated from ESPN: 70 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -23,15 +23,15 @@
     {
       "id": "760482",
       "date": "2026-06-27T23:30Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+6'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "DR Congo",
       "awayTeam": "Uzbekistan",
       "homeScore": 3,
       "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "winner": "DR Congo",
+      "loser": "Uzbekistan"
     },
     {
       "id": "760480",
@@ -1356,7 +1356,7 @@
         "DR Congo",
         "Uzbekistan"
       ],
-      "status": "live",
+      "status": "final",
       "stats": [
         {
           "team": "Colombia",
