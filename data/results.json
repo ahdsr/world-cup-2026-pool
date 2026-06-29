@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-29T22:45:59.095Z",
+    "lastUpdated": "2026-06-29T23:00:58.366Z",
     "status": "Auto-updated from ESPN: 75 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-29T20:30Z",
       "state": "in",
       "completed": false,
-      "detail": "102'",
+      "detail": "110'",
       "homeTeam": "Germany",
       "awayTeam": "Paraguay",
       "homeScore": 1,
