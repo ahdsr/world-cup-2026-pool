@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-29T20:30:59.206Z",
-    "status": "Auto-updated from ESPN: 74 live/final matches counted.",
+    "lastUpdated": "2026-06-29T20:46:01.200Z",
+    "status": "Auto-updated from ESPN: 75 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760489",
+      "date": "2026-06-29T20:30Z",
+      "state": "in",
+      "completed": false,
+      "detail": "16'",
+      "homeTeam": "Germany",
+      "awayTeam": "Paraguay",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760487",
       "date": "2026-06-29T17:00Z",
