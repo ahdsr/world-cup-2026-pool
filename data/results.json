@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-29T18:16:01.683Z",
+    "lastUpdated": "2026-06-29T18:30:59.685Z",
     "status": "Auto-updated from ESPN: 74 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,10 +12,10 @@
       "date": "2026-06-29T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "54'",
+      "detail": "69'",
       "homeTeam": "Brazil",
       "awayTeam": "Japan",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 1,
       "winner": "",
       "loser": ""
