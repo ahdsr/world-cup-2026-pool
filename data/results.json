@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-29T19:01:03.566Z",
-    "status": "Auto-updated from ESPN: 74 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-06-29T19:15:09.308Z",
+    "status": "Auto-updated from ESPN: 74 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
@@ -10,15 +10,15 @@
     {
       "id": "760487",
       "date": "2026-06-29T17:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+9'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Brazil",
       "awayTeam": "Japan",
       "homeScore": 2,
       "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "winner": "Brazil",
+      "loser": "Japan"
     },
     {
       "id": "760486",
@@ -1499,7 +1499,8 @@
     "I"
   ],
   "roundOf16": [
-    "Canada"
+    "Canada",
+    "Brazil"
   ],
   "quarterFinalists": [],
   "semifinalists": [],
