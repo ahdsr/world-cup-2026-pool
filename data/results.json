@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-30T17:00:28.031Z",
-    "status": "Auto-updated from ESPN: 76 live/final matches counted.",
+    "lastUpdated": "2026-06-30T17:15:27.231Z",
+    "status": "Auto-updated from ESPN: 77 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760490",
+      "date": "2026-06-30T17:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "Ivory Coast",
+      "awayTeam": "Norway",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760488",
       "date": "2026-06-30T01:00Z",
