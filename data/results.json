@@ -1,12 +1,25 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-30T00:45:58.905Z",
-    "status": "Auto-updated from ESPN: 75 live/final matches counted.",
+    "lastUpdated": "2026-06-30T01:00:59.278Z",
+    "status": "Auto-updated from ESPN: 76 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760488",
+      "date": "2026-06-30T01:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "1'",
+      "homeTeam": "Netherlands",
+      "awayTeam": "Morocco",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760489",
       "date": "2026-06-29T20:30Z",
