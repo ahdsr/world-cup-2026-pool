@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-30T17:30:27.101Z",
+    "lastUpdated": "2026-06-30T17:45:27.593Z",
     "status": "Auto-updated from ESPN: 77 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,11 +40,11 @@
       "date": "2026-06-30T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "30'",
+      "detail": "45'",
       "homeTeam": "Ivory Coast",
       "awayTeam": "Norway",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -1043,11 +1043,11 @@
       "date": "2026-06-30T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "30'",
+      "detail": "45'",
       "homeTeam": "Ivory Coast",
       "awayTeam": "Norway",
       "homeScore": 0,
-      "awayScore": 0
+      "awayScore": 1
     },
     {
       "id": "760492",
