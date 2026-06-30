@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-30T01:15:59.182Z",
+    "lastUpdated": "2026-06-30T01:30:58.843Z",
     "status": "Auto-updated from ESPN: 76 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -12,7 +12,7 @@
       "date": "2026-06-30T01:00Z",
       "state": "in",
       "completed": false,
-      "detail": "15'",
+      "detail": "30'",
       "homeTeam": "Netherlands",
       "awayTeam": "Morocco",
       "homeScore": 0,
