@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { buildLeaderboardRows, buildPoolAnalytics } from "../assets/leaderboard.js";
+import { buildLeaderboardRows, buildPoolAnalytics, buildTodayOutlook } from "../assets/leaderboard.js";
 import { scorePool } from "../assets/scoring.js";
 import entries from "../data/entries.json" with { type: "json" };
 import results from "../data/results.json" with { type: "json" };
@@ -63,6 +63,39 @@ assert.equal(rows.some((row) => row.sample), false, "leaderboard should only sho
       `${row.name} should have a valid ceiling rank`,
     );
   }
+}
+
+{
+  const outlookResults = structuredClone(results);
+  outlookResults.fixtures = [
+    {
+      id: "today-england-ghana",
+      date: "2026-06-23T20:00:00.000Z",
+      state: "pre",
+      completed: false,
+      detail: "Scheduled",
+      homeTeam: "England",
+      awayTeam: "Ghana",
+      homeScore: 0,
+      awayScore: 0,
+    },
+  ];
+  const outlook = buildTodayOutlook(
+    entries,
+    picksByPath,
+    outlookResults,
+    "lucas-czuchraj",
+    new Date("2026-06-23T12:00:00.000"),
+  );
+
+  assert.ok(outlook, "today outlook should be built for a real entry");
+  assert.equal(outlook.matches.length, 1, "today outlook should include today's fixture");
+  assert.equal(outlook.totalScenarioCount, 3, "one actionable match should create three outcomes");
+  assert.equal(outlook.bestScenarios.length, 3, "today outlook should rank available scenarios");
+  assert.ok(
+    outlook.bestScenarios.every((scenario) => scenario.outcomes.length === 1),
+    "each scenario should describe the required match outcome",
+  );
 }
 
 console.log("Leaderboard tests passed.");

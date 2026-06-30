@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import {
   buildResultsFromEvents,
+  computeMostCardsFromFifaLiveMatches,
   createTeamResolver,
   parseEspnEvent,
 } from "../scripts/update-results.mjs";
@@ -107,12 +108,57 @@ function eventFixture({
     "South Africa",
   ]);
   assert.deepEqual(
+    results.fixtures.map((match) => match.id),
+    ["group-a-2"],
+    "scheduled matches should be exposed separately from counted matches",
+  );
+  assert.deepEqual(
     results.topThirdGroups,
     [],
     "third-place groups should be withheld until the full group stage is final",
   );
   assert.deepEqual(results.bonus.mostGoalsScored, ["Mexico"]);
   assert.deepEqual(results.bonus.mostGoalsConceded, ["South Africa"]);
+  assert.equal(
+    results.meta.bonusSources.mostCards.source,
+    "FIFA live match bookings",
+    "bonus metadata should identify the FIFA cards source",
+  );
+}
+
+{
+  const resolveTeam = createTeamResolver(picks, aliases);
+  const mostCards = computeMostCardsFromFifaLiveMatches(
+    [
+      {
+        HomeTeam: {
+          ShortClubName: "USA",
+          Bookings: [{ Card: 1 }, { Card: 2 }],
+        },
+        AwayTeam: {
+          ShortClubName: "Korea Republic",
+          Bookings: [{ Card: 1 }],
+        },
+      },
+      {
+        HomeTeam: {
+          ShortClubName: "South Africa",
+          Bookings: [{ Card: 1 }],
+        },
+        AwayTeam: {
+          ShortClubName: "USA",
+          Bookings: [{ Card: 3 }],
+        },
+      },
+    ],
+    resolveTeam,
+  );
+
+  assert.deepEqual(
+    mostCards,
+    ["United States"],
+    "FIFA bookings should be normalized through team aliases and counted for card bonus leaders",
+  );
 }
 
 {
@@ -206,6 +252,40 @@ function eventFixture({
   assert.equal(results.groups.A.status, "official");
   assert.deepEqual(results.topThirdGroups, []);
   assert.deepEqual(results.bonus.mostCards, ["Uruguay"]);
+}
+
+{
+  const results = buildResultsFromEvents(
+    [
+      eventFixture({
+        id: "group-a-1",
+        name: "South Africa at Mexico",
+        home: "Mexico",
+        away: "South Africa",
+        homeScore: 2,
+        awayScore: 0,
+        winner: "Mexico",
+      }),
+    ],
+    {
+      picks,
+      aliases,
+      fifaBonusResults: {
+        mostCards: ["Mexico"],
+      },
+      manualOverrides: {
+        bonus: {
+          mostCards: [],
+        },
+      },
+    },
+  );
+
+  assert.deepEqual(
+    results.bonus.mostCards,
+    ["Mexico"],
+    "empty manual bonus placeholders should not erase automatic FIFA bonus results",
+  );
 }
 
 console.log("Updater tests passed.");

@@ -1,10 +1,38 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-30T17:15:27.231Z",
+    "lastUpdated": "2026-06-30T17:19:45.945Z",
     "status": "Auto-updated from ESPN: 77 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
-    "sourceNote": "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
+    "bonusSources": {
+      "mostGoalsScored": {
+        "source": "ESPN match scores",
+        "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
+        "update": "Automatic with each results update"
+      },
+      "mostGoalsConceded": {
+        "source": "ESPN match scores",
+        "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
+        "update": "Automatic with each results update"
+      },
+      "farthestGoal": {
+        "source": "Official match reports/FIFA statistics when available",
+        "sourceUrl": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics",
+        "update": "Manual override required"
+      },
+      "bestPassCompletion": {
+        "source": "FIFA team statistics: Distribution, Passing Accuracy",
+        "sourceUrl": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics",
+        "update": "Manual override required until FIFA exposes the aggregate value in a stable API"
+      },
+      "mostCards": {
+        "source": "FIFA live match bookings",
+        "sourceUrl": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics",
+        "apiUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
+        "update": "Automatic with each results update"
+      }
+    },
+    "sourceNote": "Group standings are computed from ESPN match scores. FIFA live bookings are used for most-card bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
     {
@@ -12,7 +40,7 @@
       "date": "2026-06-30T17:00Z",
       "state": "in",
       "completed": false,
-      "detail": "15'",
+      "detail": "19'",
       "homeTeam": "Ivory Coast",
       "awayTeam": "Norway",
       "homeScore": 0,
@@ -1009,6 +1037,316 @@
       "loser": "South Africa"
     }
   ],
+  "fixtures": [
+    {
+      "id": "760490",
+      "date": "2026-06-30T17:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "19'",
+      "homeTeam": "Ivory Coast",
+      "awayTeam": "Norway",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760492",
+      "date": "2026-06-30T21:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Tue, June 30th at 5:00 PM EDT",
+      "homeTeam": "France",
+      "awayTeam": "Sweden",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760491",
+      "date": "2026-07-01T01:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Tue, June 30th at 9:00 PM EDT",
+      "homeTeam": "Mexico",
+      "awayTeam": "Ecuador",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760495",
+      "date": "2026-07-01T16:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Wed, July 1st at 12:00 PM EDT",
+      "homeTeam": "England",
+      "awayTeam": "DR Congo",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760493",
+      "date": "2026-07-01T20:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Wed, July 1st at 4:00 PM EDT",
+      "homeTeam": "Belgium",
+      "awayTeam": "Senegal",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760494",
+      "date": "2026-07-02T00:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Wed, July 1st at 8:00 PM EDT",
+      "homeTeam": "United States",
+      "awayTeam": "Bosnia & Herzegovina",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760497",
+      "date": "2026-07-02T19:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Thu, July 2nd at 3:00 PM EDT",
+      "homeTeam": "Spain",
+      "awayTeam": "Austria",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760496",
+      "date": "2026-07-02T23:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Thu, July 2nd at 7:00 PM EDT",
+      "homeTeam": "Portugal",
+      "awayTeam": "Croatia",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760498",
+      "date": "2026-07-03T03:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Thu, July 2nd at 11:00 PM EDT",
+      "homeTeam": "Switzerland",
+      "awayTeam": "Algeria",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760499",
+      "date": "2026-07-03T18:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Fri, July 3rd at 2:00 PM EDT",
+      "homeTeam": "Australia",
+      "awayTeam": "Egypt",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760500",
+      "date": "2026-07-03T22:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Fri, July 3rd at 6:00 PM EDT",
+      "homeTeam": "Argentina",
+      "awayTeam": "Cape Verde",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760501",
+      "date": "2026-07-04T01:30Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Fri, July 3rd at 9:30 PM EDT",
+      "homeTeam": "Colombia",
+      "awayTeam": "Ghana",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760502",
+      "date": "2026-07-04T17:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Sat, July 4th at 1:00 PM EDT",
+      "homeTeam": "Canada",
+      "awayTeam": "Morocco",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760503",
+      "date": "2026-07-04T21:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Sat, July 4th at 5:00 PM EDT",
+      "homeTeam": "Paraguay",
+      "awayTeam": "Round of 32 5 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760504",
+      "date": "2026-07-05T20:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Sun, July 5th at 4:00 PM EDT",
+      "homeTeam": "Brazil",
+      "awayTeam": "Round of 32 6 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760505",
+      "date": "2026-07-06T00:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Sun, July 5th at 8:00 PM EDT",
+      "homeTeam": "Round of 32 7 Winner",
+      "awayTeam": "Round of 32 8 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760506",
+      "date": "2026-07-06T19:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Mon, July 6th at 3:00 PM EDT",
+      "homeTeam": "Round of 32 11 Winner",
+      "awayTeam": "Round of 32 12 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760507",
+      "date": "2026-07-07T00:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Mon, July 6th at 8:00 PM EDT",
+      "homeTeam": "Round of 32 9 Winner",
+      "awayTeam": "Round of 32 10 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760509",
+      "date": "2026-07-07T16:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Tue, July 7th at 12:00 PM EDT",
+      "homeTeam": "Round of 32 14 Winner",
+      "awayTeam": "Round of 32 16 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760508",
+      "date": "2026-07-07T20:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Tue, July 7th at 4:00 PM EDT",
+      "homeTeam": "Round of 32 13 Winner",
+      "awayTeam": "Round of 32 15 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760510",
+      "date": "2026-07-09T20:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Thu, July 9th at 4:00 PM EDT",
+      "homeTeam": "Round of 16 1 Winner",
+      "awayTeam": "Round of 16 2 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760511",
+      "date": "2026-07-10T19:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Fri, July 10th at 3:00 PM EDT",
+      "homeTeam": "Round of 16 5 Winner",
+      "awayTeam": "Round of 16 6 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760512",
+      "date": "2026-07-11T21:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Sat, July 11th at 5:00 PM EDT",
+      "homeTeam": "Round of 16 3 Winner",
+      "awayTeam": "Round of 16 4 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760513",
+      "date": "2026-07-12T01:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Sat, July 11th at 9:00 PM EDT",
+      "homeTeam": "Round of 16 7 Winner",
+      "awayTeam": "Round of 16 8 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760514",
+      "date": "2026-07-14T19:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Tue, July 14th at 3:00 PM EDT",
+      "homeTeam": "Quarterfinal 1 Winner",
+      "awayTeam": "Quarterfinal 2 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760515",
+      "date": "2026-07-15T19:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Wed, July 15th at 3:00 PM EDT",
+      "homeTeam": "Quarterfinal 3 Winner",
+      "awayTeam": "Quarterfinal 4 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760516",
+      "date": "2026-07-18T21:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Sat, July 18th at 5:00 PM EDT",
+      "homeTeam": "Semifinal 1 Loser",
+      "awayTeam": "Semifinal 2 Loser",
+      "homeScore": 0,
+      "awayScore": 0
+    },
+    {
+      "id": "760517",
+      "date": "2026-07-19T19:00Z",
+      "state": "pre",
+      "completed": false,
+      "detail": "Sun, July 19th at 3:00 PM EDT",
+      "homeTeam": "Semifinal 1 Winner",
+      "awayTeam": "Semifinal 2 Winner",
+      "homeScore": 0,
+      "awayScore": 0
+    }
+  ],
   "groups": {
     "A": {
       "currentOrder": [
@@ -1564,6 +1902,8 @@
     ],
     "farthestGoal": [],
     "bestPassCompletion": [],
-    "mostCards": []
+    "mostCards": [
+      "Paraguay"
+    ]
   }
 }

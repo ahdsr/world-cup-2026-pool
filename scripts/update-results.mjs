@@ -4,6 +4,10 @@ import fs from "node:fs/promises";
 
 export const ESPN_SCOREBOARD_URL =
   "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719";
+export const FIFA_TEAM_STATISTICS_URL =
+  "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics";
+export const FIFA_SEASON_ID = "285023";
+export const FIFA_CALENDAR_URL = `https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=${FIFA_SEASON_ID}`;
 
 export const GROUP_IDS = "ABCDEFGHIJKL".split("");
 export const STAGE_KEYS = [
@@ -32,6 +36,15 @@ function asArray(value) {
   return Array.isArray(value) ? value.filter(Boolean) : [];
 }
 
+function localizedDescription(value) {
+  return (
+    asArray(value).find((item) => item.Locale === "en-GB")?.Description ??
+    asArray(value).find((item) => item.Locale === "en")?.Description ??
+    asArray(value)[0]?.Description ??
+    ""
+  );
+}
+
 function numberValue(value) {
   const parsed = Number.parseInt(String(value ?? ""), 10);
   return Number.isFinite(parsed) ? parsed : null;
@@ -49,6 +62,19 @@ async function readJson(relativePath, fallback = null) {
 
 async function writeJson(relativePath, value) {
   await fs.writeFile(resolve(ROOT_DIR, relativePath), `${JSON.stringify(value, null, 2)}\n`);
+}
+
+async function fetchJson(url) {
+  const response = await fetch(url, {
+    headers: {
+      accept: "application/json",
+      "user-agent": "world-cup-2026-pool-updater",
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status} ${response.statusText} (${url})`);
+  }
+  return response.json();
 }
 
 export function buildTeamIndexes(picks) {
@@ -405,13 +431,96 @@ export function computeBonusResults(groups, picks) {
   return buildBonusResults(groups, picks);
 }
 
-function buildBonusResults(groups, picks) {
+function buildBonusResults(groups, picks, fifaBonusResults = {}) {
   const base = Object.fromEntries((picks.bonus ?? []).map((item) => [item.id, []]));
   const stats = allTeamStats(groups);
   return {
     ...base,
+    ...fifaBonusResults,
     mostGoalsScored: leadersBy(stats, "goalsFor"),
     mostGoalsConceded: leadersBy(stats, "goalsAgainst"),
+  };
+}
+
+function fifaTeamName(team) {
+  return team?.ShortClubName ?? localizedDescription(team?.TeamName) ?? team?.Abbreviation ?? "";
+}
+
+function countableFifaCard(booking) {
+  return [1, 2, 3].includes(numberValue(booking?.Card));
+}
+
+export function computeMostCardsFromFifaLiveMatches(matches, resolveTeam = (value) => value) {
+  const totals = new Map();
+
+  for (const match of asArray(matches)) {
+    for (const side of ["HomeTeam", "AwayTeam"]) {
+      const team = match?.[side];
+      const name = resolveTeam(fifaTeamName(team));
+      if (!name) continue;
+      const cardCount = asArray(team?.Bookings).filter(countableFifaCard).length;
+      totals.set(name, (totals.get(name) ?? 0) + cardCount);
+    }
+  }
+
+  const max = Math.max(...totals.values(), 0);
+  if (max <= 0) return [];
+  return [...totals.entries()]
+    .filter(([, total]) => total === max)
+    .map(([team]) => team)
+    .sort((a, b) => a.localeCompare(b));
+}
+
+function fifaMatchHasStarted(match) {
+  return (
+    [0, 3, 5].includes(numberValue(match?.MatchStatus)) ||
+    (numberValue(match?.HomeTeamScore) !== null && numberValue(match?.AwayTeamScore) !== null)
+  );
+}
+
+async function fetchFifaLiveMatch(match) {
+  const url = `https://api.fifa.com/api/v3/live/football/${match.IdCompetition}/${match.IdSeason}/${match.IdStage}/${match.IdMatch}?language=en`;
+  return fetchJson(url);
+}
+
+export async function fetchFifaBonusResults(resolveTeam = (value) => value) {
+  const calendar = await fetchJson(FIFA_CALENDAR_URL);
+  const matches = asArray(calendar.Results).filter(fifaMatchHasStarted);
+  const liveMatches = await Promise.all(matches.map(fetchFifaLiveMatch));
+
+  return {
+    mostCards: computeMostCardsFromFifaLiveMatches(liveMatches, resolveTeam),
+  };
+}
+
+function buildBonusSources(sourceUrl = ESPN_SCOREBOARD_URL) {
+  return {
+    mostGoalsScored: {
+      source: "ESPN match scores",
+      sourceUrl,
+      update: "Automatic with each results update",
+    },
+    mostGoalsConceded: {
+      source: "ESPN match scores",
+      sourceUrl,
+      update: "Automatic with each results update",
+    },
+    farthestGoal: {
+      source: "Official match reports/FIFA statistics when available",
+      sourceUrl: FIFA_TEAM_STATISTICS_URL,
+      update: "Manual override required",
+    },
+    bestPassCompletion: {
+      source: "FIFA team statistics: Distribution, Passing Accuracy",
+      sourceUrl: FIFA_TEAM_STATISTICS_URL,
+      update: "Manual override required until FIFA exposes the aggregate value in a stable API",
+    },
+    mostCards: {
+      source: "FIFA live match bookings",
+      sourceUrl: FIFA_TEAM_STATISTICS_URL,
+      apiUrl: FIFA_CALENDAR_URL,
+      update: "Automatic with each results update",
+    },
   };
 }
 
@@ -447,15 +556,21 @@ export function applyResultsOverrides(results, manualOverrides = {}) {
   }
 
   for (const [key, value] of Object.entries(manualOverrides.bonus ?? {})) {
-    if (Array.isArray(value)) output.bonus[key] = value;
+    if (Array.isArray(value) && value.length > 0) output.bonus[key] = value;
   }
 
   return output;
 }
 
 export function buildResultsFromEvents(events, options) {
-  const { picks, aliases = {}, manualOverrides = {}, now = new Date().toISOString(), sourceUrl = ESPN_SCOREBOARD_URL } =
-    options;
+  const {
+    picks,
+    aliases = {},
+    manualOverrides = {},
+    fifaBonusResults = {},
+    now = new Date().toISOString(),
+    sourceUrl = ESPN_SCOREBOARD_URL,
+  } = options;
   const resolveTeam = createTeamResolver(picks, aliases);
   const parsedMatches = events.map((event) => parseEspnEvent(event, resolveTeam));
   const matches = applyMatchOverrides(parsedMatches, manualOverrides, resolveTeam);
@@ -476,8 +591,9 @@ export function buildResultsFromEvents(events, options) {
       status: `${statusParts.join(": ")}.`,
       source: "espn",
       sourceUrl,
+      bonusSources: buildBonusSources(sourceUrl),
       sourceNote:
-        "Group standings are computed from ESPN match scores. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden.",
+        "Group standings are computed from ESPN match scores. FIFA live bookings are used for most-card bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden.",
     },
     matches: matches
       .filter(isCountedMatch)
@@ -495,6 +611,20 @@ export function buildResultsFromEvents(events, options) {
         loser: match.loser,
       }))
       .sort((a, b) => String(b.date).localeCompare(String(a.date))),
+    fixtures: matches
+      .filter((match) => !match.completed)
+      .map((match) => ({
+        id: match.id,
+        date: match.date,
+        state: match.state,
+        completed: match.completed,
+        detail: match.detail,
+        homeTeam: match.homeTeam,
+        awayTeam: match.awayTeam,
+        homeScore: match.homeScore,
+        awayScore: match.awayScore,
+      }))
+      .sort((a, b) => String(a.date).localeCompare(String(b.date))),
     groups,
     topThirdGroups,
     roundOf16: knockout.roundOf16,
@@ -503,7 +633,7 @@ export function buildResultsFromEvents(events, options) {
     thirdPlaceMatch: knockout.thirdPlaceMatch,
     finalists: knockout.finalists,
     finals: knockout.finals,
-    bonus: buildBonusResults(groups, picks),
+    bonus: buildBonusResults(groups, picks, fifaBonusResults),
   };
 
   return applyResultsOverrides(results, manualOverrides);
@@ -520,10 +650,13 @@ export async function updateResults() {
     throw new Error(`ESPN scoreboard request failed: ${response.status} ${response.statusText}`);
   }
   const scoreboard = await response.json();
+  const resolveTeam = createTeamResolver(picks, aliases);
+  const fifaBonusResults = await fetchFifaBonusResults(resolveTeam);
   const results = buildResultsFromEvents(scoreboard.events ?? [], {
     picks,
     aliases,
     manualOverrides,
+    fifaBonusResults,
     now: new Date().toISOString(),
   });
   await writeJson("data/results.json", results);

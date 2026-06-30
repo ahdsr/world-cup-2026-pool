@@ -58,9 +58,18 @@ The updater writes `data/results.json` from ESPN's public scoreboard feed and co
 - knockout advancement arrays
 - final podium
 - score-derived bonuses for most goals scored and most goals conceded
+- FIFA booking-derived bonus for most red/yellow cards
 
 Manual-only data and official corrections belong in `data/manual-overrides.json`.
-Use that file for deeper FIFA tiebreakers, score corrections, and bonus categories not available from match scores.
+Use that file for deeper FIFA tiebreakers, score corrections, and bonus categories not available from stable feeds.
+
+Bonus source coverage:
+
+- Most goals scored: automatic from ESPN match scores.
+- Most goals conceded: automatic from ESPN match scores.
+- Most red & yellow cards: automatic from FIFA live match bookings, with FIFA's team statistics page as the public reference.
+- Best pass completion %: FIFA's team statistics page tracks this under Distribution / Passing Accuracy; keep this in `data/manual-overrides.json` until FIFA exposes the aggregate value through a stable API.
+- Goal from farthest distance: manual official-source override.
 
 ## GitHub Actions
 

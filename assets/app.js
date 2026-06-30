@@ -1,4 +1,4 @@
-import { buildLeaderboardRows, buildPoolAnalytics } from "./leaderboard.js?v=20260615-module-cache";
+import { buildLeaderboardRows, buildPoolAnalytics, buildTodayOutlook } from "./leaderboard.js?v=20260623-today-outlook";
 import { actualAdvancersForGroup, scorePool } from "./scoring.js?v=20260615-module-cache";
 
 const app = document.querySelector("#app");
@@ -110,6 +110,160 @@ function renderScoreCards(score) {
           `,
         )
         .join("")}
+    </section>
+  `;
+}
+
+function formatRank(rank) {
+  if (!Number.isFinite(rank)) return "-";
+  const suffix =
+    rank % 10 === 1 && rank % 100 !== 11
+      ? "st"
+      : rank % 10 === 2 && rank % 100 !== 12
+        ? "nd"
+        : rank % 10 === 3 && rank % 100 !== 13
+          ? "rd"
+          : "th";
+  return `${rank}${suffix}`;
+}
+
+function formatMatchTime(value) {
+  if (!value) return "Today";
+  const date = new Date(value);
+  if (Number.isNaN(date.getTime())) return "Today";
+  return new Intl.DateTimeFormat("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+  }).format(date);
+}
+
+function renderTodayOutcome(picks, outcome) {
+  const { match, type } = outcome;
+  if (type === "draw") {
+    return `${teamPill(picks, match.homeTeam)} <span class="muted">draw with</span> ${teamPill(picks, match.awayTeam)}`;
+  }
+
+  const winner = type === "home" ? match.homeTeam : match.awayTeam;
+  const loser = type === "home" ? match.awayTeam : match.homeTeam;
+  return `${teamPill(picks, winner, "winner")} <span class="muted">beat</span> ${teamPill(picks, loser)}`;
+}
+
+function renderPassedNames(names) {
+  if (!names.length) return "";
+  const visible = names.slice(0, 3);
+  const extra = names.length - visible.length;
+  return `
+    <p class="today-passed">
+      Moves ahead of ${escapeHtml(formatList(visible))}${extra > 0 ? ` and ${extra} more` : ""}
+    </p>
+  `;
+}
+
+function renderTodayScenario(picks, scenario) {
+  return `
+    <article class="today-scenario">
+      <header>
+        <div>
+          <span>Projected</span>
+          <strong>${formatRank(scenario.rank)} place, ${scenario.total} pts</strong>
+        </div>
+        ${statusPill(`+${scenario.pointGain} pts`, scenario.rankGain > 0 ? "good" : "")}
+      </header>
+      <ul class="today-outcome-list">
+        ${scenario.outcomes
+          .map(
+            (outcome) => `
+              <li>
+                <time>${escapeHtml(formatMatchTime(outcome.match.date))}</time>
+                <span>${renderTodayOutcome(picks, outcome)}</span>
+              </li>
+            `,
+          )
+          .join("")}
+      </ul>
+      ${renderPassedNames(scenario.passedNames)}
+    </article>
+  `;
+}
+
+function renderTodayOutlook(picks, outlook) {
+  if (!outlook) return "";
+
+  const hasMatches = outlook.matches.length > 0;
+  const hasImprovements = outlook.improvingScenarios.length > 0;
+  const best = outlook.improvingScenarios[0] ?? outlook.bestScenarios[0];
+  const summaryText = !hasMatches
+    ? "No remaining matches are scheduled in the feed for today."
+    : outlook.tooManyScenarios
+      ? "There are too many same-day combinations to summarize cleanly."
+      : hasImprovements
+        ? `${escapeHtml(outlook.entry.name)} can climb as high as ${formatRank(best.rank)} today.`
+        : `No remaining same-day outcome combination lifts ${escapeHtml(outlook.entry.name)} above ${formatRank(outlook.currentRank)}.`;
+
+  return `
+    <section class="panel today-panel" aria-label="Today's results">
+      <div class="leaderboard-title">
+        <div>
+          <h2>Today's Results</h2>
+          <p>${summaryText}</p>
+        </div>
+        ${statusPill(`${outlook.matches.length} match${outlook.matches.length === 1 ? "" : "es"}`)}
+      </div>
+      <div class="today-summary">
+        <article>
+          <span>Current spot</span>
+          <strong>${formatRank(outlook.currentRank)}</strong>
+          <em>${outlook.currentTotal} pts</em>
+        </article>
+        <article>
+          <span>Best case today</span>
+          <strong>${best ? formatRank(best.rank) : formatRank(outlook.currentRank)}</strong>
+          <em>${best ? `${best.total} pts` : "No scenario change"}</em>
+        </article>
+        <article>
+          <span>Paths that help</span>
+          <strong>${outlook.improvingScenarios.length}</strong>
+          <em>of ${outlook.totalScenarioCount || 0} checked</em>
+        </article>
+      </div>
+      ${
+        outlook.mustHaveOutcomes.length
+          ? `
+            <div class="today-must-haves">
+              <h3>Must happen</h3>
+              <ul>
+                ${outlook.mustHaveOutcomes
+                  .map((item) => `<li>${renderTodayOutcome(picks, item.outcome)}</li>`)
+                  .join("")}
+              </ul>
+            </div>
+          `
+          : ""
+      }
+      ${
+        best
+          ? `
+            <div class="today-scenarios">
+              <h3>${hasImprovements ? "Best paths up" : "Best available paths"}</h3>
+              <div class="today-scenario-grid">
+                ${(hasImprovements ? outlook.improvingScenarios : outlook.bestScenarios)
+                  .slice(0, 5)
+                  .map((scenario) => renderTodayScenario(picks, scenario))
+                  .join("")}
+              </div>
+            </div>
+          `
+          : `
+            <div class="empty-state">
+              <p>${
+                hasMatches
+                  ? "Today's matches are not actionable for this entry's current scoring path."
+                  : "Check back when the results feed includes today's fixtures."
+              }</p>
+            </div>
+          `
+      }
+      <p class="today-note">Scenarios use win/draw/loss outcomes with representative scores, so exact goal margins and tiebreakers can still change the final standings.</p>
     </section>
   `;
 }
@@ -320,11 +474,13 @@ function renderEntryHeader(entry, picks, results, score, sample = false) {
   `;
 }
 
-function renderRealEntry(entry, picks, results) {
+function renderRealEntry(entry, picks, results, entriesConfig, picksByPath) {
   const score = scorePool(picks, results);
+  const todayOutlook = buildTodayOutlook(entriesConfig, picksByPath, results, entry.id);
   return `
     ${renderEntryHeader(entry, picks, results, score)}
     ${renderScoreCards(score)}
+    ${renderTodayOutlook(picks, todayOutlook)}
     <section class="entry-details-surface" aria-label="Pick details">
       ${renderGroups(picks, results, score)}
       ${renderThirdPlace(picks, results)}
@@ -802,7 +958,13 @@ function renderRoute() {
     } else if (entry.sample) {
       content = renderSampleEntry(entry, entriesConfig, results);
     } else {
-      content = renderRealEntry(entry, picksByPath.get(entry.picksPath), results);
+      content = renderRealEntry(
+        entry,
+        picksByPath.get(entry.picksPath),
+        results,
+        entriesConfig,
+        picksByPath,
+      );
     }
   }
 

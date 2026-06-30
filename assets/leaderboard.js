@@ -1,4 +1,4 @@
-import { scorePool } from "./scoring.js";
+import { normalizeName, scorePool } from "./scoring.js";
 
 const EMPTY_SUBTOTALS = {
   group: 0,
@@ -58,6 +58,279 @@ export function buildLeaderboardRows(entriesConfig, picksByPath, results) {
         rank,
       };
     });
+}
+
+function validDate(value) {
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? null : date;
+}
+
+function sameLocalDay(value, today) {
+  const date = validDate(value);
+  if (!date) return false;
+  return (
+    date.getFullYear() === today.getFullYear() &&
+    date.getMonth() === today.getMonth() &&
+    date.getDate() === today.getDate()
+  );
+}
+
+function matchKey(match) {
+  return match.id || `${match.date}|${match.homeTeam}|${match.awayTeam}`;
+}
+
+function todayOpenMatches(results, today) {
+  const seen = new Set();
+  return [...(results.fixtures ?? []), ...(results.matches ?? [])]
+    .filter((match) => !match.completed && sameLocalDay(match.date, today))
+    .filter((match) => {
+      const key = matchKey(match);
+      if (seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    })
+    .sort((a, b) => String(a.date).localeCompare(String(b.date)));
+}
+
+function teamGroupMap(picks) {
+  const teams = new Map();
+  for (const [groupId, group] of Object.entries(picks?.groups ?? {})) {
+    for (const team of group.teams ?? []) {
+      teams.set(normalizeName(team.name), groupId);
+    }
+  }
+  return teams;
+}
+
+function matchGroup(match, teams) {
+  const homeGroup = teams.get(normalizeName(match.homeTeam));
+  const awayGroup = teams.get(normalizeName(match.awayTeam));
+  return homeGroup && homeGroup === awayGroup ? homeGroup : "";
+}
+
+function cloneValue(value) {
+  if (typeof structuredClone === "function") return structuredClone(value);
+  return JSON.parse(JSON.stringify(value));
+}
+
+function finiteScore(value, fallback = 0) {
+  return Number.isFinite(value) ? value : fallback;
+}
+
+function adjustScore(home, away, homeScore, awayScore, direction) {
+  const multiplier = direction === "remove" ? -1 : 1;
+  home.played += multiplier;
+  away.played += multiplier;
+  home.goalsFor += homeScore * multiplier;
+  home.goalsAgainst += awayScore * multiplier;
+  away.goalsFor += awayScore * multiplier;
+  away.goalsAgainst += homeScore * multiplier;
+
+  if (homeScore > awayScore) {
+    home.points += 3 * multiplier;
+  } else if (awayScore > homeScore) {
+    away.points += 3 * multiplier;
+  } else {
+    home.points += 1 * multiplier;
+    away.points += 1 * multiplier;
+  }
+
+  for (const item of [home, away]) {
+    item.played = Math.max(0, item.played);
+    item.points = Math.max(0, item.points);
+    item.goalsFor = Math.max(0, item.goalsFor);
+    item.goalsAgainst = Math.max(0, item.goalsAgainst);
+    item.goalDifference = item.goalsFor - item.goalsAgainst;
+  }
+}
+
+function compareStats(a, b) {
+  return (
+    b.points - a.points ||
+    b.goalDifference - a.goalDifference ||
+    b.goalsFor - a.goalsFor ||
+    a.team.localeCompare(b.team)
+  );
+}
+
+function groupStatsMap(group) {
+  return new Map((group?.stats ?? []).map((item) => [normalizeName(item.team), item]));
+}
+
+function representativeScore(match, outcome) {
+  const currentHome = match.state === "in" ? finiteScore(match.homeScore) : 0;
+  const currentAway = match.state === "in" ? finiteScore(match.awayScore) : 0;
+
+  if (outcome === "home") {
+    return [Math.max(currentHome, currentAway + 1, 1), currentAway];
+  }
+  if (outcome === "away") {
+    return [currentHome, Math.max(currentAway, currentHome + 1, 1)];
+  }
+
+  const drawScore = match.state === "in" ? Math.max(currentHome, currentAway) : 1;
+  return [drawScore, drawScore];
+}
+
+function applyScenarioMatch(results, match, outcome, groupId) {
+  const group = results.groups?.[groupId];
+  if (!group) return;
+
+  const stats = groupStatsMap(group);
+  const home = stats.get(normalizeName(match.homeTeam));
+  const away = stats.get(normalizeName(match.awayTeam));
+  if (!home || !away) return;
+
+  if (match.state === "in") {
+    adjustScore(home, away, finiteScore(match.homeScore), finiteScore(match.awayScore), "remove");
+  }
+
+  const [homeScore, awayScore] = representativeScore(match, outcome);
+  adjustScore(home, away, homeScore, awayScore, "add");
+
+  group.stats = [...stats.values()].sort(compareStats);
+  group.currentOrder = group.stats.map((item) => item.team);
+  if (group.status === "not-started") group.status = "active";
+}
+
+function leadersBy(stats, key) {
+  if (stats.length === 0) return [];
+  const max = Math.max(...stats.map((item) => item[key]));
+  if (max <= 0) return [];
+  return stats
+    .filter((item) => item[key] === max)
+    .map((item) => item.team)
+    .sort((a, b) => a.localeCompare(b));
+}
+
+function recomputeScoreBonuses(results) {
+  const stats = Object.values(results.groups ?? {})
+    .flatMap((group) => group.stats ?? [])
+    .filter((item) => item.played > 0);
+  results.bonus = {
+    ...(results.bonus ?? {}),
+    mostGoalsScored: leadersBy(stats, "goalsFor"),
+    mostGoalsConceded: leadersBy(stats, "goalsAgainst"),
+  };
+}
+
+function outcomeLabel(match, outcome) {
+  if (outcome === "draw") return `${match.homeTeam} and ${match.awayTeam} draw`;
+  return `${outcome === "home" ? match.homeTeam : match.awayTeam} win`;
+}
+
+function* outcomeCombinations(matches, index = 0, current = []) {
+  if (index >= matches.length) {
+    yield current;
+    return;
+  }
+
+  for (const outcome of ["home", "draw", "away"]) {
+    yield* outcomeCombinations(matches, index + 1, [...current, outcome]);
+  }
+}
+
+function passedEntrants(currentRows, scenarioRows, player) {
+  const scenarioPlayer = scenarioRows.find((row) => row.id === player.id);
+  if (!scenarioPlayer) return [];
+
+  return currentRows
+    .filter((row) => row.rank < player.rank)
+    .filter((row) => {
+      const scenarioOpponent = scenarioRows.find((item) => item.id === row.id);
+      return scenarioOpponent && scenarioPlayer.rank < scenarioOpponent.rank;
+    })
+    .map((row) => row.name);
+}
+
+export function buildTodayOutlook(entriesConfig, picksByPath, results, entryId, today = new Date()) {
+  const entry = (entriesConfig.entries ?? []).find((item) => item.id === entryId);
+  if (!entry || entry.sample) return null;
+
+  const picks = picksByPath.get(entry.picksPath);
+  if (!picks) return null;
+
+  const currentRows = buildLeaderboardRows(entriesConfig, picksByPath, results);
+  const currentPlayer = currentRows.find((row) => row.id === entryId);
+  if (!currentPlayer) return null;
+
+  const teams = teamGroupMap(picks);
+  const matches = todayOpenMatches(results, today);
+  const actionableMatches = matches
+    .map((match) => ({ ...match, groupId: matchGroup(match, teams) }))
+    .filter((match) => match.groupId);
+  const totalScenarioCount = 3 ** actionableMatches.length;
+
+  if (!actionableMatches.length || totalScenarioCount > 729) {
+    return {
+      entry,
+      currentRank: currentPlayer.rank,
+      currentTotal: currentPlayer.score.total,
+      matches,
+      actionableMatches,
+      totalScenarioCount,
+      tooManyScenarios: totalScenarioCount > 729,
+      scenarios: [],
+      improvingScenarios: [],
+      bestScenarios: [],
+      mustHaveOutcomes: [],
+    };
+  }
+
+  const scenarios = [];
+  for (const outcomes of outcomeCombinations(actionableMatches)) {
+    const scenarioResults = cloneValue(results);
+    actionableMatches.forEach((match, index) => {
+      applyScenarioMatch(scenarioResults, match, outcomes[index], match.groupId);
+    });
+    recomputeScoreBonuses(scenarioResults);
+
+    const scenarioRows = buildLeaderboardRows(entriesConfig, picksByPath, scenarioResults);
+    const scenarioPlayer = scenarioRows.find((row) => row.id === entryId);
+    if (!scenarioPlayer) continue;
+
+    scenarios.push({
+      rank: scenarioPlayer.rank,
+      total: scenarioPlayer.score.total,
+      pointGain: scenarioPlayer.score.total - currentPlayer.score.total,
+      rankGain: currentPlayer.rank - scenarioPlayer.rank,
+      outcomes: outcomes.map((outcome, index) => ({
+        type: outcome,
+        label: outcomeLabel(actionableMatches[index], outcome),
+        match: actionableMatches[index],
+      })),
+      passedNames: passedEntrants(currentRows, scenarioRows, currentPlayer),
+    });
+  }
+
+  const sortScenarios = (a, b) =>
+    a.rank - b.rank || b.total - a.total || b.pointGain - a.pointGain;
+  const improvingScenarios = scenarios
+    .filter((scenario) => scenario.rankGain > 0)
+    .sort(sortScenarios);
+  const bestScenarios = scenarios.slice().sort(sortScenarios).slice(0, 5);
+  const mustHaveOutcomes = actionableMatches
+    .map((match, index) => {
+      const first = improvingScenarios[0]?.outcomes[index];
+      if (!first) return null;
+      const required = improvingScenarios.every((scenario) => scenario.outcomes[index].type === first.type);
+      return required ? { match, outcome: first } : null;
+    })
+    .filter(Boolean);
+
+  return {
+    entry,
+    currentRank: currentPlayer.rank,
+    currentTotal: currentPlayer.score.total,
+    matches,
+    actionableMatches,
+    totalScenarioCount,
+    tooManyScenarios: false,
+    scenarios,
+    improvingScenarios,
+    bestScenarios,
+    mustHaveOutcomes,
+  };
 }
 
 const KNOCKOUT_CEILING_STAGES = [
