@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-30T19:00:27.263Z",
+    "lastUpdated": "2026-06-30T19:15:26.652Z",
     "status": "Auto-updated from ESPN: 77 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -1188,7 +1188,7 @@
       "completed": false,
       "detail": "Sun, July 5th at 4:00 PM EDT",
       "homeTeam": "Brazil",
-      "awayTeam": "Round of 32 6 Winner",
+      "awayTeam": "Norway",
       "homeScore": 0,
       "awayScore": 0
     },
