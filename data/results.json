@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-30T22:30:27.535Z",
+    "lastUpdated": "2026-06-30T22:45:29.119Z",
     "status": "Auto-updated from ESPN: 78 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,10 +40,10 @@
       "date": "2026-06-30T21:00Z",
       "state": "in",
       "completed": false,
-      "detail": "71'",
+      "detail": "85'",
       "homeTeam": "France",
       "awayTeam": "Sweden",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -1056,10 +1056,10 @@
       "date": "2026-06-30T21:00Z",
       "state": "in",
       "completed": false,
-      "detail": "71'",
+      "detail": "85'",
       "homeTeam": "France",
       "awayTeam": "Sweden",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 0
     },
     {
