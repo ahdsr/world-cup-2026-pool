@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-01T04:00:28.503Z",
-    "status": "Auto-updated from ESPN: 79 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-01T04:15:28.110Z",
+    "status": "Auto-updated from ESPN: 79 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -38,15 +38,15 @@
     {
       "id": "760491",
       "date": "2026-07-01T02:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+7'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Mexico",
       "awayTeam": "Ecuador",
       "homeScore": 2,
       "awayScore": 0,
-      "winner": "",
-      "loser": ""
+      "winner": "Mexico",
+      "loser": "Ecuador"
     },
     {
       "id": "760492",
@@ -1065,17 +1065,6 @@
   ],
   "fixtures": [
     {
-      "id": "760491",
-      "date": "2026-07-01T02:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+7'",
-      "homeTeam": "Mexico",
-      "awayTeam": "Ecuador",
-      "homeScore": 2,
-      "awayScore": 0
-    },
-    {
       "id": "760495",
       "date": "2026-07-01T16:00Z",
       "state": "pre",
@@ -1213,7 +1202,7 @@
       "state": "pre",
       "completed": false,
       "detail": "Sun, July 5th at 8:00 PM EDT",
-      "homeTeam": "Round of 32 7 Winner",
+      "homeTeam": "Mexico",
       "awayTeam": "Round of 32 8 Winner",
       "homeScore": 0,
       "awayScore": 0
@@ -1885,7 +1874,8 @@
     "Paraguay",
     "Morocco",
     "Norway",
-    "France"
+    "France",
+    "Mexico"
   ],
   "quarterFinalists": [],
   "semifinalists": [],
