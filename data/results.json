@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-01T18:00:36.026Z",
-    "status": "Auto-updated from ESPN: 80 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-01T18:15:28.930Z",
+    "status": "Auto-updated from ESPN: 80 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -38,15 +38,15 @@
     {
       "id": "760495",
       "date": "2026-07-01T16:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+7'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "England",
       "awayTeam": "DR Congo",
       "homeScore": 2,
       "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "winner": "England",
+      "loser": "DR Congo"
     },
     {
       "id": "760491",
@@ -1078,17 +1078,6 @@
   ],
   "fixtures": [
     {
-      "id": "760495",
-      "date": "2026-07-01T16:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+7'",
-      "homeTeam": "England",
-      "awayTeam": "DR Congo",
-      "homeScore": 2,
-      "awayScore": 1
-    },
-    {
       "id": "760493",
       "date": "2026-07-01T20:00Z",
       "state": "pre",
@@ -1216,7 +1205,7 @@
       "completed": false,
       "detail": "Sun, July 5th at 8:00 PM EDT",
       "homeTeam": "Mexico",
-      "awayTeam": "Round of 32 8 Winner",
+      "awayTeam": "England",
       "homeScore": 0,
       "awayScore": 0
     },
@@ -1888,7 +1877,8 @@
     "Morocco",
     "Norway",
     "France",
-    "Mexico"
+    "Mexico",
+    "England"
   ],
   "quarterFinalists": [],
   "semifinalists": [],
