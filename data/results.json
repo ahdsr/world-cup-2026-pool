@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-01T16:45:27.240Z",
+    "lastUpdated": "2026-07-01T17:00:30.422Z",
     "status": "Auto-updated from ESPN: 80 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,7 +40,7 @@
       "date": "2026-07-01T16:00Z",
       "state": "in",
       "completed": false,
-      "detail": "44'",
+      "detail": "HT",
       "homeTeam": "England",
       "awayTeam": "DR Congo",
       "homeScore": 0,
@@ -1082,7 +1082,7 @@
       "date": "2026-07-01T16:00Z",
       "state": "in",
       "completed": false,
-      "detail": "44'",
+      "detail": "HT",
       "homeTeam": "England",
       "awayTeam": "DR Congo",
       "homeScore": 0,
