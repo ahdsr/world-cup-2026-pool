@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-01T00:45:27.130Z",
+    "lastUpdated": "2026-07-01T01:00:31.516Z",
     "status": "Auto-updated from ESPN: 78 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -1053,10 +1053,10 @@
   "fixtures": [
     {
       "id": "760491",
-      "date": "2026-07-01T01:00Z",
+      "date": "2026-07-01T02:00Z",
       "state": "pre",
       "completed": false,
-      "detail": "Tue, June 30th at 9:00 PM EDT",
+      "detail": "Tue, June 30th at 10:00 PM EDT",
       "homeTeam": "Mexico",
       "awayTeam": "Ecuador",
       "homeScore": 0,
