@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-01T22:15:25.985Z",
+    "lastUpdated": "2026-07-01T22:45:29.218Z",
     "status": "Auto-updated from ESPN: 81 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,10 +40,10 @@
       "date": "2026-07-01T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "100'",
+      "detail": "120'+7'",
       "homeTeam": "Belgium",
       "awayTeam": "Senegal",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 2,
       "winner": "",
       "loser": ""
@@ -1095,10 +1095,10 @@
       "date": "2026-07-01T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "100'",
+      "detail": "120'+7'",
       "homeTeam": "Belgium",
       "awayTeam": "Senegal",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 2
     },
     {
