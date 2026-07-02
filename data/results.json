@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-02T00:00:27.315Z",
-    "status": "Auto-updated from ESPN: 81 live/final matches counted.",
+    "lastUpdated": "2026-07-02T00:15:26.536Z",
+    "status": "Auto-updated from ESPN: 82 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -35,6 +35,19 @@
     "sourceNote": "Group standings are computed from ESPN match scores. FIFA live bookings are used for most-card bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760494",
+      "date": "2026-07-02T00:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "United States",
+      "awayTeam": "Bosnia & Herzegovina",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760493",
       "date": "2026-07-01T20:00Z",
@@ -1093,9 +1106,9 @@
     {
       "id": "760494",
       "date": "2026-07-02T00:00Z",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "detail": "Wed, July 1st at 8:00 PM EDT",
+      "detail": "15'",
       "homeTeam": "United States",
       "awayTeam": "Bosnia & Herzegovina",
       "homeScore": 0,
