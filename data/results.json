@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-02T02:00:26.823Z",
-    "status": "Auto-updated from ESPN: 82 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-02T02:15:26.603Z",
+    "status": "Auto-updated from ESPN: 82 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -38,15 +38,15 @@
     {
       "id": "760494",
       "date": "2026-07-02T00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+4'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "United States",
       "awayTeam": "Bosnia & Herzegovina",
       "homeScore": 2,
       "awayScore": 0,
-      "winner": "",
-      "loser": ""
+      "winner": "United States",
+      "loser": "Bosnia & Herzegovina"
     },
     {
       "id": "760493",
@@ -1104,17 +1104,6 @@
   ],
   "fixtures": [
     {
-      "id": "760494",
-      "date": "2026-07-02T00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+4'",
-      "homeTeam": "United States",
-      "awayTeam": "Bosnia & Herzegovina",
-      "homeScore": 2,
-      "awayScore": 0
-    },
-    {
       "id": "760497",
       "date": "2026-07-02T19:00Z",
       "state": "pre",
@@ -1241,7 +1230,7 @@
       "state": "pre",
       "completed": false,
       "detail": "Mon, July 6th at 8:00 PM EDT",
-      "homeTeam": "Round of 32 9 Winner",
+      "homeTeam": "United States",
       "awayTeam": "Belgium",
       "homeScore": 0,
       "awayScore": 0
@@ -1894,7 +1883,8 @@
     "France",
     "Mexico",
     "England",
-    "Belgium"
+    "Belgium",
+    "United States"
   ],
   "quarterFinalists": [],
   "semifinalists": [],
