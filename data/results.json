@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-02T19:45:47.281Z",
+    "lastUpdated": "2026-07-02T20:00:47.614Z",
     "status": "Auto-updated from ESPN: 83 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,7 +40,7 @@
       "date": "2026-07-02T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "45'",
+      "detail": "HT",
       "homeTeam": "Spain",
       "awayTeam": "Austria",
       "homeScore": 1,
@@ -1121,7 +1121,7 @@
       "date": "2026-07-02T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "45'",
+      "detail": "HT",
       "homeTeam": "Spain",
       "awayTeam": "Austria",
       "homeScore": 1,
