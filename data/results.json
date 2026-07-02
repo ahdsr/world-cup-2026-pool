@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-02T22:45:43.914Z",
-    "status": "Auto-updated from ESPN: 83 live/final matches counted.",
+    "lastUpdated": "2026-07-02T23:00:43.967Z",
+    "status": "Auto-updated from ESPN: 84 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -35,6 +35,19 @@
     "sourceNote": "Group standings are computed from ESPN match scores. FIFA live bookings are used for most-card bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760496",
+      "date": "2026-07-02T23:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "1'",
+      "homeTeam": "Portugal",
+      "awayTeam": "Croatia",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760497",
       "date": "2026-07-02T19:00Z",
@@ -1119,9 +1132,9 @@
     {
       "id": "760496",
       "date": "2026-07-02T23:00Z",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "detail": "Thu, July 2nd at 7:00 PM EDT",
+      "detail": "1'",
       "homeTeam": "Portugal",
       "awayTeam": "Croatia",
       "homeScore": 0,
