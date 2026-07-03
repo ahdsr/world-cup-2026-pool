@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-03T03:30:43.734Z",
+    "lastUpdated": "2026-07-03T03:45:45.047Z",
     "status": "Auto-updated from ESPN: 85 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,7 +40,7 @@
       "date": "2026-07-03T03:00Z",
       "state": "in",
       "completed": false,
-      "detail": "30'",
+      "detail": "45'+1'",
       "homeTeam": "Switzerland",
       "awayTeam": "Algeria",
       "homeScore": 1,
@@ -1147,7 +1147,7 @@
       "date": "2026-07-03T03:00Z",
       "state": "in",
       "completed": false,
-      "detail": "30'",
+      "detail": "45'+1'",
       "homeTeam": "Switzerland",
       "awayTeam": "Algeria",
       "homeScore": 1,
