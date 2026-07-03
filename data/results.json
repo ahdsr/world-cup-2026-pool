@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-03T00:00:45.019Z",
+    "lastUpdated": "2026-07-03T00:15:44.719Z",
     "status": "Auto-updated from ESPN: 84 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,11 +40,11 @@
       "date": "2026-07-02T23:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "55'",
       "homeTeam": "Portugal",
       "awayTeam": "Croatia",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -1134,11 +1134,11 @@
       "date": "2026-07-02T23:00Z",
       "state": "in",
       "completed": false,
-      "detail": "HT",
+      "detail": "55'",
       "homeTeam": "Portugal",
       "awayTeam": "Croatia",
       "homeScore": 0,
-      "awayScore": 0
+      "awayScore": 1
     },
     {
       "id": "760498",
