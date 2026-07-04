@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-04T01:30:41.048Z",
-    "status": "Auto-updated from ESPN: 87 live/final matches counted.",
+    "lastUpdated": "2026-07-04T01:45:36.934Z",
+    "status": "Auto-updated from ESPN: 88 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -35,6 +35,19 @@
     "sourceNote": "Group standings are computed from ESPN match scores. FIFA live bookings are used for most-card bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760501",
+      "date": "2026-07-04T01:30Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "Colombia",
+      "awayTeam": "Ghana",
+      "homeScore": 1,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760500",
       "date": "2026-07-03T22:00Z",
@@ -1171,12 +1184,12 @@
     {
       "id": "760501",
       "date": "2026-07-04T01:30Z",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "detail": "Fri, July 3rd at 9:30 PM EDT",
+      "detail": "15'",
       "homeTeam": "Colombia",
       "awayTeam": "Ghana",
-      "homeScore": 0,
+      "homeScore": 1,
       "awayScore": 0
     },
     {
