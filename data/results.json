@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-04T21:27:52.608Z",
+    "lastUpdated": "2026-07-04T21:30:41.742Z",
     "status": "Auto-updated from ESPN: 90 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,7 +40,7 @@
       "date": "2026-07-04T21:00Z",
       "state": "in",
       "completed": false,
-      "detail": "23'",
+      "detail": "26'",
       "homeTeam": "Paraguay",
       "awayTeam": "France",
       "homeScore": 0,
@@ -1212,7 +1212,7 @@
       "date": "2026-07-04T21:00Z",
       "state": "in",
       "completed": false,
-      "detail": "23'",
+      "detail": "26'",
       "homeTeam": "Paraguay",
       "awayTeam": "France",
       "homeScore": 0,
