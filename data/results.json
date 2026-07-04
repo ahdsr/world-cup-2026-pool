@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-04T03:30:46.577Z",
-    "status": "Auto-updated from ESPN: 88 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-04T03:45:39.877Z",
+    "status": "Auto-updated from ESPN: 88 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -38,15 +38,15 @@
     {
       "id": "760501",
       "date": "2026-07-04T01:30Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+6'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Colombia",
       "awayTeam": "Ghana",
       "homeScore": 1,
       "awayScore": 0,
-      "winner": "",
-      "loser": ""
+      "winner": "Colombia",
+      "loser": "Ghana"
     },
     {
       "id": "760500",
@@ -1182,17 +1182,6 @@
   ],
   "fixtures": [
     {
-      "id": "760501",
-      "date": "2026-07-04T01:30Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+6'",
-      "homeTeam": "Colombia",
-      "awayTeam": "Ghana",
-      "homeScore": 1,
-      "awayScore": 0
-    },
-    {
       "id": "760502",
       "date": "2026-07-04T17:00Z",
       "state": "pre",
@@ -1276,7 +1265,7 @@
       "completed": false,
       "detail": "Tue, July 7th at 4:00 PM EDT",
       "homeTeam": "Switzerland",
-      "awayTeam": "Round of 32 15 Winner",
+      "awayTeam": "Colombia",
       "homeScore": 0,
       "awayScore": 0
     },
@@ -1912,7 +1901,8 @@
     "Portugal",
     "Switzerland",
     "Egypt",
-    "Argentina"
+    "Argentina",
+    "Colombia"
   ],
   "quarterFinalists": [],
   "semifinalists": [],
