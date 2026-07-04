@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-04T23:00:40.800Z",
-    "status": "Auto-updated from ESPN: 90 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-04T23:15:38.574Z",
+    "status": "Auto-updated from ESPN: 90 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -38,15 +38,15 @@
     {
       "id": "760503",
       "date": "2026-07-04T21:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+6'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "Paraguay",
       "awayTeam": "France",
       "homeScore": 0,
       "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "winner": "France",
+      "loser": "Paraguay"
     },
     {
       "id": "760502",
@@ -1208,17 +1208,6 @@
   ],
   "fixtures": [
     {
-      "id": "760503",
-      "date": "2026-07-04T21:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "90'+6'",
-      "homeTeam": "Paraguay",
-      "awayTeam": "France",
-      "homeScore": 0,
-      "awayScore": 1
-    },
-    {
       "id": "760504",
       "date": "2026-07-05T20:00Z",
       "state": "pre",
@@ -1290,7 +1279,7 @@
       "state": "pre",
       "completed": false,
       "detail": "Thu, July 9th at 4:00 PM EDT",
-      "homeTeam": "Round of 16 1 Winner",
+      "homeTeam": "France",
       "awayTeam": "Morocco",
       "homeScore": 0,
       "awayScore": 0
@@ -1920,7 +1909,8 @@
     "Colombia"
   ],
   "quarterFinalists": [
-    "Morocco"
+    "Morocco",
+    "France"
   ],
   "semifinalists": [],
   "thirdPlaceMatch": [],
