@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-04T00:30:40.093Z",
-    "status": "Auto-updated from ESPN: 87 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-04T00:45:38.563Z",
+    "status": "Auto-updated from ESPN: 87 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -38,15 +38,15 @@
     {
       "id": "760500",
       "date": "2026-07-03T22:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "109'",
+      "state": "post",
+      "completed": true,
+      "detail": "AET",
       "homeTeam": "Argentina",
       "awayTeam": "Cape Verde",
-      "homeScore": 2,
+      "homeScore": 3,
       "awayScore": 2,
-      "winner": "",
-      "loser": ""
+      "winner": "Argentina",
+      "loser": "Cape Verde"
     },
     {
       "id": "760499",
@@ -1169,17 +1169,6 @@
   ],
   "fixtures": [
     {
-      "id": "760500",
-      "date": "2026-07-03T22:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "109'",
-      "homeTeam": "Argentina",
-      "awayTeam": "Cape Verde",
-      "homeScore": 2,
-      "awayScore": 2
-    },
-    {
       "id": "760501",
       "date": "2026-07-04T01:30Z",
       "state": "pre",
@@ -1262,7 +1251,7 @@
       "state": "pre",
       "completed": false,
       "detail": "Tue, July 7th at 12:00 PM EDT",
-      "homeTeam": "Round of 32 14 Winner",
+      "homeTeam": "Argentina",
       "awayTeam": "Egypt",
       "homeScore": 0,
       "awayScore": 0
@@ -1909,7 +1898,8 @@
     "Spain",
     "Portugal",
     "Switzerland",
-    "Egypt"
+    "Egypt",
+    "Argentina"
   ],
   "quarterFinalists": [],
   "semifinalists": [],
