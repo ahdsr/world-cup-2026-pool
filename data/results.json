@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-04T21:00:43.732Z",
-    "status": "Auto-updated from ESPN: 89 live/final matches counted.",
+    "lastUpdated": "2026-07-04T21:15:38.589Z",
+    "status": "Auto-updated from ESPN: 90 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -35,6 +35,19 @@
     "sourceNote": "Group standings are computed from ESPN match scores. FIFA live bookings are used for most-card bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760503",
+      "date": "2026-07-04T21:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "11'",
+      "homeTeam": "Paraguay",
+      "awayTeam": "France",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760502",
       "date": "2026-07-04T17:00Z",
@@ -1197,9 +1210,9 @@
     {
       "id": "760503",
       "date": "2026-07-04T21:00Z",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "detail": "Sat, July 4th at 5:00 PM EDT",
+      "detail": "11'",
       "homeTeam": "Paraguay",
       "awayTeam": "France",
       "homeScore": 0,
