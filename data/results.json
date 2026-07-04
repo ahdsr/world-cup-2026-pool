@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-04T00:15:39.328Z",
+    "lastUpdated": "2026-07-04T00:30:40.093Z",
     "status": "Auto-updated from ESPN: 87 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,11 +40,11 @@
       "date": "2026-07-03T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "101'",
+      "detail": "109'",
       "homeTeam": "Argentina",
       "awayTeam": "Cape Verde",
       "homeScore": 2,
-      "awayScore": 1,
+      "awayScore": 2,
       "winner": "",
       "loser": ""
     },
@@ -1173,11 +1173,11 @@
       "date": "2026-07-03T22:00Z",
       "state": "in",
       "completed": false,
-      "detail": "101'",
+      "detail": "109'",
       "homeTeam": "Argentina",
       "awayTeam": "Cape Verde",
       "homeScore": 2,
-      "awayScore": 1
+      "awayScore": 2
     },
     {
       "id": "760501",
