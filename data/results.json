@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-05T23:15:41.163Z",
+    "lastUpdated": "2026-07-05T23:30:43.557Z",
     "status": "Auto-updated from ESPN: 91 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -1222,10 +1222,10 @@
   "fixtures": [
     {
       "id": "760505",
-      "date": "2026-07-06T00:00Z",
+      "date": "2026-07-06T01:00Z",
       "state": "pre",
       "completed": false,
-      "detail": "Sun, July 5th at 8:00 PM EDT",
+      "detail": "Sun, July 5th at 9:00 PM EDT",
       "homeTeam": "Mexico",
       "awayTeam": "England",
       "homeScore": 0,
