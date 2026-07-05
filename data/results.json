@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-05T21:15:38.824Z",
+    "lastUpdated": "2026-07-05T21:18:11.218Z",
     "status": "Auto-updated from ESPN: 91 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,7 +40,7 @@
       "date": "2026-07-05T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "53'",
+      "detail": "56'",
       "homeTeam": "Brazil",
       "awayTeam": "Norway",
       "homeScore": 0,
@@ -1225,7 +1225,7 @@
       "date": "2026-07-05T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "53'",
+      "detail": "56'",
       "homeTeam": "Brazil",
       "awayTeam": "Norway",
       "homeScore": 0,
