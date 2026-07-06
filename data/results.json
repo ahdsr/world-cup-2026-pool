@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-06T01:22:13.458Z",
+    "lastUpdated": "2026-07-06T01:30:37.169Z",
     "status": "Auto-updated from ESPN: 92 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -40,7 +40,7 @@
       "date": "2026-07-06T01:00Z",
       "state": "in",
       "completed": false,
-      "detail": "22'",
+      "detail": "31'",
       "homeTeam": "Mexico",
       "awayTeam": "England",
       "homeScore": 0,
@@ -1238,7 +1238,7 @@
       "date": "2026-07-06T01:00Z",
       "state": "in",
       "completed": false,
-      "detail": "22'",
+      "detail": "31'",
       "homeTeam": "Mexico",
       "awayTeam": "England",
       "homeScore": 0,
