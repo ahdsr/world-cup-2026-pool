@@ -1,5 +1,5 @@
-import { buildLeaderboardRows, buildPoolAnalytics, buildTodayOutlook } from "./leaderboard.js?v=20260623-today-outlook";
-import { actualAdvancersForGroup, scorePool } from "./scoring.js?v=20260615-module-cache";
+import { buildLeaderboardRows, buildPoolAnalytics, buildTodayOutlook } from "./leaderboard.js?v=20260706-scoring-audit";
+import { actualAdvancersForGroup, scorePool } from "./scoring.js?v=20260706-scoring-audit";
 
 const app = document.querySelector("#app");
 
@@ -456,6 +456,30 @@ function renderPodiumAndBonus(picks, results, score) {
   `;
 }
 
+function sourceLink(label, url) {
+  if (!url) return "";
+  return `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`;
+}
+
+function renderSourceFooter(results, sourceWorkbook = "") {
+  const bonusSources = results.meta?.bonusSources ?? {};
+  const links = [
+    sourceLink("ESPN results feed", results.meta?.sourceUrl),
+    sourceLink("FIFA statistics", bonusSources.bestPassCompletion?.sourceUrl),
+    sourceLink("FIFA match calendar API", bonusSources.mostCards?.apiUrl),
+    sourceLink("FIFA timelines API", bonusSources.farthestGoal?.apiUrl),
+    sourceLink("FIFA team stats API", bonusSources.bestPassCompletion?.apiUrl),
+  ].filter(Boolean);
+
+  return `
+    <footer class="source-footer">
+      <span>Score file: <code>data/results.json</code></span>
+      ${sourceWorkbook ? `<span>Pick source: ${escapeHtml(sourceWorkbook)}</span>` : ""}
+      <span>Reference sources: ${links.join("<span aria-hidden=\"true\"> / </span>")}</span>
+    </footer>
+  `;
+}
+
 function renderEntryHeader(entry, picks, results, score, sample = false) {
   const quote = entry.quote ?? entry.celebrationQuote ?? (sample ? "Sample entry" : picks.meta.owner);
 
@@ -487,10 +511,6 @@ function renderRealEntry(entry, picks, results, entriesConfig, picksByPath) {
       ${renderKnockout(picks, score)}
       ${renderPodiumAndBonus(picks, results, score)}
     </section>
-    <footer>
-      <span>Score file: <code>data/results.json</code></span>
-      <span>Source: ${escapeHtml(picks.meta.sourceWorkbook)}</span>
-    </footer>
   `;
 }
 
@@ -945,6 +965,10 @@ function renderRoute() {
   const route = parseRoute();
   const { entriesConfig, picksByPath, results } = appState;
   const rows = buildLeaderboardRows(entriesConfig, picksByPath, results);
+  const footerEntry = route.view === "entry"
+    ? entriesConfig.entries.find((item) => item.id === route.entryId)
+    : null;
+  const footerPicks = footerEntry?.picksPath ? picksByPath.get(footerEntry.picksPath) : null;
   let content = "";
 
   if (route.view === "leaderboard") {
@@ -971,6 +995,7 @@ function renderRoute() {
   app.innerHTML = `
     ${renderNav(entriesConfig, route)}
     ${content}
+    ${renderSourceFooter(results, footerPicks?.meta?.sourceWorkbook)}
   `;
 
   app.querySelector("[data-share-button]")?.addEventListener("click", shareCurrentPage);
