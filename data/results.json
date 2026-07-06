@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-06T20:00:46.833Z",
+    "lastUpdated": "2026-07-06T20:03:57.565Z",
     "status": "Auto-updated from ESPN: 93 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -1955,6 +1955,7 @@
       "Cape Verde"
     ],
     "bestPassCompletion": [
+      "Argentina",
       "Spain"
     ],
     "mostCards": [

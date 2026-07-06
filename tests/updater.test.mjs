@@ -188,15 +188,15 @@ function eventFixture({
 
 {
   const bestPassCompletion = computeBestPassCompletionFromFifaTeamStats([
-    { team: "Spain", stats: [["Passes", 100], ["PassesCompleted", 93]] },
-    { team: "Portugal", stats: [["Passes", 100], ["PassesCompleted", 92]] },
-    { team: "Brazil", stats: [["Passes", 100], ["PassesCompleted", 88]] },
+    { team: "Spain", stats: [["Passes", 1000], ["PassesCompleted", 911]] },
+    { team: "Portugal", stats: [["Passes", 1001], ["PassesCompleted", 912]] },
+    { team: "Brazil", stats: [["Passes", 1000], ["PassesCompleted", 910]] },
   ]);
 
   assert.deepEqual(
     bestPassCompletion,
-    ["Spain"],
-    "FIFA team pass totals should identify the best pass completion leader",
+    ["Portugal", "Spain"],
+    "FIFA team pass totals should include teams tied at displayed pass completion precision",
   );
 }
 

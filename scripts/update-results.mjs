@@ -25,6 +25,7 @@ const __dirname = dirname(__filename);
 const ROOT_DIR = resolve(__dirname, "..");
 const FIELD_LENGTH_METERS = 105;
 const FIELD_WIDTH_METERS = 68;
+const PASS_COMPLETION_PERCENT_DECIMALS = 1;
 
 export function normalizeKey(value) {
   return String(value ?? "")
@@ -568,9 +569,14 @@ function statEntriesToMap(stats) {
   );
 }
 
+function roundedPassCompletionPercent(completed, passes) {
+  const scale = 10 ** PASS_COMPLETION_PERCENT_DECIMALS;
+  return Math.round((completed / passes) * 100 * scale) / scale;
+}
+
 export function computeBestPassCompletionFromFifaTeamStats(teamStats) {
   const leaders = [];
-  let bestRate = 0;
+  let bestPercent = 0;
 
   for (const item of asArray(teamStats)) {
     const team = item?.team;
@@ -579,12 +585,12 @@ export function computeBestPassCompletionFromFifaTeamStats(teamStats) {
     const completed = Number(stats.get("PassesCompleted"));
     if (!team || !Number.isFinite(passes) || !Number.isFinite(completed) || passes <= 0) continue;
 
-    const rate = completed / passes;
-    if (rate > bestRate + Number.EPSILON) {
+    const percent = roundedPassCompletionPercent(completed, passes);
+    if (percent > bestPercent) {
       leaders.length = 0;
       leaders.push(team);
-      bestRate = rate;
-    } else if (Math.abs(rate - bestRate) <= Number.EPSILON) {
+      bestPercent = percent;
+    } else if (percent === bestPercent) {
       leaders.push(team);
     }
   }
