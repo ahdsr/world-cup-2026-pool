@@ -42,7 +42,7 @@ npm run worker:deploy
 crons = ["*/15 * * * *"]
 ```
 
-The GitHub workflow also keeps a 15-minute schedule as a fallback. A workflow concurrency guard prevents overlapping updater runs.
+The GitHub workflow also keeps a staggered 15-minute fallback schedule at `:07`, `:22`, `:37`, and `:52`. A workflow concurrency guard prevents overlapping updater runs, and the workflow syncs to the latest `main` before generating results.
 
 ## Optional Manual Trigger
 
