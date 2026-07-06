@@ -68,8 +68,8 @@ Bonus source coverage:
 - Most goals scored: automatic from ESPN match scores.
 - Most goals conceded: automatic from ESPN match scores.
 - Most red & yellow cards: automatic from FIFA live match bookings, with FIFA's team statistics page as the public reference.
-- Best pass completion %: FIFA's team statistics page tracks this under Distribution / Passing Accuracy; keep this in `data/manual-overrides.json` until FIFA exposes the aggregate value through a stable API.
-- Goal from farthest distance: manual official-source override.
+- Best pass completion %: automatic from FIFA team passing totals.
+- Goal from farthest distance: automatic from FIFA match timeline goal coordinates.
 
 ## GitHub Actions
 

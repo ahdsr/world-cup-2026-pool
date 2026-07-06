@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import {
   buildResultsFromEvents,
+  computeBestPassCompletionFromFifaTeamStats,
+  computeFarthestGoalFromFifaTimelines,
   computeMostCardsFromFifaLiveMatches,
   createTeamResolver,
   parseEspnEvent,
@@ -158,6 +160,43 @@ function eventFixture({
     mostCards,
     ["United States"],
     "FIFA bookings should be normalized through team aliases and counted for card bonus leaders",
+  );
+}
+
+{
+  const farthestGoal = computeFarthestGoalFromFifaTimelines(
+    [
+      {
+        Event: [
+          { Type: 0, IdTeam: "43850", PositionX: 29.29916, PositionY: 53.839553 },
+          { Type: 0, IdTeam: "43924", PositionX: 90, PositionY: 50 },
+        ],
+      },
+    ],
+    new Map([
+      ["43850", "Cape Verde"],
+      ["43924", "Brazil"],
+    ]),
+  );
+
+  assert.deepEqual(
+    farthestGoal,
+    ["Cape Verde"],
+    "FIFA goal coordinates should identify the team with the farthest goal",
+  );
+}
+
+{
+  const bestPassCompletion = computeBestPassCompletionFromFifaTeamStats([
+    { team: "Spain", stats: [["Passes", 100], ["PassesCompleted", 93]] },
+    { team: "Portugal", stats: [["Passes", 100], ["PassesCompleted", 92]] },
+    { team: "Brazil", stats: [["Passes", 100], ["PassesCompleted", 88]] },
+  ]);
+
+  assert.deepEqual(
+    bestPassCompletion,
+    ["Spain"],
+    "FIFA team pass totals should identify the best pass completion leader",
   );
 }
 

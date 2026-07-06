@@ -8,6 +8,8 @@ export const FIFA_TEAM_STATISTICS_URL =
   "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics";
 export const FIFA_SEASON_ID = "285023";
 export const FIFA_CALENDAR_URL = `https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=${FIFA_SEASON_ID}`;
+export const FIFA_TIMELINE_URL_TEMPLATE = "https://api.fifa.com/api/v3/timelines/{idMatch}?language=en";
+export const FIFA_FDH_TEAM_STATS_URL_TEMPLATE = `https://fdh-api.fifa.com/v1/stats/season/${FIFA_SEASON_ID}/team/{idTeam}.json`;
 
 export const GROUP_IDS = "ABCDEFGHIJKL".split("");
 export const STAGE_KEYS = [
@@ -21,6 +23,8 @@ export const STAGE_KEYS = [
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const ROOT_DIR = resolve(__dirname, "..");
+const FIELD_LENGTH_METERS = 105;
+const FIELD_WIDTH_METERS = 68;
 
 export function normalizeKey(value) {
   return String(value ?? "")
@@ -446,6 +450,11 @@ function fifaTeamName(team) {
   return team?.ShortClubName ?? localizedDescription(team?.TeamName) ?? team?.Abbreviation ?? "";
 }
 
+function fifaTeamId(team) {
+  const id = team?.IdTeam ?? team?.idTeam ?? team?.Id ?? team?.id;
+  return id === undefined || id === null ? "" : String(id);
+}
+
 function countableFifaCard(booking) {
   return [1, 2, 3].includes(numberValue(booking?.Card));
 }
@@ -471,6 +480,118 @@ export function computeMostCardsFromFifaLiveMatches(matches, resolveTeam = (valu
     .sort((a, b) => a.localeCompare(b));
 }
 
+function fifaMatchTeams(match) {
+  return [match?.HomeTeam ?? match?.Home, match?.AwayTeam ?? match?.Away].filter(Boolean);
+}
+
+function buildFifaTeamLookup(matches, resolveTeam = (value) => value) {
+  const teams = new Map();
+
+  for (const match of asArray(matches)) {
+    for (const team of fifaMatchTeams(match)) {
+      const id = fifaTeamId(team);
+      const name = resolveTeam(fifaTeamName(team));
+      if (id && name) teams.set(id, name);
+    }
+  }
+
+  return teams;
+}
+
+function startedFifaTeamIds(matches) {
+  return [
+    ...new Set(
+      asArray(matches)
+        .flatMap(fifaMatchTeams)
+        .map(fifaTeamId)
+        .filter(Boolean),
+    ),
+  ];
+}
+
+function timelineEvents(timeline) {
+  return asArray(timeline?.Event ?? timeline?.Events ?? timeline?.events);
+}
+
+function isGoalTimelineEvent(event) {
+  return numberValue(event?.Type) === 0 && numberValue(event?.Period) !== 9;
+}
+
+function coordinateValue(value) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? parsed : null;
+}
+
+function goalDistanceMeters(event) {
+  const x = coordinateValue(event?.PositionX);
+  const y = coordinateValue(event?.PositionY);
+  if (x === null || y === null) return null;
+
+  const distanceToNearestGoalLine = (Math.min(x, 100 - x) / 100) * FIELD_LENGTH_METERS;
+  const distanceFromCenter = (Math.abs(y - 50) / 100) * FIELD_WIDTH_METERS;
+  return Math.hypot(distanceToNearestGoalLine, distanceFromCenter);
+}
+
+export function computeFarthestGoalFromFifaTimelines(timelines, teamById = new Map()) {
+  const leaders = [];
+  let maxDistance = 0;
+
+  for (const timeline of asArray(timelines)) {
+    for (const event of timelineEvents(timeline)) {
+      if (!isGoalTimelineEvent(event)) continue;
+      const team = teamById.get(String(event?.IdTeam ?? ""));
+      const distance = goalDistanceMeters(event);
+      if (!team || distance === null) continue;
+
+      if (distance > maxDistance + Number.EPSILON) {
+        leaders.length = 0;
+        leaders.push(team);
+        maxDistance = distance;
+      } else if (Math.abs(distance - maxDistance) <= Number.EPSILON) {
+        leaders.push(team);
+      }
+    }
+  }
+
+  return [...new Set(leaders)].sort((a, b) => a.localeCompare(b));
+}
+
+function statEntriesToMap(stats) {
+  const entries = Array.isArray(stats?.Stat) ? stats.Stat : Array.isArray(stats) ? stats : [];
+  return new Map(
+    entries
+      .map((entry) => {
+        if (Array.isArray(entry)) return [entry[0], entry[1]];
+        return [entry?.Name ?? entry?.name ?? entry?.Key ?? entry?.key, entry?.Value ?? entry?.value];
+      })
+      .filter(([key]) => key),
+  );
+}
+
+export function computeBestPassCompletionFromFifaTeamStats(teamStats) {
+  const leaders = [];
+  let bestRate = 0;
+
+  for (const item of asArray(teamStats)) {
+    const team = item?.team;
+    const stats = statEntriesToMap(item?.stats);
+    const passes = Number(stats.get("Passes"));
+    const completed = Number(stats.get("PassesCompleted"));
+    if (!team || !Number.isFinite(passes) || !Number.isFinite(completed) || passes <= 0) continue;
+
+    const rate = completed / passes;
+    if (rate > bestRate + Number.EPSILON) {
+      leaders.length = 0;
+      leaders.push(team);
+      bestRate = rate;
+    } else if (Math.abs(rate - bestRate) <= Number.EPSILON) {
+      leaders.push(team);
+    }
+  }
+
+  return [...new Set(leaders)].sort((a, b) => a.localeCompare(b));
+}
+
 function fifaMatchHasStarted(match) {
   return (
     [0, 3, 5].includes(numberValue(match?.MatchStatus)) ||
@@ -483,13 +604,32 @@ async function fetchFifaLiveMatch(match) {
   return fetchJson(url);
 }
 
+async function fetchFifaTimeline(match) {
+  return fetchJson(FIFA_TIMELINE_URL_TEMPLATE.replace("{idMatch}", match.IdMatch));
+}
+
+async function fetchFifaTeamStats(idTeam, teamById) {
+  const stats = await fetchJson(FIFA_FDH_TEAM_STATS_URL_TEMPLATE.replace("{idTeam}", idTeam));
+  return {
+    team: teamById.get(String(idTeam)) ?? "",
+    stats,
+  };
+}
+
 export async function fetchFifaBonusResults(resolveTeam = (value) => value) {
   const calendar = await fetchJson(FIFA_CALENDAR_URL);
   const matches = asArray(calendar.Results).filter(fifaMatchHasStarted);
-  const liveMatches = await Promise.all(matches.map(fetchFifaLiveMatch));
+  const teamById = buildFifaTeamLookup(matches, resolveTeam);
+  const [liveMatches, timelines, teamStats] = await Promise.all([
+    Promise.all(matches.map(fetchFifaLiveMatch)),
+    Promise.all(matches.map(fetchFifaTimeline)),
+    Promise.all(startedFifaTeamIds(matches).map((idTeam) => fetchFifaTeamStats(idTeam, teamById))),
+  ]);
 
   return {
     mostCards: computeMostCardsFromFifaLiveMatches(liveMatches, resolveTeam),
+    farthestGoal: computeFarthestGoalFromFifaTimelines(timelines, teamById),
+    bestPassCompletion: computeBestPassCompletionFromFifaTeamStats(teamStats),
   };
 }
 
@@ -506,14 +646,16 @@ function buildBonusSources(sourceUrl = ESPN_SCOREBOARD_URL) {
       update: "Automatic with each results update",
     },
     farthestGoal: {
-      source: "Official match reports/FIFA statistics when available",
+      source: "FIFA match timelines: goal location coordinates",
       sourceUrl: FIFA_TEAM_STATISTICS_URL,
-      update: "Manual override required",
+      apiUrl: FIFA_TIMELINE_URL_TEMPLATE,
+      update: "Automatic with each results update",
     },
     bestPassCompletion: {
-      source: "FIFA team statistics: Distribution, Passing Accuracy",
+      source: "FIFA team statistics: passes completed divided by passes attempted",
       sourceUrl: FIFA_TEAM_STATISTICS_URL,
-      update: "Manual override required until FIFA exposes the aggregate value in a stable API",
+      apiUrl: FIFA_FDH_TEAM_STATS_URL_TEMPLATE,
+      update: "Automatic with each results update",
     },
     mostCards: {
       source: "FIFA live match bookings",
@@ -593,7 +735,7 @@ export function buildResultsFromEvents(events, options) {
       sourceUrl,
       bonusSources: buildBonusSources(sourceUrl),
       sourceNote:
-        "Group standings are computed from ESPN match scores. FIFA live bookings are used for most-card bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden.",
+        "Group standings are computed from ESPN match scores. FIFA live bookings, match timelines, and team statistics are used for bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden.",
     },
     matches: matches
       .filter(isCountedMatch)

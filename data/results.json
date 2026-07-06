@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-06T19:11:31.833Z",
+    "lastUpdated": "2026-07-06T19:13:43.150Z",
     "status": "Auto-updated from ESPN: 93 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -16,14 +16,16 @@
         "update": "Automatic with each results update"
       },
       "farthestGoal": {
-        "source": "Official match reports/FIFA statistics when available",
+        "source": "FIFA match timelines: goal location coordinates",
         "sourceUrl": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics",
-        "update": "Manual override required"
+        "apiUrl": "https://api.fifa.com/api/v3/timelines/{idMatch}?language=en",
+        "update": "Automatic with each results update"
       },
       "bestPassCompletion": {
-        "source": "FIFA team statistics: Distribution, Passing Accuracy",
+        "source": "FIFA team statistics: passes completed divided by passes attempted",
         "sourceUrl": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics",
-        "update": "Manual override required until FIFA exposes the aggregate value in a stable API"
+        "apiUrl": "https://fdh-api.fifa.com/v1/stats/season/285023/team/{idTeam}.json",
+        "update": "Automatic with each results update"
       },
       "mostCards": {
         "source": "FIFA live match bookings",
@@ -32,7 +34,7 @@
         "update": "Automatic with each results update"
       }
     },
-    "sourceNote": "Group standings are computed from ESPN match scores. FIFA live bookings are used for most-card bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
+    "sourceNote": "Group standings are computed from ESPN match scores. FIFA live bookings, match timelines, and team statistics are used for bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
     {
@@ -40,7 +42,7 @@
       "date": "2026-07-06T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "11'",
+      "detail": "13'",
       "homeTeam": "Portugal",
       "awayTeam": "Spain",
       "homeScore": 0,
@@ -1251,7 +1253,7 @@
       "date": "2026-07-06T19:00Z",
       "state": "in",
       "completed": false,
-      "detail": "11'",
+      "detail": "13'",
       "homeTeam": "Portugal",
       "awayTeam": "Spain",
       "homeScore": 0,
@@ -1949,8 +1951,12 @@
       "Iraq",
       "Tunisia"
     ],
-    "farthestGoal": [],
-    "bestPassCompletion": [],
+    "farthestGoal": [
+      "Cape Verde"
+    ],
+    "bestPassCompletion": [
+      "Spain"
+    ],
     "mostCards": [
       "Paraguay"
     ]
