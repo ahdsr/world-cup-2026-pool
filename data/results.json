@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-07T22:45:14.171Z",
-    "status": "Auto-updated from ESPN: 96 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-07T23:00:17.952Z",
+    "status": "Auto-updated from ESPN: 96 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -40,15 +40,15 @@
     {
       "id": "760508",
       "date": "2026-07-07T20:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Penalties",
+      "state": "post",
+      "completed": true,
+      "detail": "FT-Pens",
       "homeTeam": "Switzerland",
       "awayTeam": "Colombia",
       "homeScore": 0,
       "awayScore": 0,
-      "winner": "",
-      "loser": ""
+      "winner": "Switzerland",
+      "loser": "Colombia"
     },
     {
       "id": "760509",
@@ -1288,17 +1288,6 @@
   ],
   "fixtures": [
     {
-      "id": "760508",
-      "date": "2026-07-07T20:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Penalties",
-      "homeTeam": "Switzerland",
-      "awayTeam": "Colombia",
-      "homeScore": 0,
-      "awayScore": 0
-    },
-    {
       "id": "760510",
       "date": "2026-07-09T20:00Z",
       "state": "pre",
@@ -1338,7 +1327,7 @@
       "completed": false,
       "detail": "Sat, July 11th at 9:00 PM EDT",
       "homeTeam": "Argentina",
-      "awayTeam": "Round of 16 8 Winner",
+      "awayTeam": "Switzerland",
       "homeScore": 0,
       "awayScore": 0
     },
@@ -1940,7 +1929,8 @@
     "England",
     "Spain",
     "Belgium",
-    "Argentina"
+    "Argentina",
+    "Switzerland"
   ],
   "semifinalists": [],
   "thirdPlaceMatch": [],
