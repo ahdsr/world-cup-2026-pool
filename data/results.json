@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-07T16:15:18.076Z",
+    "lastUpdated": "2026-07-07T16:30:18.785Z",
     "status": "Auto-updated from ESPN: 95 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -42,11 +42,11 @@
       "date": "2026-07-07T16:00Z",
       "state": "in",
       "completed": false,
-      "detail": "14'",
+      "detail": "29'",
       "homeTeam": "Argentina",
       "awayTeam": "Egypt",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -1279,11 +1279,11 @@
       "date": "2026-07-07T16:00Z",
       "state": "in",
       "completed": false,
-      "detail": "14'",
+      "detail": "29'",
       "homeTeam": "Argentina",
       "awayTeam": "Egypt",
       "homeScore": 0,
-      "awayScore": 0
+      "awayScore": 1
     },
     {
       "id": "760508",
@@ -1961,7 +1961,7 @@
       "Belgium"
     ],
     "bestPassCompletion": [
-      "Argentina"
+      "Spain"
     ],
     "mostCards": [
       "Paraguay"
