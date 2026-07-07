@@ -127,11 +127,6 @@
       "picksPath": "data/picks-michal-2.json"
     },
     {
-      "id": "mike-b",
-      "name": "Mike B",
-      "picksPath": "data/picks-mike-b.json"
-    },
-    {
       "id": "patryk-koscielak",
       "name": "Patryk Koscielak",
       "picksPath": "data/picks-patryk-koscielak.json"
@@ -160,11 +155,6 @@
       "id": "tadeusz",
       "name": "Tadeusz",
       "picksPath": "data/picks-tadeusz.json"
-    },
-    {
-      "id": "tata",
-      "name": "Tata",
-      "picksPath": "data/picks-tata.json"
     },
     {
       "id": "tomasz-k-1",

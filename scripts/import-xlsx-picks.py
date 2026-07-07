@@ -46,6 +46,9 @@ WORKBOOK_NAMES = [
     "2026 World Cup Pool - Andrew D (2).xlsx",
 ]
 
+RETIRED_TEST_OWNERS = {"Mike B", "Tata"}
+RETIRED_TEST_PICK_PATHS = {"data/picks-mike-b.json", "data/picks-tata.json"}
+
 SCORING_RULES = {
     "groupAdvancement": 2,
     "exactTopTwoBonus": 3,
@@ -393,6 +396,9 @@ def main() -> None:
     entries_config = json.loads(entries_config_path.read_text(encoding="utf-8"))
     entries = []
 
+    for retired_path in RETIRED_TEST_PICK_PATHS:
+        (REPO_ROOT / retired_path).unlink(missing_ok=True)
+
     for workbook_name in WORKBOOK_NAMES:
         path = DOWNLOADS / workbook_name
         if not path.exists():
@@ -402,6 +408,9 @@ def main() -> None:
         validate_picks(picks)
 
         owner = picks["meta"]["owner"]
+        if owner in RETIRED_TEST_OWNERS:
+            raise ValueError(f"{owner} is a retired test entrant and must not be imported")
+
         picks_path = picks_path_for(owner)
         (REPO_ROOT / picks_path).write_text(
             json.dumps(picks, ensure_ascii=False, indent=2) + "\n",

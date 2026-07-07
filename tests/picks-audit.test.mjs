@@ -20,6 +20,10 @@ const KNOCKOUT_COUNTS = {
   finalists: 2,
   thirdPlaceMatch: 2,
 };
+const RETIRED_TEST_ENTRANTS = [
+  { id: "mike-b", name: "Mike B", picksPath: "data/picks-mike-b.json" },
+  { id: "tata", name: "Tata", picksPath: "data/picks-tata.json" },
+];
 
 function sameMembers(actual, expected, message) {
   assert.deepEqual([...actual].sort(), [...expected].sort(), message);
@@ -43,6 +47,13 @@ const pickFiles = dataFiles
   .map((file) => `data/${file}`)
   .sort();
 const entryPaths = (entries.entries ?? []).map((entry) => entry.picksPath).filter(Boolean).sort();
+
+for (const retired of RETIRED_TEST_ENTRANTS) {
+  assert.ok(!pickFiles.includes(retired.picksPath), `${retired.name} test picks should not exist`);
+  assert.ok(!entryPaths.includes(retired.picksPath), `${retired.name} should not be on the leaderboard`);
+  assert.ok(!entries.entries.some((entry) => entry.id === retired.id), `${retired.name} id should stay retired`);
+  assert.ok(!entries.entries.some((entry) => entry.name === retired.name), `${retired.name} name should stay retired`);
+}
 
 assert.deepEqual(
   entryPaths,
