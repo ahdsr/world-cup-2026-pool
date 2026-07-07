@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-07T18:25:13.038Z",
+    "lastUpdated": "2026-07-07T18:30:19.410Z",
     "status": "Auto-updated from ESPN: 95 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -1324,7 +1324,7 @@
       "state": "pre",
       "completed": false,
       "detail": "Sat, July 11th at 9:00 PM EDT",
-      "homeTeam": "Round of 16 7 Winner",
+      "homeTeam": "Argentina",
       "awayTeam": "Round of 16 8 Winner",
       "homeScore": 0,
       "awayScore": 0
