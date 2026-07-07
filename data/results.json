@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-07T20:00:20.823Z",
-    "status": "Auto-updated from ESPN: 95 live/final matches counted.",
+    "lastUpdated": "2026-07-07T20:15:17.684Z",
+    "status": "Auto-updated from ESPN: 96 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -37,6 +37,19 @@
     "sourceNote": "Group standings are computed from ESPN match scores. FIFA live bookings, match timelines, and team statistics are used for bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
+    {
+      "id": "760508",
+      "date": "2026-07-07T20:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "15'",
+      "homeTeam": "Switzerland",
+      "awayTeam": "Colombia",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "760509",
       "date": "2026-07-07T16:00Z",
@@ -1277,9 +1290,9 @@
     {
       "id": "760508",
       "date": "2026-07-07T20:00Z",
-      "state": "pre",
+      "state": "in",
       "completed": false,
-      "detail": "Tue, July 7th at 4:00 PM EDT",
+      "detail": "15'",
       "homeTeam": "Switzerland",
       "awayTeam": "Colombia",
       "homeScore": 0,
