@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-07T01:45:40.255Z",
-    "status": "Auto-updated from ESPN: 94 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-07T02:00:44.839Z",
+    "status": "Auto-updated from ESPN: 94 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
@@ -40,15 +40,15 @@
     {
       "id": "760507",
       "date": "2026-07-07T00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "81'",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "homeTeam": "United States",
       "awayTeam": "Belgium",
       "homeScore": 1,
-      "awayScore": 3,
-      "winner": "",
-      "loser": ""
+      "awayScore": 4,
+      "winner": "Belgium",
+      "loser": "United States"
     },
     {
       "id": "760506",
@@ -1262,17 +1262,6 @@
   ],
   "fixtures": [
     {
-      "id": "760507",
-      "date": "2026-07-07T00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "81'",
-      "homeTeam": "United States",
-      "awayTeam": "Belgium",
-      "homeScore": 1,
-      "awayScore": 3
-    },
-    {
       "id": "760509",
       "date": "2026-07-07T16:00Z",
       "state": "pre",
@@ -1312,7 +1301,7 @@
       "completed": false,
       "detail": "Fri, July 10th at 3:00 PM EDT",
       "homeTeam": "Spain",
-      "awayTeam": "Round of 16 6 Winner",
+      "awayTeam": "Belgium",
       "homeScore": 0,
       "awayScore": 0
     },
@@ -1934,7 +1923,8 @@
     "France",
     "Norway",
     "England",
-    "Spain"
+    "Spain",
+    "Belgium"
   ],
   "semifinalists": [],
   "thirdPlaceMatch": [],
