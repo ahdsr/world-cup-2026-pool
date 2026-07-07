@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-07T20:45:15.704Z",
+    "lastUpdated": "2026-07-07T21:00:20.418Z",
     "status": "Auto-updated from ESPN: 96 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -42,7 +42,7 @@
       "date": "2026-07-07T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "45'",
+      "detail": "HT",
       "homeTeam": "Switzerland",
       "awayTeam": "Colombia",
       "homeScore": 0,
@@ -1292,7 +1292,7 @@
       "date": "2026-07-07T20:00Z",
       "state": "in",
       "completed": false,
-      "detail": "45'",
+      "detail": "HT",
       "homeTeam": "Switzerland",
       "awayTeam": "Colombia",
       "homeScore": 0,
