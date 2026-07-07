@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-07T01:30:39.699Z",
+    "lastUpdated": "2026-07-07T01:45:40.255Z",
     "status": "Auto-updated from ESPN: 94 live/final matches counted: 1 in progress.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -42,7 +42,7 @@
       "date": "2026-07-07T00:00Z",
       "state": "in",
       "completed": false,
-      "detail": "66'",
+      "detail": "81'",
       "homeTeam": "United States",
       "awayTeam": "Belgium",
       "homeScore": 1,
@@ -1266,7 +1266,7 @@
       "date": "2026-07-07T00:00Z",
       "state": "in",
       "completed": false,
-      "detail": "66'",
+      "detail": "81'",
       "homeTeam": "United States",
       "awayTeam": "Belgium",
       "homeScore": 1,
