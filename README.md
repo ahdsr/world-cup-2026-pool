@@ -44,14 +44,14 @@ The importer rebuilds `data/entries.json` and the generated `data/picks*.json` f
 
 ## Live Results
 
-Run the ESPN updater locally:
+Run the FIFA updater locally:
 
 ```bash
 node scripts/update-results.mjs
 npm test
 ```
 
-The updater writes `data/results.json` from ESPN's public scoreboard feed and computes:
+The updater writes `data/results.json` from FIFA official match and statistics endpoints and computes:
 
 - group orders
 - top third-place groups, withheld until the group stage is final
@@ -60,8 +60,8 @@ The updater writes `data/results.json` from ESPN's public scoreboard feed and co
 - FIFA team-statistics bonuses for most goals scored and most goals conceded
 - FIFA booking-derived most red/yellow cards bonus, judged by Fair Play Points
 
-Manual-only data and official corrections belong in `data/manual-overrides.json`.
-Use that file for deeper FIFA tiebreakers, score corrections, and bonus categories not available from stable feeds.
+Official correction patches belong in `data/manual-overrides.json`.
+Manual match overrides can only patch an existing FIFA match row and are surfaced in `data/results.json` metadata; they cannot create synthetic production scores.
 
 Bonus source coverage:
 

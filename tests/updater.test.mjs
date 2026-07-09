@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import {
-  buildResultsFromEvents,
+  FIFA_CALENDAR_URL,
+  buildResultsFromFifaMatches,
   computeBestPassCompletionFromFifaTeamStats,
   computeCardPointsFromFifaLiveMatches,
   computeCardPointsFromFifaTeamStats,
@@ -8,114 +9,137 @@ import {
   computeGoalBonusResultsFromFifaTeamStats,
   computeMostCardsFromFifaLiveMatches,
   createTeamResolver,
-  parseEspnEvent,
+  parseFifaMatch,
+  sortGroupStats,
 } from "../scripts/update-results.mjs";
 import aliases from "../data/team-aliases.json" with { type: "json" };
 import picks from "../data/picks.json" with { type: "json" };
 
-function eventFixture({
+const TEAM_IDS = {
+  Mexico: "43911",
+  "South Africa": "43883",
+  "South Korea": "43822",
+  "Korea Republic": "43822",
+  Czechia: "43995",
+  Germany: "43948",
+  Paraguay: "43940",
+  Switzerland: "43971",
+  Colombia: "43926",
+};
+
+function localized(description) {
+  return [{ Locale: "en-GB", Description: description }];
+}
+
+function fifaTeam(name) {
+  return {
+    IdTeam: TEAM_IDS[name] ?? `team-${name}`,
+    TeamName: localized(name),
+    ShortClubName: name,
+    Abbreviation: name.slice(0, 3).toUpperCase(),
+  };
+}
+
+function fifaMatchFixture({
   id,
-  name,
-  date = "2026-06-11T17:00Z",
-  state = "post",
+  matchNumber = 1,
+  date = "2026-06-11T19:00:00Z",
+  stage = "First Stage",
+  group = "Group A",
   completed = true,
+  state = completed ? "post" : "pre",
+  resultType = completed ? 1 : 0,
   home,
   away,
-  homeScore,
-  awayScore,
-  winner,
+  homeScore = completed ? 0 : null,
+  awayScore = completed ? 0 : null,
+  homePenaltyScore = null,
+  awayPenaltyScore = null,
+  winner = "",
 }) {
+  const homeTeam = home ? fifaTeam(home) : null;
+  const awayTeam = away ? fifaTeam(away) : null;
+  const winnerTeam = winner === home ? homeTeam : winner === away ? awayTeam : null;
+  const matchStatus = completed ? 0 : state === "in" ? 3 : 1;
+
   return {
-    id,
-    name,
-    shortName: `${away} at ${home}`,
-    date,
-    status: {
-      type: {
-        state,
-        completed,
-        description: completed ? "Full Time" : state === "in" ? "In Progress" : "Scheduled",
-      },
-    },
-    competitions: [
-      {
-        competitors: [
-          {
-            homeAway: "home",
-            score: String(homeScore ?? 0),
-            winner: winner === home,
-            team: { displayName: home },
-          },
-          {
-            homeAway: "away",
-            score: String(awayScore ?? 0),
-            winner: winner === away,
-            team: { displayName: away },
-          },
-        ],
-      },
-    ],
+    IdCompetition: "17",
+    IdSeason: "285023",
+    IdStage: stage === "First Stage" ? "289273" : "knockout",
+    IdMatch: id,
+    MatchNumber: matchNumber,
+    Date: date,
+    StageName: localized(stage),
+    GroupName: group ? localized(group) : [],
+    Home: homeTeam,
+    Away: awayTeam,
+    HomeTeamScore: homeScore,
+    AwayTeamScore: awayScore,
+    HomeTeamPenaltyScore: homePenaltyScore,
+    AwayTeamPenaltyScore: awayPenaltyScore,
+    Winner: winnerTeam?.IdTeam ?? null,
+    MatchStatus: matchStatus,
+    ResultType: resultType,
+    OfficialityStatus: completed ? 1 : 0,
   };
 }
 
 {
   const resolveTeam = createTeamResolver(picks, aliases);
-  const parsed = parseEspnEvent(
-    eventFixture({
+  const parsed = parseFifaMatch(
+    fifaMatchFixture({
       id: "alias",
-      name: "Czech Republic at South Korea",
-      state: "pre",
       completed: false,
-      home: "South Korea",
-      away: "Czech Republic",
-      homeScore: 0,
-      awayScore: 0,
+      home: "Korea Republic",
+      away: "Czechia",
+      homeScore: null,
+      awayScore: null,
     }),
     resolveTeam,
   );
-  assert.equal(parsed.awayTeam, "Czechia", "Czech Republic should normalize to Czechia");
+  assert.equal(parsed.homeTeam, "South Korea", "Korea Republic should normalize to South Korea");
+  assert.equal(parsed.source, "fifa", "parsed match should carry FIFA provenance");
 }
 
 {
-  const results = buildResultsFromEvents(
+  const results = buildResultsFromFifaMatches(
     [
-      eventFixture({
+      fifaMatchFixture({
         id: "group-a-1",
-        name: "South Africa at Mexico",
         home: "Mexico",
         away: "South Africa",
         homeScore: 2,
         awayScore: 0,
         winner: "Mexico",
       }),
-      eventFixture({
+      fifaMatchFixture({
         id: "group-a-2",
-        name: "Czech Republic at South Korea",
-        state: "pre",
+        matchNumber: 2,
+        date: "2026-06-12T02:00:00Z",
         completed: false,
-        home: "South Korea",
-        away: "Czech Republic",
-        homeScore: 0,
-        awayScore: 0,
+        home: "Korea Republic",
+        away: "Czechia",
+        homeScore: null,
+        awayScore: null,
       }),
     ],
     {
       picks,
       aliases,
+      fifaRankingResults: { rankingsByTeam: { Mexico: 14, "South Africa": 61 } },
       now: "2026-06-11T18:00:00.000Z",
     },
   );
 
-  assert.deepEqual(results.groups.A.currentOrder, [
-    "Mexico",
-    "Czechia",
-    "South Korea",
-    "South Africa",
-  ]);
+  assert.equal(results.meta.source, "fifa");
+  assert.equal(results.meta.sourceUrl, FIFA_CALENDAR_URL);
+  assert.match(results.meta.status, /Auto-updated from FIFA/);
+  assert.doesNotMatch(JSON.stringify(results.meta), /ESPN/i);
+  assert.deepEqual(results.matches.map((match) => match.source), ["fifa"]);
   assert.deepEqual(
     results.fixtures.map((match) => match.id),
     ["group-a-2"],
-    "scheduled matches should be exposed separately from counted matches",
+    "scheduled FIFA matches should be exposed separately from counted matches",
   );
   assert.deepEqual(
     results.topThirdGroups,
@@ -124,16 +148,86 @@ function eventFixture({
   );
   assert.deepEqual(results.bonus.mostGoalsScored, ["Mexico"]);
   assert.deepEqual(results.bonus.mostGoalsConceded, ["South Africa"]);
-  assert.match(
-    results.meta.bonusSources.mostGoalsScored.source,
-    /FIFA team statistics/,
-    "bonus metadata should identify the FIFA goals source",
+}
+
+{
+  const ordered = sortGroupStats(
+    [
+      { team: "Mexico", played: 3, points: 4, goalsFor: 6, goalsAgainst: 1, goalDifference: 5 },
+      { team: "South Africa", played: 3, points: 4, goalsFor: 3, goalsAgainst: 3, goalDifference: 0 },
+    ],
+    [
+      {
+        completed: true,
+        state: "post",
+        homeTeam: "Mexico",
+        awayTeam: "South Africa",
+        homeScore: 0,
+        awayScore: 1,
+      },
+    ],
   );
-  assert.match(
-    results.meta.bonusSources.mostCards.source,
-    /FIFA team statistics/,
-    "bonus metadata should identify the FIFA cards source",
+
+  assert.deepEqual(
+    ordered.map((item) => item.team),
+    ["South Africa", "Mexico"],
+    "FIFA head-to-head criteria should resolve teams tied on points before overall goal difference",
   );
+}
+
+{
+  const fairPlayOrder = sortGroupStats(
+    [
+      { team: "Germany", played: 3, points: 4, goalsFor: 3, goalsAgainst: 3, goalDifference: 0 },
+      { team: "Paraguay", played: 3, points: 4, goalsFor: 3, goalsAgainst: 3, goalDifference: 0 },
+    ],
+    [],
+    { fairPlayPointsByTeam: { Germany: 2, Paraguay: 6 } },
+  );
+  assert.deepEqual(
+    fairPlayOrder.map((item) => item.team),
+    ["Germany", "Paraguay"],
+    "lower FIFA Fair Play Points should win the discipline tiebreaker",
+  );
+
+  const rankingOrder = sortGroupStats(
+    [
+      { team: "Germany", played: 3, points: 4, goalsFor: 3, goalsAgainst: 3, goalDifference: 0 },
+      { team: "Paraguay", played: 3, points: 4, goalsFor: 3, goalsAgainst: 3, goalDifference: 0 },
+    ],
+    [],
+    { fairPlayPointsByTeam: { Germany: 2, Paraguay: 2 }, fifaRankByTeam: { Germany: 11, Paraguay: 47 } },
+  );
+  assert.deepEqual(
+    rankingOrder.map((item) => item.team),
+    ["Germany", "Paraguay"],
+    "FIFA ranking should be the final unresolved tiebreaker when supplied",
+  );
+}
+
+{
+  const parsed = parseFifaMatch(
+    fifaMatchFixture({
+      id: "shootout",
+      stage: "Round of 16",
+      group: "",
+      resultType: 2,
+      home: "Switzerland",
+      away: "Colombia",
+      homeScore: 0,
+      awayScore: 0,
+      homePenaltyScore: 4,
+      awayPenaltyScore: 3,
+      winner: "Switzerland",
+    }),
+    createTeamResolver(picks, aliases),
+  );
+
+  assert.equal(parsed.detail, "FT-Pens");
+  assert.equal(parsed.winner, "Switzerland");
+  assert.equal(parsed.loser, "Colombia");
+  assert.equal(parsed.homePenaltyScore, 4);
+  assert.equal(parsed.awayPenaltyScore, 3);
 }
 
 {
@@ -167,25 +261,14 @@ function eventFixture({
     },
   ];
   const cardPoints = computeCardPointsFromFifaLiveMatches(fifaMatches, resolveTeam);
-  const mostCards = computeMostCardsFromFifaLiveMatches(
-    fifaMatches,
-    resolveTeam,
-  );
+  const mostCards = computeMostCardsFromFifaLiveMatches(fifaMatches, resolveTeam);
 
-  assert.deepEqual(
-    cardPoints,
-    {
-      "South Africa": 5,
-      "South Korea": 5,
-      "United States": 7,
-    },
-    "FIFA bookings should be normalized through team aliases and weighted into Fair Play Points",
-  );
-  assert.deepEqual(
-    mostCards,
-    ["United States"],
-    "FIFA bookings should be normalized through team aliases and weighted for card bonus leaders",
-  );
+  assert.deepEqual(cardPoints, {
+    "South Africa": 5,
+    "South Korea": 5,
+    "United States": 7,
+  });
+  assert.deepEqual(mostCards, ["United States"]);
 }
 
 {
@@ -197,53 +280,24 @@ function eventFixture({
     { team: "Tunisia", stats: [["Goals", 2], ["GoalsConceded", 12]] },
   ]);
 
-  assert.deepEqual(
-    goalBonuses,
-    {
-      mostGoalsScored: ["Argentina", "France"],
-      mostGoalsConceded: ["Iraq", "Tunisia"],
-    },
-    "FIFA team stats should determine goal bonus leaders",
-  );
+  assert.deepEqual(goalBonuses, {
+    mostGoalsScored: ["Argentina", "France"],
+    mostGoalsConceded: ["Iraq", "Tunisia"],
+  });
 }
 
 {
   const cardPoints = computeCardPointsFromFifaTeamStats([
-    {
-      team: "Egypt",
-      stats: [
-        ["YellowCards", 12],
-        ["DirectRedCards", 0],
-        ["IndirectRedCards", 0],
-      ],
-    },
-    {
-      team: "Paraguay",
-      stats: [
-        ["YellowCards", 9],
-        ["DirectRedCards", 1],
-        ["IndirectRedCards", 0],
-      ],
-    },
-    {
-      team: "South Africa",
-      stats: [
-        ["YellowCards", 5],
-        ["DirectRedCards", 2],
-        ["IndirectRedCards", 0],
-      ],
-    },
+    { team: "Egypt", stats: [["YellowCards", 12], ["DirectRedCards", 0], ["IndirectRedCards", 0]] },
+    { team: "Paraguay", stats: [["YellowCards", 9], ["DirectRedCards", 1], ["IndirectRedCards", 0]] },
+    { team: "South Africa", stats: [["YellowCards", 5], ["DirectRedCards", 2], ["IndirectRedCards", 0]] },
   ]);
 
-  assert.deepEqual(
-    cardPoints,
-    {
-      Egypt: 12,
-      Paraguay: 13,
-      "South Africa": 13,
-    },
-    "FIFA team stats should produce Fair Play Points from yellow, direct red, and indirect red totals",
-  );
+  assert.deepEqual(cardPoints, {
+    Egypt: 12,
+    Paraguay: 13,
+    "South Africa": 13,
+  });
 }
 
 {
@@ -253,6 +307,7 @@ function eventFixture({
         Event: [
           { Type: 0, IdTeam: "43850", PositionX: 29.29916, PositionY: 53.839553 },
           { Type: 0, IdTeam: "43924", PositionX: 90, PositionY: 50 },
+          { Type: 0, IdTeam: "43924", PositionX: 1, PositionY: 50, Period: 9 },
         ],
       },
     ],
@@ -262,11 +317,7 @@ function eventFixture({
     ]),
   );
 
-  assert.deepEqual(
-    farthestGoal,
-    ["Cape Verde"],
-    "FIFA goal coordinates should identify the team with the farthest goal",
-  );
+  assert.deepEqual(farthestGoal, ["Cape Verde"]);
 }
 
 {
@@ -285,10 +336,11 @@ function eventFixture({
 
 {
   const events = Object.entries(picks.groups).map(([groupId, group], index) =>
-    eventFixture({
+    fifaMatchFixture({
       id: `group-${groupId}-complete`,
-      name: `${group.teams[2].name} at ${group.teams[0].name}`,
-      date: `2026-06-${String(11 + index).padStart(2, "0")}T17:00Z`,
+      matchNumber: index + 1,
+      group: `Group ${groupId}`,
+      date: `2026-06-${String(11 + index).padStart(2, "0")}T17:00:00Z`,
       home: group.teams[0].name,
       away: group.teams[2].name,
       homeScore: 1,
@@ -296,7 +348,7 @@ function eventFixture({
       winner: group.teams[0].name,
     }),
   );
-  const results = buildResultsFromEvents(events, {
+  const results = buildResultsFromFifaMatches(events, {
     picks,
     aliases,
     now: "2026-06-27T23:00:00.000Z",
@@ -305,17 +357,19 @@ function eventFixture({
   assert.equal(
     results.topThirdGroups.length,
     8,
-    "third-place groups should populate when every group in the feed is final",
+    "third-place groups should populate when every group in the FIFA feed is final",
   );
 }
 
 {
-  const results = buildResultsFromEvents(
+  const results = buildResultsFromFifaMatches(
     [
-      eventFixture({
+      fifaMatchFixture({
         id: "r32-1",
-        name: "Third Place Group A/B/C/D/F at Group E Winner",
-        date: "2026-06-29T20:30Z",
+        matchNumber: 81,
+        stage: "Round of 32",
+        group: "",
+        date: "2026-06-29T20:30:00Z",
         home: "Germany",
         away: "Paraguay",
         homeScore: 3,
@@ -334,56 +388,33 @@ function eventFixture({
 }
 
 {
-  const results = buildResultsFromEvents(
-    [
-      eventFixture({
-        id: "group-a-1",
-        name: "South Africa at Mexico",
-        home: "Mexico",
-        away: "South Africa",
-        homeScore: 2,
-        awayScore: 0,
-        winner: "Mexico",
+  assert.throws(
+    () =>
+      buildResultsFromFifaMatches([], {
+        picks,
+        aliases,
+        manualOverrides: {
+          matches: [
+            {
+              id: "manual-only",
+              homeTeam: "Mexico",
+              awayTeam: "South Africa",
+              homeScore: 99,
+              awayScore: 0,
+            },
+          ],
+        },
       }),
-    ],
-    {
-      picks,
-      aliases,
-      now: "2026-06-11T18:00:00.000Z",
-      manualOverrides: {
-        groups: {
-          A: {
-            currentOrder: ["Mexico", "South Korea", "Czechia", "South Africa"],
-            status: "official",
-          },
-        },
-        topThirdGroups: [],
-        bonus: {
-          mostCards: {
-            Uruguay: 7,
-          },
-        },
-      },
-    },
+    /does not match an official FIFA match/,
+    "manual match overrides should not create synthetic production scores",
   );
-
-  assert.deepEqual(results.groups.A.currentOrder, [
-    "Mexico",
-    "South Korea",
-    "Czechia",
-    "South Africa",
-  ]);
-  assert.equal(results.groups.A.status, "official");
-  assert.deepEqual(results.topThirdGroups, []);
-  assert.deepEqual(results.bonus.mostCards, { Uruguay: 7 });
 }
 
 {
-  const results = buildResultsFromEvents(
+  const results = buildResultsFromFifaMatches(
     [
-      eventFixture({
+      fifaMatchFixture({
         id: "group-a-1",
-        name: "South Africa at Mexico",
         home: "Mexico",
         away: "South Africa",
         homeScore: 2,

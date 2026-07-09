@@ -1,7 +1,7 @@
 import { buildLeaderboardRows, buildPoolAnalytics, buildTodayOutlook } from "./leaderboard.js?v=20260706-scoring-audit";
 import { actualAdvancersForGroup, scorePool } from "./scoring.js?v=20260706-scoring-audit";
 
-const app = document.querySelector("#app");
+const app = typeof document !== "undefined" ? document.querySelector("#app") : null;
 
 let appState = null;
 let celebrationShown = false;
@@ -87,7 +87,7 @@ function syncTopNavScrollState() {
   app.querySelector(".top-nav")?.classList.toggle("is-scrolled", window.scrollY > 8);
 }
 
-function renderScoreCards(score) {
+export function renderScoreCards(score) {
   const cards = [
     ["Group", score.subtotals.group],
     ["Knockout", score.subtotals.knockout],
@@ -463,10 +463,13 @@ function sourceLink(label, url) {
   return `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(label)}</a>`;
 }
 
-function renderSourceFooter(results, sourceWorkbook = "") {
+export function renderSourceFooter(results, sourceWorkbook = "") {
   const bonusSources = results.meta?.bonusSources ?? {};
   const links = [
-    sourceLink("ESPN results feed", results.meta?.sourceUrl),
+    sourceLink("FIFA results feed", results.meta?.sourceUrl),
+    sourceLink("FIFA standings", results.meta?.sources?.matches?.sourceUrl),
+    sourceLink("FIFA tiebreakers", results.meta?.sources?.tiebreakers?.sourceUrl),
+    sourceLink("FIFA rankings", results.meta?.sources?.rankings?.sourceUrl),
     sourceLink("FIFA statistics", bonusSources.bestPassCompletion?.sourceUrl),
     sourceLink("FIFA goals stats API", bonusSources.mostGoalsScored?.apiUrl),
     sourceLink("FIFA cards stats API", bonusSources.mostCards?.apiUrl),
@@ -1043,4 +1046,4 @@ async function start() {
   }
 }
 
-start();
+if (app) start();

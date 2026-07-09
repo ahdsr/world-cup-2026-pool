@@ -2,14 +2,19 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import fs from "node:fs/promises";
 
-export const ESPN_SCOREBOARD_URL =
-  "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719";
 export const FIFA_TEAM_STATISTICS_URL =
   "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics";
+export const FIFA_STANDINGS_URL =
+  "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/standings";
+export const FIFA_GROUP_TIEBREAKERS_URL =
+  "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/articles/groups-how-teams-qualify-tie-breakers";
 export const FIFA_SEASON_ID = "285023";
 export const FIFA_CALENDAR_URL = `https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=${FIFA_SEASON_ID}`;
 export const FIFA_TIMELINE_URL_TEMPLATE = "https://api.fifa.com/api/v3/timelines/{idMatch}?language=en";
 export const FIFA_FDH_TEAM_STATS_URL_TEMPLATE = `https://fdh-api.fifa.com/v1/stats/season/${FIFA_SEASON_ID}/team/{idTeam}.json`;
+export const FIFA_MEN_RANKING_URL = "https://inside.fifa.com/fifa-world-ranking/men";
+export const FIFA_MEN_RANKING_API_URL_TEMPLATE =
+  "https://inside.fifa.com/api/ranking-overview?locale=en&dateId={dateId}";
 
 export const GROUP_IDS = "ABCDEFGHIJKL".split("");
 export const STAGE_KEYS = [
@@ -82,6 +87,19 @@ async function fetchJson(url) {
   return response.json();
 }
 
+async function fetchText(url) {
+  const response = await fetch(url, {
+    headers: {
+      accept: "text/html,application/json",
+      "user-agent": "world-cup-2026-pool-updater",
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status} ${response.statusText} (${url})`);
+  }
+  return response.text();
+}
+
 export function buildTeamIndexes(picks) {
   const teamToGroup = new Map();
   const knownTeams = new Map();
@@ -119,60 +137,73 @@ export function createTeamResolver(picks, aliases = {}) {
   };
 }
 
-function competitorName(competitor) {
-  return (
-    competitor?.team?.displayName ??
-    competitor?.team?.shortDisplayName ??
-    competitor?.team?.name ??
-    competitor?.team?.abbreviation ??
-    ""
-  );
+function scoreValue(match, side) {
+  return numberValue(match?.[`${side}TeamScore`] ?? match?.[side]?.Score);
 }
 
-export function parseEspnEvent(event, resolveTeam = (value) => value) {
-  const competition = event?.competitions?.[0] ?? {};
-  const status = competition.status?.type ?? event?.status?.type ?? {};
-  const competitors = competition.competitors ?? [];
-  const parsedCompetitors = competitors.map((competitor) => ({
-    team: resolveTeam(competitorName(competitor)),
-    homeAway: competitor.homeAway ?? "",
-    score: numberValue(competitor.score),
-    winner: Boolean(competitor.winner),
-  }));
-  const home = parsedCompetitors.find((item) => item.homeAway === "home") ?? parsedCompetitors[0] ?? {};
-  const away =
-    parsedCompetitors.find((item) => item.homeAway === "away") ??
-    parsedCompetitors.find((item) => item !== home) ??
-    {};
-  const state = status.state ?? "pre";
-  const completed = Boolean(status.completed) || state === "post";
-  const winnerCompetitor = parsedCompetitors.find((item) => item.winner);
-  let winner = winnerCompetitor?.team ?? "";
-  let loser = "";
+function fifaMatchState(match) {
+  const status = numberValue(match?.MatchStatus);
+  const hasScore = scoreValue(match, "Home") !== null && scoreValue(match, "Away") !== null;
+  if (status === 0 || (numberValue(match?.OfficialityStatus) === 1 && hasScore)) return "post";
+  if ([3, 5].includes(status)) return "in";
+  return "pre";
+}
 
-  if (!winner && completed && home.score !== null && away.score !== null && home.score !== away.score) {
-    winner = home.score > away.score ? home.team : away.team;
-  }
+function fifaMatchDetail(match, completed) {
+  const statusText = localizedDescription(match?.MatchStatusDescription);
+  if (statusText) return statusText;
+  if (!completed) return "Scheduled";
+  if (numberValue(match?.ResultType) === 2) return "FT-Pens";
+  return "FT";
+}
 
-  if (winner && completed) {
-    loser = parsedCompetitors.find((item) => item.team && item.team !== winner)?.team ?? "";
+function winnerFromFifaMatch(match, homeTeam, awayTeam, homeScore, awayScore) {
+  const winnerId = String(match?.Winner ?? "");
+  const homeId = fifaTeamId(match?.Home);
+  const awayId = fifaTeamId(match?.Away);
+
+  if (winnerId && winnerId === homeId) return homeTeam;
+  if (winnerId && winnerId === awayId) return awayTeam;
+  if (homeScore !== null && awayScore !== null && homeScore !== awayScore) {
+    return homeScore > awayScore ? homeTeam : awayTeam;
   }
+  return "";
+}
+
+export function parseFifaMatch(match, resolveTeam = (value) => value) {
+  const homeTeam = resolveTeam(fifaTeamName(match?.Home)) || match?.PlaceHolderA || "";
+  const awayTeam = resolveTeam(fifaTeamName(match?.Away)) || match?.PlaceHolderB || "";
+  const homeScore = scoreValue(match, "Home");
+  const awayScore = scoreValue(match, "Away");
+  const state = fifaMatchState(match);
+  const completed = state === "post";
+  const winner = completed ? winnerFromFifaMatch(match, homeTeam, awayTeam, homeScore, awayScore) : "";
+  const loser = winner && winner === homeTeam ? awayTeam : winner ? homeTeam : "";
+  const stage = localizedDescription(match?.StageName);
+  const group = localizedDescription(match?.GroupName);
 
   return {
-    id: event?.id ?? competition.id ?? "",
-    name: event?.name ?? "",
-    shortName: event?.shortName ?? "",
-    date: event?.date ?? competition.date ?? "",
+    id: String(match?.IdMatch ?? ""),
+    name: [stage, group].filter(Boolean).join(" - "),
+    shortName: `${awayTeam} at ${homeTeam}`,
+    date: match?.Date ?? match?.MatchDate ?? "",
     state,
     completed,
-    detail: status.detail ?? status.description ?? "",
-    homeTeam: home.team ?? "",
-    awayTeam: away.team ?? "",
-    homeScore: home.score,
-    awayScore: away.score,
+    detail: fifaMatchDetail(match, completed),
+    stage,
+    group,
+    matchNumber: numberValue(match?.MatchNumber),
+    resultType: numberValue(match?.ResultType),
+    officialityStatus: numberValue(match?.OfficialityStatus),
+    homeTeam,
+    awayTeam,
+    homeScore,
+    awayScore,
+    homePenaltyScore: numberValue(match?.HomeTeamPenaltyScore),
+    awayPenaltyScore: numberValue(match?.AwayTeamPenaltyScore),
     winner,
     loser,
-    competitors: parsedCompetitors,
+    source: "fifa",
   };
 }
 
@@ -213,23 +244,10 @@ export function applyMatchOverrides(matches, manualOverrides = {}, resolveTeam =
         ...output[index],
         ...patch,
       };
-    } else if (homeTeam && awayTeam) {
-      output.push({
-        id: override.id ?? `manual-${homeTeam}-${awayTeam}`,
-        name: `${awayTeam} at ${homeTeam}`,
-        shortName: "Manual",
-        date: override.date ?? "",
-        detail: "Manual override",
-        state: override.state ?? "post",
-        completed: override.completed ?? true,
-        homeTeam,
-        awayTeam,
-        homeScore: numberValue(override.homeScore),
-        awayScore: numberValue(override.awayScore),
-        winner: "",
-        loser: "",
-        competitors: [],
-      });
+    } else {
+      throw new Error(
+        `Manual match override does not match an official FIFA match: ${override.id ?? `${homeTeam} vs ${awayTeam}`}`,
+      );
     }
   }
 
@@ -257,6 +275,24 @@ function emptyStats(team) {
   };
 }
 
+function numericRecordValue(record, key) {
+  const value = record?.[key];
+  return Number.isFinite(value) ? value : null;
+}
+
+function decorateStats(stats, options = {}) {
+  const { fairPlayPointsByTeam = {}, fifaRankByTeam = {} } = options;
+  return stats.map((item) => {
+    const fairPlayPoints = numericRecordValue(fairPlayPointsByTeam, item.team);
+    const fifaRank = numericRecordValue(fifaRankByTeam, item.team);
+    return {
+      ...item,
+      ...(fairPlayPoints !== null ? { fairPlayPoints } : {}),
+      ...(fifaRank !== null ? { fifaRank } : {}),
+    };
+  });
+}
+
 function applyScore(home, away, homeScore, awayScore) {
   home.played += 1;
   away.played += 1;
@@ -277,16 +313,105 @@ function applyScore(home, away, homeScore, awayScore) {
   }
 }
 
-function compareStats(a, b) {
+function buildMiniTable(teams, matches) {
+  const teamSet = new Set(teams.map((team) => normalizeKey(team)));
+  const stats = new Map(teams.map((team) => [team, emptyStats(team)]));
+
+  for (const match of matches) {
+    if (!isCountedMatch(match)) continue;
+    if (!teamSet.has(normalizeKey(match.homeTeam)) || !teamSet.has(normalizeKey(match.awayTeam))) {
+      continue;
+    }
+
+    const home = stats.get(match.homeTeam) ?? emptyStats(match.homeTeam);
+    const away = stats.get(match.awayTeam) ?? emptyStats(match.awayTeam);
+    applyScore(home, away, match.homeScore, match.awayScore);
+    stats.set(match.homeTeam, home);
+    stats.set(match.awayTeam, away);
+  }
+
+  return stats;
+}
+
+function valueBuckets(items, values, direction = "desc") {
+  const buckets = new Map();
+
+  for (const item of items) {
+    const value = values.get(item.team);
+    const key = Number.isFinite(value) ? String(value) : "missing";
+    if (!buckets.has(key)) buckets.set(key, { value, items: [] });
+    buckets.get(key).items.push(item);
+  }
+
+  return [...buckets.values()].sort((a, b) => {
+    const aMissing = !Number.isFinite(a.value);
+    const bMissing = !Number.isFinite(b.value);
+    if (aMissing && bMissing) return 0;
+    if (aMissing) return 1;
+    if (bMissing) return -1;
+    return direction === "asc" ? a.value - b.value : b.value - a.value;
+  });
+}
+
+function sortStatsWithCriteria(items, criteria, index = 0) {
+  if (items.length <= 1) return items;
+  if (index >= criteria.length) {
+    return items.slice().sort((a, b) => a.team.localeCompare(b.team));
+  }
+
+  const criterion = criteria[index];
+  const values = criterion.values(items);
+  const buckets = valueBuckets(items, values, criterion.direction);
+
+  if (buckets.length === 1) {
+    return sortStatsWithCriteria(items, criteria, index + 1);
+  }
+
+  return buckets.flatMap((bucket) => sortStatsWithCriteria(bucket.items, criteria, index + 1));
+}
+
+function directValues(items, key) {
+  return new Map(items.map((item) => [item.team, Number(item[key])]));
+}
+
+function headToHeadValues(matches, key) {
+  return (items) => {
+    const miniTable = buildMiniTable(
+      items.map((item) => item.team),
+      matches,
+    );
+    return new Map(items.map((item) => [item.team, Number(miniTable.get(item.team)?.[key])]));
+  };
+}
+
+export function sortGroupStats(stats, matches = [], options = {}) {
+  const criteria = [
+    { direction: "desc", values: (items) => directValues(items, "points") },
+    { direction: "desc", values: headToHeadValues(matches, "points") },
+    { direction: "desc", values: headToHeadValues(matches, "goalDifference") },
+    { direction: "desc", values: headToHeadValues(matches, "goalsFor") },
+    { direction: "desc", values: (items) => directValues(items, "goalDifference") },
+    { direction: "desc", values: (items) => directValues(items, "goalsFor") },
+    { direction: "asc", values: (items) => directValues(items, "fairPlayPoints") },
+    { direction: "asc", values: (items) => directValues(items, "fifaRank") },
+  ];
+
+  return sortStatsWithCriteria(decorateStats(stats, options), criteria);
+}
+
+function compareThirdPlaceStats(a, b) {
   return (
     b.points - a.points ||
     b.goalDifference - a.goalDifference ||
     b.goalsFor - a.goalsFor ||
-    a.team.localeCompare(b.team)
+    Number(a.fairPlayPoints ?? 0) - Number(b.fairPlayPoints ?? 0) ||
+    Number(a.fifaRank ?? Number.POSITIVE_INFINITY) -
+      Number(b.fifaRank ?? Number.POSITIVE_INFINITY) ||
+    a.groupId.localeCompare(b.groupId)
   );
 }
 
-export function buildGroupResults(matches, picks) {
+export function buildGroupResults(matches, picks, options = {}) {
   const { groupTeams, teamToGroup } = buildTeamIndexes(picks);
   const groupState = Object.fromEntries(
     GROUP_IDS.map((groupId) => [
@@ -296,6 +421,7 @@ export function buildGroupResults(matches, picks) {
         countedMatches: 0,
         completedMatches: 0,
         liveMatches: 0,
+        matches: [],
         stats: new Map((groupTeams[groupId] ?? []).map((team) => [team, emptyStats(team)])),
       },
     ]),
@@ -308,6 +434,7 @@ export function buildGroupResults(matches, picks) {
 
     const group = groupState[homeGroup];
     group.totalMatches += 1;
+    group.matches.push(match);
 
     if (!isCountedMatch(match)) continue;
     group.countedMatches += 1;
@@ -327,7 +454,7 @@ export function buildGroupResults(matches, picks) {
   return Object.fromEntries(
     GROUP_IDS.map((groupId) => {
       const group = groupState[groupId];
-      const sortedStats = [...group.stats.values()].sort(compareStats);
+      const sortedStats = sortGroupStats([...group.stats.values()], group.matches, options);
       const status =
         group.countedMatches === 0
           ? "not-started"
@@ -357,7 +484,7 @@ export function selectTopThirdGroups(groups) {
       return thirdTeam && thirdStats ? { groupId, ...thirdStats } : null;
     })
     .filter(Boolean)
-    .sort((a, b) => compareStats(a, b) || a.groupId.localeCompare(b.groupId))
+    .sort(compareThirdPlaceStats)
     .slice(0, 8)
     .map((item) => item.groupId);
 }
@@ -710,9 +837,9 @@ async function fetchFifaTeamStats(idTeam, teamById) {
   };
 }
 
-export async function fetchFifaBonusResults(resolveTeam = (value) => value) {
-  const calendar = await fetchJson(FIFA_CALENDAR_URL);
-  const matches = asArray(calendar.Results).filter(fifaMatchHasStarted);
+export async function fetchFifaBonusResults(resolveTeam = (value) => value, calendarMatches = null) {
+  const sourceMatches = calendarMatches ?? (await fetchJson(FIFA_CALENDAR_URL)).Results;
+  const matches = asArray(sourceMatches).filter(fifaMatchHasStarted);
   const teamById = buildFifaTeamLookup(matches, resolveTeam);
   const [liveMatches, timelines, teamStats] = await Promise.all([
     Promise.all(matches.map(fetchFifaLiveMatch)),
@@ -728,7 +855,54 @@ export async function fetchFifaBonusResults(resolveTeam = (value) => value) {
   };
 }
 
-function buildBonusSources(sourceUrl = ESPN_SCOREBOARD_URL) {
+function rankingDateIdsFromPage(html) {
+  const nextDataMatch = html.match(/<script id="__NEXT_DATA__" type="application\/json">(.*?)<\/script>/s);
+  const source = nextDataMatch?.[1] ?? html;
+  return [
+    ...new Set(
+      [...source.matchAll(/(?:id\d+|FRS_Male_Football_\d+)/g)].map((match) => match[0]),
+    ),
+  ];
+}
+
+function fifaRankingApiUrl(dateId) {
+  return FIFA_MEN_RANKING_API_URL_TEMPLATE.replace("{dateId}", dateId);
+}
+
+export async function fetchFifaRankings(resolveTeam = (value) => value) {
+  const html = await fetchText(FIFA_MEN_RANKING_URL);
+  const dateIds = rankingDateIdsFromPage(html);
+
+  for (const dateId of dateIds) {
+    const apiUrl = fifaRankingApiUrl(dateId);
+    const data = await fetchJson(apiUrl);
+    const rankings = asArray(data.rankings);
+    if (!rankings.length) continue;
+
+    return {
+      dateId,
+      apiUrl,
+      sourceUrl: FIFA_MEN_RANKING_URL,
+      lastUpdateDate: rankings[0]?.lastUpdateDate ?? "",
+      rankingsByTeam: Object.fromEntries(
+        rankings
+          .map((item) => {
+            const team = resolveTeam(item?.rankingItem?.name);
+            const rank = numberValue(item?.rankingItem?.rank);
+            return team && rank !== null ? [team, rank] : null;
+          })
+          .filter(Boolean),
+      ),
+    };
+  }
+
+  return {
+    sourceUrl: FIFA_MEN_RANKING_URL,
+    rankingsByTeam: {},
+  };
+}
+
+function buildBonusSources() {
   return {
     mostGoalsScored: {
       source: "FIFA team statistics: goals",
@@ -810,68 +984,109 @@ export function applyResultsOverrides(results, manualOverrides = {}) {
   return output;
 }
 
-export function buildResultsFromEvents(events, options) {
+function hasManualOverrideValue(value) {
+  if (Array.isArray(value)) return value.length > 0;
+  if (value && typeof value === "object") {
+    return Object.values(value).some(hasManualOverrideValue);
+  }
+  return Boolean(value);
+}
+
+function manualOverrideCount(manualOverrides = {}) {
+  return Object.entries(manualOverrides)
+    .filter(([key]) => key !== "meta")
+    .reduce((count, [, value]) => count + (hasManualOverrideValue(value) ? 1 : 0), 0);
+}
+
+function serializedMatch(match) {
+  return {
+    id: match.id,
+    source: match.source,
+    date: match.date,
+    state: match.state,
+    completed: match.completed,
+    detail: match.detail,
+    stage: match.stage,
+    group: match.group,
+    matchNumber: match.matchNumber,
+    resultType: match.resultType,
+    officialityStatus: match.officialityStatus,
+    homeTeam: match.homeTeam,
+    awayTeam: match.awayTeam,
+    homeScore: match.homeScore,
+    awayScore: match.awayScore,
+    ...(match.homePenaltyScore !== null ? { homePenaltyScore: match.homePenaltyScore } : {}),
+    ...(match.awayPenaltyScore !== null ? { awayPenaltyScore: match.awayPenaltyScore } : {}),
+    winner: match.winner,
+    loser: match.loser,
+  };
+}
+
+export function buildResultsFromFifaMatches(fifaMatches, options) {
   const {
     picks,
     aliases = {},
     manualOverrides = {},
     fifaBonusResults = {},
+    fifaRankingResults = {},
     now = new Date().toISOString(),
-    sourceUrl = ESPN_SCOREBOARD_URL,
+    sourceUrl = FIFA_CALENDAR_URL,
   } = options;
   const resolveTeam = createTeamResolver(picks, aliases);
-  const parsedMatches = events.map((event) => parseEspnEvent(event, resolveTeam));
+  const parsedMatches = fifaMatches.map((match) => parseFifaMatch(match, resolveTeam));
   const matches = applyMatchOverrides(parsedMatches, manualOverrides, resolveTeam);
-  const groups = buildGroupResults(matches, picks);
+  const groups = buildGroupResults(matches, picks, {
+    fairPlayPointsByTeam: fifaBonusResults.mostCards,
+    fifaRankByTeam: fifaRankingResults.rankingsByTeam,
+  });
   const knockout = buildKnockoutResults(matches, picks);
   const topThirdGroups = isGroupStageFinal(groups) ? selectTopThirdGroups(groups) : [];
   const countedMatches = matches.filter(isCountedMatch).length;
   const liveMatches = matches.filter((match) => match.state === "in").length;
   const statusParts = [
-    "Auto-updated from ESPN",
+    "Auto-updated from FIFA",
     `${countedMatches} live/final match${countedMatches === 1 ? "" : "es"} counted`,
   ];
   if (liveMatches > 0) statusParts.push(`${liveMatches} in progress`);
+  const overridesCount = manualOverrideCount(manualOverrides);
 
   const results = {
     meta: {
       lastUpdated: now,
       status: `${statusParts.join(": ")}.`,
-      source: "espn",
+      source: "fifa",
       sourceUrl,
-      bonusSources: buildBonusSources(sourceUrl),
+      sources: {
+        matches: {
+          source: "FIFA calendar/matches API",
+          sourceUrl: FIFA_STANDINGS_URL,
+          apiUrl: sourceUrl,
+        },
+        tiebreakers: {
+          source: "FIFA World Cup 2026 group tiebreakers",
+          sourceUrl: FIFA_GROUP_TIEBREAKERS_URL,
+        },
+        rankings: {
+          source: "FIFA/Coca-Cola Men's World Ranking",
+          sourceUrl: fifaRankingResults.sourceUrl ?? FIFA_MEN_RANKING_URL,
+          apiUrl: fifaRankingResults.apiUrl ?? "",
+          dateId: fifaRankingResults.dateId ?? "",
+          lastUpdateDate: fifaRankingResults.lastUpdateDate ?? "",
+        },
+      },
+      bonusSources: buildBonusSources(),
+      manualOverrideCount: overridesCount,
+      manualOverrideSource: overridesCount > 0 ? "data/manual-overrides.json" : "",
       sourceNote:
-        "Group standings are computed from ESPN match scores. FIFA match timelines and team statistics are used for bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden.",
+        "All match results, fixtures, knockout winners, group standings, and third-place rankings are computed from FIFA official match data. FIFA team statistics, timelines, and rankings are used for bonus answers and unresolved tiebreakers. Manual overrides are explicit official-correction patches only.",
     },
     matches: matches
       .filter(isCountedMatch)
-      .map((match) => ({
-        id: match.id,
-        date: match.date,
-        state: match.state,
-        completed: match.completed,
-        detail: match.detail,
-        homeTeam: match.homeTeam,
-        awayTeam: match.awayTeam,
-        homeScore: match.homeScore,
-        awayScore: match.awayScore,
-        winner: match.winner,
-        loser: match.loser,
-      }))
+      .map(serializedMatch)
       .sort((a, b) => String(b.date).localeCompare(String(a.date))),
     fixtures: matches
       .filter((match) => !match.completed)
-      .map((match) => ({
-        id: match.id,
-        date: match.date,
-        state: match.state,
-        completed: match.completed,
-        detail: match.detail,
-        homeTeam: match.homeTeam,
-        awayTeam: match.awayTeam,
-        homeScore: match.homeScore,
-        awayScore: match.awayScore,
-      }))
+      .map(serializedMatch)
       .sort((a, b) => String(a.date).localeCompare(String(b.date))),
     groups,
     topThirdGroups,
@@ -893,18 +1108,18 @@ export async function updateResults() {
     readJson("data/team-aliases.json", { aliases: {} }),
     readJson("data/manual-overrides.json", {}),
   ]);
-  const response = await fetch(ESPN_SCOREBOARD_URL);
-  if (!response.ok) {
-    throw new Error(`ESPN scoreboard request failed: ${response.status} ${response.statusText}`);
-  }
-  const scoreboard = await response.json();
+  const calendar = await fetchJson(FIFA_CALENDAR_URL);
   const resolveTeam = createTeamResolver(picks, aliases);
-  const fifaBonusResults = await fetchFifaBonusResults(resolveTeam);
-  const results = buildResultsFromEvents(scoreboard.events ?? [], {
+  const [fifaBonusResults, fifaRankingResults] = await Promise.all([
+    fetchFifaBonusResults(resolveTeam, calendar.Results),
+    fetchFifaRankings(resolveTeam),
+  ]);
+  const results = buildResultsFromFifaMatches(calendar.Results ?? [], {
     picks,
     aliases,
     manualOverrides,
     fifaBonusResults,
+    fifaRankingResults,
     now: new Date().toISOString(),
   });
   await writeJson("data/results.json", results);

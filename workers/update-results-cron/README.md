@@ -2,7 +2,7 @@
 
 Cloudflare Worker that dispatches `.github/workflows/update-results.yml` every 15 minutes.
 
-The worker is intentionally small: it does not fetch ESPN or edit files directly. It triggers the existing GitHub Actions updater, which fetches ESPN, runs tests, and commits `data/results.json` only when results changed.
+The worker is intentionally small: it does not fetch FIFA or edit files directly. It triggers the existing GitHub Actions updater, which fetches FIFA official data, runs tests, and commits `data/results.json` only when results changed.
 
 ## Setup
 

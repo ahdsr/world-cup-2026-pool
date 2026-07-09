@@ -29,7 +29,7 @@ jobs:
       - name: Sync latest main
         run: git pull --ff-only origin main
 
-      - name: Update results from ESPN
+      - name: Update results from FIFA
         run: node scripts/update-results.mjs
 
       - name: Run tests

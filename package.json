@@ -4,7 +4,8 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "test": "node tests/scoring.test.mjs && node tests/leaderboard.test.mjs && node tests/picks-audit.test.mjs && node tests/updater.test.mjs && node tests/update-results-cron.test.mjs",
+    "test": "node tests/scoring.test.mjs && node tests/leaderboard.test.mjs && node tests/picks-audit.test.mjs && node tests/updater.test.mjs && node tests/ui-render.test.mjs && node tests/update-results-cron.test.mjs",
+    "test:live": "node tests/live-fifa-accuracy.test.mjs",
     "worker:dev": "wrangler dev --config workers/update-results-cron/wrangler.toml",
     "worker:deploy": "wrangler deploy --config workers/update-results-cron/wrangler.toml",
     "worker:deploy:dry-run": "wrangler deploy --dry-run --config workers/update-results-cron/wrangler.toml",
