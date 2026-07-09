@@ -812,11 +812,11 @@ function renderLeaderboard(entriesConfig, rows, results) {
               <thead>
                 <tr>
                   <th>Name</th>
-                  <th>Total</th>
                   <th>Group</th>
                   <th>Knockout</th>
-                  <th>Finals</th>
                   <th>Bonus</th>
+                  <th>Final</th>
+                  <th>Total</th>
                 </tr>
               </thead>
               <tbody>
@@ -829,11 +829,11 @@ function renderLeaderboard(entriesConfig, rows, results) {
                           <a class="entry-link" href="${entryHref(row.id)}">${escapeHtml(row.name)}</a>
                           ${row.sample ? statusPill("Sample") : ""}
                         </th>
-                        <td><strong>${row.score.total}</strong></td>
                         <td>${row.score.subtotals.group}</td>
                         <td>${row.score.subtotals.knockout}</td>
-                        <td>${row.score.subtotals.finals}</td>
                         <td>${row.score.subtotals.bonus}</td>
+                        <td>${row.score.subtotals.finals}</td>
+                        <td><strong>${row.score.total}</strong></td>
                       </tr>
                     `,
                   )
