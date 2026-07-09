@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-09T22:00:33.629Z",
-    "status": "Auto-updated from FIFA: 97 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-09T22:06:35.575Z",
+    "status": "Auto-updated from FIFA: 97 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
     "sources": {
@@ -63,20 +63,20 @@
       "id": "400021536",
       "source": "fifa",
       "date": "2026-07-09T20:00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Scheduled",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "stage": "Quarter-final",
       "group": "",
       "matchNumber": 97,
-      "resultType": 0,
-      "officialityStatus": 0,
+      "resultType": 1,
+      "officialityStatus": 2,
       "homeTeam": "France",
       "awayTeam": "Morocco",
       "homeScore": 2,
       "awayScore": 0,
-      "winner": "",
-      "loser": ""
+      "winner": "France",
+      "loser": "Morocco"
     },
     {
       "id": "400021535",
@@ -1913,25 +1913,6 @@
   ],
   "fixtures": [
     {
-      "id": "400021536",
-      "source": "fifa",
-      "date": "2026-07-09T20:00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Scheduled",
-      "stage": "Quarter-final",
-      "group": "",
-      "matchNumber": 97,
-      "resultType": 0,
-      "officialityStatus": 0,
-      "homeTeam": "France",
-      "awayTeam": "Morocco",
-      "homeScore": 2,
-      "awayScore": 0,
-      "winner": "",
-      "loser": ""
-    },
-    {
       "id": "400021538",
       "source": "fifa",
       "date": "2026-07-10T19:00:00Z",
@@ -2000,7 +1981,7 @@
       "matchNumber": 101,
       "resultType": 0,
       "officialityStatus": 0,
-      "homeTeam": "W97",
+      "homeTeam": "France",
       "awayTeam": "W98",
       "homeScore": null,
       "awayScore": null,
@@ -2717,7 +2698,9 @@
     "Argentina",
     "Switzerland"
   ],
-  "semifinalists": [],
+  "semifinalists": [
+    "France"
+  ],
   "thirdPlaceMatch": [],
   "finalists": [],
   "finals": {
