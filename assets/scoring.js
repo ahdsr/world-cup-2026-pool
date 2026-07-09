@@ -6,6 +6,9 @@ const STAGE_LABELS = {
   finalists: "Final",
 };
 
+const CARD_BONUS_ID = "mostCards";
+const CARD_BONUS_LABEL = "Most red & yellow cards";
+
 export function normalizeName(value) {
   return String(value ?? "")
     .normalize("NFD")
@@ -24,6 +27,31 @@ function includesTeam(list, team) {
 
 function asArray(value) {
   return Array.isArray(value) ? value.filter(Boolean) : [];
+}
+
+function teamValueFromRecord(record, team) {
+  if (!record || typeof record !== "object" || Array.isArray(record)) return null;
+
+  for (const [key, value] of Object.entries(record)) {
+    if (sameTeam(key, team)) return value;
+  }
+  return null;
+}
+
+function cardLeadersFromRecord(record) {
+  if (!record || typeof record !== "object" || Array.isArray(record)) return { leaders: [], max: 0 };
+
+  const entries = Object.entries(record)
+    .map(([team, value]) => [team, Number(value)])
+    .filter(([, value]) => Number.isFinite(value) && value > 0);
+  const max = Math.max(...entries.map(([, value]) => value), 0);
+  return {
+    leaders: entries
+      .filter(([, value]) => value === max)
+      .map(([team]) => team)
+      .sort((a, b) => a.localeCompare(b)),
+    max,
+  };
 }
 
 export function actualAdvancersForGroup(results, groupId) {
@@ -98,6 +126,25 @@ function scoreFinalPosition(label, predicted, actual, points) {
 
 function scoreBonus(picks, results, rules) {
   return asArray(picks.bonus).map((item) => {
+    if (item.id === CARD_BONUS_ID) {
+      const cardScores = results?.bonus?.[item.id];
+      const cardPoints = Number(teamValueFromRecord(cardScores, item.pick) ?? 0);
+      const { leaders, max } = cardLeadersFromRecord(cardScores);
+      const hit = includesTeam(leaders, item.pick);
+      const leaderText = leaders.length
+        ? `${leaders.join(", ")} (${max} Fair Play pts)`
+        : "Not entered";
+      return {
+        id: item.id,
+        label: CARD_BONUS_LABEL,
+        pick: item.pick,
+        answers: leaders,
+        answerText: `${leaderText}; ${item.pick}: ${cardPoints}`,
+        hit,
+        points: hit ? rules.bonus : 0,
+      };
+    }
+
     const answers = asArray(results?.bonus?.[item.id]);
     const hit = includesTeam(answers, item.pick);
     return {

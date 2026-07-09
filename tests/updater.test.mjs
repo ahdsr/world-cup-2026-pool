@@ -2,6 +2,8 @@ import assert from "node:assert/strict";
 import {
   buildResultsFromEvents,
   computeBestPassCompletionFromFifaTeamStats,
+  computeCardPointsFromFifaLiveMatches,
+  computeCardPointsFromFifaTeamStats,
   computeFarthestGoalFromFifaTimelines,
   computeMostCardsFromFifaLiveMatches,
   createTeamResolver,
@@ -121,45 +123,101 @@ function eventFixture({
   );
   assert.deepEqual(results.bonus.mostGoalsScored, ["Mexico"]);
   assert.deepEqual(results.bonus.mostGoalsConceded, ["South Africa"]);
-  assert.equal(
+  assert.match(
     results.meta.bonusSources.mostCards.source,
-    "FIFA live match bookings",
+    /FIFA team statistics/,
     "bonus metadata should identify the FIFA cards source",
   );
 }
 
 {
   const resolveTeam = createTeamResolver(picks, aliases);
+  const fifaMatches = [
+    {
+      HomeTeam: {
+        ShortClubName: "USA",
+        Bookings: [
+          { Card: 1, IdPlayer: "usa-second-yellow" },
+          { Card: 2, IdPlayer: "usa-second-yellow" },
+        ],
+      },
+      AwayTeam: {
+        ShortClubName: "Korea Republic",
+        Bookings: [{ Card: 1 }, { Card: 1 }, { Card: 1 }, { Card: 1 }, { Card: 1 }],
+      },
+    },
+    {
+      HomeTeam: {
+        ShortClubName: "South Africa",
+        Bookings: [
+          { Card: 1, IdPlayer: "south-africa-direct-red" },
+          { Card: 3, IdPlayer: "south-africa-direct-red" },
+        ],
+      },
+      AwayTeam: {
+        ShortClubName: "USA",
+        Bookings: [{ Card: 3 }],
+      },
+    },
+  ];
+  const cardPoints = computeCardPointsFromFifaLiveMatches(fifaMatches, resolveTeam);
   const mostCards = computeMostCardsFromFifaLiveMatches(
-    [
-      {
-        HomeTeam: {
-          ShortClubName: "USA",
-          Bookings: [{ Card: 1 }, { Card: 2 }],
-        },
-        AwayTeam: {
-          ShortClubName: "Korea Republic",
-          Bookings: [{ Card: 1 }, { Card: 1 }, { Card: 1 }, { Card: 1 }, { Card: 1 }],
-        },
-      },
-      {
-        HomeTeam: {
-          ShortClubName: "South Africa",
-          Bookings: [{ Card: 1 }],
-        },
-        AwayTeam: {
-          ShortClubName: "USA",
-          Bookings: [{ Card: 3 }],
-        },
-      },
-    ],
+    fifaMatches,
     resolveTeam,
   );
 
   assert.deepEqual(
+    cardPoints,
+    {
+      "South Africa": 5,
+      "South Korea": 5,
+      "United States": 7,
+    },
+    "FIFA bookings should be normalized through team aliases and weighted into Fair Play Points",
+  );
+  assert.deepEqual(
     mostCards,
     ["United States"],
     "FIFA bookings should be normalized through team aliases and weighted for card bonus leaders",
+  );
+}
+
+{
+  const cardPoints = computeCardPointsFromFifaTeamStats([
+    {
+      team: "Egypt",
+      stats: [
+        ["YellowCards", 12],
+        ["DirectRedCards", 0],
+        ["IndirectRedCards", 0],
+      ],
+    },
+    {
+      team: "Paraguay",
+      stats: [
+        ["YellowCards", 9],
+        ["DirectRedCards", 1],
+        ["IndirectRedCards", 0],
+      ],
+    },
+    {
+      team: "South Africa",
+      stats: [
+        ["YellowCards", 5],
+        ["DirectRedCards", 2],
+        ["IndirectRedCards", 0],
+      ],
+    },
+  ]);
+
+  assert.deepEqual(
+    cardPoints,
+    {
+      Egypt: 12,
+      Paraguay: 13,
+      "South Africa": 13,
+    },
+    "FIFA team stats should produce Fair Play Points from yellow, direct red, and indirect red totals",
   );
 }
 
@@ -276,7 +334,9 @@ function eventFixture({
         },
         topThirdGroups: [],
         bonus: {
-          mostCards: ["Uruguay"],
+          mostCards: {
+            Uruguay: 7,
+          },
         },
       },
     },
@@ -290,7 +350,7 @@ function eventFixture({
   ]);
   assert.equal(results.groups.A.status, "official");
   assert.deepEqual(results.topThirdGroups, []);
-  assert.deepEqual(results.bonus.mostCards, ["Uruguay"]);
+  assert.deepEqual(results.bonus.mostCards, { Uruguay: 7 });
 }
 
 {
@@ -310,7 +370,9 @@ function eventFixture({
       picks,
       aliases,
       fifaBonusResults: {
-        mostCards: ["Mexico"],
+        mostCards: {
+          Mexico: 2,
+        },
       },
       manualOverrides: {
         bonus: {
@@ -322,7 +384,7 @@ function eventFixture({
 
   assert.deepEqual(
     results.bonus.mostCards,
-    ["Mexico"],
+    { Mexico: 2 },
     "empty manual bonus placeholders should not erase automatic FIFA bonus results",
   );
 }

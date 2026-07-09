@@ -440,7 +440,9 @@ function renderPodiumAndBonus(picks, results, score) {
                     <th>${escapeHtml(item.label)}</th>
                     <td>${teamPill(picks, item.pick)}</td>
                     <td>${
-                      item.answers.length
+                      item.answerText
+                        ? escapeHtml(item.answerText)
+                        : item.answers.length
                         ? item.answers.map((team) => teamPill(picks, team)).join("")
                         : '<span class="empty">Not entered</span>'
                     }</td>
@@ -466,7 +468,7 @@ function renderSourceFooter(results, sourceWorkbook = "") {
   const links = [
     sourceLink("ESPN results feed", results.meta?.sourceUrl),
     sourceLink("FIFA statistics", bonusSources.bestPassCompletion?.sourceUrl),
-    sourceLink("FIFA match calendar API", bonusSources.mostCards?.apiUrl),
+    sourceLink("FIFA cards stats API", bonusSources.mostCards?.apiUrl),
     sourceLink("FIFA timelines API", bonusSources.farthestGoal?.apiUrl),
     sourceLink("FIFA team stats API", bonusSources.bestPassCompletion?.apiUrl),
   ].filter(Boolean);

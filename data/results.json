@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-09T18:45:33.170Z",
+    "lastUpdated": "2026-07-09T18:48:01.067Z",
     "status": "Auto-updated from ESPN: 96 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
@@ -28,13 +28,13 @@
         "update": "Automatic with each results update"
       },
       "mostCards": {
-        "source": "FIFA live match bookings",
+        "source": "FIFA team statistics judged by Fair Play Points: yellow 1, indirect red 3, direct red 4, yellow plus direct red 5",
         "sourceUrl": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics",
-        "apiUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
+        "apiUrl": "https://fdh-api.fifa.com/v1/stats/season/285023/team/{idTeam}.json",
         "update": "Automatic with each results update"
       }
     },
-    "sourceNote": "Group standings are computed from ESPN match scores. FIFA live bookings, match timelines, and team statistics are used for bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
+    "sourceNote": "Group standings are computed from ESPN match scores. FIFA match timelines and team statistics are used for bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden."
   },
   "matches": [
     {
@@ -1956,8 +1956,55 @@
     "bestPassCompletion": [
       "Spain"
     ],
-    "mostCards": [
-      "Egypt"
-    ]
+    "mostCards": {
+      "Algeria": 3,
+      "Argentina": 3,
+      "Australia": 5,
+      "Austria": 5,
+      "Belgium": 8,
+      "Bosnia & Herzegovina": 11,
+      "Brazil": 8,
+      "Canada": 11,
+      "Cape Verde": 5,
+      "Colombia": 8,
+      "Croatia": 4,
+      "Curaçao": 7,
+      "Czechia": 1,
+      "DR Congo": 6,
+      "Ecuador": 12,
+      "Egypt": 12,
+      "England": 11,
+      "France": 4,
+      "Germany": 3,
+      "Ghana": 6,
+      "Haiti": 7,
+      "Iran": 6,
+      "Iraq": 8,
+      "Ivory Coast": 4,
+      "Japan": 4,
+      "Jordan": 4,
+      "Mexico": 8,
+      "Morocco": 6,
+      "Netherlands": 3,
+      "New Zealand": 4,
+      "Norway": 2,
+      "Panama": 5,
+      "Paraguay": 13,
+      "Portugal": 7,
+      "Qatar": 12,
+      "Saudi Arabia": 6,
+      "Scotland": 5,
+      "Senegal": 3,
+      "South Africa": 13,
+      "South Korea": 4,
+      "Spain": 3,
+      "Sweden": 5,
+      "Switzerland": 6,
+      "Tunisia": 1,
+      "Turkey": 2,
+      "United States": 11,
+      "Uruguay": 9,
+      "Uzbekistan": 4
+    }
   }
 }

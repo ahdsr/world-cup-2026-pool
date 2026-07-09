@@ -462,11 +462,48 @@ const FIFA_CARD_WEIGHTS = new Map([
   [3, 4], // Direct red
 ]);
 
-function fifaCardWeight(booking) {
-  return FIFA_CARD_WEIGHTS.get(numberValue(booking?.Card)) ?? 0;
+function bookingParticipantKey(booking, index) {
+  if (booking?.IdPlayer) return `player:${booking.IdPlayer}`;
+  if (booking?.IdCoach) return `coach:${booking.IdCoach}`;
+  if (booking?.IdStaff) return `staff:${booking.IdStaff}`;
+  return `booking:${index}`;
+}
+
+function participantFairPlayPoints(bookings) {
+  const cards = asArray(bookings).map((booking) => numberValue(booking?.Card));
+  const yellowCount = cards.filter((card) => card === 1).length;
+
+  if (cards.includes(3) && yellowCount > 0) return 5;
+  if (cards.includes(3)) return 4;
+  if (cards.includes(2) || yellowCount >= 2) return 3;
+  return cards.reduce((sum, card) => sum + (FIFA_CARD_WEIGHTS.get(card) ?? 0), 0);
+}
+
+function teamFairPlayPoints(bookings) {
+  const participants = new Map();
+
+  asArray(bookings).forEach((booking, index) => {
+    const key = bookingParticipantKey(booking, index);
+    participants.set(key, [...(participants.get(key) ?? []), booking]);
+  });
+
+  return [...participants.values()].reduce(
+    (sum, participantBookings) => sum + participantFairPlayPoints(participantBookings),
+    0,
+  );
 }
 
 export function computeMostCardsFromFifaLiveMatches(matches, resolveTeam = (value) => value) {
+  const cardPoints = computeCardPointsFromFifaLiveMatches(matches, resolveTeam);
+  const max = Math.max(...Object.values(cardPoints), 0);
+  if (max <= 0) return [];
+  return Object.entries(cardPoints)
+    .filter(([, total]) => total === max)
+    .map(([team]) => team)
+    .sort((a, b) => a.localeCompare(b));
+}
+
+export function computeCardPointsFromFifaLiveMatches(matches, resolveTeam = (value) => value) {
   const totals = new Map();
 
   for (const match of asArray(matches)) {
@@ -474,20 +511,37 @@ export function computeMostCardsFromFifaLiveMatches(matches, resolveTeam = (valu
       const team = match?.[side];
       const name = resolveTeam(fifaTeamName(team));
       if (!name) continue;
-      const cardTotal = asArray(team?.Bookings).reduce(
-        (sum, booking) => sum + fifaCardWeight(booking),
-        0,
-      );
+      const cardTotal = teamFairPlayPoints(team?.Bookings);
       totals.set(name, (totals.get(name) ?? 0) + cardTotal);
     }
   }
 
-  const max = Math.max(...totals.values(), 0);
-  if (max <= 0) return [];
-  return [...totals.entries()]
-    .filter(([, total]) => total === max)
-    .map(([team]) => team)
-    .sort((a, b) => a.localeCompare(b));
+  return Object.fromEntries(
+    [...totals.entries()]
+      .filter(([, total]) => total > 0)
+      .sort(([teamA], [teamB]) => teamA.localeCompare(teamB)),
+  );
+}
+
+export function computeCardPointsFromFifaTeamStats(teamStats) {
+  const totals = {};
+
+  for (const item of asArray(teamStats)) {
+    const team = item?.team;
+    const stats = statEntriesToMap(item?.stats);
+    const yellowCards = Number(stats.get("YellowCards") ?? 0);
+    const directRedCards = Number(stats.get("DirectRedCards") ?? stats.get("RedCards") ?? 0);
+    const indirectRedCards = Number(stats.get("IndirectRedCards") ?? 0);
+
+    if (!team) continue;
+    const total =
+      (Number.isFinite(yellowCards) ? yellowCards : 0) +
+      (Number.isFinite(directRedCards) ? directRedCards * 4 : 0) +
+      (Number.isFinite(indirectRedCards) ? indirectRedCards * 3 : 0);
+    if (total > 0) totals[team] = total;
+  }
+
+  return Object.fromEntries(Object.entries(totals).sort(([teamA], [teamB]) => teamA.localeCompare(teamB)));
 }
 
 function fifaMatchTeams(match) {
@@ -642,7 +696,7 @@ export async function fetchFifaBonusResults(resolveTeam = (value) => value) {
   ]);
 
   return {
-    mostCards: computeMostCardsFromFifaLiveMatches(liveMatches, resolveTeam),
+    mostCards: computeCardPointsFromFifaTeamStats(teamStats),
     farthestGoal: computeFarthestGoalFromFifaTimelines(timelines, teamById),
     bestPassCompletion: computeBestPassCompletionFromFifaTeamStats(teamStats),
   };
@@ -673,9 +727,10 @@ function buildBonusSources(sourceUrl = ESPN_SCOREBOARD_URL) {
       update: "Automatic with each results update",
     },
     mostCards: {
-      source: "FIFA live match bookings",
+      source:
+        "FIFA team statistics judged by Fair Play Points: yellow 1, indirect red 3, direct red 4, yellow plus direct red 5",
       sourceUrl: FIFA_TEAM_STATISTICS_URL,
-      apiUrl: FIFA_CALENDAR_URL,
+      apiUrl: FIFA_FDH_TEAM_STATS_URL_TEMPLATE,
       update: "Automatic with each results update",
     },
   };
@@ -714,6 +769,14 @@ export function applyResultsOverrides(results, manualOverrides = {}) {
 
   for (const [key, value] of Object.entries(manualOverrides.bonus ?? {})) {
     if (Array.isArray(value) && value.length > 0) output.bonus[key] = value;
+    if (
+      value &&
+      typeof value === "object" &&
+      !Array.isArray(value) &&
+      Object.keys(value).length > 0
+    ) {
+      output.bonus[key] = value;
+    }
   }
 
   return output;
@@ -750,7 +813,7 @@ export function buildResultsFromEvents(events, options) {
       sourceUrl,
       bonusSources: buildBonusSources(sourceUrl),
       sourceNote:
-        "Group standings are computed from ESPN match scores. FIFA live bookings, match timelines, and team statistics are used for bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden.",
+        "Group standings are computed from ESPN match scores. FIFA match timelines and team statistics are used for bonus results. Third-place qualifier scoring is withheld until the group stage is final unless manually overridden.",
     },
     matches: matches
       .filter(isCountedMatch)

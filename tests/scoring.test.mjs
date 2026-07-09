@@ -120,4 +120,33 @@ function groupOnly(groupId, order, topThirdGroups = []) {
   assert.equal(score.subtotals.bonus, 5, "bonus ties should accept any matching answer");
 }
 
+{
+  const results = emptyResults();
+  const cardsPick = picks.bonus.find((item) => item.id === "mostCards").pick;
+  results.bonus.mostCards = {
+    Egypt: 9,
+    [cardsPick]: 4,
+  };
+  const score = scorePool(picks, results);
+  const cardScore = score.bonus.find((item) => item.id === "mostCards");
+  assert.equal(cardScore.points, 0, "cards should not score unless the pick leads on Fair Play Points");
+  assert.equal(
+    score.subtotals.bonus,
+    0,
+    "card Fair Play Points should not be added directly to the bonus subtotal",
+  );
+}
+
+{
+  const results = emptyResults();
+  const cardsPick = picks.bonus.find((item) => item.id === "mostCards").pick;
+  results.bonus.mostCards = {
+    Egypt: 9,
+    [cardsPick]: 9,
+  };
+  const score = scorePool(picks, results);
+  const cardScore = score.bonus.find((item) => item.id === "mostCards");
+  assert.equal(cardScore.points, 5, "cards should award the normal bonus when the pick is a leader");
+}
+
 console.log("All scoring tests passed.");

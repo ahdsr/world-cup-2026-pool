@@ -6,6 +6,7 @@ const EMPTY_SUBTOTALS = {
   finals: 0,
   bonus: 0,
 };
+const CARD_BONUS_ID = "mostCards";
 
 function cleanScore(score) {
   const subtotals = {
@@ -382,6 +383,7 @@ function finalsRemaining(score, results, rules) {
 
 function bonusRemaining(picks, score, rules) {
   return (picks.bonus ?? []).reduce((sum, item) => {
+    if (item.id === CARD_BONUS_ID) return sum;
     const bonusScore = score.bonus?.find((scored) => scored.id === item.id);
     return sum + stageRemaining(rules.bonus, bonusScore?.points ?? 0, false);
   }, 0);
