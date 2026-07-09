@@ -5,6 +5,7 @@ import {
   computeCardPointsFromFifaLiveMatches,
   computeCardPointsFromFifaTeamStats,
   computeFarthestGoalFromFifaTimelines,
+  computeGoalBonusResultsFromFifaTeamStats,
   computeMostCardsFromFifaLiveMatches,
   createTeamResolver,
   parseEspnEvent,
@@ -124,6 +125,11 @@ function eventFixture({
   assert.deepEqual(results.bonus.mostGoalsScored, ["Mexico"]);
   assert.deepEqual(results.bonus.mostGoalsConceded, ["South Africa"]);
   assert.match(
+    results.meta.bonusSources.mostGoalsScored.source,
+    /FIFA team statistics/,
+    "bonus metadata should identify the FIFA goals source",
+  );
+  assert.match(
     results.meta.bonusSources.mostCards.source,
     /FIFA team statistics/,
     "bonus metadata should identify the FIFA cards source",
@@ -179,6 +185,25 @@ function eventFixture({
     mostCards,
     ["United States"],
     "FIFA bookings should be normalized through team aliases and weighted for card bonus leaders",
+  );
+}
+
+{
+  const goalBonuses = computeGoalBonusResultsFromFifaTeamStats([
+    { team: "France", stats: [["Goals", 14], ["GoalsConceded", 2]] },
+    { team: "Argentina", stats: [["Goals", 14], ["GoalsConceded", 5]] },
+    { team: "Germany", stats: [["Goals", 11], ["GoalsConceded", 5]] },
+    { team: "Iraq", stats: [["Goals", 1], ["GoalsConceded", 12]] },
+    { team: "Tunisia", stats: [["Goals", 2], ["GoalsConceded", 12]] },
+  ]);
+
+  assert.deepEqual(
+    goalBonuses,
+    {
+      mostGoalsScored: ["Argentina", "France"],
+      mostGoalsConceded: ["Iraq", "Tunisia"],
+    },
+    "FIFA team stats should determine goal bonus leaders",
   );
 }
 

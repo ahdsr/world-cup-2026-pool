@@ -1,18 +1,20 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-09T18:48:01.067Z",
+    "lastUpdated": "2026-07-09T18:51:48.921Z",
     "status": "Auto-updated from ESPN: 96 live/final matches counted.",
     "source": "espn",
     "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
     "bonusSources": {
       "mostGoalsScored": {
-        "source": "ESPN match scores",
-        "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
+        "source": "FIFA team statistics: goals",
+        "sourceUrl": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics",
+        "apiUrl": "https://fdh-api.fifa.com/v1/stats/season/285023/team/{idTeam}.json",
         "update": "Automatic with each results update"
       },
       "mostGoalsConceded": {
-        "source": "ESPN match scores",
-        "sourceUrl": "https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/scoreboard?limit=200&dates=20260611-20260719",
+        "source": "FIFA team statistics: goals conceded",
+        "sourceUrl": "https://www.fifa.com/en/tournaments/mens/worldcup/canadamexicousa2026/statistics/team-statistics",
+        "apiUrl": "https://fdh-api.fifa.com/v1/stats/season/285023/team/{idTeam}.json",
         "update": "Automatic with each results update"
       },
       "farthestGoal": {
@@ -1942,9 +1944,8 @@
   },
   "bonus": {
     "mostGoalsScored": [
-      "France",
-      "Germany",
-      "Netherlands"
+      "Argentina",
+      "France"
     ],
     "mostGoalsConceded": [
       "Iraq",

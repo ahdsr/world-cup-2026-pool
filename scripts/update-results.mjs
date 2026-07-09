@@ -441,9 +441,9 @@ function buildBonusResults(groups, picks, fifaBonusResults = {}) {
   const stats = allTeamStats(groups);
   return {
     ...base,
-    ...fifaBonusResults,
     mostGoalsScored: leadersBy(stats, "goalsFor"),
     mostGoalsConceded: leadersBy(stats, "goalsAgainst"),
+    ...fifaBonusResults,
   };
 }
 
@@ -542,6 +542,31 @@ export function computeCardPointsFromFifaTeamStats(teamStats) {
   }
 
   return Object.fromEntries(Object.entries(totals).sort(([teamA], [teamB]) => teamA.localeCompare(teamB)));
+}
+
+function leadersFromFifaTeamStats(teamStats, statKey) {
+  const rows = asArray(teamStats)
+    .map((item) => {
+      const stats = statEntriesToMap(item?.stats);
+      return {
+        team: item?.team,
+        value: Number(stats.get(statKey) ?? 0),
+      };
+    })
+    .filter((item) => item.team && Number.isFinite(item.value) && item.value > 0);
+  const max = Math.max(...rows.map((item) => item.value), 0);
+  if (max <= 0) return [];
+  return rows
+    .filter((item) => item.value === max)
+    .map((item) => item.team)
+    .sort((a, b) => a.localeCompare(b));
+}
+
+export function computeGoalBonusResultsFromFifaTeamStats(teamStats) {
+  return {
+    mostGoalsScored: leadersFromFifaTeamStats(teamStats, "Goals"),
+    mostGoalsConceded: leadersFromFifaTeamStats(teamStats, "GoalsConceded"),
+  };
 }
 
 function fifaMatchTeams(match) {
@@ -696,6 +721,7 @@ export async function fetchFifaBonusResults(resolveTeam = (value) => value) {
   ]);
 
   return {
+    ...computeGoalBonusResultsFromFifaTeamStats(teamStats),
     mostCards: computeCardPointsFromFifaTeamStats(teamStats),
     farthestGoal: computeFarthestGoalFromFifaTimelines(timelines, teamById),
     bestPassCompletion: computeBestPassCompletionFromFifaTeamStats(teamStats),
@@ -705,13 +731,15 @@ export async function fetchFifaBonusResults(resolveTeam = (value) => value) {
 function buildBonusSources(sourceUrl = ESPN_SCOREBOARD_URL) {
   return {
     mostGoalsScored: {
-      source: "ESPN match scores",
-      sourceUrl,
+      source: "FIFA team statistics: goals",
+      sourceUrl: FIFA_TEAM_STATISTICS_URL,
+      apiUrl: FIFA_FDH_TEAM_STATS_URL_TEMPLATE,
       update: "Automatic with each results update",
     },
     mostGoalsConceded: {
-      source: "ESPN match scores",
-      sourceUrl,
+      source: "FIFA team statistics: goals conceded",
+      sourceUrl: FIFA_TEAM_STATISTICS_URL,
+      apiUrl: FIFA_FDH_TEAM_STATS_URL_TEMPLATE,
       update: "Automatic with each results update",
     },
     farthestGoal: {

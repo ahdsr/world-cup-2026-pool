@@ -468,6 +468,7 @@ function renderSourceFooter(results, sourceWorkbook = "") {
   const links = [
     sourceLink("ESPN results feed", results.meta?.sourceUrl),
     sourceLink("FIFA statistics", bonusSources.bestPassCompletion?.sourceUrl),
+    sourceLink("FIFA goals stats API", bonusSources.mostGoalsScored?.apiUrl),
     sourceLink("FIFA cards stats API", bonusSources.mostCards?.apiUrl),
     sourceLink("FIFA timelines API", bonusSources.farthestGoal?.apiUrl),
     sourceLink("FIFA team stats API", bonusSources.bestPassCompletion?.apiUrl),

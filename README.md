@@ -57,7 +57,7 @@ The updater writes `data/results.json` from ESPN's public scoreboard feed and co
 - top third-place groups, withheld until the group stage is final
 - knockout advancement arrays
 - final podium
-- score-derived bonuses for most goals scored and most goals conceded
+- FIFA team-statistics bonuses for most goals scored and most goals conceded
 - FIFA booking-derived most red/yellow cards bonus, judged by Fair Play Points
 
 Manual-only data and official corrections belong in `data/manual-overrides.json`.
@@ -65,8 +65,8 @@ Use that file for deeper FIFA tiebreakers, score corrections, and bonus categori
 
 Bonus source coverage:
 
-- Most goals scored: automatic from ESPN match scores.
-- Most goals conceded: automatic from ESPN match scores.
+- Most goals scored: automatic from FIFA team statistics.
+- Most goals conceded: automatic from FIFA team statistics.
 - Most red & yellow cards: automatic from FIFA team statistics, judged by Fair Play Points: yellow = 1, indirect red/second yellow = 3, direct red = 4, yellow followed by direct red = 5.
 - Best pass completion %: automatic from FIFA team passing totals.
 - Goal from farthest distance: automatic from FIFA match timeline goal coordinates.
