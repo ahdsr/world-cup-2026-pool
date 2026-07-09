@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-09T21:15:34.961Z",
+    "lastUpdated": "2026-07-09T21:30:35.705Z",
     "status": "Auto-updated from FIFA: 97 live/final matches counted: 1 in progress.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -73,7 +73,7 @@
       "officialityStatus": 0,
       "homeTeam": "France",
       "awayTeam": "Morocco",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "winner": "",
       "loser": ""
@@ -1926,7 +1926,7 @@
       "officialityStatus": 0,
       "homeTeam": "France",
       "awayTeam": "Morocco",
-      "homeScore": 0,
+      "homeScore": 2,
       "awayScore": 0,
       "winner": "",
       "loser": ""
