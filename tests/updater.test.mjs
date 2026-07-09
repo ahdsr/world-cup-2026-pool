@@ -139,7 +139,7 @@ function eventFixture({
         },
         AwayTeam: {
           ShortClubName: "Korea Republic",
-          Bookings: [{ Card: 1 }],
+          Bookings: [{ Card: 1 }, { Card: 1 }, { Card: 1 }, { Card: 1 }, { Card: 1 }],
         },
       },
       {
@@ -159,7 +159,7 @@ function eventFixture({
   assert.deepEqual(
     mostCards,
     ["United States"],
-    "FIFA bookings should be normalized through team aliases and counted for card bonus leaders",
+    "FIFA bookings should be normalized through team aliases and weighted for card bonus leaders",
   );
 }
 

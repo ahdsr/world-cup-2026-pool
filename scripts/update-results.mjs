@@ -456,8 +456,14 @@ function fifaTeamId(team) {
   return id === undefined || id === null ? "" : String(id);
 }
 
-function countableFifaCard(booking) {
-  return [1, 2, 3].includes(numberValue(booking?.Card));
+const FIFA_CARD_WEIGHTS = new Map([
+  [1, 1], // Yellow
+  [2, 3], // Indirect red / second yellow
+  [3, 4], // Direct red
+]);
+
+function fifaCardWeight(booking) {
+  return FIFA_CARD_WEIGHTS.get(numberValue(booking?.Card)) ?? 0;
 }
 
 export function computeMostCardsFromFifaLiveMatches(matches, resolveTeam = (value) => value) {
@@ -468,8 +474,11 @@ export function computeMostCardsFromFifaLiveMatches(matches, resolveTeam = (valu
       const team = match?.[side];
       const name = resolveTeam(fifaTeamName(team));
       if (!name) continue;
-      const cardCount = asArray(team?.Bookings).filter(countableFifaCard).length;
-      totals.set(name, (totals.get(name) ?? 0) + cardCount);
+      const cardTotal = asArray(team?.Bookings).reduce(
+        (sum, booking) => sum + fifaCardWeight(booking),
+        0,
+      );
+      totals.set(name, (totals.get(name) ?? 0) + cardTotal);
     }
   }
 
