@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-10T19:00:14.466Z",
-    "status": "Auto-updated from FIFA: 97 live/final matches counted.",
+    "lastUpdated": "2026-07-10T19:15:13.265Z",
+    "status": "Auto-updated from FIFA: 98 live/final matches counted: 1 in progress.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
     "sources": {
@@ -59,6 +59,25 @@
     "sourceNote": "All match results, fixtures, knockout winners, group standings, and third-place rankings are computed from FIFA official match data. FIFA team statistics, timelines, and rankings are used for bonus answers and unresolved tiebreakers. Manual overrides are explicit official-correction patches only."
   },
   "matches": [
+    {
+      "id": "400021538",
+      "source": "fifa",
+      "date": "2026-07-10T19:00:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "Scheduled",
+      "stage": "Quarter-final",
+      "group": "",
+      "matchNumber": 98,
+      "resultType": 0,
+      "officialityStatus": 0,
+      "homeTeam": "Spain",
+      "awayTeam": "Belgium",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "400021536",
       "source": "fifa",
@@ -1916,7 +1935,7 @@
       "id": "400021538",
       "source": "fifa",
       "date": "2026-07-10T19:00:00Z",
-      "state": "pre",
+      "state": "in",
       "completed": false,
       "detail": "Scheduled",
       "stage": "Quarter-final",
@@ -1926,8 +1945,8 @@
       "officialityStatus": 0,
       "homeTeam": "Spain",
       "awayTeam": "Belgium",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 0,
+      "awayScore": 0,
       "winner": "",
       "loser": ""
     },
