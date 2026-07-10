@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-10T21:00:12.150Z",
+    "lastUpdated": "2026-07-10T21:15:14.165Z",
     "status": "Auto-updated from FIFA: 98 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -70,7 +70,7 @@
       "group": "",
       "matchNumber": 98,
       "resultType": 1,
-      "officialityStatus": 0,
+      "officialityStatus": 2,
       "homeTeam": "Spain",
       "awayTeam": "Belgium",
       "homeScore": 2,
@@ -1982,7 +1982,7 @@
       "resultType": 0,
       "officialityStatus": 0,
       "homeTeam": "France",
-      "awayTeam": "W98",
+      "awayTeam": "Spain",
       "homeScore": null,
       "awayScore": null,
       "winner": "",
@@ -2369,7 +2369,7 @@
           "goalsFor": 6,
           "goalsAgainst": 2,
           "goalDifference": 4,
-          "fairPlayPoints": 8,
+          "fairPlayPoints": 10,
           "fifaRank": 8
         },
         {
@@ -2420,7 +2420,7 @@
           "goalsFor": 5,
           "goalsAgainst": 0,
           "goalDifference": 5,
-          "fairPlayPoints": 4,
+          "fairPlayPoints": 5,
           "fifaRank": 1
         },
         {
@@ -2728,7 +2728,7 @@
       "Argentina": 3,
       "Australia": 5,
       "Austria": 5,
-      "Belgium": 8,
+      "Belgium": 10,
       "Bosnia & Herzegovina": 11,
       "Brazil": 8,
       "Canada": 11,
@@ -2764,7 +2764,7 @@
       "Senegal": 3,
       "South Africa": 13,
       "South Korea": 4,
-      "Spain": 4,
+      "Spain": 5,
       "Sweden": 5,
       "Switzerland": 6,
       "Tunisia": 1,
