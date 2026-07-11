@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-11T01:04:52.481Z",
+    "lastUpdated": "2026-07-11T01:15:27.780Z",
     "status": "Auto-updated from FIFA: 98 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
