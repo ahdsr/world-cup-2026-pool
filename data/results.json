@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-12T02:15:59.826Z",
+    "lastUpdated": "2026-07-12T02:30:56.954Z",
     "status": "Auto-updated from FIFA: 100 live/final matches counted: 1 in progress.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -74,7 +74,7 @@
       "homeTeam": "Argentina",
       "awayTeam": "Switzerland",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -1984,7 +1984,7 @@
       "homeTeam": "Argentina",
       "awayTeam": "Switzerland",
       "homeScore": 1,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
