@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-12T03:30:58.964Z",
-    "status": "Auto-updated from FIFA: 100 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-12T03:46:01.069Z",
+    "status": "Auto-updated from FIFA: 100 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
     "sources": {
@@ -63,20 +63,20 @@
       "id": "400021537",
       "source": "fifa",
       "date": "2026-07-12T01:00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Scheduled",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "stage": "Quarter-final",
       "group": "",
       "matchNumber": 100,
-      "resultType": 0,
+      "resultType": 3,
       "officialityStatus": 0,
       "homeTeam": "Argentina",
       "awayTeam": "Switzerland",
-      "homeScore": 1,
+      "homeScore": 3,
       "awayScore": 1,
-      "winner": "",
-      "loser": ""
+      "winner": "Argentina",
+      "loser": "Switzerland"
     },
     {
       "id": "400021539",
@@ -1970,25 +1970,6 @@
   ],
   "fixtures": [
     {
-      "id": "400021537",
-      "source": "fifa",
-      "date": "2026-07-12T01:00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Scheduled",
-      "stage": "Quarter-final",
-      "group": "",
-      "matchNumber": 100,
-      "resultType": 0,
-      "officialityStatus": 0,
-      "homeTeam": "Argentina",
-      "awayTeam": "Switzerland",
-      "homeScore": 1,
-      "awayScore": 1,
-      "winner": "",
-      "loser": ""
-    },
-    {
       "id": "400021541",
       "source": "fifa",
       "date": "2026-07-14T19:00:00Z",
@@ -2720,7 +2701,8 @@
   "semifinalists": [
     "France",
     "Spain",
-    "England"
+    "England",
+    "Argentina"
   ],
   "thirdPlaceMatch": [],
   "finalists": [],
