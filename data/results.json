@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-12T00:01:01.527Z",
+    "lastUpdated": "2026-07-12T00:14:33.343Z",
     "status": "Auto-updated from FIFA: 99 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -70,7 +70,7 @@
       "group": "",
       "matchNumber": 99,
       "resultType": 3,
-      "officialityStatus": 2,
+      "officialityStatus": 1,
       "homeTeam": "Norway",
       "awayTeam": "England",
       "homeScore": 1,
