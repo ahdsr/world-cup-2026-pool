@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-11T23:45:57.322Z",
-    "status": "Auto-updated from FIFA: 99 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-12T00:01:01.527Z",
+    "status": "Auto-updated from FIFA: 99 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
     "sources": {
@@ -63,20 +63,20 @@
       "id": "400021539",
       "source": "fifa",
       "date": "2026-07-11T21:00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Scheduled",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "stage": "Quarter-final",
       "group": "",
       "matchNumber": 99,
-      "resultType": 0,
-      "officialityStatus": 0,
+      "resultType": 3,
+      "officialityStatus": 2,
       "homeTeam": "Norway",
       "awayTeam": "England",
       "homeScore": 1,
       "awayScore": 2,
-      "winner": "",
-      "loser": ""
+      "winner": "England",
+      "loser": "Norway"
     },
     {
       "id": "400021538",
@@ -1951,25 +1951,6 @@
   ],
   "fixtures": [
     {
-      "id": "400021539",
-      "source": "fifa",
-      "date": "2026-07-11T21:00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Scheduled",
-      "stage": "Quarter-final",
-      "group": "",
-      "matchNumber": 99,
-      "resultType": 0,
-      "officialityStatus": 0,
-      "homeTeam": "Norway",
-      "awayTeam": "England",
-      "homeScore": 1,
-      "awayScore": 2,
-      "winner": "",
-      "loser": ""
-    },
-    {
       "id": "400021537",
       "source": "fifa",
       "date": "2026-07-12T01:00:00Z",
@@ -2019,7 +2000,7 @@
       "matchNumber": 102,
       "resultType": 0,
       "officialityStatus": 0,
-      "homeTeam": "W99",
+      "homeTeam": "England",
       "awayTeam": "W100",
       "homeScore": null,
       "awayScore": null,
@@ -2500,7 +2481,7 @@
           "goalsFor": 8,
           "goalsAgainst": 7,
           "goalDifference": 1,
-          "fairPlayPoints": 2,
+          "fairPlayPoints": 3,
           "fifaRank": 31
         },
         {
@@ -2719,7 +2700,8 @@
   ],
   "semifinalists": [
     "France",
-    "Spain"
+    "Spain",
+    "England"
   ],
   "thirdPlaceMatch": [],
   "finalists": [],
@@ -2773,7 +2755,7 @@
       "Morocco": 7,
       "Netherlands": 3,
       "New Zealand": 4,
-      "Norway": 2,
+      "Norway": 3,
       "Panama": 5,
       "Paraguay": 13,
       "Portugal": 7,
