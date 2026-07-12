@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-12T03:46:01.069Z",
+    "lastUpdated": "2026-07-12T04:01:01.196Z",
     "status": "Auto-updated from FIFA: 100 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -70,7 +70,7 @@
       "group": "",
       "matchNumber": 100,
       "resultType": 3,
-      "officialityStatus": 0,
+      "officialityStatus": 2,
       "homeTeam": "Argentina",
       "awayTeam": "Switzerland",
       "homeScore": 3,
@@ -2001,7 +2001,7 @@
       "resultType": 0,
       "officialityStatus": 0,
       "homeTeam": "England",
-      "awayTeam": "W100",
+      "awayTeam": "Argentina",
       "homeScore": null,
       "awayScore": null,
       "winner": "",
@@ -2522,7 +2522,7 @@
           "goalsFor": 8,
           "goalsAgainst": 1,
           "goalDifference": 7,
-          "fairPlayPoints": 5,
+          "fairPlayPoints": 6,
           "fifaRank": 3
         },
         {
@@ -2713,7 +2713,7 @@
   },
   "bonus": {
     "mostGoalsScored": [
-      "France"
+      "Argentina"
     ],
     "mostGoalsConceded": [
       "Iraq",
@@ -2727,7 +2727,7 @@
     ],
     "mostCards": {
       "Algeria": 3,
-      "Argentina": 5,
+      "Argentina": 6,
       "Australia": 5,
       "Austria": 5,
       "Belgium": 10,
