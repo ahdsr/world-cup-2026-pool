@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-12T01:46:01.470Z",
+    "lastUpdated": "2026-07-12T02:01:00.406Z",
     "status": "Auto-updated from FIFA: 100 live/final matches counted: 1 in progress.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -2133,7 +2133,7 @@
           "goalsFor": 7,
           "goalsAgainst": 3,
           "goalDifference": 4,
-          "fairPlayPoints": 6,
+          "fairPlayPoints": 7,
           "fifaRank": 17
         },
         {
@@ -2786,7 +2786,7 @@
       "South Korea": 4,
       "Spain": 5,
       "Sweden": 5,
-      "Switzerland": 6,
+      "Switzerland": 7,
       "Tunisia": 1,
       "Turkey": 2,
       "United States": 11,
