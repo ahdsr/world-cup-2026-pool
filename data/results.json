@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-14T19:00:29.685Z",
-    "status": "Auto-updated from FIFA: 100 live/final matches counted.",
+    "lastUpdated": "2026-07-14T19:15:26.724Z",
+    "status": "Auto-updated from FIFA: 101 live/final matches counted: 1 in progress.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
     "sources": {
@@ -59,6 +59,25 @@
     "sourceNote": "All match results, fixtures, knockout winners, group standings, and third-place rankings are computed from FIFA official match data. FIFA team statistics, timelines, and rankings are used for bonus answers and unresolved tiebreakers. Manual overrides are explicit official-correction patches only."
   },
   "matches": [
+    {
+      "id": "400021541",
+      "source": "fifa",
+      "date": "2026-07-14T19:00:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "Scheduled",
+      "stage": "Semi-final",
+      "group": "",
+      "matchNumber": 101,
+      "resultType": 0,
+      "officialityStatus": 0,
+      "homeTeam": "France",
+      "awayTeam": "Spain",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "400021537",
       "source": "fifa",
@@ -1973,7 +1992,7 @@
       "id": "400021541",
       "source": "fifa",
       "date": "2026-07-14T19:00:00Z",
-      "state": "pre",
+      "state": "in",
       "completed": false,
       "detail": "Scheduled",
       "stage": "Semi-final",
@@ -1983,8 +2002,8 @@
       "officialityStatus": 0,
       "homeTeam": "France",
       "awayTeam": "Spain",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 0,
+      "awayScore": 0,
       "winner": "",
       "loser": ""
     },
