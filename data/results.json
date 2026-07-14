@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-14T18:45:31.185Z",
+    "lastUpdated": "2026-07-14T19:00:29.685Z",
     "status": "Auto-updated from FIFA: 100 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -2014,7 +2014,7 @@
       "state": "pre",
       "completed": false,
       "detail": "Scheduled",
-      "stage": "Play-off for third place",
+      "stage": "Bronze final",
       "group": "",
       "matchNumber": 103,
       "resultType": 0,
