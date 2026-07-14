@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-14T19:15:26.724Z",
+    "lastUpdated": "2026-07-14T19:30:25.753Z",
     "status": "Auto-updated from FIFA: 101 live/final matches counted: 1 in progress.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -74,7 +74,7 @@
       "homeTeam": "France",
       "awayTeam": "Spain",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -2003,7 +2003,7 @@
       "homeTeam": "France",
       "awayTeam": "Spain",
       "homeScore": 0,
-      "awayScore": 0,
+      "awayScore": 1,
       "winner": "",
       "loser": ""
     },
@@ -2490,7 +2490,7 @@
           "goalsFor": 10,
           "goalsAgainst": 2,
           "goalDifference": 8,
-          "fairPlayPoints": 4,
+          "fairPlayPoints": 5,
           "fifaRank": 2
         },
         {
@@ -2762,7 +2762,7 @@
       "Ecuador": 12,
       "Egypt": 12,
       "England": 11,
-      "France": 4,
+      "France": 5,
       "Germany": 3,
       "Ghana": 6,
       "Haiti": 7,
