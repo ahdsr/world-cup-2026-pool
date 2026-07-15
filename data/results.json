@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-15T21:00:17.033Z",
-    "status": "Auto-updated from FIFA: 102 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-15T21:12:17.736Z",
+    "status": "Auto-updated from FIFA: 102 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
     "sources": {
@@ -63,20 +63,20 @@
       "id": "400021540",
       "source": "fifa",
       "date": "2026-07-15T19:00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Scheduled",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "stage": "Semi-final",
       "group": "",
       "matchNumber": 102,
-      "resultType": 0,
-      "officialityStatus": 0,
+      "resultType": 1,
+      "officialityStatus": 2,
       "homeTeam": "England",
       "awayTeam": "Argentina",
       "homeScore": 1,
       "awayScore": 2,
-      "winner": "",
-      "loser": ""
+      "winner": "Argentina",
+      "loser": "England"
     },
     {
       "id": "400021541",
@@ -2008,25 +2008,6 @@
   ],
   "fixtures": [
     {
-      "id": "400021540",
-      "source": "fifa",
-      "date": "2026-07-15T19:00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Scheduled",
-      "stage": "Semi-final",
-      "group": "",
-      "matchNumber": 102,
-      "resultType": 0,
-      "officialityStatus": 0,
-      "homeTeam": "England",
-      "awayTeam": "Argentina",
-      "homeScore": 1,
-      "awayScore": 2,
-      "winner": "",
-      "loser": ""
-    },
-    {
       "id": "400021542",
       "source": "fifa",
       "date": "2026-07-18T21:00:00Z",
@@ -2039,7 +2020,7 @@
       "resultType": 0,
       "officialityStatus": 0,
       "homeTeam": "France",
-      "awayTeam": "RU102",
+      "awayTeam": "England",
       "homeScore": null,
       "awayScore": null,
       "winner": "",
@@ -2058,7 +2039,7 @@
       "resultType": 0,
       "officialityStatus": 0,
       "homeTeam": "Spain",
-      "awayTeam": "W102",
+      "awayTeam": "Argentina",
       "homeScore": null,
       "awayScore": null,
       "winner": "",
@@ -2541,7 +2522,7 @@
           "goalsFor": 8,
           "goalsAgainst": 1,
           "goalDifference": 7,
-          "fairPlayPoints": 8,
+          "fairPlayPoints": 9,
           "fifaRank": 3
         },
         {
@@ -2724,10 +2705,12 @@
     "Argentina"
   ],
   "thirdPlaceMatch": [
-    "France"
+    "France",
+    "England"
   ],
   "finalists": [
-    "Spain"
+    "Spain",
+    "Argentina"
   ],
   "finals": {
     "champion": "",
@@ -2751,7 +2734,7 @@
     ],
     "mostCards": {
       "Algeria": 3,
-      "Argentina": 8,
+      "Argentina": 9,
       "Australia": 5,
       "Austria": 5,
       "Belgium": 10,
