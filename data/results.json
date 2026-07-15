@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-15T19:45:16.432Z",
+    "lastUpdated": "2026-07-15T20:00:14.618Z",
     "status": "Auto-updated from FIFA: 102 live/final matches counted: 1 in progress.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -2541,7 +2541,7 @@
           "goalsFor": 8,
           "goalsAgainst": 1,
           "goalDifference": 7,
-          "fairPlayPoints": 6,
+          "fairPlayPoints": 7,
           "fifaRank": 3
         },
         {
@@ -2643,7 +2643,7 @@
           "goalsFor": 6,
           "goalsAgainst": 2,
           "goalDifference": 4,
-          "fairPlayPoints": 11,
+          "fairPlayPoints": 12,
           "fifaRank": 4
         },
         {
@@ -2750,7 +2750,7 @@
     ],
     "mostCards": {
       "Algeria": 3,
-      "Argentina": 6,
+      "Argentina": 7,
       "Australia": 5,
       "Austria": 5,
       "Belgium": 10,
@@ -2765,7 +2765,7 @@
       "DR Congo": 6,
       "Ecuador": 12,
       "Egypt": 12,
-      "England": 11,
+      "England": 12,
       "France": 6,
       "Germany": 3,
       "Ghana": 6,
