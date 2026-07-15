@@ -67,13 +67,11 @@ function statusPill(text, tone = "") {
 
 function renderNav(entriesConfig, route) {
   const leaderboardActive = route.view === "leaderboard" ? " active" : "";
-  const projectionsActive = route.view === "projections" ? " active" : "";
 
   return `
     <nav class="top-nav" aria-label="Primary">
       <div class="nav-left">
         <a class="nav-link${leaderboardActive}" href="#/leaderboard">Leaderboard</a>
-        <a class="nav-link${projectionsActive}" href="#/projections">Projections</a>
       </div>
       <div class="nav-actions">
         <button class="share-button" type="button" data-share-button>Share</button>
