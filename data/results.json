@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-18T20:46:00.420Z",
-    "status": "Auto-updated from FIFA: 102 live/final matches counted.",
+    "lastUpdated": "2026-07-18T21:00:56.687Z",
+    "status": "Auto-updated from FIFA: 103 live/final matches counted: 1 in progress.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
     "sources": {
@@ -59,6 +59,25 @@
     "sourceNote": "All match results, fixtures, knockout winners, group standings, and third-place rankings are computed from FIFA official match data. FIFA team statistics, timelines, and rankings are used for bonus answers and unresolved tiebreakers. Manual overrides are explicit official-correction patches only."
   },
   "matches": [
+    {
+      "id": "400021542",
+      "source": "fifa",
+      "date": "2026-07-18T21:00:00Z",
+      "state": "in",
+      "completed": false,
+      "detail": "Scheduled",
+      "stage": "Bronze final",
+      "group": "",
+      "matchNumber": 103,
+      "resultType": 0,
+      "officialityStatus": 0,
+      "homeTeam": "France",
+      "awayTeam": "England",
+      "homeScore": 0,
+      "awayScore": 0,
+      "winner": "",
+      "loser": ""
+    },
     {
       "id": "400021540",
       "source": "fifa",
@@ -2011,7 +2030,7 @@
       "id": "400021542",
       "source": "fifa",
       "date": "2026-07-18T21:00:00Z",
-      "state": "pre",
+      "state": "in",
       "completed": false,
       "detail": "Scheduled",
       "stage": "Bronze final",
@@ -2021,8 +2040,8 @@
       "officialityStatus": 0,
       "homeTeam": "France",
       "awayTeam": "England",
-      "homeScore": null,
-      "awayScore": null,
+      "homeScore": 0,
+      "awayScore": 0,
       "winner": "",
       "loser": ""
     },
