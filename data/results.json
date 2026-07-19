@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-19T19:31:00.108Z",
+    "lastUpdated": "2026-07-19T19:37:12.465Z",
     "status": "Auto-updated from FIFA: 104 live/final matches counted: 1 in progress.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -2750,7 +2750,8 @@
       "Belgium"
     ],
     "bestPassCompletion": [
-      "Argentina"
+      "Argentina",
+      "Spain"
     ],
     "mostCards": {
       "Algeria": 3,
