@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-19T22:00:58.182Z",
-    "status": "Auto-updated from FIFA: 104 live/final matches counted: 1 in progress.",
+    "lastUpdated": "2026-07-19T22:15:58.339Z",
+    "status": "Auto-updated from FIFA: 104 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
     "sources": {
@@ -63,20 +63,20 @@
       "id": "400021543",
       "source": "fifa",
       "date": "2026-07-19T19:00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Scheduled",
+      "state": "post",
+      "completed": true,
+      "detail": "FT",
       "stage": "Final",
       "group": "",
       "matchNumber": 104,
-      "resultType": 0,
-      "officialityStatus": 0,
+      "resultType": 3,
+      "officialityStatus": 2,
       "homeTeam": "Spain",
       "awayTeam": "Argentina",
       "homeScore": 1,
       "awayScore": 0,
-      "winner": "",
-      "loser": ""
+      "winner": "Spain",
+      "loser": "Argentina"
     },
     {
       "id": "400021542",
@@ -2044,27 +2044,7 @@
       "loser": "South Africa"
     }
   ],
-  "fixtures": [
-    {
-      "id": "400021543",
-      "source": "fifa",
-      "date": "2026-07-19T19:00:00Z",
-      "state": "in",
-      "completed": false,
-      "detail": "Scheduled",
-      "stage": "Final",
-      "group": "",
-      "matchNumber": 104,
-      "resultType": 0,
-      "officialityStatus": 0,
-      "homeTeam": "Spain",
-      "awayTeam": "Argentina",
-      "homeScore": 1,
-      "awayScore": 0,
-      "winner": "",
-      "loser": ""
-    }
-  ],
+  "fixtures": [],
   "groups": {
     "A": {
       "currentOrder": [
@@ -2541,7 +2521,7 @@
           "goalsFor": 8,
           "goalsAgainst": 1,
           "goalDifference": 7,
-          "fairPlayPoints": 17,
+          "fairPlayPoints": 18,
           "fifaRank": 3
         },
         {
@@ -2732,8 +2712,8 @@
     "Argentina"
   ],
   "finals": {
-    "champion": "",
-    "runnerUp": "",
+    "champion": "Spain",
+    "runnerUp": "Argentina",
     "thirdPlace": "England"
   },
   "bonus": {
@@ -2754,7 +2734,7 @@
     ],
     "mostCards": {
       "Algeria": 3,
-      "Argentina": 17,
+      "Argentina": 18,
       "Australia": 5,
       "Austria": 5,
       "Belgium": 10,
