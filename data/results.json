@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-19T23:45:58.751Z",
+    "lastUpdated": "2026-07-20T00:16:03.793Z",
     "status": "Auto-updated from FIFA: 104 live/final matches counted.",
     "source": "fifa",
     "sourceUrl": "https://api.fifa.com/api/v3/calendar/matches?language=en&count=200&idSeason=285023",
@@ -70,7 +70,7 @@
       "group": "",
       "matchNumber": 104,
       "resultType": 3,
-      "officialityStatus": 2,
+      "officialityStatus": 1,
       "homeTeam": "Spain",
       "awayTeam": "Argentina",
       "homeScore": 1,
