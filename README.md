@@ -75,7 +75,7 @@ Bonus source coverage:
 
 `.github/workflows/update-results.yml` updates `data/results.json`, runs tests, and commits only when results changed.
 
-The preferred live updater is the external Cloudflare cron worker in `workers/update-results-cron`, which dispatches the workflow every 15 minutes. The GitHub workflow also keeps a staggered 15-minute fallback schedule at `:07`, `:22`, `:37`, and `:52`. A concurrency guard prevents overlapping updater runs, and the workflow syncs to the latest `main` before generating results.
+The live updater uses the external Cloudflare cron worker in `workers/update-results-cron`, which dispatches the workflow every 15 minutes. The GitHub workflow has no second cron schedule, preventing duplicate updater runs. A concurrency guard prevents overlapping updater runs, and the workflow syncs to the latest `main` before generating results. Timestamp-only refreshes preserve the existing file so they do not create commits or Pages deployments.
 
 Cloudflare Worker commands:
 

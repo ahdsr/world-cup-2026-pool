@@ -9,6 +9,7 @@ import {
   computeGoalBonusResultsFromFifaTeamStats,
   computeMostCardsFromFifaLiveMatches,
   createTeamResolver,
+  hasMeaningfulResultsChange,
   parseFifaMatch,
   sortGroupStats,
 } from "../scripts/update-results.mjs";
@@ -26,6 +27,28 @@ const TEAM_IDS = {
   Switzerland: "43971",
   Colombia: "43926",
 };
+
+{
+  const currentResults = {
+    meta: { lastUpdated: "2026-07-20T12:00:00.000Z", status: "Final" },
+    matches: [{ id: "final", homeScore: 2, awayScore: 1 }],
+  };
+  const timestampOnlyUpdate = structuredClone(currentResults);
+  timestampOnlyUpdate.meta.lastUpdated = "2026-08-30T12:00:00.000Z";
+  const scoreUpdate = structuredClone(timestampOnlyUpdate);
+  scoreUpdate.matches[0].awayScore = 2;
+
+  assert.equal(
+    hasMeaningfulResultsChange(currentResults, timestampOnlyUpdate),
+    false,
+    "a timestamp-only update should not rewrite results",
+  );
+  assert.equal(
+    hasMeaningfulResultsChange(currentResults, scoreUpdate),
+    true,
+    "a substantive result update should still be written",
+  );
+}
 
 function localized(description) {
   return [{ Locale: "en-GB", Description: description }];

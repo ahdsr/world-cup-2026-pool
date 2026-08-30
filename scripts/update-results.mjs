@@ -74,6 +74,17 @@ async function writeJson(relativePath, value) {
   await fs.writeFile(resolve(ROOT_DIR, relativePath), `${JSON.stringify(value, null, 2)}\n`);
 }
 
+export function hasMeaningfulResultsChange(currentResults, nextResults) {
+  if (!currentResults) return true;
+
+  const currentComparable = structuredClone(currentResults);
+  const nextComparable = structuredClone(nextResults);
+  if (currentComparable.meta) delete currentComparable.meta.lastUpdated;
+  if (nextComparable.meta) delete nextComparable.meta.lastUpdated;
+
+  return JSON.stringify(currentComparable) !== JSON.stringify(nextComparable);
+}
+
 async function fetchJson(url) {
   const response = await fetch(url, {
     headers: {
@@ -1103,10 +1114,11 @@ export function buildResultsFromFifaMatches(fifaMatches, options) {
 }
 
 export async function updateResults() {
-  const [picks, aliases, manualOverrides] = await Promise.all([
+  const [picks, aliases, manualOverrides, currentResults] = await Promise.all([
     readJson("data/picks.json"),
     readJson("data/team-aliases.json", { aliases: {} }),
     readJson("data/manual-overrides.json", {}),
+    readJson("data/results.json", {}),
   ]);
   const calendar = await fetchJson(FIFA_CALENDAR_URL);
   const resolveTeam = createTeamResolver(picks, aliases);
@@ -1122,6 +1134,11 @@ export async function updateResults() {
     fifaRankingResults,
     now: new Date().toISOString(),
   });
+
+  if (!hasMeaningfulResultsChange(currentResults, results)) {
+    return currentResults;
+  }
+
   await writeJson("data/results.json", results);
   return results;
 }

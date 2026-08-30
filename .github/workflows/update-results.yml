@@ -2,10 +2,6 @@ name: Update live results
 
 on:
   workflow_dispatch:
-  schedule:
-    # Fallback only. The preferred trigger is the external cron worker in
-    # workers/update-results-cron, which dispatches this workflow every 15 minutes.
-    - cron: "7,22,37,52 * * * *"
 
 permissions:
   contents: write
